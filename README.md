@@ -1,4 +1,23 @@
-# Awesome Claude Skills
+<h1 align="center">Awesome Claude Skills</h1>
+
+<p align="center">
+  <a href="url">
+  <img width="1280" height="640" alt="image" src="https://github.com/user-attachments/assets/adb3f57a-2706-4329-856f-059a32059d48" >
+  </a>
+
+</p>
+
+<p align="center">
+  <a href="https://awesome.re">
+    <img src="https://awesome.re/badge.svg" alt="Awesome" />
+  </a>
+  <a href="https://makeapullrequest.com">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
+  </a>
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">
+    <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square" alt="License: Apache-2.0" />
+  </a>
+</p>
 
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
