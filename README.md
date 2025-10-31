@@ -111,6 +111,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Raffle Winner Picker](./raffle-winner-picker/) - Randomly selects winners from lists, spreadsheets, or Google Sheets for giveaways and contests with cryptographically secure randomness.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [web3-research](https://github.com/aaronjmars/web3-research-mcp/blob/main/web3-research.skill) - Deep research for crypto.
 
 ### Collaboration & Project Management
 
