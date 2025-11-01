@@ -21,6 +21,10 @@
 
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
+
+> If you want your skills to take actions across 500+ apps, wire them up with [Composio](https://composio.dev/?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills)
+
+
 ## Contents
 
 - [What Are Claude Skills?](#what-are-claude-skills)
