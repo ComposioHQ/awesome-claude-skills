@@ -87,6 +87,12 @@
       "category": "creative-media"
     },
     {
+      "name": "awesome-skills-complete",
+      "description": "Comprehensive collection of all Claude Skills scripts and references from the awesome-claude-skills repository. Provides 40+ scripts and extensive reference documentation for document processing (PDF, DOCX, PPTX, XLSX), MCP server development, skill creation, web testing, and artifact building.",
+      "source": "./awesome-skills-complete",
+      "category": "development"
+    },
+    {
       "name": "artifacts-builder",
       "description": "Builds elaborate, multi-component Claude.ai HTML artifacts using modern frontend technologies including React, Tailwind CSS, and shadcn/ui.",
       "source": "./artifacts-builder",
