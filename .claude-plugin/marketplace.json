@@ -99,6 +99,12 @@
       "category": "development"
     },
     {
+      "name": "developer-growth-analysis",
+      "description": "Analyzes your recent Claude Code chat history to identify coding patterns, development gaps, and areas for improvement, curates relevant learning resources from HackerNews, and automatically sends a personalized growth report to your Slack DMs.",
+      "source": "./developer-growth-analysis",
+      "category": "development"
+    },
+    {
       "name": "mcp-builder",
       "description": "Guides creation of high-quality MCP (Model Context Protocol) servers for integrating external APIs and services with LLMs using Python or TypeScript.",
       "source": "./mcp-builder",
