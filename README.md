@@ -278,6 +278,13 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 - [Lenny's Newsletter](https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code) - 50 ways people use Claude Code
 - [Notion Skills](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0) - Notion integration skills
 
+
+## Join the Community
+
+- Have questions about integrating Composio with your auth setup? [Hop on a quick call with us](https://calendly.com/thomas-composio/composio-enterprise-setup)
+- Follow us on [Twitter](https://x.com/composio)
+- [Join our Discord](https://discord.com/invite/composio
+
 ## License
 
 This repository is licensed under the Apache License 2.0.
