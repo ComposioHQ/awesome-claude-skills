@@ -283,7 +283,7 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 
 - Have questions about integrating Composio with your auth setup? [Hop on a quick call with us](https://calendly.com/thomas-composio/composio-enterprise-setup)
 - Follow us on [Twitter](https://x.com/composio)
-- [Join our Discord](https://discord.com/invite/composio
+- [Join our Discord](https://discord.com/invite/composio)
 
 ## License
 
