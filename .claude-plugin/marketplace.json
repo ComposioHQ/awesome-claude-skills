@@ -147,6 +147,12 @@
       "category": "productivity-organization"
     },
     {
+      "name": "tailored-resume-generator",
+      "description": "Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.",
+      "source": "./tailored-resume-generator",
+      "category": "productivity-organization"
+    },
+    {
       "name": "document-skills-docx",
       "description": "Skills for working with Microsoft Word documents including creation, editing, and formatting using DOCX format.",
       "source": "./document-skills/docx",
