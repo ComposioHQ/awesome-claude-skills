@@ -1,7 +1,7 @@
 <h1 align="center">Awesome Claude Skills</h1>
 
 <p align="center">
-<a href="https://composio.dev/?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills">
+<a href="https://platform.composio.dev/?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills">
   <img width="1280" height="640" alt="Composio banner" src="https://github.com/user-attachments/assets/adb3f57a-2706-4329-856f-059a32059d48">
 </a>
 
@@ -24,7 +24,7 @@
   <a href="https://twitter.com/composio">
     <img src="https://img.shields.io/badge/Follow on X-000000?style=for-the-badge&logo=x&logoColor=white" alt="Follow on X" />
   </a>
-  <a href="https://www.linkedin.com/company/104100957">
+  <a href="https://www.linkedin.com/company/composiohq/">
     <img src="https://img.shields.io/badge/Follow on LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Follow on LinkedIn" />
   </a>
   <a href="https://discord.com/invite/composio">
@@ -36,7 +36,7 @@
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
 
-> If you want your skills to take actions across 500+ apps, wire them up with [Composio](https://composio.dev/?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills)
+> If you want your skills to take actions across 500+ apps, wire them up with [Composio](https://platform.composio.dev/?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills)
 
 
 ## Contents
