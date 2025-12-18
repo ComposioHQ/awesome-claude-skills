@@ -159,15 +159,15 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Using Skills in Claude Code
 
-1. Place the skill in `~/.config/claude-code/skills/`:
+1. Place the skill in `~/.claude/skills/`:
    ```bash
-   mkdir -p ~/.config/claude-code/skills/
-   cp -r skill-name ~/.config/claude-code/skills/
+   mkdir -p ~/.claude/skills/
+   cp -r skill-name ~/.claude/skills/
    ```
 
 2. Verify skill metadata:
    ```bash
-   head ~/.config/claude-code/skills/skill-name/SKILL.md
+   head ~/.claude/skills/skill-name/SKILL.md
    ```
 
 3. Start Claude Code:
@@ -176,6 +176,28 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
    ```
 
 4. The skill loads automatically and activates when relevant.
+
+### Using Skills in Other AI Agents
+
+These skills work with any agent that supports the [Agent Skills spec](https://agentskills.io). Use [ai-agent-skills](https://github.com/skillcreatorai/Ai-Agent-Skills) for one-command installation:
+
+```bash
+# Install for Claude Code (default)
+npx ai-agent-skills install pdf
+
+# Install for other agents
+npx ai-agent-skills install pdf --agent cursor
+npx ai-agent-skills install pdf --agent vscode
+npx ai-agent-skills install pdf --agent amp
+```
+
+| Agent | Flag | Install Location |
+|-------|------|------------------|
+| Claude Code | `--agent claude` | `~/.claude/skills/` |
+| Cursor | `--agent cursor` | `.cursor/skills/` |
+| VS Code / Copilot | `--agent vscode` | `.github/skills/` |
+| Amp | `--agent amp` | `~/.amp/skills/` |
+| Goose | `--agent goose` | `~/.config/goose/skills/` |
 
 ### Using Skills via API
 
