@@ -138,6 +138,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Collaboration & Project Management
 
+- [dev-agent-skills](https://github.com/fvadicamo/dev-agent-skills) - Complete GitHub workflow skills: git-commit (Conventional Commits), github-pr-creation, github-pr-merge, github-pr-review, and creating-skills guide. *By [@fvadicamo](https://github.com/fvadicamo)*
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
 - [test-fixing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing) - Detect failing tests and propose patches or fixes.
