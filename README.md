@@ -66,10 +66,10 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Document Processing
 
-- [docx](https://github.com/anthropics/skills/tree/main/document-skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
-- [pdf](https://github.com/anthropics/skills/tree/main/document-skills/pdf) - Extract text, tables, metadata, merge & annotate PDFs.
-- [pptx](https://github.com/anthropics/skills/tree/main/document-skills/pptx) - Read, generate, and adjust slides, layouts, templates.
-- [xlsx](https://github.com/anthropics/skills/tree/main/document-skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
+- [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
+- [pdf](https://github.com/anthropics/skills/tree/main/skills/pdf) - Extract text, tables, metadata, merge & annotate PDFs.
+- [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) - Read, generate, and adjust slides, layouts, templates.
+- [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
 - [Markdown to EPUB Converter](https://github.com/smerchek/claude-epub-skill) - Converts markdown documents and chat summaries into professional EPUB ebook files. *By [@smerchek](https://github.com/smerchek)*
 
 ### Development & Code Tools
