@@ -70,9 +70,9 @@
     },
     {
       "name": "scoutqa-test",
-      "source": "./scoutqa-vibetesting",
       "description": "AI-powered exploratory testing for web applications using ScoutQA CLI",
-      "version": "0.1.0"
+      "source": "./scoutqa-vibetesting",
+      "category": "development"
     },
     {
       "name": "theme-factory",
