@@ -69,6 +69,12 @@
       "category": "creative-media"
     },
     {
+      "name": "scoutqa-test",
+      "source": "./scoutqa-vibetesting",
+      "description": "AI-powered exploratory testing for web applications using ScoutQA CLI",
+      "version": "0.1.0"
+    },
+    {
       "name": "theme-factory",
       "description": "Applies professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages with 10 pre-set themes.",
       "source": "./theme-factory",
