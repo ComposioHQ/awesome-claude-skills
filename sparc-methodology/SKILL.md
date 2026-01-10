@@ -7,6 +7,62 @@ description: Systematic software development through Specification-Pseudocode-Ar
 
 A structured approach to software development that ensures every feature moves through five deliberate phases: Specification, Pseudocode, Architecture, Refinement, and Completion.
 
+## Philosophical Foundation
+
+SPARC is more than a methodology—it is a **passage from darkness to light**.
+
+### The Heideggerian Connection
+
+Martin Heidegger distinguished between two modes of engagement with tools:
+
+| Term | German | Meaning |
+|------|--------|---------|
+| **Ready-to-hand** | *Zuhandenheit* | Tools used transparently, flowing in action |
+| **Present-at-hand** | *Vorhandenheit* | Tools examined consciously, made visible |
+| **Thrownness** | *Geworfenheit* | We are "thrown" into projects with pre-existing constraints and contexts |
+| **Understanding** | *Verstehen* | Comprehension that grows through engagement with the work |
+| **Care** | *Sorge* | The fundamental concern for quality and outcomes that drives craftsmanship |
+| **Dwelling** | *Wohnen* | To reside thoughtfully in what we build |
+| **Clearing** | *Lichtung* | The open space where truth can appear |
+| **Unconcealment** | *Aletheia* | Truth as active revelation from hiddenness |
+
+### Why This Matters
+
+Every project begins in *Geworfenheit*—we are "thrown" into existing codebases, constraints, and contexts we didn't choose. Most development operates in pure *Zuhandenheit*—we code without seeing what we're building. Requirements remain hidden. Architecture stays implicit. We dwell in darkness.
+
+SPARC transforms this through *Verstehen* (understanding) that deepens at each phase, driven by *Sorge* (care) for craftsmanship and quality.
+
+**SPARC creates a structured passage through the Lichtung**:
+
+```
+DARKNESS (undefined)          LIGHT (delivered)
+      │                             │
+      │  S ─────────────────────▶  │
+      │    Problem visible         │
+      │                            │
+      │  P ─────────────────────▶  │
+      │    Logic visible           │
+      │                            │
+      │  A ─────────────────────▶  │
+      │    Structure visible       │
+      │                            │
+      │  R ─────────────────────▶  │
+      │    Quality visible         │
+      │                            │
+      │  C ─────────────────────▶  │
+      │    Value delivered         │
+      └────────────────────────────┘
+```
+
+Each phase is a *Lichtung*—a clearing where what was hidden becomes unconcealed. Specification reveals the true problem. Pseudocode reveals the logic. Architecture reveals the structure. Refinement reveals the quality. Completion reveals the value.
+
+> *"We attain to dwelling, so it seems, only by means of building."*
+> — Martin Heidegger, *Building Dwelling Thinking*
+
+SPARC is how we **build thoughtfully** so we may **dwell confidently** in what we create.
+
+---
+
 ## Why SPARC?
 
 Most development fails not from lack of skill but from lack of structure:

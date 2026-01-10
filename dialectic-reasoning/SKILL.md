@@ -7,6 +7,39 @@ description: Structure complex decisions through Hegelian thesis-antithesis-synt
 
 Transform complex decisions from single-answer responses into structured deliberation through the Hegelian dialectic method.
 
+## Philosophical Foundation
+
+This skill is grounded in the phenomenology of Martin Heidegger and the dialectics of G.W.F. Hegel.
+
+### Core Concepts
+
+| Term | German | Meaning |
+|------|--------|---------|
+| **Ready-to-hand** | *Zuhandenheit* | Tools used transparently, without conscious thought—the hammer we wield |
+| **Present-at-hand** | *Vorhandenheit* | Tools examined consciously, made visible through questioning |
+| **Being-there** | *Dasein* | Existence with awareness—the human condition of caring about meaning |
+| **Care** | *Sorge* | The fundamental stance of concern toward outcomes and consequences |
+| **Being-with** | *Mitsein* | Co-existence with others; dialectic as dialogue between perspectives |
+| **Clearing** | *Lichtung* | The open space where truth can reveal itself—a pause in the dense forest of action |
+| **Unveiling** | *Aletheia* | Truth as active revelation, not static correspondence |
+| **Breakdown** | *Zusammenbruch* | When tools fail, we finally see them as tools—the moment of insight |
+| **Sublation** | *Aufheben* | To cancel, preserve, and elevate simultaneously—the engine of synthesis |
+
+### Why This Matters
+
+Most AI interactions operate in *Zuhandenheit*—transparent tool use. You ask, Claude answers. Efficient, but shallow.
+
+**This skill creates a *Lichtung***—a clearing where opposing ideas can appear, coexist, and illuminate each other before resolution. The dialectic *forces a breakdown* of easy answers, making the problem visible in its full complexity.
+
+When we engage dialectically, we embody *Dasein*—being that cares about its own existence and choices. We exercise *Sorge* (care) toward outcomes that matter. The thesis and antithesis become a *Mitsein*—a being-with opposing perspectives, not against them.
+
+> *"The clearing is never a fixed stage with a permanently raised curtain on which the play of beings unfolds."*
+> — Martin Heidegger, *Zur Sache des Denkens*
+
+The thesis and antithesis must both be seen clearly before *Aufheben* (sublation) can occur—canceling what's limited, preserving what's valuable, elevating to higher understanding.
+
+---
+
 ## When to Use This Skill
 
 Activate dialectic reasoning when:
