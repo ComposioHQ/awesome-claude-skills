@@ -94,6 +94,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [sparc-methodology](./sparc-methodology/) - Structured 5-phase development methodology (Specification, Pseudocode, Architecture, Refinement, Completion) for systematic software engineering with clear phase gates and deliverables. *By [@sebaboubou-max](https://github.com/sebaboubou-max)*
 
 ### Data & Analysis
 
@@ -137,6 +138,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Raffle Winner Picker](./raffle-winner-picker/) - Randomly selects winners from lists, spreadsheets, or Google Sheets for giveaways and contests with cryptographically secure randomness.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [dialectic-reasoning](./dialectic-reasoning/) - Hegelian thesis-antithesis-synthesis framework for complex decisions. Systematically explores opposing viewpoints before synthesizing balanced conclusions. *By [@sebaboubou-max](https://github.com/sebaboubou-max)*
 
 ### Collaboration & Project Management
 
