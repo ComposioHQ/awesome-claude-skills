@@ -36,7 +36,7 @@
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
 
-> If you want your skills to take actions across 500+ apps, wire them up with [Composio](https://platform.composio.dev/?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills)
+> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
 
 
 ## Contents
@@ -93,6 +93,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [subagent-driven-development](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - Dispatches independent subagents for individual tasks with code review checkpoints between iterations for rapid, controlled development.
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
+- [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
 ### Data & Analysis
@@ -288,9 +289,21 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 
 ## Join the Community
 
-- Have questions about integrating Composio with your auth setup? [Hop on a quick call with us](https://calendly.com/thomas-composio/composio-enterprise-setup)
-- [Follow us on Twitter](https://x.com/composio)
-- [Join our Discord](https://discord.com/invite/composio)
+- [Join our Discord](https://discord.com/invite/composio) - Chat with other developers building Claude Skills
+- [Follow on Twitter/X](https://x.com/composio) - Stay updated on new skills and features
+- Questions? [support@composio.dev](mailto:support@composio.dev)
+
+---
+
+<p align="center">
+  <b>Join 20,000+ developers building agents that ship</b>
+</p>
+
+<p align="center">
+  <a href="https://platform.composio.dev/?utm_source=Github&utm_content=AwesomeSkills">
+    <img src="https://img.shields.io/badge/Get_Started_Free-4F46E5?style=for-the-badge" alt="Get Started"/>
+  </a>
+</p>
 
 ## License
 
