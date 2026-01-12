@@ -35,9 +35,40 @@
 
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
+---
+
+## Quickstart: Connect Claude to 500+ Apps
+
+The **connect-apps** plugin lets Claude perform real actions - send emails, create issues, post to Slack. It handles auth and connects to 500+ apps using Composio under the hood.
+
+### 1. Install the Plugin
+
+```bash
+claude --plugin-dir ./connect-apps-plugin
+```
+
+### 2. Run Setup
+
+```
+/connect-apps:setup
+```
+
+Paste your API key when asked. (Get a free key at [platform.composio.dev](https://platform.composio.dev/?utm_source=Github&utm_content=AwesomeSkills))
+
+### 3. Restart & Try It
+
+```bash
+exit
+claude
+```
 
 > **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
 
+If you receive the email, Claude is now connected to 500+ apps.
+
+**[See all supported apps →](./connect-apps/)**
+
+---
 
 ## Contents
 
