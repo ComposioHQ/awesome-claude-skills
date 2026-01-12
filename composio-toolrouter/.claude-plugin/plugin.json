@@ -1,0 +1,8 @@
+{
+  "name": "composio-toolrouter",
+  "description": "Connect Claude to 1000+ apps via Composio Tool Router. Send emails, create issues, post to Slack, and more.",
+  "author": {
+    "name": "Composio",
+    "email": "support@composio.dev"
+  }
+}

@@ -35,9 +35,43 @@
 
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
+---
 
-> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
+## Quickstart: Connect Claude to 1000+ Apps
 
+Most skills help Claude read and write files. This plugin lets Claude **take real actions** - send emails, create issues, post to Slack.
+
+### 1. Install the Plugin
+
+```bash
+claude --plugin-dir ./composio-toolrouter
+```
+
+### 2. Run Setup
+
+```
+/composio-toolrouter:setup
+```
+
+Paste your API key when asked. (Get a free key at [platform.composio.dev](https://platform.composio.dev/?utm_source=Github&utm_content=AwesomeSkills))
+
+### 3. Restart & Try It
+
+```bash
+exit
+claude
+```
+
+Then ask:
+```
+Send me a test email at your@email.com
+```
+
+If you receive the email, Claude is now connected to 1000+ apps.
+
+**[See all supported apps →](./connect-apps/)**
+
+---
 
 ## Contents
 
@@ -93,7 +127,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [subagent-driven-development](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - Dispatches independent subagents for individual tasks with code review checkpoints between iterations for rapid, controlled development.
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
-- [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
+- [Connect Apps](./connect-apps/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
 ### Data & Analysis
