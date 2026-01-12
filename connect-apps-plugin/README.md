@@ -1,17 +1,16 @@
-# Composio Tool Router Plugin
+# Connect Apps Plugin
 
-Connect Claude to 1000+ apps. Send emails, create GitHub issues, post to Slack, update Notion, and more.
+Let Claude perform real actions in 500+ apps. Handles auth and connections using Composio under the hood.
 
 ## Install
 
 ```bash
-# In Claude Code, run:
-/plugin install composio-toolrouter
+claude --plugin-dir ./connect-apps-plugin
 ```
 
 Then run the setup:
-```bash
-/composio-toolrouter:setup
+```
+/connect-apps:setup
 ```
 
 ## What You Get
@@ -22,14 +21,14 @@ Once installed, Claude can:
 - **Post messages** to Slack, Discord, Teams
 - **Update docs** in Notion, Google Docs
 - **Manage data** in Sheets, Airtable, databases
-- **And 1000+ more actions**
+- **And 500+ more actions**
 
 ## How It Works
 
-1. You get a free API key from [platform.composio.dev](https://platform.composio.dev/?utm_source=Github&utm_content=AwesomeSkills)
-2. The setup command configures Claude's MCP server
-3. Claude now has access to all Composio tools
-4. First time using an app (e.g., Gmail), you'll authorize via OAuth
+1. Get a free API key from [platform.composio.dev](https://platform.composio.dev/?utm_source=Github&utm_content=AwesomeSkills)
+2. Run `/connect-apps:setup` and paste your key
+3. Restart Claude Code
+4. First time using an app, you'll authorize via OAuth
 5. That's it - Claude can now take real actions
 
 ## Try It

@@ -1,11 +1,11 @@
 ---
-description: Set up Composio Tool Router - connect Claude to 1000+ apps
+description: Set up connect-apps - let Claude perform real actions in 500+ apps
 allowed-tools: [Bash, Write, AskUserQuestion]
 ---
 
-# Composio Tool Router Setup
+# Connect Apps Setup
 
-Set up Composio so Claude can take actions in external apps (Gmail, Slack, GitHub, etc).
+Set up the connect-apps plugin so Claude can take real actions in external apps (Gmail, Slack, GitHub, etc). Uses Composio for auth and app connections.
 
 ## Instructions
 
@@ -36,7 +36,7 @@ Write directly to `~/.mcp.json` with this exact format:
 
 ```json
 {
-  "composio": {
+  "connect-apps": {
     "type": "http",
     "url": "THE_MCP_URL_FROM_STEP_2",
     "headers": {
@@ -46,7 +46,7 @@ Write directly to `~/.mcp.json` with this exact format:
 }
 ```
 
-If ~/.mcp.json already exists with other servers, merge the "composio" key into the existing JSON.
+If ~/.mcp.json already exists with other servers, merge the "connect-apps" key into the existing JSON.
 
 ### Step 4: Confirm
 

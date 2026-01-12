@@ -37,20 +37,20 @@ A curated list of practical Claude Skills for enhancing productivity across Clau
 
 ---
 
-## Quickstart: Connect Claude to 1000+ Apps
+## Quickstart: Connect Claude to 500+ Apps
 
-Most skills help Claude read and write files. This plugin lets Claude **take real actions** - send emails, create issues, post to Slack.
+The **connect-apps** plugin lets Claude perform real actions - send emails, create issues, post to Slack. It handles auth and connects to 500+ apps using Composio under the hood.
 
 ### 1. Install the Plugin
 
 ```bash
-claude --plugin-dir ./composio-toolrouter
+claude --plugin-dir ./connect-apps-plugin
 ```
 
 ### 2. Run Setup
 
 ```
-/composio-toolrouter:setup
+/connect-apps:setup
 ```
 
 Paste your API key when asked. (Get a free key at [platform.composio.dev](https://platform.composio.dev/?utm_source=Github&utm_content=AwesomeSkills))
@@ -67,7 +67,7 @@ Then ask:
 Send me a test email at your@email.com
 ```
 
-If you receive the email, Claude is now connected to 1000+ apps.
+If you receive the email, Claude is now connected to 500+ apps.
 
 **[See all supported apps →](./connect-apps/)**
 
