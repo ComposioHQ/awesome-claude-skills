@@ -141,6 +141,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [Claude-Ally-Health](https://github.com/huifer/Claude-Ally-Health) - Personal health assistant skill for managing medical information and wellness tracking. *By [@huifer](https://github.com/huifer)*
 
 ### Collaboration & Project Management
 
