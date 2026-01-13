@@ -105,6 +105,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Development & Code Tools
 
+- [Adversarial Spec](https://github.com/zscole/adversarial-spec) - Iteratively refines product specifications through multi-model debate (GPT, Gemini, Grok, Claude) until consensus. Includes focus modes, personas, session persistence, and Telegram notifications. *By [@zscole](https://github.com/zscole)*
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
