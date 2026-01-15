@@ -35,6 +35,9 @@
 
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
+
+> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
+
 ---
 
 ## Quickstart: Connect Claude to 500+ Apps
