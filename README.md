@@ -131,6 +131,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [React Best Practices](https://github.com/ddaakk/agent-skills) - React.js performance optimization guidelines (40+ rules). Fork of vercel-labs/agent-skills with Next.js patterns removed for cleaner LLM context. Multilingual docs (EN/KO/ZH/JA).
 
 ### Data & Analysis
 
