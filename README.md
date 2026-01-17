@@ -84,6 +84,7 @@ If you receive the email, Claude is now connected to 500+ apps.
   - [Communication & Writing](#communication--writing)
   - [Creative & Media](#creative--media)
   - [Productivity & Organization](#productivity--organization)
+  - [Product Management](#product-management)
   - [Collaboration & Project Management](#collaboration--project-management)
   - [Security & Systems](#security--systems)
 - [Getting Started](#getting-started)
@@ -175,6 +176,10 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+
+### Product Management
+
+- [pm-skills](https://github.com/product-on-purpose/pm-skills) - Complete PM toolkit with 24 skills covering Discover, Define, Develop, Deliver, Measure, and Iterate phases. Includes PRDs, user stories, experiment design, retrospectives, and more. *By [@product-on-purpose](https://github.com/product-on-purpose)*
 
 ### Collaboration & Project Management
 
