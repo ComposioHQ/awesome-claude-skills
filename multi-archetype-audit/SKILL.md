@@ -1,11 +1,54 @@
 ---
 name: multi-archetype-audit
-description: Run comprehensive code audits using 7 specialized archetypes (API, Performance, Warnings, DRY, Complexity, Chaos, Build). Each archetype provides a unique perspective on code quality.
+description: Run comprehensive code audits using 7 specialized archetypes (API, Performance, Warnings, DRY, Complexity, Chaos, Build). Each archetype provides a unique perspective on code quality. Activate with /audit command.
 ---
 
 # Multi-Archetype Code Audit
 
 A multi-perspective code audit system where each archetype represents a different aspect of code quality. Run all archetypes together or select specific ones based on your needs.
+
+## Activation
+
+### Option 1: Slash Command (Recommended)
+
+Create `.claude/commands/audit.md` in your project:
+
+```markdown
+# /audit - Multi-Archetype Code Audit
+
+Run comprehensive code audits with 7 specialized archetypes.
+
+## Usage
+- `/audit` - Full audit (7 archetypes)
+- `/audit --quick` - Quick audit (3 archetypes)
+- `/audit --security` - Security focus
+- `/audit --performance` - Performance focus
+
+## Command
+python path/to/audit.py . [options]
+```
+
+Then add to `.claude/settings.local.json`:
+```json
+{
+  "permissions": {
+    "allow": ["Skill(audit)"]
+  }
+}
+```
+
+### Option 2: Direct Script
+
+```bash
+python scripts/audit.py /path/to/project --quick
+```
+
+### Option 3: Python Import
+
+```python
+from audit import run_full_audit
+report = run_full_audit()
+```
 
 ## When to Use This Skill
 
