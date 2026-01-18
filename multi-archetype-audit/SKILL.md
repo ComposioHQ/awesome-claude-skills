@@ -1,54 +1,11 @@
 ---
 name: multi-archetype-audit
-description: Run comprehensive code audits using 7 specialized archetypes (API, Performance, Warnings, DRY, Complexity, Chaos, Build). Each archetype provides a unique perspective on code quality. Activate with /audit command.
+description: Run comprehensive code audits using 19 specialized archetypes covering API, Performance, Security, AI Safety, Observability, and more. Each archetype provides a unique perspective on code quality.
 ---
 
 # Multi-Archetype Code Audit
 
-A multi-perspective code audit system where each archetype represents a different aspect of code quality. Run all archetypes together or select specific ones based on your needs.
-
-## Activation
-
-### Option 1: Slash Command (Recommended)
-
-Create `.claude/commands/audit.md` in your project:
-
-```markdown
-# /audit - Multi-Archetype Code Audit
-
-Run comprehensive code audits with 7 specialized archetypes.
-
-## Usage
-- `/audit` - Full audit (7 archetypes)
-- `/audit --quick` - Quick audit (3 archetypes)
-- `/audit --security` - Security focus
-- `/audit --performance` - Performance focus
-
-## Command
-python path/to/audit.py . [options]
-```
-
-Then add to `.claude/settings.local.json`:
-```json
-{
-  "permissions": {
-    "allow": ["Skill(audit)"]
-  }
-}
-```
-
-### Option 2: Direct Script
-
-```bash
-python scripts/audit.py /path/to/project --quick
-```
-
-### Option 3: Python Import
-
-```python
-from audit import run_full_audit
-report = run_full_audit()
-```
+A multi-perspective code audit system where each archetype represents a different aspect of code quality. Run all 19 archetypes together or select specific ones based on your needs.
 
 ## When to Use This Skill
 
@@ -56,9 +13,12 @@ report = run_full_audit()
 - During code reviews for comprehensive analysis
 - When onboarding to a new codebase to understand technical debt
 - To identify security, performance, and maintainability issues
+- For AI/LLM projects: prompt injection, cost optimization, data leakage
 - When you need more than just linting - you need architectural insight
 
-## The 7 Archetypes
+## The 19 Archetypes
+
+### Core 7 (Greek Mythology)
 
 | Archetype | Domain | What It Finds |
 |-----------|--------|---------------|
@@ -69,6 +29,23 @@ report = run_full_audit()
 | **ICARUS** | Complexity | God classes, over-abstraction, pattern overuse |
 | **DIONYSUS** | Robustness | Missing error handling, edge cases, injection risks |
 | **HEPHAESTUS** | Build | Unpinned deps, Docker issues, CI/CD gaps, env config |
+
+### Extended 12 (Security, AI, Resilience, Quality)
+
+| Archetype | Domain | What It Finds |
+|-----------|--------|---------------|
+| **PANDORA** | Security | Hardcoded secrets, CORS wildcards, auth boundaries |
+| **DELPHI** | AI Safety | Prompt injection risks, missing LLM output validation |
+| **MIDAS** | LLM Costs | Missing response caching, expensive model usage |
+| **LETHE** | Data Leakage | Sensitive data in logs, debug mode, PII exposure |
+| **ANTAEUS** | Resilience | Missing retries, timeouts, circuit breakers |
+| **TIRESIAS** | Testing | Low test coverage, weak assertions, missing tests |
+| **MENTOR** | Documentation | Missing docstrings, type hints, README files |
+| **PROTEUS** | State | Mutable defaults, global state, thread safety issues |
+| **MNEMOSYNE** | Context | Missing correlation IDs, context propagation gaps |
+| **ARIADNE** | Dependencies | Unpinned versions, circular imports, unused deps |
+| **JANUS** | Versioning | API versioning, deprecation markers, migrations |
+| **ARGUS** | Observability | Structured logging, metrics, tracing, health checks |
 
 ## Instructions
 

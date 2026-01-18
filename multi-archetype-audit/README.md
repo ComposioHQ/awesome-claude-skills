@@ -1,6 +1,6 @@
 # Multi-Archetype Code Audit
 
-A comprehensive code audit skill using 7 specialized archetypes, each providing a unique perspective on code quality.
+A comprehensive code audit skill using **19 specialized archetypes**, each providing a unique perspective on code quality. From API contracts to AI safety, from security boundaries to observability - get a 360° view of your codebase.
 
 ## Installation
 
@@ -22,6 +22,8 @@ When active, Claude will use this skill to perform comprehensive code audits. Ju
 - "Check for security issues in the codebase"
 - "Find technical debt and TODOs"
 - "Audit the API endpoints"
+- "Check for AI/LLM safety issues"
+- "Review observability and monitoring"
 
 ### As a Standalone Script
 
@@ -29,7 +31,7 @@ When active, Claude will use this skill to perform comprehensive code audits. Ju
 # Quick audit (3 archetypes: HERMES, DIONYSUS, HEPHAESTUS)
 python scripts/audit.py /path/to/project --quick
 
-# Full audit (all 7 archetypes)
+# Full audit (all 19 archetypes)
 python scripts/audit.py /path/to/project
 
 # Security-focused audit
@@ -39,7 +41,7 @@ python scripts/audit.py /path/to/project --security
 python scripts/audit.py /path/to/project --performance
 
 # Custom archetype selection
-python scripts/audit.py /path/to/project --archetypes cassandra sisyphus icarus
+python scripts/audit.py /path/to/project --archetypes delphi midas pandora argus
 
 # JSON output for CI/CD integration
 python scripts/audit.py /path/to/project --json
@@ -61,12 +63,14 @@ print(f"Found {len(report.findings)} issues")
 # Custom audit
 orchestrator = AuditOrchestrator()
 report = orchestrator.run_audit(
-    archetypes=["dionysus", "hephaestus"],
+    archetypes=["delphi", "midas", "pandora"],  # AI-focused
     severity_threshold=Severity.HIGH
 )
 ```
 
-## The 7 Archetypes
+## The 19 Archetypes
+
+### Core 7 (Greek Mythology)
 
 | Icon | Name | Domain | What It Finds |
 |------|------|--------|---------------|
@@ -78,14 +82,31 @@ report = orchestrator.run_audit(
 | 🍷 | **DIONYSUS** | Robustness | Injection risks, null handling, edge cases |
 | 🔨 | **HEPHAESTUS** | Build | Unpinned deps, Docker issues, CI/CD gaps |
 
+### Extended 12 (Security, AI, Resilience, Quality)
+
+| Icon | Name | Domain | What It Finds |
+|------|------|--------|---------------|
+| 📦 | **PANDORA** | Security | Hardcoded secrets, CORS issues, auth boundaries |
+| 🔮 | **DELPHI** | AI Safety | Prompt injection, output validation, LLM guardrails |
+| 💰 | **MIDAS** | LLM Costs | Missing caching, expensive models, token optimization |
+| 🌊 | **LETHE** | Data Leakage | Sensitive data in logs, debug mode, PII exposure |
+| 🏔️ | **ANTAEUS** | Resilience | Missing retries, timeouts, circuit breakers |
+| 👁️‍🗨️ | **TIRESIAS** | Testing | Test coverage gaps, weak assertions, flaky tests |
+| 📚 | **MENTOR** | Documentation | Missing docstrings, type hints, README |
+| 🌀 | **PROTEUS** | State | Mutable defaults, global state, thread safety |
+| 🧠 | **MNEMOSYNE** | Context | Correlation IDs, context propagation, logging context |
+| 🧵 | **ARIADNE** | Dependencies | Unpinned versions, circular imports, unused deps |
+| 🚪 | **JANUS** | Versioning | API versions, deprecation markers, migrations |
+| 👁️ | **ARGUS** | Observability | Structured logging, metrics, tracing, health checks |
+
 ## Audit Presets
 
 | Preset | Archetypes | Use Case |
 |--------|------------|----------|
 | `--quick` | HERMES, DIONYSUS, HEPHAESTUS | Fast pre-commit check |
-| `--security` | DIONYSUS, HEPHAESTUS, HERMES | Security review |
-| `--performance` | RA, ICARUS | Performance optimization |
-| (default) | All 7 | Comprehensive audit |
+| `--security` | DIONYSUS, HEPHAESTUS, HERMES, PANDORA, LETHE | Security review |
+| `--performance` | RA, ICARUS, ANTAEUS | Performance & resilience |
+| (default) | All 19 | Comprehensive audit |
 
 ## Severity Levels
 
@@ -138,6 +159,19 @@ class MyAuditor(BaseArchetype):
                 line_number=line_num,
             ))
         return AuditReport(...)
+```
+
+## AI/LLM-Specific Archetypes
+
+Three archetypes are specifically designed for AI/LLM applications:
+
+- **DELPHI** - Checks for prompt injection vulnerabilities, missing output validation, and LLM guardrails
+- **MIDAS** - Identifies cost optimization opportunities: missing caching, expensive model usage, token waste
+- **LETHE** - Detects data leakage risks: sensitive data in logs, debug mode enabled, PII exposure
+
+Use them together for AI projects:
+```bash
+python scripts/audit.py . --archetypes delphi midas lethe pandora
 ```
 
 ## License

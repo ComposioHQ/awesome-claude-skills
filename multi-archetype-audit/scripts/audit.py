@@ -840,6 +840,736 @@ class HephaestusAuditor(BaseArchetype):
 
 
 # =============================================================================
+# PANDORA - SECURITY BOUNDARIES
+# =============================================================================
+
+
+class PandoraAuditor(BaseArchetype):
+    """Security boundaries auditor - guards what should stay locked."""
+
+    name = "PANDORA"
+    description = "Box Guardian - Security Boundaries"
+    domain = "security"
+    icon = "📦"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for hardcoded secrets
+        secret_patterns = [
+            (r"password\s*=\s*[\"'][^\"']+[\"']", "Hardcoded password"),
+            (r"api_key\s*=\s*[\"'][^\"']+[\"']", "Hardcoded API key"),
+            (r"secret\s*=\s*[\"'][^\"']+[\"']", "Hardcoded secret"),
+            (r"token\s*=\s*[\"'][A-Za-z0-9_-]{20,}[\"']", "Hardcoded token"),
+        ]
+
+        for pattern, desc in secret_patterns:
+            matches = self._grep_files(pattern, "*.py")
+            for fp, ln, line in matches[:5]:
+                if "test" not in str(fp).lower() and "example" not in line.lower():
+                    findings.append(AuditFinding(
+                        archetype=self.name,
+                        severity=Severity.CRITICAL,
+                        category="hardcoded_secret",
+                        title=desc,
+                        file_path=str(fp),
+                        line_number=ln,
+                        suggestion="Use environment variables or secrets manager",
+                    ))
+
+        # Check for CORS issues
+        cors_matches = self._grep_files(r"allow_origins\s*=\s*\[\s*[\"']\*[\"']", "*.py")
+        for fp, ln, _ in cors_matches:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.HIGH,
+                category="cors",
+                title="Wildcard CORS origin",
+                file_path=str(fp),
+                line_number=ln,
+                suggestion="Restrict to specific origins in production",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} security boundary issues." if findings else "Security boundaries intact.",
+        )
+
+
+# =============================================================================
+# DELPHI - AI/LLM SAFETY
+# =============================================================================
+
+
+class DelphiAuditor(BaseArchetype):
+    """AI/LLM safety auditor - oracle of safe AI patterns."""
+
+    name = "DELPHI"
+    description = "Oracle of AI - LLM Safety & Guardrails"
+    domain = "ai_safety"
+    icon = "🔮"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for prompt injection risks
+        injection_patterns = [
+            (r"f[\"'].*\{.*user.*\}.*prompt", "User input in prompt template"),
+            (r"\.format\(.*user.*\).*(?:system|prompt)", "User input formatted into prompt"),
+        ]
+
+        for pattern, desc in injection_patterns:
+            matches = self._grep_files(pattern, "*.py")
+            for fp, ln, line in matches[:10]:
+                findings.append(AuditFinding(
+                    archetype=self.name,
+                    severity=Severity.HIGH,
+                    category="prompt_injection",
+                    title=desc,
+                    file_path=str(fp),
+                    line_number=ln,
+                    suggestion="Sanitize user input, use structured prompts",
+                ))
+
+        # Check for missing output validation
+        llm_calls = self._grep_files(r"\.generate\(|\.complete\(|\.chat\(|openai\.", "*.py")
+        validators = self._grep_files(r"validate.*response|response.*valid|parse.*json", "*.py")
+
+        if len(llm_calls) > 5 and len(validators) < 2:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="output_validation",
+                title="LLM calls without output validation",
+                description=f"{len(llm_calls)} LLM calls, {len(validators)} validators",
+                suggestion="Validate LLM outputs before using in application",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} AI safety concerns." if findings else "AI patterns look safe.",
+        )
+
+
+# =============================================================================
+# MIDAS - LLM COST OPTIMIZATION
+# =============================================================================
+
+
+class MidasAuditor(BaseArchetype):
+    """LLM cost optimization auditor - turns tokens into gold."""
+
+    name = "MIDAS"
+    description = "Golden Touch - LLM Cost Optimization"
+    domain = "cost"
+    icon = "💰"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for caching patterns on LLM calls
+        llm_patterns = self._grep_files(r"openai|anthropic|\.generate\(|\.complete\(", "*.py")
+        cache_patterns = self._grep_files(r"@cache|@lru_cache|redis\.get|cache\.get", "*.py")
+
+        if len(llm_patterns) > 10 and len(cache_patterns) < 3:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="missing_cache",
+                title="LLM calls without caching",
+                description=f"Found {len(llm_patterns)} LLM patterns, {len(cache_patterns)} cache patterns",
+                suggestion="Cache deterministic LLM responses to reduce costs",
+            ))
+
+        # Check for model selection
+        expensive_models = self._grep_files(r"gpt-4|claude-3-opus|gemini-ultra", "*.py")
+        for fp, ln, line in expensive_models[:5]:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.INFO,
+                category="model_cost",
+                title="Premium model usage",
+                file_path=str(fp),
+                line_number=ln,
+                suggestion="Consider cheaper models for simple tasks",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} cost optimization opportunities." if findings else "Cost patterns look good.",
+        )
+
+
+# =============================================================================
+# LETHE - DATA LEAKAGE
+# =============================================================================
+
+
+class LetheAuditor(BaseArchetype):
+    """Data leakage auditor - ensures secrets stay forgotten."""
+
+    name = "LETHE"
+    description = "River of Forgetting - Data Leakage Prevention"
+    domain = "data_safety"
+    icon = "🌊"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for sensitive data in logs
+        log_sensitive = [
+            (r"log.*password|password.*log", "Password in logs"),
+            (r"print\(.*password|print\(.*secret", "Sensitive data in print"),
+            (r"logger\.\w+\(.*(?:api_key|secret|token|password)", "Sensitive data logged"),
+        ]
+
+        for pattern, desc in log_sensitive:
+            matches = self._grep_files(pattern, "*.py")
+            for fp, ln, _ in matches[:5]:
+                if "test" not in str(fp).lower():
+                    findings.append(AuditFinding(
+                        archetype=self.name,
+                        severity=Severity.HIGH,
+                        category="data_leak",
+                        title=desc,
+                        file_path=str(fp),
+                        line_number=ln,
+                        suggestion="Redact sensitive data before logging",
+                    ))
+
+        # Check for debug mode in production code
+        debug_matches = self._grep_files(r"DEBUG\s*=\s*True|debug\s*=\s*True", "*.py")
+        for fp, ln, _ in debug_matches:
+            if "test" not in str(fp).lower() and "setting" in str(fp).lower():
+                findings.append(AuditFinding(
+                    archetype=self.name,
+                    severity=Severity.MEDIUM,
+                    category="debug_mode",
+                    title="Debug mode enabled",
+                    file_path=str(fp),
+                    line_number=ln,
+                    suggestion="Use environment variable for debug setting",
+                ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} data leakage risks." if findings else "Data stays private.",
+        )
+
+
+# =============================================================================
+# ANTAEUS - RESILIENCE
+# =============================================================================
+
+
+class AntaeusAuditor(BaseArchetype):
+    """Resilience auditor - strength through fault tolerance."""
+
+    name = "ANTAEUS"
+    description = "Giant of Resilience - Fault Tolerance"
+    domain = "resilience"
+    icon = "🏔️"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for retry patterns
+        external_calls = self._grep_files(r"requests\.|httpx\.|aiohttp\.", "*.py")
+        retry_patterns = self._grep_files(r"@retry|tenacity|backoff|max_retries", "*.py")
+
+        if len(external_calls) > 10 and len(retry_patterns) < 2:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="missing_retry",
+                title="HTTP calls without retry logic",
+                description=f"{len(external_calls)} HTTP calls, {len(retry_patterns)} retry patterns",
+                suggestion="Add retry with exponential backoff for external calls",
+            ))
+
+        # Check for timeout usage
+        timeout_patterns = self._grep_files(r"timeout\s*=", "*.py")
+        if len(external_calls) > 10 and len(timeout_patterns) < len(external_calls) // 2:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="missing_timeout",
+                title="External calls may lack timeouts",
+                suggestion="Always set timeouts on external HTTP calls",
+            ))
+
+        # Check for circuit breaker
+        circuit_breaker = self._grep_files(r"circuit.*breaker|CircuitBreaker|pybreaker", "*.py")
+        if len(external_calls) > 20 and not circuit_breaker:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.LOW,
+                category="circuit_breaker",
+                title="No circuit breaker pattern",
+                suggestion="Consider circuit breaker for cascading failure prevention",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} resilience gaps." if findings else "Good fault tolerance.",
+        )
+
+
+# =============================================================================
+# TIRESIAS - TESTING
+# =============================================================================
+
+
+class TiresiasAuditor(BaseArchetype):
+    """Testing blind spots auditor - sees what tests miss."""
+
+    name = "TIRESIAS"
+    description = "Blind Prophet - Testing Blind Spots"
+    domain = "testing"
+    icon = "👁️‍🗨️"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Count source files vs test files
+        py_files = [f for f in self._find_files("*.py") if "test" not in str(f).lower()]
+        test_files = [f for f in self._find_files("test_*.py")]
+        test_files.extend(self._find_files("*_test.py"))
+
+        ratio = len(test_files) / len(py_files) if py_files else 0
+
+        if ratio < 0.1:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.HIGH,
+                category="test_coverage",
+                title=f"Low test file ratio: {ratio:.1%}",
+                description=f"{len(test_files)} test files for {len(py_files)} source files",
+                suggestion="Aim for at least 1 test file per module",
+            ))
+        elif ratio < 0.3:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="test_coverage",
+                title=f"Moderate test coverage: {ratio:.1%}",
+                description=f"{len(test_files)} test files for {len(py_files)} source files",
+            ))
+
+        # Check for assertion usage in tests
+        assertions = self._grep_files(r"assert\s|self\.assert|pytest\.raises", "test_*.py")
+        if test_files and len(assertions) < len(test_files) * 2:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.LOW,
+                category="weak_assertions",
+                title="Tests may have weak assertions",
+                suggestion="Ensure each test has meaningful assertions",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} testing gaps." if findings else "Good test coverage.",
+        )
+
+
+# =============================================================================
+# MENTOR - DOCUMENTATION
+# =============================================================================
+
+
+class MentorAuditor(BaseArchetype):
+    """Documentation quality auditor - teaches through examples."""
+
+    name = "MENTOR"
+    description = "Wise Teacher - Documentation Quality"
+    domain = "documentation"
+    icon = "📚"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for docstrings
+        functions = self._grep_files(r"^\s*def \w+\(", "*.py")
+        docstrings = self._grep_files(r'^\s*""".*"""$|^\s*"""', "*.py")
+
+        if len(functions) > 50 and len(docstrings) < len(functions) * 0.3:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="docstrings",
+                title="Low docstring coverage",
+                description=f"{len(docstrings)} docstrings for {len(functions)} functions",
+                suggestion="Add docstrings to public functions and classes",
+            ))
+
+        # Check for type hints
+        typed_funcs = self._grep_files(r"def \w+\([^)]*:.*\)\s*->", "*.py")
+        if len(functions) > 50:
+            ratio = len(typed_funcs) / len(functions)
+            if ratio < 0.5:
+                findings.append(AuditFinding(
+                    archetype=self.name,
+                    severity=Severity.LOW,
+                    category="type_hints",
+                    title=f"Type hint coverage: {ratio:.0%}",
+                    suggestion="Add type hints for better documentation",
+                ))
+
+        # Check for README
+        readme_files = list(self.root_path.glob("README*"))
+        if not readme_files:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.LOW,
+                category="readme",
+                title="No README file found",
+                suggestion="Add README.md with project overview",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} documentation issues." if findings else "Documentation looks good.",
+        )
+
+
+# =============================================================================
+# PROTEUS - STATE MANAGEMENT
+# =============================================================================
+
+
+class ProteusAuditor(BaseArchetype):
+    """State management auditor - tamer of the shape-shifter."""
+
+    name = "PROTEUS"
+    description = "Shape-Shifter - State Management"
+    domain = "state"
+    icon = "🌀"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for mutable default arguments
+        mutable_defaults = self._grep_files(r"def \w+\([^)]*=\s*\[\]|def \w+\([^)]*=\s*\{\}", "*.py")
+        for fp, ln, line in mutable_defaults[:5]:
+            if "test" not in str(fp).lower():
+                findings.append(AuditFinding(
+                    archetype=self.name,
+                    severity=Severity.MEDIUM,
+                    category="mutable_default",
+                    title="Mutable default argument",
+                    file_path=str(fp),
+                    line_number=ln,
+                    suggestion="Use None and initialize in function body",
+                ))
+
+        # Check for global mutable state
+        global_state = self._grep_files(r"^[A-Z_]+\s*=\s*\[\]|^[A-Z_]+\s*=\s*\{\}", "*.py")
+        if len(global_state) > 10:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="global_state",
+                title=f"{len(global_state)} global mutable containers",
+                suggestion="Consider using singletons with reset functions",
+            ))
+
+        # Check for thread safety
+        threading_use = self._grep_files(r"threading\.|Thread\(", "*.py")
+        lock_use = self._grep_files(r"Lock\(\)|RLock\(\)|asyncio\.Lock", "*.py")
+        if len(threading_use) > 5 and len(lock_use) < 2:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="thread_safety",
+                title="Threading without locks",
+                suggestion="Use locks for shared mutable state",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} state issues." if findings else "State management looks solid.",
+        )
+
+
+# =============================================================================
+# MNEMOSYNE - CONTEXT MANAGEMENT
+# =============================================================================
+
+
+class MnemosyneAuditor(BaseArchetype):
+    """Context management auditor - memory guardian."""
+
+    name = "MNEMOSYNE"
+    description = "Memory Titaness - Context Propagation"
+    domain = "context"
+    icon = "🧠"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for context propagation patterns
+        context_patterns = self._grep_files(r"ContextVar\(|correlation_id|request_id|trace_id", "*.py")
+
+        if not context_patterns:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="context_missing",
+                title="No context propagation patterns",
+                suggestion="Add request/correlation IDs for tracing",
+            ))
+
+        # Check for logging with context
+        logs = self._grep_files(r"logger\.\w+\(", "*.py")
+        logs_with_extra = self._grep_files(r"logger\.\w+\(.*extra\s*=", "*.py")
+
+        if len(logs) > 50 and len(logs_with_extra) < 5:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.LOW,
+                category="logging_context",
+                title="Logs lack context",
+                description=f"{len(logs)} log calls, {len(logs_with_extra)} with extra",
+                suggestion="Add request context to log messages",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} context issues." if findings else "Context management looks good.",
+        )
+
+
+# =============================================================================
+# ARIADNE - DEPENDENCY MANAGEMENT
+# =============================================================================
+
+
+class AriadneAuditor(BaseArchetype):
+    """Dependency management auditor - thread through the labyrinth."""
+
+    name = "ARIADNE"
+    description = "Labyrinth Navigator - Dependencies"
+    domain = "dependencies"
+    icon = "🧵"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check requirements.txt for unpinned deps
+        for req_file in self.root_path.rglob("requirements*.txt"):
+            if "venv" in str(req_file):
+                continue
+            try:
+                content = req_file.read_text()
+                unpinned = 0
+                for line in content.split("\n"):
+                    line = line.strip()
+                    if line and not line.startswith("#") and not line.startswith("-"):
+                        if "==" not in line and ">=" not in line:
+                            unpinned += 1
+                if unpinned > 5:
+                    findings.append(AuditFinding(
+                        archetype=self.name,
+                        severity=Severity.MEDIUM,
+                        category="unpinned",
+                        title=f"{unpinned} unpinned dependencies",
+                        file_path=str(req_file),
+                        suggestion="Pin versions for reproducible builds",
+                    ))
+            except Exception:
+                pass
+
+        # Check for circular import indicators
+        type_checking = self._grep_files(r"if TYPE_CHECKING:", "*.py")
+        if len(type_checking) > 10:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.INFO,
+                category="circular_imports",
+                title=f"{len(type_checking)} TYPE_CHECKING usages",
+                suggestion="Review for potential circular import issues",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} dependency issues." if findings else "Dependencies look clean.",
+        )
+
+
+# =============================================================================
+# JANUS - VERSIONING
+# =============================================================================
+
+
+class JanusAuditor(BaseArchetype):
+    """Versioning auditor - guardian of transitions."""
+
+    name = "JANUS"
+    description = "Two-Faced Guardian - Versioning"
+    domain = "versioning"
+    icon = "🚪"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for API versioning
+        api_versions = self._grep_files(r"/api/v\d+/|/v\d+/", "*.py")
+        if api_versions:
+            v1 = len(self._grep_files(r"/api/v1/", "*.py"))
+            v2 = len(self._grep_files(r"/api/v2/", "*.py"))
+            if v1 > 0 and v2 > 0:
+                findings.append(AuditFinding(
+                    archetype=self.name,
+                    severity=Severity.INFO,
+                    category="api_versions",
+                    title=f"Multiple API versions: v1={v1}, v2={v2}",
+                    suggestion="Document migration path between versions",
+                ))
+
+        # Check for deprecation markers
+        deprecated = self._grep_files(r"@deprecated|DEPRECATED|will be removed", "*.py")
+        if deprecated:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.INFO,
+                category="deprecation",
+                title=f"{len(deprecated)} deprecation markers",
+                suggestion="Ensure deprecated items have sunset timeline",
+            ))
+
+        # Check for __version__
+        version_def = self._grep_files(r"__version__\s*=", "*.py")
+        if not version_def:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.LOW,
+                category="version_constant",
+                title="No __version__ defined",
+                suggestion="Add __version__ to main __init__.py",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} versioning notes." if findings else "Versioning looks good.",
+        )
+
+
+# =============================================================================
+# ARGUS - OBSERVABILITY
+# =============================================================================
+
+
+class ArgusAuditor(BaseArchetype):
+    """Observability auditor - the all-seeing eye."""
+
+    name = "ARGUS"
+    description = "All-Seeing - Observability"
+    domain = "observability"
+    icon = "👁️"
+
+    def audit(self) -> AuditReport:
+        start_time = time.time()
+        findings: List[AuditFinding] = []
+
+        # Check for structured logging
+        structlog = self._grep_files(r"structlog|JsonFormatter|json.*log", "*.py")
+        if not structlog:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="structured_logging",
+                title="No structured logging detected",
+                suggestion="Use structlog or JSON formatter for log aggregation",
+            ))
+
+        # Check for health endpoints
+        health = self._grep_files(r"/health|/ready|/live|HealthCheck", "*.py")
+        if not health:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.LOW,
+                category="health_check",
+                title="No health check endpoints",
+                suggestion="Add /health endpoint for k8s probes",
+            ))
+
+        # Check for metrics
+        metrics = self._grep_files(r"prometheus|Counter\(|Gauge\(|Histogram\(", "*.py")
+        if not metrics:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.MEDIUM,
+                category="metrics",
+                title="No metrics instrumentation",
+                suggestion="Add prometheus_client for /metrics endpoint",
+            ))
+
+        # Check for tracing
+        tracing = self._grep_files(r"opentelemetry|langfuse|jaeger|trace_id", "*.py")
+        if not tracing:
+            findings.append(AuditFinding(
+                archetype=self.name,
+                severity=Severity.LOW,
+                category="tracing",
+                title="No distributed tracing",
+                suggestion="Add OpenTelemetry for request tracing",
+            ))
+
+        return AuditReport(
+            archetype=self.name,
+            timestamp=datetime.now(),
+            duration_ms=(time.time() - start_time) * 1000,
+            findings=findings,
+            summary=f"Found {len(findings)} observability gaps." if findings else "Good observability.",
+        )
+
+
+# =============================================================================
 # ORCHESTRATOR
 # =============================================================================
 
@@ -848,6 +1578,7 @@ class AuditOrchestrator:
     """Orchestrates multi-archetype audits."""
 
     ARCHETYPES: Dict[str, Type[BaseArchetype]] = {
+        # Core 7 (Greek Mythology)
         "hermes": HermesAuditor,
         "ra": RaAuditor,
         "cassandra": CassandraAuditor,
@@ -855,6 +1586,19 @@ class AuditOrchestrator:
         "icarus": IcarusAuditor,
         "dionysus": DionysusAuditor,
         "hephaestus": HephaestusAuditor,
+        # Extended 12 (Security, AI, Resilience, Quality)
+        "pandora": PandoraAuditor,
+        "delphi": DelphiAuditor,
+        "midas": MidasAuditor,
+        "lethe": LetheAuditor,
+        "antaeus": AntaeusAuditor,
+        "tiresias": TiresiasAuditor,
+        "mentor": MentorAuditor,
+        "proteus": ProteusAuditor,
+        "mnemosyne": MnemosyneAuditor,
+        "ariadne": AriadneAuditor,
+        "janus": JanusAuditor,
+        "argus": ArgusAuditor,
     }
 
     def __init__(self, root_path: Optional[Path] = None):
