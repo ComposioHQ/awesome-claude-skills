@@ -126,6 +126,238 @@ FENRIR_PATTERNS = {
         "archetype": "LETHE",
         "description": "Debug code left in production"
     },
+
+    # =========================================================================
+    # HERMES - API Patterns
+    # =========================================================================
+    "missing_auth_decorator": {
+        "regex": r"@router\.(get|post|put|delete|patch)\([^)]*\)\s*\n\s*(async\s+)?def\s+\w+\([^)]*\)(?!.*Depends\(.*auth)",
+        "severity": "SUSPECT",
+        "archetype": "HERMES",
+        "description": "Endpoint may be missing authentication"
+    },
+    "api_returns_dict": {
+        "regex": r"@router\.\w+\([^)]*\)\s*\n\s*(async\s+)?def\s+\w+[^:]+:\s*\n(?:.*\n)*?\s+return\s+\{",
+        "severity": "SUSPECT",
+        "archetype": "HERMES",
+        "description": "Endpoint returns raw dict - use Pydantic response_model"
+    },
+
+    # =========================================================================
+    # SISYPHUS - DRY Violations
+    # =========================================================================
+    "magic_number": {
+        "regex": r"(?:if|while|for|return|==|!=|<|>)\s+\d{4,}\b",
+        "severity": "SUSPECT",
+        "archetype": "SISYPHUS",
+        "description": "Magic number (4+ digits) - extract to named constant"
+    },
+    "copy_paste_comment": {
+        "regex": r"#\s*(?:copy|paste|copie|colle|duplicate)",
+        "severity": "SUSPECT",
+        "archetype": "SISYPHUS",
+        "description": "Copy-paste marker found - potential DRY violation"
+    },
+
+    # =========================================================================
+    # ICARUS - Complexity
+    # =========================================================================
+    "too_many_params": {
+        "regex": r"def\s+\w+\s*\([^)]{200,}\)",
+        "severity": "GRAVE",
+        "archetype": "ICARUS",
+        "description": "Function has too many parameters (>200 chars) - simplify"
+    },
+    "nested_if_deep": {
+        "regex": r"^\s{16,}if\s+",
+        "severity": "SUSPECT",
+        "archetype": "ICARUS",
+        "description": "Deeply nested if (4+ levels) - consider early returns"
+    },
+    "god_class_methods": {
+        "regex": r"class\s+\w+[^:]*:(?:.*\n){500,}",
+        "severity": "SUSPECT",
+        "archetype": "ICARUS",
+        "description": "Class has 500+ lines - consider splitting"
+    },
+
+    # =========================================================================
+    # HEPHAESTUS - Build/Dependencies
+    # =========================================================================
+    "unpinned_dependency": {
+        "regex": r"^\s*[\w-]+\s*$",
+        "severity": "SUSPECT",
+        "archetype": "HEPHAESTUS",
+        "description": "Unpinned dependency - specify version"
+    },
+    "dockerfile_root": {
+        "regex": r"^USER\s+root\s*$",
+        "severity": "GRAVE",
+        "archetype": "HEPHAESTUS",
+        "description": "Dockerfile runs as root - security risk"
+    },
+    "dockerfile_latest": {
+        "regex": r"^FROM\s+\w+:latest",
+        "severity": "SUSPECT",
+        "archetype": "HEPHAESTUS",
+        "description": "FROM :latest tag - pin to specific version"
+    },
+
+    # =========================================================================
+    # MIDAS - LLM Costs
+    # =========================================================================
+    "llm_no_cache": {
+        "regex": r"(?:openai|anthropic|llm)\.\w+\([^)]*\)(?!.*cache)",
+        "severity": "SUSPECT",
+        "archetype": "MIDAS",
+        "description": "LLM call without caching - consider semantic cache"
+    },
+    "expensive_model": {
+        "regex": r"model\s*=\s*['\"](?:gpt-4|claude-3-opus|o1-preview)['\"]",
+        "severity": "SUSPECT",
+        "archetype": "MIDAS",
+        "description": "Expensive model used - consider cheaper alternative for task"
+    },
+    "llm_max_tokens_high": {
+        "regex": r"max_tokens\s*=\s*(?:[4-9]\d{3}|\d{5,})",
+        "severity": "SUSPECT",
+        "archetype": "MIDAS",
+        "description": "High max_tokens (4000+) - optimize if possible"
+    },
+
+    # =========================================================================
+    # ANTAEUS - Resilience
+    # =========================================================================
+    "http_no_timeout": {
+        "regex": r"(?:requests|httpx|aiohttp)\.\w+\([^)]*(?!timeout)[^)]*\)",
+        "severity": "GRAVE",
+        "archetype": "ANTAEUS",
+        "description": "HTTP call without timeout - add timeout parameter"
+    },
+    "no_retry_pattern": {
+        "regex": r"(?:requests|httpx)\.\w+\([^)]*\)(?!.*(?:retry|tenacity|backoff))",
+        "severity": "SUSPECT",
+        "archetype": "ANTAEUS",
+        "description": "HTTP call without retry logic - consider tenacity/backoff"
+    },
+    "db_no_pool": {
+        "regex": r"create_engine\([^)]*(?!pool)",
+        "severity": "SUSPECT",
+        "archetype": "ANTAEUS",
+        "description": "Database without connection pooling"
+    },
+
+    # =========================================================================
+    # TIRESIAS - Testing
+    # =========================================================================
+    "assert_true_false": {
+        "regex": r"assert\s+(?:True|False)\s*$",
+        "severity": "SUSPECT",
+        "archetype": "TIRESIAS",
+        "description": "assert True/False - meaningless assertion"
+    },
+    "skip_test": {
+        "regex": r"@pytest\.mark\.skip|@unittest\.skip",
+        "severity": "SUSPECT",
+        "archetype": "TIRESIAS",
+        "description": "Skipped test - fix or remove"
+    },
+
+    # =========================================================================
+    # MENTOR - Documentation
+    # =========================================================================
+    # MENTOR patterns removed - too noisy for static analysis
+    # Use ruff/pylint for docstring enforcement instead
+
+    # =========================================================================
+    # PROTEUS - State Management
+    # =========================================================================
+    "mutable_default": {
+        "regex": r"def\s+\w+\s*\([^)]*(?:\[\]|\{\}|set\(\))\s*\)",
+        "severity": "GRAVE",
+        "archetype": "PROTEUS",
+        "description": "Mutable default argument - use None and initialize in body"
+    },
+    "global_state": {
+        "regex": r"^\s*global\s+\w+",
+        "severity": "GRAVE",
+        "archetype": "PROTEUS",
+        "description": "Global state mutation - consider class or context"
+    },
+    "singleton_pattern": {
+        "regex": r"_instance\s*=\s*None.*\n.*def\s+__new__",
+        "severity": "SUSPECT",
+        "archetype": "PROTEUS",
+        "description": "Singleton pattern - ensure thread safety"
+    },
+
+    # =========================================================================
+    # MNEMOSYNE - Context/Tracing
+    # =========================================================================
+    # MNEMOSYNE: log_no_context removed - too noisy
+    # Only keep critical context patterns
+    "missing_trace_id": {
+        "regex": r"@router\.(post|put|delete)\([^)]+\).*\n.*def\s+\w+\([^)]*\)(?!.*trace|request_id)",
+        "severity": "SUSPECT",
+        "archetype": "MNEMOSYNE",
+        "description": "Mutation endpoint without trace/request_id"
+    },
+
+    # =========================================================================
+    # ARIADNE - Dependencies
+    # =========================================================================
+    # TYPE_CHECKING is good practice, not a smell - removed
+    "star_import": {
+        "regex": r"from\s+\w+\s+import\s+\*",
+        "severity": "GRAVE",
+        "archetype": "ARIADNE",
+        "description": "Star import - explicit imports preferred"
+    },
+    "relative_import_deep": {
+        "regex": r"from\s+\.\.\.+",
+        "severity": "SUSPECT",
+        "archetype": "ARIADNE",
+        "description": "Deep relative import (3+ levels) - use absolute"
+    },
+
+    # =========================================================================
+    # JANUS - Versioning
+    # =========================================================================
+    "missing_api_version": {
+        "regex": r"@router\.(get|post)\(['\"]\/(?!v\d|api\/v)",
+        "severity": "SUSPECT",
+        "archetype": "JANUS",
+        "description": "Endpoint without API version prefix"
+    },
+    "deprecated_no_warning": {
+        "regex": r"def\s+\w+[^:]+:\s*\n\s+['\"].*deprecated.*['\"](?!.*warnings\.warn)",
+        "severity": "SUSPECT",
+        "archetype": "JANUS",
+        "description": "Deprecated function without warnings.warn()"
+    },
+
+    # =========================================================================
+    # GARM - Zombie Patterns (Dead Code)
+    # =========================================================================
+    "unreachable_code": {
+        "regex": r"return\s+.*\n\s+(?!except|finally|elif|else)\w+",
+        "severity": "SUSPECT",
+        "archetype": "GARM",
+        "description": "Code after return - unreachable"
+    },
+    "dead_assignment": {
+        "regex": r"^\s+(\w+)\s*=\s*.*\n(?:.*\n)*?\s+\1\s*=\s*",
+        "severity": "SUSPECT",
+        "archetype": "GARM",
+        "description": "Variable assigned but reassigned before use"
+    },
+    "pass_in_function": {
+        "regex": r"def\s+\w+\s*\([^)]*\)\s*(?:->.*)?:\s*\n\s+pass\s*$",
+        "severity": "SUSPECT",
+        "archetype": "GARM",
+        "description": "Empty function with only pass - implement or remove"
+    },
+    # GARM: commented_code_block removed - too many false positives with comments
 }
 
 

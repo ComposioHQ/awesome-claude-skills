@@ -1,9 +1,9 @@
 # Multi-Archetype Code Audit
 
-**Version**: 3.0.0 (January 2026)
+**Version**: 3.1.0 (January 2026)
 
-A comprehensive code audit skill using **19 specialized archetypes** with a two-stage approach:
-1. **FENRIR** (static analysis) - Fast regex + AST scanning
+A comprehensive code audit skill using **19 specialized archetypes** and **41 detection patterns** with a two-stage approach:
+1. **FENRIR** (static analysis) - Fast regex + AST scanning with string literal filtering
 2. **Claude Code** (intelligent triage) - Filters false positives, prioritizes issues
 
 **No external LLM required** - Claude Code does the intelligent triage.
@@ -116,6 +116,74 @@ ln -sf skills/multi-archetype-audit/scripts/pre-commit .git/hooks/pre-commit
 | LOW | 🟢 | Minor improvement |
 | INFO | ⚪ | Informational only |
 
+## Pattern Details (41 Patterns)
+
+### FENRIR 🐺 (Silent Failures)
+- `bare_except_pass` - `except: pass` swallows all exceptions
+- `except_pass` - Specific exception ignored with pass
+- `except_return_empty` - Returns empty value on failure
+
+### DIONYSUS 🍷 (Robustness)
+- `broad_except` - `except Exception: return` catches too broadly
+- `sql_injection` - SQL via f-string or format()
+
+### PANDORA 📦 (Security)
+- `hardcoded_password` - Secrets in code
+
+### DELPHI 🔮 (AI Safety)
+- `prompt_injection` - User input directly in prompt
+
+### RA ☀️ (Performance)
+- `sync_in_async` - Blocking call in async function
+
+### ARGUS 👁️ (Observability)
+- `logging_error_in_except` - Use logging.exception() for tracebacks
+
+### HERMES ⚡ (API)
+- `missing_auth_decorator` - Endpoint without auth
+- `api_returns_dict` - Raw dict instead of Pydantic model
+
+### ICARUS 🌞 (Complexity)
+- `too_many_params` - Function signature >200 chars
+- `nested_if_deep` - 4+ levels of nesting
+- `god_class_methods` - Class >500 lines
+
+### HEPHAESTUS 🔨 (Build)
+- `unpinned_dependency` - No version specified
+- `dockerfile_root` - Running as root
+- `dockerfile_latest` - Using :latest tag
+
+### MIDAS 💰 (LLM Costs)
+- `llm_no_cache` - LLM call without caching
+- `expensive_model` - Using GPT-4/Opus when cheaper works
+- `llm_max_tokens_high` - max_tokens > 4000
+
+### ANTAEUS 🏔️ (Resilience)
+- `http_no_timeout` - HTTP without timeout
+- `no_retry_pattern` - No retry/backoff
+- `db_no_pool` - Database without connection pooling
+
+### PROTEUS 🌀 (State)
+- `mutable_default` - `def f(x=[])` bug
+- `global_state` - `global` keyword usage
+- `singleton_pattern` - Singleton without thread safety check
+
+### ARIADNE 🧵 (Dependencies)
+- `star_import` - `from x import *`
+- `relative_import_deep` - `from ...` 3+ levels
+
+### JANUS 🚪 (Versioning)
+- `missing_api_version` - Endpoint without /v1/ prefix
+- `deprecated_no_warning` - Deprecated without warnings.warn()
+
+### GARM 🐕 (Zombie Code)
+- `unreachable_code` - Code after return
+- `dead_assignment` - Variable reassigned before use
+- `pass_in_function` - Empty function body
+
+### CASSANDRA 🔮, LETHE 🌊, TIRESIAS 👁️, etc.
+See `scripts/audit.py` for the complete pattern list.
+
 ## How It Works
 
 ```
@@ -124,9 +192,9 @@ ln -sf skills/multi-archetype-audit/scripts/pre-commit .git/hooks/pre-commit
 ├─────────────────────────────────────────────────────────┤
 │                                                          │
 │  1. FENRIR (Static Analysis)          ~2 seconds         │
-│     ├── Regex patterns (19 archetypes)                  │
+│     ├── 41 regex patterns (19 archetypes)               │
 │     ├── AST analysis (Python)                           │
-│     └── Ruff TRY rules (exception handling)             │
+│     └── AST string filter (eliminates FP in strings)    │
 │                                                          │
 │  2. Claude Code (Intelligent Triage)  ~5 seconds         │
 │     ├── Read context (±10 lines per finding)            │

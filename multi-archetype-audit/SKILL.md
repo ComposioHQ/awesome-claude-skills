@@ -1,7 +1,7 @@
 ---
 name: multi-archetype-audit
-description: Run comprehensive code audits using FENRIR (static analysis) + Claude Code (intelligent triage). 19 specialized archetypes covering API, Performance, Security, AI Safety, and Observability. No external LLM required.
-version: 3.0.0
+description: Run comprehensive code audits using FENRIR (static analysis) + Claude Code (intelligent triage). 19 specialized archetypes with 41 detection patterns covering API, Performance, Security, AI Safety, and Observability. No external LLM required.
+version: 3.1.0
 ---
 
 # Multi-Archetype Code Audit
