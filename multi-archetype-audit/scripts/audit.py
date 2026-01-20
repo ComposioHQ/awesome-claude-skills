@@ -89,6 +89,79 @@ class AuditReport:
 
 
 # =============================================================================
+# OUROBOROS GUARD - Self-Protection Against False Positives
+# =============================================================================
+# Problem: Audit detects its own detection patterns as vulnerabilities
+#   Ex: SQL_INJECTION_PATTERNS = ["SELECT * FROM"]
+#       -> Audit finds "SELECT * FROM" in audit.py itself!
+#
+# Solutions:
+#   1. Exclude audit/skills directories from scanning
+#   2. Recognize detection variable patterns (PATTERNS, RULES, etc.)
+#   3. Support # nosec / # audit-ignore annotations
+# =============================================================================
+
+
+class OuroborosGuard:
+    """Protection against self-detection false positives."""
+
+    # Directories that contain detection code (not production code)
+    DETECTION_DIRS = {
+        "audit", "audit_v2", "archetypes", "skills", "rules",
+        "patterns", "detectors", "scanners", "checks",
+    }
+
+    # Variable name patterns that indicate detection rules (not vulnerabilities)
+    DETECTION_VARIABLES = re.compile(
+        r"^\s*(#.*)?("
+        r"[A-Z_]*PATTERN[S]?|"
+        r"[A-Z_]*RULE[S]?|"
+        r"[A-Z_]*SIGNATURE[S]?|"
+        r"[A-Z_]*DANGER[OUS]*|"
+        r"[A-Z_]*VULN[ERABLE]*|"
+        r"[A-Z_]*RISK[S]?|"
+        r"[A-Z_]*FORBIDDEN|"
+        r"[A-Z_]*SUSPICIOUS|"
+        r"[A-Z_]*MALICIOUS|"
+        r"INJECT[ION]*_"
+        r")\s*=",
+        re.IGNORECASE
+    )
+
+    # Annotations that suppress findings
+    IGNORE_ANNOTATIONS = re.compile(
+        r"#\s*(nosec|noqa|audit-ignore|safe|intentional|example)",
+        re.IGNORECASE
+    )
+
+    @classmethod
+    def should_exclude_path(cls, path: Path) -> bool:
+        """Check if path is in a detection/audit directory."""
+        return any(d in path.parts for d in cls.DETECTION_DIRS)
+
+    @classmethod
+    def is_detection_code(cls, line: str) -> bool:
+        """Check if line defines detection patterns (not actual vulnerability)."""
+        return bool(cls.DETECTION_VARIABLES.match(line))
+
+    @classmethod
+    def has_ignore_annotation(cls, line: str) -> bool:
+        """Check if line has suppression annotation."""
+        return bool(cls.IGNORE_ANNOTATIONS.search(line))
+
+    @classmethod
+    def should_skip_finding(cls, file_path: Path, line: str) -> bool:
+        """Determine if a finding should be skipped (false positive)."""
+        if cls.should_exclude_path(file_path):
+            return True
+        if cls.is_detection_code(line):
+            return True
+        if cls.has_ignore_annotation(line):
+            return True
+        return False
+
+
+# =============================================================================
 # BASE ARCHETYPE
 # =============================================================================
 
@@ -109,7 +182,7 @@ class BaseArchetype(ABC):
         """Run the audit and return findings."""
         pass
 
-    def _find_files(self, pattern: str) -> List[Path]:
+    def _find_files(self, pattern: str, include_detection_code: bool = False) -> List[Path]:
         """Find files matching glob pattern, excluding common non-source directories."""
         exclude_dirs = {
             "venv", ".venv", "env", ".env",
@@ -117,6 +190,9 @@ class BaseArchetype(ABC):
             "dist", "build", ".tox", ".pytest_cache",
             "site-packages", ".mypy_cache", ".ruff_cache",
         }
+        # Add detection directories unless explicitly included
+        if not include_detection_code:
+            exclude_dirs.update(OuroborosGuard.DETECTION_DIRS)
 
         results = []
         for path in self.root_path.rglob(pattern):
@@ -127,14 +203,24 @@ class BaseArchetype(ABC):
         return results
 
     def _grep_files(
-        self, pattern: str, glob: str = "*.py"
+        self, pattern: str, glob: str = "*.py", filter_false_positives: bool = True
     ) -> List[Tuple[Path, int, str]]:
-        """Search for pattern in files using ripgrep or fallback."""
+        """Search for pattern in files using ripgrep or fallback.
+
+        Args:
+            pattern: Regex pattern to search for
+            glob: File pattern to search in
+            filter_false_positives: If True, apply Ouroboros filtering
+        """
         results = []
+        # Exclude common non-source directories AND detection directories
         exclude_globs = [
             "!**/venv/**", "!**/.venv/**", "!**/node_modules/**",
             "!**/__pycache__/**", "!**/site-packages/**", "!**/.git/**",
             "!**/dist/**", "!**/build/**",
+            # Ouroboros: exclude audit/detection code
+            "!**/audit/**", "!**/audit_v2/**", "!**/archetypes/**",
+            "!**/skills/**", "!**/patterns/**", "!**/detectors/**",
         ]
 
         try:
@@ -153,14 +239,22 @@ class BaseArchetype(ABC):
                     file_path = Path(parts[0])
                     line_num = int(parts[1])
                     content = parts[2]
+                    # Ouroboros filter: skip detection patterns and ignored lines
+                    if filter_false_positives:
+                        if OuroborosGuard.should_skip_finding(file_path, content):
+                            continue
                     results.append((file_path, line_num, content))
         except (subprocess.TimeoutExpired, FileNotFoundError):
             # Fallback to Python-based search
             for file_path in self._find_files(glob):
                 try:
-                    content = file_path.read_text(errors="ignore")
-                    for i, line in enumerate(content.split("\n"), 1):
+                    file_content = file_path.read_text(errors="ignore")
+                    for i, line in enumerate(file_content.split("\n"), 1):
                         if re.search(pattern, line, re.IGNORECASE):
+                            # Ouroboros filter
+                            if filter_false_positives:
+                                if OuroborosGuard.should_skip_finding(file_path, line):
+                                    continue
                             results.append((file_path, i, line))
                 except Exception:
                     pass

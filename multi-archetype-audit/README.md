@@ -174,10 +174,29 @@ Use them together for AI projects:
 python scripts/audit.py . --archetypes delphi midas lethe pandora
 ```
 
+## Ouroboros Guard (False Positive Protection)
+
+The audit includes built-in protection against false positives when scanning its own code or detection patterns:
+
+1. **Directory Exclusion** - Automatically skips `audit/`, `skills/`, `patterns/`, `detectors/` directories
+2. **Detection Variable Recognition** - Ignores lines defining `*_PATTERNS`, `*_RULES`, `*_SIGNATURES` variables
+3. **Annotation Support** - Respects `# nosec`, `# noqa`, `# audit-ignore` comments
+
+```python
+# This is flagged (real vulnerability):
+password = "hardcoded123"
+
+# This is NOT flagged (detection pattern):
+DANGEROUS_PATTERNS = ["password", "secret", "api_key"]
+
+# This is NOT flagged (suppressed):
+test_password = "test123"  # nosec - test fixture
+```
+
 ## License
 
 MIT
 
 ## Credits
 
-Inspired by the multi-perspective audit methodology from the Smash Coach AI project.
+Inspired by the multi-perspective audit methodology from the Smash Coach AI project (Phase 301.5).
