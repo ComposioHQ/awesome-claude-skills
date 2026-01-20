@@ -161,7 +161,7 @@ FENRIR_PATTERNS = {
         "description": "raise NewError() without 'from e' loses traceback"
     },
     "pokemon_exception": {
-        "regex": r"except\s+Exception\s*:",
+        "regex": r"except\s+Exception\s*:(?!\s*\n\s*pass)",
         "severity": "SUSPECT",
         "archetype": "FENRIR",
         "description": "except Exception: catches too broadly (Pokemon style)"
@@ -231,7 +231,7 @@ FENRIR_PATTERNS = {
 
     # SUSPECT - Potential issues
     "bare_except": {
-        "regex": r"except\s*:",
+        "regex": r"except\s*:(?!\s*\n\s*pass)",
         "severity": "SUSPECT",
         "archetype": "CASSANDRA",
         "description": "Bare except - should specify exception type"
