@@ -2,13 +2,16 @@
 
 ## PR #65
 
-**Version**: 3.1.0 (FENRIR + Claude Code)
+**Version**: 4.0.0 (FENRIR 2.0 + Unified NILE Pipeline)
 
 ## Key Points
 
-- Two-stage approach: FENRIR (static) + Claude Code (triage)
-- ~400 lines, zero external dependencies
-- No external LLM required
+- **FENRIR 2.0**: 6-pass scanner (4776 LOC) with Regex → AST → Ruff → GARM → ORPHEUS
+- **20 archetypes** with **45+ detection patterns**
+- Unified pipeline: FENRIR → OUROBOROS → RAG → MEMORY → MEMNARCH (opt) → OSIRIS
+- Two-stage approach: Static scan + Claude Code intelligent triage
+- Score-based verdicts: WORTHY / CURSED / FORBIDDEN
+- Zero external dependencies (optional Claude API for CI)
 
 ## Category
 
@@ -17,7 +20,7 @@
 ## README Entry
 
 ```markdown
-- [multi-archetype-audit](./multi-archetype-audit) - Comprehensive code audit using FENRIR (static analysis) + Claude Code (intelligent triage). 19 archetypes covering API, Security, AI Safety, Performance, and Observability. No external LLM required.
+- [multi-archetype-audit](./multi-archetype-audit) - Comprehensive code audit using FENRIR 2.0 (6-pass scanner) + Claude Code (intelligent triage). 20 archetypes covering API, Security, AI Safety, Performance, Silent Failures, and Parallel Implementation Blindness. No external LLM required.
 ```
 
 ## PR Description (Updated)
@@ -25,11 +28,25 @@
 ```markdown
 # Multi-Archetype Code Audit
 
-**Version**: 3.0.0 (January 2026)
+**Version**: 4.0.0 (January 2026)
 
-A comprehensive code audit skill with a two-stage approach:
-1. **FENRIR** - Fast static analysis (regex + AST, ~2s)
-2. **Claude Code** - Intelligent triage (filters false positives)
+A comprehensive code audit skill with **unified pipeline** and **full NILE integration**:
+
+```
+┌──────────────────────────────────────────────────────┐
+│              UNIFIED AUDIT PIPELINE                  │
+├──────────────────────────────────────────────────────┤
+│  1. FENRIR 2.0  → 6-pass scanner (4776 LOC)          │
+│     ├── P1-P5   → Regex + AST + Ruff                 │
+│     ├── GARM    → Zombie/leak detection              │
+│     └── 20 Archetypes (45+ patterns)                 │
+│  2. OUROBOROS   → Anti self-detection filter         │
+│  3. RAG         → Lucioles context enrichment        │
+│  4. MEMORY      → Past verdicts lookup               │
+│  5. MEMNARCH    → SPO triplets + decisions (opt)     │
+│  6. OSIRIS      → Final verdict + score              │
+└──────────────────────────────────────────────────────┘
+```
 
 **No external LLM required** - Claude Code does the smart work.
 
@@ -57,12 +74,13 @@ python scripts/audit.py . --fenrir-only --ci
 
 ## Key Features
 
-- **19 Archetypes**: Core 7 + Extended 12 + Nordic Hunters (FENRIR, GARM)
-- **Two-stage pipeline**: Static scan → Intelligent triage
+- **20 Archetypes**: Core 7 + Extended 12 + Nordic Hunters (FENRIR, GARM) + Meta (ORPHEUS)
+- **45+ Detection Patterns**: Silent failures, zombies, parallel blindness
+- **Unified Pipeline**: FENRIR → OUROBOROS → RAG → MEMORY → MEMNARCH → OSIRIS
 - **Zero dependencies**: Pure Python + optional Claude API
 - **CI/CD ready**: Exit codes, JSON output, pre-commit hook
 
-## The 19 Archetypes
+## The 20 Archetypes
 
 ### Core 7
 | Icon | Name | Domain |
@@ -75,7 +93,7 @@ python scripts/audit.py . --fenrir-only --ci
 | 🍷 | DIONYSUS | Robustness |
 | 🔨 | HEPHAESTUS | Build |
 
-### Extended 12 + Nordic Hunters
+### Extended 12 + Nordic Hunters + Meta
 | Icon | Name | Domain |
 |------|------|--------|
 | 📦 | PANDORA | Security |
@@ -92,20 +110,37 @@ python scripts/audit.py . --fenrir-only --ci
 | 👁️ | ARGUS | Observability |
 | 🐺 | FENRIR | Silent Failures |
 | 🐕 | GARM | Zombie Patterns |
+| 🎭 | ORPHEUS | Parallel Blindness |
+
+### New in V4.0
+
+**GARM Patterns** (Zombie Detection):
+- `zombie_subprocess` - Popen without communicate/wait
+- `orphan_thread` - Thread without join
+- `infinite_loop` - while True without break
+- `resource_leak` - open() without context manager
+- `async_orphan` - create_task without await
+
+**ORPHEUS Patterns** (Parallel Blindness):
+- `versioned_no_deprecation` - `_v2`, `_v3` without DEPRECATED marker
+- `parallel_implementations` - Multiple versions of same module
+- `orphan_candidate` - Module with 0 imports (potential dead code)
 
 ```
 
 ## Commit Message
 
 ```
-feat: add multi-archetype-audit skill v3.0.0
+feat: update multi-archetype-audit skill to v4.0.0
 
-Two-stage code audit:
-- FENRIR: Fast static analysis (regex + AST)
-- Claude Code: Intelligent triage (filters FPs)
+FENRIR 2.0 + Unified NILE Pipeline:
+- 6-pass scanner (4776 LOC): Regex → AST → Ruff → GARM → ORPHEUS
+- 20 archetypes (added ORPHEUS for parallel blindness)
+- 45+ detection patterns (added GARM zombie patterns)
+- Optional MEMNARCH integration (SPO triplets + decisions)
+- Unified pipeline: FENRIR → OUROBOROS → RAG → MEMORY → MEMNARCH → OSIRIS
 
 Features:
-- 19 archetypes (Core 7 + Extended 12 + Nordic Hunters)
 - Pre-commit hook included
 - CI/CD ready with exit codes
 - Zero external dependencies
@@ -115,11 +150,12 @@ Features:
 
 ```
 multi-archetype-audit/
-├── SKILL.md           # Updated skill metadata
-├── README.md          # Updated documentation
+├── SKILL.md           # Updated skill metadata (V4.0)
+├── README.md          # Updated documentation (V4.0)
+├── COMPOSIO_PR_NOTES.md # This file
 └── scripts/
-    ├── audit.py       # Simplified audit script (~400 lines)
-    └── pre-commit     # New pre-commit hook
+    ├── audit.py       # Unified audit script
+    └── pre-commit     # Pre-commit hook
 ```
 
 ## Dependencies
@@ -128,8 +164,10 @@ multi-archetype-audit/
 
 ## Testing Done
 
-- ✅ FENRIR scan on 500+ file project - 2.1s
-- ✅ Claude Code triage - 135 findings → 12 actionable
+- ✅ FENRIR 2.0 scan on 500+ file project - 2.1s
+- ✅ GARM detects zombie patterns
+- ✅ ORPHEUS detects parallel implementations
+- ✅ Claude Code triage - filters false positives
 - ✅ Pre-commit hook blocks MORTEL findings
 - ✅ CI mode exit codes work correctly
 - ✅ JSON output for pipeline integration

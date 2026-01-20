@@ -1,10 +1,24 @@
 # Multi-Archetype Code Audit
 
-**Version**: 3.1.0 (January 2026)
+**Version**: 4.0.0 (January 2026)
 
-A comprehensive code audit skill using **19 specialized archetypes** and **41 detection patterns** with a two-stage approach:
-1. **FENRIR** (static analysis) - Fast regex + AST scanning with string literal filtering
-2. **Claude Code** (intelligent triage) - Filters false positives, prioritizes issues
+A comprehensive code audit skill using **20 specialized archetypes** and **45+ detection patterns** with **full NILE system integration** and **unified audit pipeline**:
+
+```
+┌──────────────────────────────────────────────────────┐
+│              UNIFIED AUDIT PIPELINE                  │
+├──────────────────────────────────────────────────────┤
+│  1. FENRIR 2.0  → 6-pass scanner (4776 LOC)          │
+│     ├── P1-P5   → Regex + AST + Ruff                 │
+│     ├── GARM    → Zombie/leak detection              │
+│     └── 20 Archetypes (45+ patterns)                 │
+│  2. OUROBOROS   → Anti self-detection filter         │
+│  3. RAG         → Lucioles context enrichment        │
+│  4. MEMORY      → Past verdicts lookup               │
+│  5. MEMNARCH    → SPO triplets + decisions (opt)     │
+│  6. OSIRIS      → Final verdict + score              │
+└──────────────────────────────────────────────────────┘
+```
 
 **No external LLM required** - Claude Code does the intelligent triage.
 
@@ -104,7 +118,13 @@ ln -sf skills/multi-archetype-audit/scripts/pre-commit .git/hooks/pre-commit
 | Icon | Name | Domain | What It Finds |
 |------|------|--------|---------------|
 | 🐺 | **FENRIR** | Silent Failures | `except: pass`, swallowed errors |
-| 🐕 | **GARM** | Zombie Patterns | Dead code that creates problems |
+| 🐕 | **GARM** | Zombie Patterns | Dead code, resource leaks, orphan asyncs |
+
+### Meta Archetype (Architecture)
+
+| Icon | Name | Domain | What It Finds |
+|------|------|--------|---------------|
+| 🎭 | **ORPHEUS** | Parallel Blindness | Versioned modules without DEPRECATED, orphan candidates |
 
 ## Severity Levels
 
@@ -116,7 +136,7 @@ ln -sf skills/multi-archetype-audit/scripts/pre-commit .git/hooks/pre-commit
 | LOW | 🟢 | Minor improvement |
 | INFO | ⚪ | Informational only |
 
-## Pattern Details (41 Patterns)
+## Pattern Details (45+ Patterns)
 
 ### FENRIR 🐺 (Silent Failures)
 - `bare_except_pass` - `except: pass` swallows all exceptions
@@ -176,10 +196,17 @@ ln -sf skills/multi-archetype-audit/scripts/pre-commit .git/hooks/pre-commit
 - `missing_api_version` - Endpoint without /v1/ prefix
 - `deprecated_no_warning` - Deprecated without warnings.warn()
 
-### GARM 🐕 (Zombie Code)
-- `unreachable_code` - Code after return
-- `dead_assignment` - Variable reassigned before use
-- `pass_in_function` - Empty function body
+### GARM 🐕 (Zombie Patterns)
+- `zombie_subprocess` - Popen without communicate/wait
+- `orphan_thread` - Thread without join
+- `infinite_loop` - while True without break
+- `resource_leak` - open() without context manager
+- `async_orphan` - create_task without await
+
+### ORPHEUS 🎭 (Parallel Implementation Blindness)
+- `versioned_no_deprecation` - `_v2`, `_v3` without DEPRECATED marker
+- `parallel_implementations` - Multiple versions of same module
+- `orphan_candidate` - Module with 0 imports (potential dead code)
 
 ### CASSANDRA 🔮, LETHE 🌊, TIRESIAS 👁️, etc.
 See `scripts/audit.py` for the complete pattern list.
@@ -188,23 +215,36 @@ See `scripts/audit.py` for the complete pattern list.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    AUDIT PIPELINE                        │
+│              UNIFIED AUDIT PIPELINE (V4.0)              │
 ├─────────────────────────────────────────────────────────┤
 │                                                          │
-│  1. FENRIR (Static Analysis)          ~2 seconds         │
-│     ├── 41 regex patterns (19 archetypes)               │
-│     ├── AST analysis (Python)                           │
-│     └── AST string filter (eliminates FP in strings)    │
+│  1. FENRIR 2.0 (Static Analysis)      ~2 seconds         │
+│     ├── 6 passes: P1 (Regex) → P5 (AST) → GARM          │
+│     ├── 20 archetypes (45+ patterns)                    │
+│     ├── AST string filter (eliminates FP)               │
+│     └── ORPHEUS (parallel implementation detector)       │
 │                                                          │
-│  2. Claude Code (Intelligent Triage)  ~5 seconds         │
+│  2. OUROBOROS (Anti Self-Detection)                      │
+│     └── Excludes audit/detection code from findings      │
+│                                                          │
+│  3. RAG Enrichment (Lucioles)         ~1 second          │
+│     └── Adds context from 350+ indexed docs              │
+│                                                          │
+│  4. MEMORY (Past Verdicts)                               │
+│     └── Checks if finding was seen before                │
+│                                                          │
+│  5. MEMNARCH (Optional)                                  │
+│     ├── SPO triplets (pattern relationships)            │
+│     └── Decision correlation (past architecture)         │
+│                                                          │
+│  6. Claude Code (Intelligent Triage)  ~5 seconds         │
 │     ├── Read context (±10 lines per finding)            │
 │     ├── Classify: TRUE_POSITIVE / FALSE_POSITIVE        │
 │     └── Prioritize by actual risk                       │
 │                                                          │
-│  3. Report                                               │
-│     ├── Stats by severity                               │
-│     ├── Actionable findings only                        │
-│     └── Markdown or JSON output                         │
+│  7. OSIRIS (Final Verdict)                               │
+│     ├── Score calculation                               │
+│     └── WORTHY / CURSED / FORBIDDEN                     │
 │                                                          │
 └─────────────────────────────────────────────────────────┘
 ```
