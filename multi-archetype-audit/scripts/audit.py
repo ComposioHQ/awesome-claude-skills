@@ -1,28 +1,23 @@
 #!/usr/bin/env python3
 """
-Multi-Archetype Code Audit System
-=================================
+Multi-Archetype Code Audit
+==========================
 
-A comprehensive code audit tool with 19 specialized archetypes,
-each providing a unique perspective on code quality.
-
-Core 7: HERMES (API), RA (Performance), CASSANDRA (Warnings),
-        SISYPHUS (DRY), ICARUS (Complexity), DIONYSUS (Robustness),
-        HEPHAESTUS (Build)
-
-Extended 12: PANDORA (Security), DELPHI (AI Safety), MIDAS (LLM Costs),
-             LETHE (Data Leakage), ANTAEUS (Resilience), TIRESIAS (Testing),
-             MENTOR (Docs), PROTEUS (State), MNEMOSYNE (Context),
-             ARIADNE (Dependencies), JANUS (Versioning), ARGUS (Observability)
+19 archetypes + automatic false positive filtering.
 
 Usage:
-    python audit.py /path/to/project --quick    # Fast pre-commit check
-    python audit.py /path/to/project --security # Security focused
-    python audit.py /path/to/project            # Full 19-archetype audit
+    python audit.py /path/to/project           # Full audit (default)
+    python audit.py /path/to/project --quick   # Fast pre-commit (3 archetypes)
+    python audit.py /path/to/project --raw     # No filtering (debug)
+    python audit.py /path/to/project --json    # JSON output
+
+Core 7: HERMES, RA, CASSANDRA, SISYPHUS, ICARUS, DIONYSUS, HEPHAESTUS
+Extended 12: PANDORA, DELPHI, MIDAS, LETHE, ANTAEUS, TIRESIAS,
+             MENTOR, PROTEUS, MNEMOSYNE, ARIADNE, JANUS, ARGUS
 
 Author: Smash Coach AI Team
 License: MIT
-Version: 2.0.0 (January 2026)
+Version: 2.1.0 (January 2026)
 """
 
 import re
