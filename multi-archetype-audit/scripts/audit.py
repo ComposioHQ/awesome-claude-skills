@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Multi-Archetype Code Audit - FENRIR + NILE Integration
-=======================================================
-Version: 3.2.0
+Multi-Archetype Code Audit - FENRIR + Claude Code + Sentinelles
+================================================================
+Version: 4.1.0
 
 A two-stage code audit:
 1. FENRIR (static analysis) - Fast regex + AST scanning
@@ -28,7 +28,7 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 # Optional Claude API for intelligent triage
 try:
@@ -36,6 +36,86 @@ try:
     HAS_ANTHROPIC = True
 except ImportError:
     HAS_ANTHROPIC = False
+
+
+# =============================================================================
+# SENTINELLES - Context Warnings (from NILE)
+# =============================================================================
+
+@dataclass
+class Sentinelle:
+    """A context warning from NILE system."""
+    domain: str
+    pattern_danger: str
+    reminder: str
+    severity: str
+    keywords: List[str]
+
+
+def load_sentinelles() -> List[Sentinelle]:
+    """Load sentinelles from data/sentinelles.json."""
+    sentinelles_path = Path(__file__).parent.parent / "data" / "sentinelles.json"
+    if not sentinelles_path.exists():
+        return []
+
+    try:
+        data = json.loads(sentinelles_path.read_text())
+        sentinelles = []
+
+        # Skip _meta key, iterate over domain arrays
+        for domain_name, items in data.items():
+            if domain_name.startswith("_"):
+                continue
+            if not isinstance(items, list):
+                continue
+            for item in items:
+                sentinelles.append(Sentinelle(
+                    domain=item.get("domain", ""),
+                    pattern_danger=item.get("pattern_danger", ""),
+                    reminder=item.get("reminder", ""),
+                    severity=item.get("severity", "info"),
+                    keywords=item.get("keywords", [])
+                ))
+        return sentinelles
+    except (json.JSONDecodeError, IOError):
+        return []
+
+
+def match_sentinelles(findings: List["Finding"], sentinelles: List[Sentinelle]) -> List[Sentinelle]:
+    """Match findings to relevant sentinelles by keywords."""
+    if not sentinelles or not findings:
+        return []
+
+    # Collect all keywords from findings
+    finding_keywords = set()
+    for f in findings:
+        # Add pattern name, archetype, and description words
+        finding_keywords.add(f.pattern.lower())
+        finding_keywords.add(f.archetype.lower())
+        finding_keywords.update(f.description.lower().split())
+        finding_keywords.update(f.severity.lower().split())
+
+    # Match sentinelles by keyword overlap
+    matched = []
+    for s in sentinelles:
+        for kw in s.keywords:
+            if kw.lower() in finding_keywords:
+                matched.append(s)
+                break  # One match is enough
+
+    # Deduplicate and prioritize by severity
+    seen = set()
+    unique = []
+    severity_order = {"critical": 0, "warning": 1, "info": 2}
+    matched.sort(key=lambda x: severity_order.get(x.severity, 3))
+
+    for s in matched:
+        key = s.domain
+        if key not in seen:
+            seen.add(key)
+            unique.append(s)
+
+    return unique[:5]  # Max 5 sentinelles
 
 
 # =============================================================================
@@ -61,6 +141,30 @@ FENRIR_PATTERNS = {
         "severity": "MORTEL",
         "archetype": "FENRIR",
         "description": "except: return [] - failure masked by empty value"
+    },
+    "except_continue": {
+        "regex": r"except.*:\s*\n\s*continue",
+        "severity": "MORTEL",
+        "archetype": "FENRIR",
+        "description": "except: continue - silently skips iteration on error"
+    },
+    "except_ellipsis": {
+        "regex": r"except.*:\s*\n\s*\.\.\.",
+        "severity": "GRAVE",
+        "archetype": "FENRIR",
+        "description": "except: ... - placeholder TODO never implemented"
+    },
+    "raise_without_from": {
+        "regex": r"except\s+\w+.*:\s*\n\s+raise\s+\w+\([^)]*\)\s*$",
+        "severity": "GRAVE",
+        "archetype": "FENRIR",
+        "description": "raise NewError() without 'from e' loses traceback"
+    },
+    "pokemon_exception": {
+        "regex": r"except\s+Exception\s*:",
+        "severity": "SUSPECT",
+        "archetype": "FENRIR",
+        "description": "except Exception: catches too broadly (Pokemon style)"
     },
 
     # GRAVE - Partially visible failures
@@ -89,6 +193,24 @@ FENRIR_PATTERNS = {
         "severity": "GRAVE",
         "archetype": "DIONYSUS",
         "description": "Potential SQL injection via string formatting"
+    },
+    "cypher_injection": {
+        "regex": r"(run|execute_query)\s*\(\s*f['\"].*MATCH|MERGE|CREATE",
+        "severity": "GRAVE",
+        "archetype": "DIONYSUS",
+        "description": "Potential Cypher injection (Neo4j) via f-string"
+    },
+    "eval_exec": {
+        "regex": r"\b(eval|exec)\s*\(",
+        "severity": "GRAVE",
+        "archetype": "PANDORA",
+        "description": "eval/exec usage - code injection risk"
+    },
+    "pickle_load": {
+        "regex": r"pickle\.loads?\s*\(",
+        "severity": "GRAVE",
+        "archetype": "PANDORA",
+        "description": "pickle.load - arbitrary code execution risk"
     },
 
     # Performance patterns
@@ -182,25 +304,20 @@ FENRIR_PATTERNS = {
     },
 
     # =========================================================================
-    # HEPHAESTUS - Build/Dependencies
+    # HEPHAESTUS - Build/Dependencies (Python-specific patterns only)
+    # Note: Dockerfile/requirements.txt patterns removed - we only scan .py files
     # =========================================================================
-    "unpinned_dependency": {
-        "regex": r"^\s*[\w-]+\s*$",
+    "requirements_in_code": {
+        "regex": r"subprocess\.(?:run|call|Popen)\([^)]*pip\s+install",
         "severity": "SUSPECT",
         "archetype": "HEPHAESTUS",
-        "description": "Unpinned dependency - specify version"
+        "description": "pip install in code - use requirements.txt instead"
     },
-    "dockerfile_root": {
-        "regex": r"^USER\s+root\s*$",
+    "os_system_pip": {
+        "regex": r"os\.system\(['\"].*pip\s+install",
         "severity": "GRAVE",
         "archetype": "HEPHAESTUS",
-        "description": "Dockerfile runs as root - security risk"
-    },
-    "dockerfile_latest": {
-        "regex": r"^FROM\s+\w+:latest",
-        "severity": "SUSPECT",
-        "archetype": "HEPHAESTUS",
-        "description": "FROM :latest tag - pin to specific version"
+        "description": "os.system pip install - security risk, use subprocess"
     },
 
     # =========================================================================
@@ -510,18 +627,24 @@ def scan_directory(path: Path) -> List[Finding]:
     """Scan all Python files in a directory."""
     findings = []
 
+    # Ouroboros filter - applies to all paths
+    ouroboros_exclusions = ["audit.py", "audit_v", "multi-archetype-audit", "archetypes/"]
+
     if path.is_file():
+        # Ouroboros: Skip audit files even when directly specified
+        if any(x in str(path) for x in ouroboros_exclusions):
+            print(f"  [Ouroboros] Skipping self: {path.name}", file=sys.stderr)
+            return []
         files = [path]
     else:
         files = list(path.rglob("*.py"))
-        # Exclude common non-project directories
         # Exclude common non-project directories
         files = [f for f in files if not any(
             x in str(f) for x in ["__pycache__", "venv", ".venv", "node_modules", ".git", "site-packages"]
         )]
         # Ouroboros: Exclude audit files to avoid self-detection
         files = [f for f in files if not any(
-            x in str(f) for x in ["audit.py", "audit_v", "multi-archetype-audit", "archetypes/"]
+            x in str(f) for x in ouroboros_exclusions
         )]
 
     for filepath in files:
@@ -627,61 +750,142 @@ def _fallback_triage(findings: List[Finding]) -> dict:
 # Output Formatting
 # =============================================================================
 
-def format_markdown(findings: List[Finding], triage: Optional[dict]) -> str:
-    """Format results as Markdown."""
+def format_markdown(findings: List[Finding], triage: Optional[dict], scan_time_ms: float = 0, sentinelles: List[Sentinelle] = None) -> str:
+    """Format results as rich Markdown report."""
+    # Calculate stats
+    by_severity = {"MORTEL": [], "GRAVE": [], "SUSPECT": []}
+    for f in findings:
+        by_severity.get(f.severity, []).append(f)
+
+    mortel = len(by_severity["MORTEL"])
+    grave = len(by_severity["GRAVE"])
+    suspect = len(by_severity["SUSPECT"])
+
+    # OSIRIS score
+    score = 100 - (mortel * 10) - (grave * 3) - (suspect * 1)
+    score = max(0, score)
+    verdict = "WORTHY" if score >= 80 else "CURSED" if score >= 50 else "FORBIDDEN"
+
+    # Stats by archetype
+    archetype_counts = {}
+    for f in findings:
+        archetype_counts[f.archetype] = archetype_counts.get(f.archetype, 0) + 1
+
+    # Archetype icons
+    icons = {
+        "FENRIR": "🐺", "GARM": "🐕", "PANDORA": "📦", "DIONYSUS": "🍷",
+        "ARGUS": "👁️", "CASSANDRA": "🔮", "RA": "☀️", "DELPHI": "🔮",
+        "HERMES": "⚡", "SISYPHUS": "🪨", "ICARUS": "🌞", "HEPHAESTUS": "🔨",
+        "MIDAS": "💰", "ANTAEUS": "🏔️", "TIRESIAS": "👁️", "PROTEUS": "🌀",
+        "MNEMOSYNE": "🧠", "ARIADNE": "🧵", "JANUS": "🚪", "LETHE": "🌊",
+    }
+
     lines = [
+        "```",
+        "╔═══════════════════════════════════════════════════════════╗",
+        "║  🐺 FENRIR - Multi-Archetype Code Audit                   ║",
+        "║     20 Archetypes • 47 Patterns • Claude Code Triage      ║",
+        "╚═══════════════════════════════════════════════════════════╝",
+        "```",
+        "",
         f"# Audit Report - {datetime.now().strftime('%Y-%m-%d %H:%M')}",
         "",
     ]
 
+    # Sentinelles warnings (if any matched)
+    if sentinelles:
+        lines.extend([
+            "## 🛡️ Context Warnings (Sentinelles)",
+            "",
+        ])
+        severity_icons = {"critical": "🚨", "warning": "⚠️", "info": "💡"}
+        for s in sentinelles:
+            icon = severity_icons.get(s.severity, "💡")
+            lines.append(f"- {icon} **[{s.severity.upper()}]** {s.reminder}")
+        lines.extend(["", "---", ""])
+
+    lines.extend([
+        f"## 🏛️ VERDICT OSIRIS: **{verdict}**",
+        "",
+        f"**Score: {score}/100**",
+        "",
+        "---",
+        "",
+        "## 📊 Summary",
+        "",
+        "| Severity | Count | Impact |",
+        "|----------|-------|--------|",
+        f"| 💀 MORTEL | {mortel} | -10 pts each |",
+        f"| ⚠️ GRAVE | {grave} | -3 pts each |",
+        f"| 🔍 SUSPECT | {suspect} | -1 pt each |",
+        "",
+        f"**Total findings: {len(findings)}**",
+        "",
+    ])
+
     if triage:
         lines.extend([
-            "## Summary",
-            "",
-            f"- **Raw Findings**: {len(findings)}",
-            f"- **True Positives**: {triage['summary']['true_positives']}",
-            f"- **False Positives**: {triage['summary']['false_positives']}",
-            f"- **Low Priority**: {triage['summary']['low_priority']}",
+            f"**After triage:**",
+            f"- True Positives: {triage['summary']['true_positives']}",
+            f"- False Positives: {triage['summary']['false_positives']}",
             "",
             f"> {triage['summary']['recommendation']}",
             "",
         ])
 
-        tp = [t for t in triage.get("triaged", []) if t["verdict"] == "TP"]
-        if tp:
-            lines.append("## True Positives (Action Required)")
-            lines.append("")
-            for t in tp:
-                lines.append(f"- **{Path(t['file']).name}:{t['line']}** - {t['reason']}")
-            lines.append("")
-    else:
-        # FENRIR only output
-        by_severity = {"MORTEL": [], "GRAVE": [], "SUSPECT": []}
-        for f in findings:
-            by_severity.get(f.severity, []).append(f)
+    lines.extend([
+        "---",
+        "",
+        "## 🏛️ By Archetype",
+        "",
+        "| Archetype | Findings |",
+        "|-----------|----------|",
+    ])
 
+    for archetype, count in sorted(archetype_counts.items(), key=lambda x: -x[1]):
+        icon = icons.get(archetype, "🔍")
+        lines.append(f"| {icon} {archetype} | {count} |")
+
+    if scan_time_ms > 0:
         lines.extend([
-            "## Summary (FENRIR Only)",
             "",
-            f"- **MORTEL**: {len(by_severity['MORTEL'])} (critical)",
-            f"- **GRAVE**: {len(by_severity['GRAVE'])} (high)",
-            f"- **SUSPECT**: {len(by_severity['SUSPECT'])} (medium)",
+            "---",
+            "",
+            "## ⏱️ Performance",
+            "",
+            f"- Scan time: {scan_time_ms:.0f}ms",
             "",
         ])
 
-        for severity in ["MORTEL", "GRAVE"]:
-            items = by_severity[severity]
-            if items:
-                lines.append(f"## {severity} Findings")
+    lines.extend([
+        "---",
+        "",
+    ])
+
+    # Findings by severity
+    for severity, icon_char in [("MORTEL", "💀"), ("GRAVE", "⚠️"), ("SUSPECT", "🔍")]:
+        items = by_severity[severity]
+        if items:
+            lines.append(f"## {icon_char} {severity} ({len(items)})")
+            lines.append("")
+
+            for f in items[:15]:
+                archetype_icon = icons.get(f.archetype, "🔍")
+                lines.append(f"### `{Path(f.file).name}:{f.line}` [{archetype_icon} {f.archetype}]")
+                lines.append(f"**Pattern**: `{f.pattern}`")
+                lines.append(f"> {f.description}")
+                if f.code:
+                    lines.append(f"```")
+                    lines.append(f"{f.code[:100]}")
+                    lines.append(f"```")
                 lines.append("")
-                for f in items[:20]:
-                    lines.append(f"- **{Path(f.file).name}:{f.line}** [{f.archetype}] {f.description}")
-                if len(items) > 20:
-                    lines.append(f"- ... and {len(items) - 20} more")
+
+            if len(items) > 15:
+                lines.append(f"*... and {len(items) - 15} more {severity} findings*")
                 lines.append("")
 
     lines.append("---")
-    lines.append("*Generated by multi-archetype-audit v3.2.0 (NILE Integration)*")
+    lines.append("*Generated by multi-archetype-audit v4.1.0 (FENRIR + Sentinelles + Claude Code)*")
 
     return "\n".join(lines)
 
@@ -716,10 +920,17 @@ Examples:
         print(f"ERROR: Path not found: {args.path}", file=sys.stderr)
         sys.exit(1)
 
+    # Step 0: Load Sentinelles
+    sentinelles = load_sentinelles()
+    print(f"[0/3] Loaded {len(sentinelles)} Sentinelles", file=sys.stderr)
+
     # Step 1: FENRIR scan
-    print(f"[1/2] FENRIR scanning {args.path}...", file=sys.stderr)
+    import time
+    scan_start = time.time()
+    print(f"[1/3] FENRIR scanning {args.path}...", file=sys.stderr)
     findings = scan_directory(target)
-    print(f"      Found {len(findings)} raw findings", file=sys.stderr)
+    scan_time_ms = (time.time() - scan_start) * 1000
+    print(f"      Found {len(findings)} raw findings in {scan_time_ms:.0f}ms", file=sys.stderr)
 
     if not findings:
         print("No findings. Code is clean!", file=sys.stderr)
@@ -727,10 +938,14 @@ Examples:
             print(json.dumps({"findings": [], "triage": None}))
         sys.exit(0)
 
-    # Step 2: Triage
+    # Step 2: Match Sentinelles
+    matched_sentinelles = match_sentinelles(findings, sentinelles)
+    print(f"[2/3] Matched {len(matched_sentinelles)} relevant Sentinelles", file=sys.stderr)
+
+    # Step 3: Triage
     triage = None
     if not args.fenrir_only:
-        print(f"[2/2] Claude API triage...", file=sys.stderr)
+        print(f"[3/3] Claude API triage...", file=sys.stderr)
         triage = triage_with_claude(findings)
         tp_count = triage["summary"]["true_positives"]
         print(f"      {tp_count} true positives identified", file=sys.stderr)
@@ -741,10 +956,13 @@ Examples:
             "findings": [{"file": f.file, "line": f.line, "pattern": f.pattern,
                          "severity": f.severity, "archetype": f.archetype,
                          "code": f.code, "description": f.description} for f in findings],
-            "triage": triage
+            "triage": triage,
+            "sentinelles": [{"domain": s.domain, "reminder": s.reminder, "severity": s.severity}
+                           for s in matched_sentinelles],
+            "scan_time_ms": scan_time_ms,
         }, indent=2)
     else:
-        output = format_markdown(findings, triage)
+        output = format_markdown(findings, triage, scan_time_ms, matched_sentinelles)
 
     if args.output:
         Path(args.output).write_text(output)

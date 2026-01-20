@@ -1,0 +1,1211 @@
+{
+  "_meta": {
+    "version": "3.0",
+    "total_bubbles": 72,
+    "domains": [
+      "git",
+      "archi",
+      "dialectic",
+      "smash",
+      "session",
+      "audit",
+      "project",
+      "security",
+      "injection",
+      "performance",
+      "quality",
+      "api",
+      "deps",
+      "ai",
+      "observability",
+      "async"
+    ],
+    "howto_add": {
+      "step1": "Choisir le domaine approprié (git, archi, dialectic, smash, session, audit, project)",
+      "step2": "Ajouter un objet dans le tableau du domaine",
+      "step3": "Redémarrer le backend pour recharger",
+      "template": {
+        "domain": "domaine/sous-domaine",
+        "pattern_danger": "Description du pattern dangereux",
+        "reminder": "Ce qu'il faut retenir (conseil, règle, warning)",
+        "learned_from": "Phase XXX - Source de la leçon",
+        "severity": "info|warning|critical",
+        "keywords": [
+          "mot1",
+          "mot2",
+          "declencheurs"
+        ]
+      },
+      "tips": [
+        "Keywords = mots qui déclenchent la bulle (match case-insensitive)",
+        "severity: info (conseil), warning (attention), critical (bloquant)",
+        "Garder les reminders courts et actionnables"
+      ]
+    }
+  },
+  "git": [
+    {
+      "domain": "git/merge",
+      "pattern_danger": "git pull après modifications locales non-commitées",
+      "reminder": "TOUJOURS: 1) git status 2) git diff 3) Lister fichiers des DEUX côtés 4) Identifier intersections AVANT merge",
+      "learned_from": "Phase 300.5 - Merge écrasement .claude/settings.local.json",
+      "severity": "critical",
+      "keywords": [
+        "git",
+        "pull",
+        "merge",
+        "conflict",
+        "overwrite",
+        "écrasement"
+      ]
+    },
+    {
+      "domain": "git/migration",
+      "pattern_danger": "Migration entre machines avec .gitignore",
+      "reminder": "Les fichiers .gitignore ne sont PAS transférés par git clone. Vérifier: .env, data/, caches, configs locales",
+      "learned_from": "Phase 300 - Migration Windows→Linux",
+      "severity": "critical",
+      "keywords": [
+        "migration",
+        "gitignore",
+        "env",
+        "config",
+        "transfer",
+        "clone"
+      ]
+    },
+    {
+      "domain": "git/branch",
+      "pattern_danger": "Push sur main sans review",
+      "reminder": "Préférer feature branches + PR pour changements significatifs. Main = stable.",
+      "learned_from": "Best practices Git",
+      "severity": "warning",
+      "keywords": [
+        "push",
+        "main",
+        "master",
+        "branch",
+        "direct"
+      ]
+    },
+    {
+      "domain": "git/reset",
+      "pattern_danger": "git reset --hard sans backup",
+      "reminder": "DANGER: reset --hard détruit les modifications locales. Toujours git stash avant ou vérifier git status.",
+      "learned_from": "Git safety",
+      "severity": "critical",
+      "keywords": [
+        "reset",
+        "hard",
+        "stash",
+        "destroy",
+        "lost"
+      ]
+    },
+    {
+      "domain": "git/rebase",
+      "pattern_danger": "Rebase sur branche partagée",
+      "reminder": "Ne JAMAIS rebase une branche déjà pushée. Utiliser merge pour branches partagées.",
+      "learned_from": "Git collaboration",
+      "severity": "critical",
+      "keywords": [
+        "rebase",
+        "shared",
+        "pushed",
+        "history",
+        "rewrite"
+      ]
+    }
+  ],
+  "archi": [
+    {
+      "domain": "archi/cache",
+      "pattern_danger": "Cache sans limite de taille",
+      "reminder": "Toujours utiliser BoundedCache avec maxsize. Les dict unbounded causent des memory leaks.",
+      "learned_from": "Phase 300.5 - Audit memory leaks",
+      "severity": "warning",
+      "keywords": [
+        "cache",
+        "memory",
+        "leak",
+        "bounded",
+        "maxsize",
+        "dict"
+      ]
+    },
+    {
+      "domain": "archi/credentials",
+      "pattern_danger": "Credentials dans le code ou fallback par défaut",
+      "reminder": "JAMAIS de mots de passe par défaut. os.getenv('NEO4J_PASSWORD') SANS second argument. Phase 301.5i: 38 fichiers corrigés (smashpass123, smashcoach2024 supprimés).",
+      "learned_from": "Phase 301.5i - Audit sécurité 38 fichiers corrigés",
+      "severity": "critical",
+      "keywords": [
+        "password",
+        "credentials",
+        "secret",
+        "env",
+        "security",
+        "hardcoded",
+        "smashpass",
+        "default"
+      ]
+    },
+    {
+      "domain": "archi/backend",
+      "pattern_danger": "Création de nouveau point d'entrée backend",
+      "reminder": "UN SEUL BACKEND: uvicorn app.main:app. Nouveaux endpoints → app/api/routers/ → importer dans app/main.py",
+      "learned_from": "CLAUDE.md Règle 1",
+      "severity": "critical",
+      "keywords": [
+        "main.py",
+        "backend",
+        "endpoint",
+        "entry",
+        "uvicorn",
+        "fastapi"
+      ]
+    },
+    {
+      "domain": "archi/imports",
+      "pattern_danger": "sys.path.insert dispersés",
+      "reminder": "Centraliser sys.path dans app/main.py. Éviter les manipulations de path dans les modules.",
+      "learned_from": "Phase 300.5 - Refactor imports",
+      "severity": "warning",
+      "keywords": [
+        "sys.path",
+        "import",
+        "path",
+        "insert",
+        "module"
+      ]
+    },
+    {
+      "domain": "archi/async",
+      "pattern_danger": "time.sleep() dans code async",
+      "reminder": "Utiliser asyncio.sleep() dans les fonctions async. time.sleep() bloque l'event loop.",
+      "learned_from": "Async Python best practices",
+      "severity": "warning",
+      "keywords": [
+        "sleep",
+        "async",
+        "await",
+        "asyncio",
+        "blocking"
+      ]
+    },
+    {
+      "domain": "archi/enum",
+      "pattern_danger": "Création d'enum avec nom générique (QueryType, FocusMode)",
+      "reminder": "Noms d'enum génériques causent des conflits. Préfixer avec le domaine: VodQueryType, LearningFocusMode, ArbiterQueryType. Vérifier avec: grep 'class.*Enum' avant création.",
+      "learned_from": "Phase 301.5h - Duplicate enum cleanup",
+      "severity": "warning",
+      "keywords": [
+        "enum",
+        "QueryType",
+        "FocusMode",
+        "duplicate",
+        "conflict",
+        "naming",
+        "class"
+      ]
+    }
+  ],
+  "dialectic": [
+    {
+      "domain": "dialectic/decision",
+      "pattern_danger": "Décision importante sans débat contradictoire",
+      "reminder": "Pour décisions structurantes: Invoquer La Manche. Quichotte propose, Sancho critique, Moulin tranche.",
+      "learned_from": "Phase 297 - El Manana framework",
+      "severity": "info",
+      "keywords": [
+        "décision",
+        "decision",
+        "important",
+        "choix",
+        "stratégie",
+        "architecture"
+      ]
+    },
+    {
+      "domain": "dialectic/geant",
+      "pattern_danger": "Problème complexe sans formalisation",
+      "reminder": "Formaliser en GÉANT APERÇU: définir clairement la question, les enjeux, les options.",
+      "learned_from": "El Manana - Géants",
+      "severity": "info",
+      "keywords": [
+        "géant",
+        "problème",
+        "complexe",
+        "enjeu",
+        "question"
+      ]
+    },
+    {
+      "domain": "dialectic/aufheben",
+      "pattern_danger": "Synthèse prématurée sans exploration",
+      "reminder": "L'Aufheben (synthèse) vient APRÈS thèse et antithèse. Ne pas conclure trop vite.",
+      "learned_from": "El Manana - Dialectique",
+      "severity": "warning",
+      "keywords": [
+        "synthèse",
+        "conclusion",
+        "décret",
+        "aufheben",
+        "thesis"
+      ]
+    }
+  ],
+  "smash": [
+    {
+      "domain": "smash/framedata",
+      "pattern_danger": "Frame data sans source vérifiée",
+      "reminder": "Toujours vérifier sur ultimateframedata.com. Les données changent avec les patches.",
+      "learned_from": "Smash data integrity",
+      "severity": "warning",
+      "keywords": [
+        "frame",
+        "data",
+        "startup",
+        "endlag",
+        "hitbox",
+        "ufd"
+      ]
+    },
+    {
+      "domain": "smash/matchup",
+      "pattern_danger": "Conseil matchup générique",
+      "reminder": "Les matchups dépendent du level. Vérifier si conseil pour débutant/intermédiaire/avancé.",
+      "learned_from": "Smash coaching",
+      "severity": "info",
+      "keywords": [
+        "matchup",
+        "counter",
+        "advice",
+        "conseil",
+        "versus"
+      ]
+    },
+    {
+      "domain": "smash/combo",
+      "pattern_danger": "Combo sans vérification DI/SDI",
+      "reminder": "La plupart des combos ont des escapes. Toujours mentionner les options défensives.",
+      "learned_from": "Smash combo theory",
+      "severity": "info",
+      "keywords": [
+        "combo",
+        "true",
+        "guaranteed",
+        "di",
+        "sdi",
+        "escape"
+      ]
+    },
+    {
+      "domain": "smash/character",
+      "pattern_danger": "Données personnage sans vérification Neo4j",
+      "reminder": "Vérifier dans Neo4j: MATCH (c:Character {name: 'xxx'}) RETURN c",
+      "learned_from": "Data consistency",
+      "severity": "warning",
+      "keywords": [
+        "character",
+        "personnage",
+        "move",
+        "attack",
+        "special"
+      ]
+    },
+    {
+      "domain": "smash/oos",
+      "pattern_danger": "Recommander Up-B comme meilleure option OOS",
+      "reminder": "OOS = Out of Shield. Up-B est frame 3 mais TRÈS risqué (landing lag ~30f). Nair/Up-Air ont meilleur risk/reward. Vérifier is_oos=true, oos_startup, oos_risk, oos_reward dans Neo4j. Script: scripts/enrich_oos_data.py",
+      "learned_from": "Phase 301.5f - OOS risk/reward scoring",
+      "severity": "warning",
+      "keywords": [
+        "oos",
+        "out of shield",
+        "punish",
+        "shield",
+        "up b",
+        "nair",
+        "risk",
+        "reward"
+      ]
+    }
+  ],
+  "session": [
+    {
+      "domain": "session/context",
+      "pattern_danger": "Perte de contexte après compaction",
+      "reminder": "Workflow: /savecontext (MEMNARCH) → /compact (Claude). Toujours sauvegarder AVANT compaction.",
+      "learned_from": "MEMNARCH workflow",
+      "severity": "critical",
+      "keywords": [
+        "compact",
+        "context",
+        "save",
+        "memnarch",
+        "restore",
+        "session"
+      ]
+    },
+    {
+      "domain": "session/restore",
+      "pattern_danger": "Début de session sans restore",
+      "reminder": "Commencer par /restore pour charger le contexte MEMNARCH de la session précédente.",
+      "learned_from": "Session continuity",
+      "severity": "warning",
+      "keywords": [
+        "restore",
+        "début",
+        "start",
+        "session",
+        "nouveau"
+      ]
+    },
+    {
+      "domain": "session/journal",
+      "pattern_danger": "Modifications sans mise à jour journal",
+      "reminder": "Mettre à jour JOURNAL_DE_BORD.md après: code modifié, bug résolu, phase terminée, config changée.",
+      "learned_from": "CLAUDE.md documentation rules",
+      "severity": "warning",
+      "keywords": [
+        "journal",
+        "bord",
+        "log",
+        "documentation",
+        "update"
+      ]
+    },
+    {
+      "domain": "session/aliases",
+      "pattern_danger": "Utilisateur demande diagnostic système sans utiliser alias existant",
+      "reminder": "CONSULTER docs/ALIASES.md - Alias existants: cpu (PC lent), free (RAM), kill-zombies, smashserve, smashtest, /status, /audit",
+      "learned_from": "Phase 301.5 - Index des raccourcis",
+      "severity": "info",
+      "keywords": [
+        "souffle",
+        "lent",
+        "ram",
+        "mémoire",
+        "zombie",
+        "port",
+        "status",
+        "diagnostic",
+        "cpu",
+        "processus",
+        "kill"
+      ]
+    },
+    {
+      "domain": "session/automation-detection",
+      "pattern_danger": "Requête impliquant exhaustivité ou maintenance sans automatisation proposée",
+      "reminder": "SYSTÈME 2 REQUIS: Signaux détectés (tous les, classifier, maintenir, à l'avenir). PROPOSER AUTOMATISATION avant action manuelle. Voir docs/USER_GUIDE_SYSTEM_THINKING.md",
+      "learned_from": "Phase 301.5 - Incident extract-aliases.py",
+      "severity": "warning",
+      "keywords": [
+        "tous les",
+        "classifier",
+        "indexer",
+        "maintenir",
+        "synchroniser",
+        "à l'avenir",
+        "pérenne",
+        "robuste",
+        "pour que tu"
+      ]
+    }
+  ],
+  "audit": [
+    {
+      "domain": "audit/response",
+      "pattern_danger": "Affirmer sans vérifier",
+      "reminder": "Règle 5 CLAUDE.md: Auditer PUIS répondre. Jamais l'inverse. Pas d'affirmation sans preuve.",
+      "learned_from": "Phase 300.5 - Erreur de précipitation",
+      "severity": "critical",
+      "keywords": [
+        "affirmer",
+        "vérifier",
+        "audit",
+        "précipitation",
+        "erreur",
+        "ok",
+        "tout va bien"
+      ]
+    },
+    {
+      "domain": "audit/test",
+      "pattern_danger": "Code sans tests",
+      "reminder": "Nouveaux modules critiques doivent avoir des tests. Voir tests/api/ pour exemples.",
+      "learned_from": "Phase 300.5 - CI/CD setup",
+      "severity": "warning",
+      "keywords": [
+        "test",
+        "pytest",
+        "coverage",
+        "ci",
+        "cd"
+      ]
+    },
+    {
+      "domain": "audit/security",
+      "pattern_danger": "Endpoint sans authentification",
+      "reminder": "Endpoints admin: require verify_admin_api_key. Endpoints sensibles: rate limiting.",
+      "learned_from": "Phase 300.5 - Security audit",
+      "severity": "critical",
+      "keywords": [
+        "auth",
+        "api",
+        "key",
+        "security",
+        "endpoint",
+        "admin"
+      ]
+    }
+  ],
+  "project": [
+    {
+      "domain": "project/sages",
+      "pattern_danger": "Question sur le systeme de sages",
+      "reminder": "CONSEIL DES 9 SAGES: Architecture multi-LLM. AEON (Orchestrateur), NEWTON (Physique), HERMES (Frame Data), ATHENA (Stratégie), PROMETHEUS (Meta), THOTH (Patterns), MNEMOSYNE (Histoire), CHIRON (Pédagogie), DAEDALUS (Tech). Voir: app/core/sages/, MODULES.md",
+      "learned_from": "Phase 200+ - Multi-sage architecture",
+      "severity": "info",
+      "keywords": [
+        "sage",
+        "sages",
+        "council",
+        "aeon",
+        "newton",
+        "hermes",
+        "athena",
+        "prometheus",
+        "thoth",
+        "mnemosyne",
+        "chiron",
+        "daedalus"
+      ]
+    },
+    {
+      "domain": "project/elmanana",
+      "pattern_danger": "Question sur El Manana",
+      "reminder": "EL MANANA: Framework dialectique. TRIO LA MANCHE: Moulin (Orchestre), Quichotte (Thèse), Sancho (Antithèse). Workflow: moulin → GÉANT → débat → /decret → auberge. Voir: El Manana/README.md",
+      "learned_from": "Phase 297 - El Manana framework",
+      "severity": "info",
+      "keywords": [
+        "el manana",
+        "manana",
+        "manche",
+        "moulin",
+        "quichotte",
+        "sancho",
+        "debat",
+        "dialectique",
+        "aufheben",
+        "geant"
+      ]
+    },
+    {
+      "domain": "project/twinturbo",
+      "pattern_danger": "Question sur Twin Turbo",
+      "reminder": "TWIN TURBO: Mode orchestrateur 2 instances. ALPHA (Quasimodo/Backend), BETA (Esmeralda/Mobile). Commandes: modorc (active), modork (restore), solo (désactive), twinstatus, a2b/b2a. Voir: ARCHITECTURE_TWIN_TURBO.md",
+      "learned_from": "Phase 290+ - Twin Turbo",
+      "severity": "info",
+      "keywords": [
+        "twin",
+        "turbo",
+        "alpha",
+        "beta",
+        "quasimodo",
+        "esmeralda",
+        "orchestrateur",
+        "modorc",
+        "worktree"
+      ]
+    },
+    {
+      "domain": "project/nile",
+      "pattern_danger": "Question sur le framework NILE",
+      "reminder": "NILE: Framework égyptien contexte. SPHINX (validation), PHARAOH (décrets), PYRAMID (mémoire), HIEROGLYPHICS (patterns), OSIRIS (jugement). Verdicts: WORTHY, BLESSED, CURSED, UNWORTHY, FORBIDDEN. Voir: app/core/nile/",
+      "learned_from": "Phase 301 - NILE Framework",
+      "severity": "info",
+      "keywords": [
+        "nile",
+        "sphinx",
+        "pyramid",
+        "pharaoh",
+        "hieroglyphics",
+        "osiris",
+        "egypte",
+        "egyptian"
+      ]
+    },
+    {
+      "domain": "project/memnarch",
+      "pattern_danger": "Question sur MEMNARCH",
+      "reminder": "MEMNARCH: Mémoire persistante inter-sessions. Workflow: /restore (début) → travail → /savecontext (AVANT compact) → /compact. Stocke dans data/session_snapshot.json. TOUJOURS savecontext AVANT compact!",
+      "learned_from": "Phase 280+ - MEMNARCH",
+      "severity": "info",
+      "keywords": [
+        "memnarch",
+        "memoire",
+        "persistence",
+        "savecontext",
+        "restore",
+        "snapshot",
+        "session"
+      ]
+    },
+    {
+      "domain": "project/structure",
+      "pattern_danger": "Question sur la structure du projet",
+      "reminder": "STRUCTURE: /apps/mobile (React Native Expo), /apps/backend/app/main.py (UNIQUE entry), /app/api/routers (endpoints), /app/core (logic). Stack: FastAPI+LangGraph+Neo4j+Qdrant backend, RN+Skia+Reanimated mobile. Voir: MODULES.md",
+      "learned_from": "Project structure",
+      "severity": "info",
+      "keywords": [
+        "structure",
+        "projet",
+        "dossier",
+        "folder",
+        "organisation",
+        "architecture",
+        "stack"
+      ]
+    },
+    {
+      "domain": "project/phases",
+      "pattern_danger": "Question sur les phases du projet",
+      "reminder": "PHASES: 0-100 (setup), 100-200 (mobile), 200-250 (9 Sages), 250-280 (Newton), 280-290 (MEMNARCH), 290-297 (Twin Turbo), 297-300 (El Manana), 300-301 (NILE), 301.5 (Sage+Cleanup). Actuel: 301.5h. Voir: PHASES_INDEX.md",
+      "learned_from": "Project history",
+      "severity": "info",
+      "keywords": [
+        "phase",
+        "historique",
+        "history",
+        "version",
+        "progression",
+        "evolution"
+      ]
+    }
+  ],
+  "security": [
+    {
+      "domain": "security/pandora",
+      "pattern_danger": "Secret ou credential dans le code",
+      "archetype": "PANDORA",
+      "reminder": "PANDORA cherche: API keys, passwords, tokens. Utiliser os.getenv() ou SecretStr. Phase 301.5i: 38 fichiers nettoyés.",
+      "learned_from": "Phase 301.5i - Security cleanup",
+      "severity": "critical",
+      "keywords": [
+        "secret",
+        "api_key",
+        "password",
+        "token",
+        "credential",
+        "hardcoded"
+      ]
+    },
+    {
+      "domain": "security/env",
+      "pattern_danger": "Fichier .env commité ou exposé",
+      "archetype": "PANDORA",
+      "reminder": ".env doit être dans .gitignore. Vérifier git status. Ne jamais logger les variables d'environnement.",
+      "learned_from": "Security best practices",
+      "severity": "critical",
+      "keywords": [
+        ".env",
+        "dotenv",
+        "environment",
+        "expose",
+        "commit"
+      ]
+    },
+    {
+      "domain": "security/jwt",
+      "pattern_danger": "JWT sans expiration ou secret faible",
+      "archetype": "PANDORA",
+      "reminder": "JWT doit avoir exp, iat, et un secret fort (32+ chars). Vérifier jose, pyjwt config.",
+      "learned_from": "JWT security",
+      "severity": "critical",
+      "keywords": [
+        "jwt",
+        "token",
+        "expiration",
+        "secret",
+        "algorithm",
+        "hs256"
+      ]
+    },
+    {
+      "domain": "security/cors",
+      "pattern_danger": "CORS trop permissif",
+      "archetype": "PANDORA",
+      "reminder": "allow_origins=['*'] est dangereux en prod. Spécifier les domaines autorisés.",
+      "learned_from": "CORS security",
+      "severity": "warning",
+      "keywords": [
+        "cors",
+        "origin",
+        "allow",
+        "wildcard",
+        "access-control"
+      ]
+    },
+    {
+      "domain": "security/rate_limit",
+      "pattern_danger": "Endpoint sans rate limiting",
+      "archetype": "PANDORA",
+      "reminder": "Les endpoints publics/auth doivent avoir du rate limiting. Utiliser slowapi ou custom middleware.",
+      "learned_from": "API security",
+      "severity": "warning",
+      "keywords": [
+        "rate",
+        "limit",
+        "throttle",
+        "brute",
+        "force",
+        "ddos"
+      ]
+    }
+  ],
+  "injection": [
+    {
+      "domain": "injection/cypher",
+      "pattern_danger": "Injection Cypher (Neo4j)",
+      "archetype": "DIONYSUS",
+      "reminder": "DIONYSUS: Utiliser escape_cypher() ou _escape_cypher() pour TOUTE entrée utilisateur dans les requêtes Cypher.",
+      "learned_from": "Phase 301.5 - Cypher injection audit",
+      "severity": "critical",
+      "keywords": [
+        "cypher",
+        "neo4j",
+        "query",
+        "match",
+        "where",
+        "f-string",
+        "format"
+      ]
+    },
+    {
+      "domain": "injection/sql",
+      "pattern_danger": "Injection SQL",
+      "archetype": "DIONYSUS",
+      "reminder": "JAMAIS de f-strings dans les requêtes SQL. Utiliser paramètres: cursor.execute(query, (param,))",
+      "learned_from": "SQL security 101",
+      "severity": "critical",
+      "keywords": [
+        "sql",
+        "query",
+        "execute",
+        "cursor",
+        "select",
+        "insert",
+        "delete"
+      ]
+    },
+    {
+      "domain": "injection/shell",
+      "pattern_danger": "Command injection (shell=True)",
+      "archetype": "DIONYSUS",
+      "reminder": "subprocess avec shell=True est dangereux. Utiliser liste d'args: subprocess.run(['cmd', 'arg'])",
+      "learned_from": "Shell security",
+      "severity": "critical",
+      "keywords": [
+        "subprocess",
+        "shell",
+        "popen",
+        "os.system",
+        "command",
+        "exec"
+      ]
+    },
+    {
+      "domain": "injection/null",
+      "pattern_danger": "Accès sans vérification null",
+      "archetype": "DIONYSUS",
+      "reminder": "Toujours vérifier avant .group(), .get(), [0], etc. Utiliser: if match: match.group()",
+      "learned_from": "Phase 301.5j - Null risk fix",
+      "severity": "warning",
+      "keywords": [
+        "null",
+        "none",
+        "group",
+        "get",
+        "index",
+        "attribute"
+      ]
+    },
+    {
+      "domain": "injection/path",
+      "pattern_danger": "Path traversal",
+      "archetype": "DIONYSUS",
+      "reminder": "Valider les paths utilisateur: Path(user_path).resolve().is_relative_to(base_path)",
+      "learned_from": "Path security",
+      "severity": "critical",
+      "keywords": [
+        "path",
+        "file",
+        "traversal",
+        "directory",
+        "../",
+        "..\\"
+      ]
+    }
+  ],
+  "performance": [
+    {
+      "domain": "performance/blocking",
+      "pattern_danger": "Appel bloquant dans async",
+      "archetype": "RA",
+      "reminder": "RA cherche: time.sleep(), requests.get(), file I/O dans async. Utiliser asyncio.sleep(), httpx, aiofiles.",
+      "learned_from": "Async best practices",
+      "severity": "warning",
+      "keywords": [
+        "blocking",
+        "async",
+        "await",
+        "sleep",
+        "requests",
+        "sync"
+      ]
+    },
+    {
+      "domain": "performance/n_plus_one",
+      "pattern_danger": "Query N+1 dans boucle",
+      "archetype": "RA",
+      "reminder": "Éviter db.query() dans for loop. Utiliser batch query ou eager loading.",
+      "learned_from": "Database performance",
+      "severity": "warning",
+      "keywords": [
+        "loop",
+        "query",
+        "n+1",
+        "database",
+        "for",
+        "each"
+      ]
+    },
+    {
+      "domain": "performance/cache",
+      "pattern_danger": "Données fréquentes sans cache",
+      "archetype": "RA",
+      "reminder": "Frame data, character data = cache @lru_cache ou Redis. TTL adapté au use case.",
+      "learned_from": "Performance optimization",
+      "severity": "info",
+      "keywords": [
+        "cache",
+        "lru",
+        "redis",
+        "memoize",
+        "ttl",
+        "frequent"
+      ]
+    },
+    {
+      "domain": "performance/memory",
+      "pattern_danger": "Memory leak potentiel",
+      "archetype": "RA",
+      "reminder": "Caches unbounded, closures sur self, event handlers non-nettoyés causent des leaks.",
+      "learned_from": "Memory management",
+      "severity": "warning",
+      "keywords": [
+        "memory",
+        "leak",
+        "unbounded",
+        "closure",
+        "reference",
+        "gc"
+      ]
+    }
+  ],
+  "quality": [
+    {
+      "domain": "quality/god_object",
+      "pattern_danger": "Fichier trop volumineux (>1500 lignes)",
+      "archetype": "ICARUS",
+      "reminder": "ICARUS: God objects = >1500 lignes. Refactoriser en modules. Voir graph_tools/ refactor Phase 301.5j.",
+      "learned_from": "Phase 301.5j - God object refactor",
+      "severity": "warning",
+      "keywords": [
+        "large",
+        "god",
+        "object",
+        "lines",
+        "refactor",
+        "split"
+      ]
+    },
+    {
+      "domain": "quality/duplication",
+      "pattern_danger": "Code dupliqué",
+      "archetype": "SISYPHUS",
+      "reminder": "SISYPHUS: DRY violation. Extraire en fonction commune. Éviter copy-paste de logique.",
+      "learned_from": "DRY principle",
+      "severity": "warning",
+      "keywords": [
+        "duplicate",
+        "copy",
+        "paste",
+        "dry",
+        "repetition",
+        "similar"
+      ]
+    },
+    {
+      "domain": "quality/complexity",
+      "pattern_danger": "Fonction trop complexe",
+      "archetype": "ICARUS",
+      "reminder": "Cyclomatic complexity > 10 = refactor. Extraire en sous-fonctions. Un niveau d'abstraction par fonction.",
+      "learned_from": "Clean code",
+      "severity": "warning",
+      "keywords": [
+        "complex",
+        "nested",
+        "if",
+        "else",
+        "cyclomatic",
+        "indent"
+      ]
+    },
+    {
+      "domain": "quality/params",
+      "pattern_danger": "Fonction avec trop de paramètres",
+      "archetype": "ICARUS",
+      "reminder": "Plus de 5 params = utiliser dataclass, dict, ou refactoriser. Pattern: Config object.",
+      "learned_from": "Clean code",
+      "severity": "info",
+      "keywords": [
+        "parameter",
+        "argument",
+        "many",
+        "signature",
+        "config"
+      ]
+    },
+    {
+      "domain": "quality/bare_except",
+      "pattern_danger": "except: sans type d'exception",
+      "archetype": "CASSANDRA",
+      "reminder": "except: attrape TOUT (y compris KeyboardInterrupt). Spécifier: except (ValueError, TypeError):",
+      "learned_from": "Phase 301.5j - Bare except fix",
+      "severity": "warning",
+      "keywords": [
+        "except",
+        "bare",
+        "exception",
+        "catch",
+        "error",
+        "try"
+      ]
+    },
+    {
+      "domain": "quality/todo",
+      "pattern_danger": "TODO/FIXME sans issue tracker",
+      "archetype": "CASSANDRA",
+      "reminder": "CASSANDRA: TODOs orphelins = dette oubliée. Lier à un issue: # TODO(#123): description",
+      "learned_from": "Technical debt management",
+      "severity": "info",
+      "keywords": [
+        "todo",
+        "fixme",
+        "hack",
+        "xxx",
+        "bug",
+        "debt"
+      ]
+    },
+    {
+      "domain": "quality/deprecated",
+      "pattern_danger": "Usage de code déprécié",
+      "archetype": "CASSANDRA",
+      "reminder": "DeprecationWarning = à migrer. Vérifier les changelogs des libs.",
+      "learned_from": "Dependency management",
+      "severity": "info",
+      "keywords": [
+        "deprecated",
+        "obsolete",
+        "legacy",
+        "old",
+        "warning"
+      ]
+    }
+  ],
+  "api": [
+    {
+      "domain": "api/naming",
+      "pattern_danger": "Endpoint mal nommé",
+      "archetype": "HERMES",
+      "reminder": "HERMES: Endpoints REST = /noun (pluriel) + HTTP verbs. GET /users, POST /users, DELETE /users/{id}",
+      "learned_from": "REST API conventions",
+      "severity": "info",
+      "keywords": [
+        "endpoint",
+        "route",
+        "naming",
+        "rest",
+        "url",
+        "path"
+      ]
+    },
+    {
+      "domain": "api/auth",
+      "pattern_danger": "Endpoint sans auth",
+      "archetype": "HERMES",
+      "reminder": "Endpoints sensibles: Depends(verify_admin_api_key) ou OAuth. Documenter les permissions requises.",
+      "learned_from": "API security",
+      "severity": "critical",
+      "keywords": [
+        "auth",
+        "dependency",
+        "protected",
+        "admin",
+        "permission"
+      ]
+    },
+    {
+      "domain": "api/response",
+      "pattern_danger": "Response sans modèle Pydantic",
+      "archetype": "HERMES",
+      "reminder": "TOUJOURS response_model=Schema. Évite les fuites de données et documente l'API.",
+      "learned_from": "FastAPI best practices",
+      "severity": "warning",
+      "keywords": [
+        "response",
+        "model",
+        "schema",
+        "pydantic",
+        "return",
+        "type"
+      ]
+    },
+    {
+      "domain": "api/validation",
+      "pattern_danger": "Input sans validation",
+      "archetype": "HERMES",
+      "reminder": "Pydantic validators: Field(ge=0, le=100), @validator, regex patterns. Valider TOUT input utilisateur.",
+      "learned_from": "Input validation",
+      "severity": "warning",
+      "keywords": [
+        "validate",
+        "input",
+        "field",
+        "constraint",
+        "pydantic",
+        "schema"
+      ]
+    },
+    {
+      "domain": "api/error",
+      "pattern_danger": "Erreur exposant des détails internes",
+      "archetype": "HERMES",
+      "reminder": "En prod: messages génériques. En dev: détails. Ne jamais exposer stack traces en prod.",
+      "learned_from": "Error handling",
+      "severity": "warning",
+      "keywords": [
+        "error",
+        "exception",
+        "message",
+        "detail",
+        "stack",
+        "trace"
+      ]
+    }
+  ],
+  "deps": [
+    {
+      "domain": "deps/unpinned",
+      "pattern_danger": "Dépendance sans version",
+      "archetype": "HEPHAESTUS",
+      "reminder": "HEPHAESTUS: requests>=2.0 risqué. Préférer requests==2.31.0 ou ~=2.31 pour updates mineurs.",
+      "learned_from": "Dependency management",
+      "severity": "warning",
+      "keywords": [
+        "dependency",
+        "version",
+        "pin",
+        "requirements",
+        "package"
+      ]
+    },
+    {
+      "domain": "deps/docker",
+      "pattern_danger": "Docker image :latest",
+      "archetype": "HEPHAESTUS",
+      "reminder": "python:latest = instable. Utiliser python:3.12-slim avec digest pour reproductibilité.",
+      "learned_from": "Docker best practices",
+      "severity": "warning",
+      "keywords": [
+        "docker",
+        "image",
+        "latest",
+        "tag",
+        "version",
+        "FROM"
+      ]
+    },
+    {
+      "domain": "deps/vulnerability",
+      "pattern_danger": "Dépendance avec CVE connue",
+      "archetype": "HEPHAESTUS",
+      "reminder": "pip audit, npm audit régulièrement. Mettre à jour les deps critiques.",
+      "learned_from": "Security updates",
+      "severity": "critical",
+      "keywords": [
+        "cve",
+        "vulnerability",
+        "security",
+        "audit",
+        "update",
+        "patch"
+      ]
+    }
+  ],
+  "ai": [
+    {
+      "domain": "ai/prompt_injection",
+      "pattern_danger": "User input directement dans prompt",
+      "archetype": "DELPHI",
+      "reminder": "DELPHI: Sanitize user input avant injection dans prompts. Éviter: f'{user_input}' direct.",
+      "learned_from": "LLM security",
+      "severity": "critical",
+      "keywords": [
+        "prompt",
+        "injection",
+        "user",
+        "input",
+        "llm",
+        "langchain"
+      ]
+    },
+    {
+      "domain": "ai/model_cost",
+      "pattern_danger": "Modèle coûteux en boucle",
+      "archetype": "MIDAS",
+      "reminder": "MIDAS: gpt-4 dans for loop = $$$. Batching, caching, ou modèle plus léger quand possible.",
+      "learned_from": "LLM cost optimization",
+      "severity": "warning",
+      "keywords": [
+        "model",
+        "cost",
+        "loop",
+        "gpt-4",
+        "claude",
+        "expensive",
+        "token"
+      ]
+    },
+    {
+      "domain": "ai/hallucination",
+      "pattern_danger": "Output LLM utilisé sans validation",
+      "archetype": "DELPHI",
+      "reminder": "Les LLMs hallucinent. Valider les outputs: structured output, type checking, ground truth.",
+      "learned_from": "LLM reliability",
+      "severity": "warning",
+      "keywords": [
+        "hallucination",
+        "output",
+        "validate",
+        "llm",
+        "response",
+        "trust"
+      ]
+    },
+    {
+      "domain": "ai/context",
+      "pattern_danger": "Context window overflow",
+      "archetype": "MIDAS",
+      "reminder": "Gérer le contexte: truncation, summarization, RAG. Éviter de passer l'historique entier.",
+      "learned_from": "LLM context management",
+      "severity": "warning",
+      "keywords": [
+        "context",
+        "window",
+        "token",
+        "limit",
+        "overflow",
+        "truncate"
+      ]
+    }
+  ],
+  "observability": [
+    {
+      "domain": "observability/logging",
+      "pattern_danger": "Pas de logging structuré",
+      "archetype": "ARGUS",
+      "reminder": "ARGUS: Utiliser logging avec JSON format en prod. Inclure: timestamp, level, context.",
+      "learned_from": "Observability basics",
+      "severity": "info",
+      "keywords": [
+        "log",
+        "logging",
+        "print",
+        "debug",
+        "info",
+        "error"
+      ]
+    },
+    {
+      "domain": "observability/metrics",
+      "pattern_danger": "Pas de métriques",
+      "archetype": "ARGUS",
+      "reminder": "prometheus_client pour /metrics. Counter, Gauge, Histogram selon le use case.",
+      "learned_from": "Metrics best practices",
+      "severity": "info",
+      "keywords": [
+        "metric",
+        "prometheus",
+        "counter",
+        "gauge",
+        "histogram",
+        "monitor"
+      ]
+    },
+    {
+      "domain": "observability/health",
+      "pattern_danger": "Pas de health check",
+      "archetype": "ARGUS",
+      "reminder": "Endpoint /health pour k8s probes. Vérifier: DB, Redis, services externes.",
+      "learned_from": "K8s readiness",
+      "severity": "info",
+      "keywords": [
+        "health",
+        "check",
+        "readiness",
+        "liveness",
+        "probe",
+        "k8s"
+      ]
+    },
+    {
+      "domain": "observability/tracing",
+      "pattern_danger": "Pas de tracing distribué",
+      "archetype": "ARGUS",
+      "reminder": "OpenTelemetry ou Langfuse pour tracer les requêtes cross-service.",
+      "learned_from": "Distributed tracing",
+      "severity": "info",
+      "keywords": [
+        "trace",
+        "tracing",
+        "opentelemetry",
+        "langfuse",
+        "span",
+        "distributed"
+      ]
+    }
+  ],
+  "async": [
+    {
+      "domain": "async/orphan-task",
+      "pattern_danger": "create_task() sans référence - tâche orpheline",
+      "reminder": "task = asyncio.create_task(...); await task ou task.add_done_callback(...)",
+      "learned_from": "FENRIR auto-detection (5 occurrences)",
+      "severity": "warning",
+      "keywords": [
+        "and",
+        "fire",
+        "forget",
+        "orpheline",
+        "garm",
+        "task"
+      ]
+    }
+  ]
+}
