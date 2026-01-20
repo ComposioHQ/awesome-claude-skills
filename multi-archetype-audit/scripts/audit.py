@@ -141,18 +141,75 @@ class Finding:
     description: str
 
 
+# =============================================================================
+# AST String Filter - Reduces false positives in example_code/docstrings
+# =============================================================================
+
+def _get_string_ranges(content: str) -> List[tuple]:
+    """
+    Extract all string literal byte ranges from Python code using AST.
+    Returns list of (start_offset, end_offset) tuples.
+    """
+    try:
+        tree = ast.parse(content)
+    except SyntaxError:
+        return []
+
+    ranges = []
+    lines = content.split('\n')
+    line_offsets = [0]
+    for line in lines:
+        line_offsets.append(line_offsets[-1] + len(line) + 1)
+
+    def get_offset(lineno: int, col: int) -> int:
+        """Convert line:col to byte offset."""
+        if lineno <= 0 or lineno > len(line_offsets):
+            return 0
+        return line_offsets[lineno - 1] + col
+
+    for node in ast.walk(tree):
+        # String constants (including docstrings, f-strings, etc.)
+        if isinstance(node, ast.Constant) and isinstance(node.value, str):
+            if hasattr(node, 'lineno') and hasattr(node, 'end_lineno'):
+                start = get_offset(node.lineno, node.col_offset)
+                end = get_offset(node.end_lineno, node.end_col_offset)
+                ranges.append((start, end))
+        # JoinedStr (f-strings) - the whole f-string
+        elif isinstance(node, ast.JoinedStr):
+            if hasattr(node, 'lineno') and hasattr(node, 'end_lineno'):
+                start = get_offset(node.lineno, node.col_offset)
+                end = get_offset(node.end_lineno, node.end_col_offset)
+                ranges.append((start, end))
+
+    return ranges
+
+
+def _is_in_string(pos: int, string_ranges: List[tuple]) -> bool:
+    """Check if a position is inside any string literal."""
+    for start, end in string_ranges:
+        if start <= pos < end:
+            return True
+    return False
+
+
 def scan_file_regex(filepath: Path) -> List[Finding]:
-    """Scan a file using regex patterns."""
+    """Scan a file using regex patterns with AST string filtering."""
     findings = []
 
     try:
         content = filepath.read_text(errors='ignore')
-        lines = content.split('\n')
     except OSError:
         return findings
 
+    # Pre-compute string ranges for false positive filtering
+    string_ranges = _get_string_ranges(content)
+
     for pattern_name, config in FENRIR_PATTERNS.items():
         for match in re.finditer(config["regex"], content, re.MULTILINE):
+            # Skip if match is inside a string literal (example_code, docstring, etc.)
+            if _is_in_string(match.start(), string_ranges):
+                continue
+
             line_num = content[:match.start()].count('\n') + 1
             findings.append(Finding(
                 file=str(filepath),
