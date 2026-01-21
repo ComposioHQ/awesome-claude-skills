@@ -51,6 +51,12 @@
       "category": "communication-writing"
     },
     {
+      "name": "twitter-algorithm-optimizer",
+      "description": "Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.",
+      "source": "./twitter-algorithm-optimizer",
+      "category": "communication-writing"
+    },
+    {
       "name": "canvas-design",
       "description": "Creates beautiful visual art in PNG and PDF documents using design philosophy and aesthetic principles for posters, designs, and static pieces.",
       "source": "./canvas-design",
