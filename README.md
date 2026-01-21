@@ -180,6 +180,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Collaboration & Project Management
 
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
+- [jira-skill](https://github.com/kilhyeonjun/jira-skill) - Jira Cloud API integration for worklog management, issue operations, and description updates with ADF (Atlassian Document Format) support.
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
 - [test-fixing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing) - Detect failing tests and propose patches or fixes.
 
