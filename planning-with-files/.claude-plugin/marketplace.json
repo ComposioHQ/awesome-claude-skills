@@ -1,0 +1,15 @@
+{
+  "name": "planning-with-files",
+  "owner": {
+    "name": "Ahmad Othman Ammar Adi",
+    "url": "https://github.com/OthmanAdi"
+  },
+  "plugins": [
+    {
+      "name": "planning-with-files",
+      "source": "./",
+      "description": "Manus-style persistent markdown files for planning, progress tracking, and knowledge storage. Now with hooks integration.",
+      "version": "2.0.0"
+    }
+  ]
+}
