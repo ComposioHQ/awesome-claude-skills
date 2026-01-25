@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "version": "1.0-generic",
+    "total_bubbles": 24,
+    "description": "Generic Python best practices for any project"
+  },
+  "security": [
+    {
+      "domain": "security/injection",
+      "pattern_danger": "User input directly in SQL/Cypher/eval",
+      "reminder": "NEVER use f-strings or .format() with user input in queries. Use parameterized queries.",
+      "severity": "critical",
+      "keywords": ["injection", "sql", "cypher", "eval", "exec", "user_input", "format"]
+    },
+    {
+      "domain": "security/pickle",
+      "pattern_danger": "pickle.load on untrusted data",
+      "reminder": "pickle.load can execute arbitrary code. Use JSON or msgpack for untrusted data.",
+      "severity": "critical",
+      "keywords": ["pickle", "load", "deserialize", "untrusted"]
+    },
+    {
+      "domain": "security/secrets",
+      "pattern_danger": "Hardcoded credentials in code",
+      "reminder": "Use environment variables or secret managers. Never commit secrets to git.",
+      "severity": "critical",
+      "keywords": ["password", "secret", "api_key", "credential", "token", "hardcoded"]
+    },
+    {
+      "domain": "security/shell",
+      "pattern_danger": "Shell injection via subprocess",
+      "reminder": "Use subprocess with shell=False and pass args as list. Never shell=True with user input.",
+      "severity": "critical",
+      "keywords": ["subprocess", "shell", "popen", "os.system", "command"]
+    }
+  ],
+  "exceptions": [
+    {
+      "domain": "exceptions/silent",
+      "pattern_danger": "except: pass swallows all errors",
+      "reminder": "Always log exceptions. Use specific exception types. At minimum: logger.exception('msg')",
+      "severity": "critical",
+      "keywords": ["except", "pass", "silent", "swallow", "ignore", "exception"]
+    },
+    {
+      "domain": "exceptions/broad",
+      "pattern_danger": "except Exception catches everything",
+      "reminder": "Catch specific exceptions: except (ValueError, KeyError). Broad catches hide bugs.",
+      "severity": "warning",
+      "keywords": ["exception", "broad", "catch", "pokemon", "generic"]
+    },
+    {
+      "domain": "exceptions/traceback",
+      "pattern_danger": "logging.error() loses traceback",
+      "reminder": "Use logging.exception() or logger.error('msg', exc_info=True) to preserve traceback.",
+      "severity": "warning",
+      "keywords": ["logging", "error", "traceback", "exc_info", "argus"]
+    }
+  ],
+  "async": [
+    {
+      "domain": "async/blocking",
+      "pattern_danger": "Blocking calls in async functions",
+      "reminder": "Use aiohttp instead of requests, aiofiles instead of open(), asyncio.sleep instead of time.sleep.",
+      "severity": "critical",
+      "keywords": ["async", "blocking", "requests", "sleep", "open", "sync", "ra"]
+    },
+    {
+      "domain": "async/timeout",
+      "pattern_danger": "HTTP calls without timeout",
+      "reminder": "Always set timeout: requests.get(url, timeout=30). Prevents hanging forever.",
+      "severity": "warning",
+      "keywords": ["timeout", "http", "requests", "httpx", "aiohttp", "antaeus"]
+    },
+    {
+      "domain": "async/retry",
+      "pattern_danger": "No retry logic for network calls",
+      "reminder": "Use tenacity or backoff for retries: @retry(stop=stop_after_attempt(3))",
+      "severity": "info",
+      "keywords": ["retry", "backoff", "tenacity", "network", "resilience"]
+    }
+  ],
+  "api": [
+    {
+      "domain": "api/auth",
+      "pattern_danger": "Endpoint without authentication",
+      "reminder": "All mutating endpoints need auth. Use Depends(get_current_user) or API key verification.",
+      "severity": "warning",
+      "keywords": ["auth", "endpoint", "router", "api", "hermes", "decorator"]
+    },
+    {
+      "domain": "api/validation",
+      "pattern_danger": "Missing input validation",
+      "reminder": "Use Pydantic models for request/response. Validate all user input at API boundary.",
+      "severity": "warning",
+      "keywords": ["validation", "pydantic", "schema", "input", "pandora"]
+    },
+    {
+      "domain": "api/versioning",
+      "pattern_danger": "API without version prefix",
+      "reminder": "Version your APIs: /api/v1/resource. Enables backwards compatibility.",
+      "severity": "info",
+      "keywords": ["version", "api", "v1", "v2", "prefix", "janus"]
+    }
+  ],
+  "code_quality": [
+    {
+      "domain": "quality/complexity",
+      "pattern_danger": "Function too complex (>10 cyclomatic)",
+      "reminder": "Extract helper functions. One level of abstraction per function. Early returns reduce nesting.",
+      "severity": "warning",
+      "keywords": ["complexity", "nested", "icarus", "cyclomatic", "refactor"]
+    },
+    {
+      "domain": "quality/god_class",
+      "pattern_danger": "Class with too many responsibilities",
+      "reminder": "Split into smaller classes. Single Responsibility Principle. Max ~300 lines per class.",
+      "severity": "warning",
+      "keywords": ["god", "class", "large", "responsibilities", "split"]
+    },
+    {
+      "domain": "quality/magic_numbers",
+      "pattern_danger": "Magic numbers in code",
+      "reminder": "Extract to named constants: MAX_RETRIES = 3, TIMEOUT_SECONDS = 30",
+      "severity": "info",
+      "keywords": ["magic", "number", "constant", "sisyphus", "hardcoded"]
+    },
+    {
+      "domain": "quality/dry",
+      "pattern_danger": "Duplicated code blocks",
+      "reminder": "Extract common logic to functions. Three similar blocks = time to refactor.",
+      "severity": "info",
+      "keywords": ["duplicate", "copy", "paste", "dry", "repeat"]
+    }
+  ],
+  "state": [
+    {
+      "domain": "state/global",
+      "pattern_danger": "Global state mutation",
+      "reminder": "Avoid global variables. Use dependency injection, context managers, or class instances.",
+      "severity": "warning",
+      "keywords": ["global", "state", "mutation", "proteus", "singleton"]
+    },
+    {
+      "domain": "state/mutable_default",
+      "pattern_danger": "Mutable default arguments",
+      "reminder": "Never def fn(items=[]). Use def fn(items=None): items = items or []",
+      "severity": "critical",
+      "keywords": ["mutable", "default", "argument", "list", "dict"]
+    }
+  ],
+  "testing": [
+    {
+      "domain": "testing/skip",
+      "pattern_danger": "Skipped tests in codebase",
+      "reminder": "Fix or remove skipped tests. @pytest.mark.skip should be temporary.",
+      "severity": "info",
+      "keywords": ["skip", "test", "pytest", "tiresias", "disabled"]
+    },
+    {
+      "domain": "testing/assert",
+      "pattern_danger": "Meaningless assertions",
+      "reminder": "assert True/False is useless. Test actual behavior: assert result == expected",
+      "severity": "info",
+      "keywords": ["assert", "true", "false", "meaningless"]
+    }
+  ],
+  "llm": [
+    {
+      "domain": "llm/prompt_injection",
+      "pattern_danger": "User input directly in LLM prompt",
+      "reminder": "Sanitize user input before injecting into prompts. Use system/user message separation.",
+      "severity": "critical",
+      "keywords": ["prompt", "injection", "llm", "user", "delphi", "anthropic", "openai"]
+    },
+    {
+      "domain": "llm/cost",
+      "pattern_danger": "Expensive model without caching",
+      "reminder": "Cache LLM responses (semantic cache). Use cheaper models for simple tasks.",
+      "severity": "info",
+      "keywords": ["llm", "cost", "cache", "expensive", "midas", "token"]
+    }
+  ]
+}
