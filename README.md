@@ -157,6 +157,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [kallyai-cli](https://github.com/sltelitsyn/kallyai-cli) - AI phone assistant that makes calls to businesses on your behalf for reservations, appointments, and inquiries via CLI. *By [@sltelitsyn](https://github.com/sltelitsyn)*
 
 ### Creative & Media
 
