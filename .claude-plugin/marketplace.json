@@ -181,6 +181,12 @@
       "description": "Skills for working with Excel spreadsheets including creation, editing, formulas, and data manipulation.",
       "source": "./document-skills/xlsx",
       "category": "productivity-organization"
+    },
+    {
+      "name": "youtube-transcript",
+      "description": "Fetches transcripts from YouTube videos without API keys for note-taking, summarization, and text analysis.",
+      "source": "./youtube-transcript",
+      "category": "creative-media"
     }
   ]
 }
