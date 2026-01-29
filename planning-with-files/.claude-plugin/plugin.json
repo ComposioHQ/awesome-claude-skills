@@ -1,0 +1,21 @@
+{
+  "name": "planning-with-files",
+  "version": "2.1.1",
+  "description": "Manus-style persistent markdown files for planning, progress tracking, and knowledge storage. Includes hooks for automatic plan re-reading and completion verification. Use when starting complex tasks, multi-step projects, research tasks, or when you want structured output.",
+  "author": {
+    "name": "OthmanAdi",
+    "url": "https://github.com/OthmanAdi"
+  },
+  "repository": "https://github.com/OthmanAdi/planning-with-files",
+  "license": "MIT",
+  "keywords": [
+    "planning",
+    "manus",
+    "workflow",
+    "markdown",
+    "context-engineering",
+    "task-management",
+    "hooks",
+    "templates"
+  ]
+}
