@@ -68,3 +68,40 @@ Deliverables:
 4. MLflow experiment structure and model registry approach
 5. monitoring & retraining triggers
 
+
+## Example
+
+**User**: "Create a medallion pipeline with Spark ETL, feature engineering, a model zoo, and MLflow logging for an enterprise use case."
+
+**Output**:
+
+A Databricks notebook plan that includes:
+
+- Unity Catalog naming conventions
+- Spark reads from Bronze tables
+- Silver feature tables with incremental processing and optional partitioning
+- Model zoo training loop (baseline + multiple models)
+- MLflow logging of:
+  - parameters (data windows, feature flags, hyperparams)
+  - metrics (MAE/RMSE/MAPE + business metrics)
+  - artifacts (plots, feature importance, evaluation tables)
+- Gold outputs:
+  - predictions table
+  - evaluation summary table
+  - optional monitoring table for drift/quality
+- Safety confirmations prior to overwrite/drop/vacuum
+
+
+**Credit:** Based on Databricks lakehouse medallion architecture and MLflow experimentation/registry practices.
+
+## Tips
+
+- Prefer **append + merge/upsert** patterns for Silver/Gold instead of blind overwrites. If overwrite is necessary, confirm it explicitly.
+- Use **partitioning only when it helps** (large tables, frequent predicate filters). Common partition keys: `event_date`, `yyyymm`, `region`, `customer_id`. Avoid high-cardinality partitions.
+- Always log a **results table** (predictions + labels + key dimensions) and at least **two plots** (e.g., error by segment, forecast vs actual).
+
+## Common Use Cases
+
+- Demand forecasting, churn prediction, risk scoring, anomaly detection—any workflow needing traceable data + reproducible experiments.
+- Migrating ad-hoc notebooks into a standardized enterprise pipeline with governance via Unity Catalog.
+- Replacing a single-model approach with a model zoo and evidence-based promotion to the registry.
