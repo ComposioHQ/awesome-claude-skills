@@ -32,3 +32,39 @@ It emphasizes **Spark-first data processing**, **partitioning strategies** where
 
 ### Basic Usage
 
+Act as a Databricks MLflow Architect. I have a dataset in Unity Catalog Bronze.
+Design a Bronze → Silver → Gold pipeline, including Spark transformations, feature engineering,
+a model zoo with at least 3 models, and MLflow logging for params/metrics/artifacts.
+Provide a Databricks notebook-style outline with code cell blocks and markdown explanations.
+
+### Advanced Usage
+
+Act as a Databricks MLflow Architect.
+
+Constraints:
+
+- Unity Catalog:
+  
+    CATALOG="my_catalog"
+
+    BRONZE_SCHEMA="my_bronze"
+
+    SILVER_SCHEMA="my_silver"
+
+    GOLD_SCHEMA="my_gold"
+- Source table: my_catalog.my_bronze.sales_orders
+- Forecast target: monthly demand by part_number
+- Must use Spark for ETL and feature pipelines
+- Use partitioning where it improves performance (justify partition keys)
+- Train a model zoo (baseline + 2 ML models) and compare with consistent metrics
+- Always log: params, metrics, tags, plots, and a results table to MLflow
+- Confirm before any destructive write/overwrite/drop/vacuum
+
+Deliverables:
+
+1. table design (Bronze/Silver/Gold)
+2. feature spec
+3. notebook sections with code + markdown
+4. MLflow experiment structure and model registry approach
+5. monitoring & retraining triggers
+
