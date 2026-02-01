@@ -75,21 +75,37 @@ If you receive the email, Claude is now connected to 500+ apps.
 
 ## Contents
 
+- [Quickstart: Connect Claude to 500+ Apps](#quickstart-connect-claude-to-500-apps)
+  - [1. Install the Plugin](#1-install-the-plugin)
+  - [2. Run Setup](#2-run-setup)
+  - [3. Restart \& Try It](#3-restart--try-it)
+- [Contents](#contents)
 - [What Are Claude Skills?](#what-are-claude-skills)
 - [Skills](#skills)
   - [Document Processing](#document-processing)
-  - [Development & Code Tools](#development--code-tools)
-  - [Data & Analysis](#data--analysis)
-  - [Business & Marketing](#business--marketing)
-  - [Communication & Writing](#communication--writing)
-  - [Creative & Media](#creative--media)
-  - [Productivity & Organization](#productivity--organization)
-  - [Collaboration & Project Management](#collaboration--project-management)
-  - [Security & Systems](#security--systems)
+  - [Development \& Code Tools](#development--code-tools)
+  - [Data \& Analysis](#data--analysis)
+  - [Business \& Marketing](#business--marketing)
+  - [Communication \& Writing](#communication--writing)
+  - [Creative \& Media](#creative--media)
+  - [Productivity \& Organization](#productivity--organization)
+  - [Collaboration \& Project Management](#collaboration--project-management)
+  - [Security \& Systems](#security--systems)
 - [Getting Started](#getting-started)
+  - [Using Skills in Claude.ai](#using-skills-in-claudeai)
+  - [Using Skills in Claude Code](#using-skills-in-claude-code)
+  - [Using Skills via API](#using-skills-via-api)
 - [Creating Skills](#creating-skills)
+  - [Skill Structure](#skill-structure)
+  - [Basic Skill Template](#basic-skill-template)
+  - [Skill Best Practices](#skill-best-practices)
 - [Contributing](#contributing)
+  - [Quick Contribution Steps](#quick-contribution-steps)
 - [Resources](#resources)
+  - [Official Documentation](#official-documentation)
+  - [Community Resources](#community-resources)
+  - [Inspiration \& Use Cases](#inspiration--use-cases)
+- [Join the Community](#join-the-community)
 - [License](#license)
 
 ## What Are Claude Skills?
@@ -113,6 +129,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
 - [Claude Code Terminal Title](https://github.com/bluzername/claude-code-terminal-title) - Gives each Claud-Code terminal window a dynamic title that describes the work being done so you don't lose track of what window is doing what.
 - [D3.js Visualization](https://github.com/chrisvoncsefalvay/claude-d3js-skill) - Teaches Claude to produce D3 charts and interactive data visualizations. *By [@chrisvoncsefalvay](https://github.com/chrisvoncsefalvay)*
+- [Databricks MLflow Architect](./databricks-mlflow-architect/) - Designs an enterprise-grade Databricks + MLflow lakehouse pipeline using Unity Catalog medallion layers (bronze/silver/gold), Spark ETL, model zoo comparisons, and full experiment logging. *By [@maihao14](https://github.com/maihao14)*
 - [FFUF Web Fuzzing](https://github.com/jthack/ffuf_claude_skill) - Integrates the ffuf web fuzzer so Claude can run fuzzing tasks and analyze results for vulnerabilities. *By [@jthack](https://github.com/jthack)*
 - [finishing-a-development-branch](https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch) - Guides completion of development work by presenting clear options and handling chosen workflow.
 - [iOS Simulator](https://github.com/conorluddy/ios-simulator-skill) - Enables Claude to interact with iOS Simulator for testing and debugging iOS applications. *By [@conorluddy](https://github.com/conorluddy)*
