@@ -69,7 +69,7 @@ claude
 
 If you receive the email, Claude is now connected to 500+ apps.
 
-**[See all supported apps →](./connect-apps/)**
+**[See all supported apps →](https://composio.dev/toolkits)**
 
 ---
 
