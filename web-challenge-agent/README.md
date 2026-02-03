@@ -2,6 +2,14 @@
 
 An AI-powered browser automation agent designed to solve web challenges (specifically the Browser Navigation Challenge at https://serene-frangipane-7fd25b.netlify.app/) in under 5 minutes.
 
+## Target Challenge
+
+The Browser Navigation Challenge at https://serene-frangipane-7fd25b.netlify.app/ consists of 30 steps that test browser automation capabilities including:
+- Clicking specific buttons and links
+- Handling modal dialogs
+- Form interactions
+- Navigation challenges
+
 ## Challenge
 
 Solve all 30 challenges on the Browser Navigation Challenge website in under 5 minutes, tracking:
