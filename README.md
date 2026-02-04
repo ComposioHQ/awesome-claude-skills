@@ -192,6 +192,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
+- [security-scanning](https://github.com/sinewaveai/agent-security-layer-fork) - Scan code for SQL injection, XSS, secrets exposure, prompt injection, and hallucinated packages. *By [@sinewaveai](https://github.com/sinewaveai)*
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
 ## Getting Started
