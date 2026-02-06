@@ -323,12 +323,30 @@ class ChallengeSolver:
         # TRY ALL INTERACTION TYPES - challenge types are randomized
         self.log("Interactions...")
         
-        # Check for Delayed Reveal challenge - wait for timer
+        # Check for special challenge types
         data = await self.browser.extract_page_data()
         body = data.get('bodyText', '').lower()
+        
+        # Delayed Reveal - wait for timer
         if 'delayed reveal' in body or 'waiting' in body:
             self.log("Delayed Reveal detected - waiting 5s...")
             await asyncio.sleep(5)
+        
+        # Memory Challenge - click "I Remember" to reveal real code
+        if 'memory' in body:
+            self.log("Memory Challenge detected...")
+            # Click "I Remember" button to reveal the real code
+            await self.browser.page.evaluate("""
+                () => {
+                    const btns = Array.from(document.querySelectorAll('button'));
+                    for (const btn of btns) {
+                        if (btn.textContent.includes('Remember')) {
+                            btn.click();
+                        }
+                    }
+                }
+            """)
+            await asyncio.sleep(1)
         
         # 1. Scroll down (for Scroll to Reveal)
         await self.browser.page.evaluate('window.scrollBy(0, 700)')
