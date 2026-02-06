@@ -1,6 +1,6 @@
 ---
 name: instagram-automation
-description: Automate Instagram tasks via Rube MCP (Composio): create posts, carousels, manage media, get insights, and publishing limits. Always search tools first for current schemas.
+description: "Automate Instagram tasks via Rube MCP (Composio): create posts, carousels, manage media, get insights, and publishing limits. Always search tools first for current schemas."
 requires:
   mcp: [rube]
 ---
@@ -17,6 +17,9 @@ Automate Instagram operations through Composio's Instagram toolkit via Rube MCP.
 - Instagram Business or Creator account required (personal accounts not supported)
 
 ## Setup
+
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+
 
 1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
 2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `instagram`
