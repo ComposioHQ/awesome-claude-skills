@@ -1,6 +1,6 @@
 ---
 name: posthog-automation
-description: Automate PostHog tasks via Rube MCP (Composio): events, feature flags, projects, user profiles, annotations. Always search tools first for current schemas.
+description: "Automate PostHog tasks via Rube MCP (Composio): events, feature flags, projects, user profiles, annotations. Always search tools first for current schemas."
 requires:
   mcp: [rube]
 ---
@@ -16,6 +16,9 @@ Automate PostHog product analytics and feature flag management through Composio'
 - Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
 
 ## Setup
+
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+
 
 1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
 2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `posthog`

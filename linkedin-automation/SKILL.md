@@ -1,6 +1,6 @@
 ---
 name: linkedin-automation
-description: Automate LinkedIn tasks via Rube MCP (Composio): create posts, manage profile, company info, comments, and image uploads. Always search tools first for current schemas.
+description: "Automate LinkedIn tasks via Rube MCP (Composio): create posts, manage profile, company info, comments, and image uploads. Always search tools first for current schemas."
 requires:
   mcp: [rube]
 ---
@@ -16,6 +16,9 @@ Automate LinkedIn operations through Composio's LinkedIn toolkit via Rube MCP.
 - Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
 
 ## Setup
+
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+
 
 1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
 2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `linkedin`

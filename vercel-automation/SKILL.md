@@ -1,6 +1,6 @@
 ---
 name: vercel-automation
-description: Automate Vercel tasks via Rube MCP (Composio): manage deployments, domains, DNS, env vars, projects, and teams. Always search tools first for current schemas.
+description: "Automate Vercel tasks via Rube MCP (Composio): manage deployments, domains, DNS, env vars, projects, and teams. Always search tools first for current schemas."
 requires:
   mcp: [rube]
 ---
@@ -16,6 +16,9 @@ Automate Vercel platform operations through Composio's Vercel toolkit via Rube M
 - Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
 
 ## Setup
+
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+
 
 1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
 2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `vercel`

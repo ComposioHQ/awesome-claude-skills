@@ -1,6 +1,6 @@
 ---
 name: microsoft-teams-automation
-description: Automate Microsoft Teams tasks via Rube MCP (Composio): send messages, manage channels, create meetings, handle chats, and search messages. Always search tools first for current schemas.
+description: "Automate Microsoft Teams tasks via Rube MCP (Composio): send messages, manage channels, create meetings, handle chats, and search messages. Always search tools first for current schemas."
 requires:
   mcp: [rube]
 ---
@@ -16,6 +16,9 @@ Automate Microsoft Teams operations through Composio's Microsoft Teams toolkit v
 - Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
 
 ## Setup
+
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+
 
 1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
 2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `microsoft_teams`
