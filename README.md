@@ -190,6 +190,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Security & Systems
 
+- [agentguard](https://github.com/GoPlusSecurity/agentguard/tree/main/skills/agentguard) - Protects AI agents from malicious skills and unsafe actions. Runtime hooks automatically block destructive commands, secret exfiltration, and webhook data leaks before they execute. Deep scan with 24 detection rules covers prompt injection, obfuscation, backdoors, and Web3-specific threats like wallet draining and unlimited token approvals. Includes a trust registry with capability-based access control per skill. *By [@0xbeekeeper](https://github.com/0xbeekeeper)*
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
