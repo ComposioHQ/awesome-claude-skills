@@ -73,8 +73,188 @@ If you receive the email, Claude is now connected to 500+ apps.
 
 ---
 
+## Quick Install
+
+Install automation skills individually or all at once using `npx skills`. These skills connect Claude to 78 SaaS apps via [Rube MCP (Composio)](https://composio.dev).
+
+### Install All Skills
+
+```bash
+npx skills add ComposioHQ/awesome-claude-skills --all
+```
+
+### Set Up Rube MCP
+
+Add the following as an MCP server in your Claude configuration:
+
+```
+https://rube.app/mcp
+```
+
+### Install Individual Skills
+
+#### CRM
+
+| App | Install Command |
+|-----|----------------|
+| Salesforce | `npx skills add ComposioHQ/awesome-claude-skills --skill salesforce-automation` |
+| HubSpot | `npx skills add ComposioHQ/awesome-claude-skills --skill hubspot-automation` |
+| Pipedrive | `npx skills add ComposioHQ/awesome-claude-skills --skill pipedrive-automation` |
+| Zoho CRM | `npx skills add ComposioHQ/awesome-claude-skills --skill zoho-crm-automation` |
+| Close | `npx skills add ComposioHQ/awesome-claude-skills --skill close-automation` |
+
+#### Project Management
+
+| App | Install Command |
+|-----|----------------|
+| Jira | `npx skills add ComposioHQ/awesome-claude-skills --skill jira-automation` |
+| Asana | `npx skills add ComposioHQ/awesome-claude-skills --skill asana-automation` |
+| Trello | `npx skills add ComposioHQ/awesome-claude-skills --skill trello-automation` |
+| ClickUp | `npx skills add ComposioHQ/awesome-claude-skills --skill clickup-automation` |
+| Monday | `npx skills add ComposioHQ/awesome-claude-skills --skill monday-automation` |
+| Linear | `npx skills add ComposioHQ/awesome-claude-skills --skill linear-automation` |
+| Wrike | `npx skills add ComposioHQ/awesome-claude-skills --skill wrike-automation` |
+| Basecamp | `npx skills add ComposioHQ/awesome-claude-skills --skill basecamp-automation` |
+| Coda | `npx skills add ComposioHQ/awesome-claude-skills --skill coda-automation` |
+
+#### Communication
+
+| App | Install Command |
+|-----|----------------|
+| Slack | `npx skills add ComposioHQ/awesome-claude-skills --skill slack-automation` |
+| Discord | `npx skills add ComposioHQ/awesome-claude-skills --skill discord-automation` |
+| Microsoft Teams | `npx skills add ComposioHQ/awesome-claude-skills --skill microsoft-teams-automation` |
+| Telegram | `npx skills add ComposioHQ/awesome-claude-skills --skill telegram-automation` |
+| WhatsApp | `npx skills add ComposioHQ/awesome-claude-skills --skill whatsapp-automation` |
+
+#### Email
+
+| App | Install Command |
+|-----|----------------|
+| Gmail | `npx skills add ComposioHQ/awesome-claude-skills --skill gmail-automation` |
+| Outlook | `npx skills add ComposioHQ/awesome-claude-skills --skill outlook-automation` |
+| SendGrid | `npx skills add ComposioHQ/awesome-claude-skills --skill sendgrid-automation` |
+| Mailchimp | `npx skills add ComposioHQ/awesome-claude-skills --skill mailchimp-automation` |
+| Postmark | `npx skills add ComposioHQ/awesome-claude-skills --skill postmark-automation` |
+| Brevo | `npx skills add ComposioHQ/awesome-claude-skills --skill brevo-automation` |
+| ConvertKit | `npx skills add ComposioHQ/awesome-claude-skills --skill convertkit-automation` |
+| ActiveCampaign | `npx skills add ComposioHQ/awesome-claude-skills --skill activecampaign-automation` |
+| Klaviyo | `npx skills add ComposioHQ/awesome-claude-skills --skill klaviyo-automation` |
+
+#### Code & DevOps
+
+| App | Install Command |
+|-----|----------------|
+| GitHub | `npx skills add ComposioHQ/awesome-claude-skills --skill github-automation` |
+| GitLab | `npx skills add ComposioHQ/awesome-claude-skills --skill gitlab-automation` |
+| Bitbucket | `npx skills add ComposioHQ/awesome-claude-skills --skill bitbucket-automation` |
+| Vercel | `npx skills add ComposioHQ/awesome-claude-skills --skill vercel-automation` |
+| Render | `npx skills add ComposioHQ/awesome-claude-skills --skill render-automation` |
+| Sentry | `npx skills add ComposioHQ/awesome-claude-skills --skill sentry-automation` |
+| Datadog | `npx skills add ComposioHQ/awesome-claude-skills --skill datadog-automation` |
+| PagerDuty | `npx skills add ComposioHQ/awesome-claude-skills --skill pagerduty-automation` |
+| CircleCI | `npx skills add ComposioHQ/awesome-claude-skills --skill circleci-automation` |
+| PostHog | `npx skills add ComposioHQ/awesome-claude-skills --skill posthog-automation` |
+
+#### Storage & Docs
+
+| App | Install Command |
+|-----|----------------|
+| Google Drive | `npx skills add ComposioHQ/awesome-claude-skills --skill google-drive-automation` |
+| Dropbox | `npx skills add ComposioHQ/awesome-claude-skills --skill dropbox-automation` |
+| Box | `npx skills add ComposioHQ/awesome-claude-skills --skill box-automation` |
+| OneDrive | `npx skills add ComposioHQ/awesome-claude-skills --skill one-drive-automation` |
+| Notion | `npx skills add ComposioHQ/awesome-claude-skills --skill notion-automation` |
+| Confluence | `npx skills add ComposioHQ/awesome-claude-skills --skill confluence-automation` |
+| Airtable | `npx skills add ComposioHQ/awesome-claude-skills --skill airtable-automation` |
+
+#### Spreadsheets
+
+| App | Install Command |
+|-----|----------------|
+| Google Sheets | `npx skills add ComposioHQ/awesome-claude-skills --skill googlesheets-automation` |
+
+#### Calendar
+
+| App | Install Command |
+|-----|----------------|
+| Google Calendar | `npx skills add ComposioHQ/awesome-claude-skills --skill google-calendar-automation` |
+| Outlook Calendar | `npx skills add ComposioHQ/awesome-claude-skills --skill outlook-calendar-automation` |
+| Calendly | `npx skills add ComposioHQ/awesome-claude-skills --skill calendly-automation` |
+| Cal.com | `npx skills add ComposioHQ/awesome-claude-skills --skill cal-com-automation` |
+
+#### Social Media
+
+| App | Install Command |
+|-----|----------------|
+| LinkedIn | `npx skills add ComposioHQ/awesome-claude-skills --skill linkedin-automation` |
+| Twitter | `npx skills add ComposioHQ/awesome-claude-skills --skill twitter-automation` |
+| Reddit | `npx skills add ComposioHQ/awesome-claude-skills --skill reddit-automation` |
+| Instagram | `npx skills add ComposioHQ/awesome-claude-skills --skill instagram-automation` |
+| TikTok | `npx skills add ComposioHQ/awesome-claude-skills --skill tiktok-automation` |
+| YouTube | `npx skills add ComposioHQ/awesome-claude-skills --skill youtube-automation` |
+
+#### Support
+
+| App | Install Command |
+|-----|----------------|
+| Zendesk | `npx skills add ComposioHQ/awesome-claude-skills --skill zendesk-automation` |
+| Freshdesk | `npx skills add ComposioHQ/awesome-claude-skills --skill freshdesk-automation` |
+| Freshservice | `npx skills add ComposioHQ/awesome-claude-skills --skill freshservice-automation` |
+| Help Scout | `npx skills add ComposioHQ/awesome-claude-skills --skill helpdesk-automation` |
+| Intercom | `npx skills add ComposioHQ/awesome-claude-skills --skill intercom-automation` |
+
+#### E-commerce & Payments
+
+| App | Install Command |
+|-----|----------------|
+| Shopify | `npx skills add ComposioHQ/awesome-claude-skills --skill shopify-automation` |
+| Stripe | `npx skills add ComposioHQ/awesome-claude-skills --skill stripe-automation` |
+| Square | `npx skills add ComposioHQ/awesome-claude-skills --skill square-automation` |
+
+#### Design
+
+| App | Install Command |
+|-----|----------------|
+| Figma | `npx skills add ComposioHQ/awesome-claude-skills --skill figma-automation` |
+| Canva | `npx skills add ComposioHQ/awesome-claude-skills --skill canva-automation` |
+| Miro | `npx skills add ComposioHQ/awesome-claude-skills --skill miro-automation` |
+
+#### Analytics
+
+| App | Install Command |
+|-----|----------------|
+| Google Analytics | `npx skills add ComposioHQ/awesome-claude-skills --skill google-analytics-automation` |
+| Mixpanel | `npx skills add ComposioHQ/awesome-claude-skills --skill mixpanel-automation` |
+| Amplitude | `npx skills add ComposioHQ/awesome-claude-skills --skill amplitude-automation` |
+| Segment | `npx skills add ComposioHQ/awesome-claude-skills --skill segment-automation` |
+
+#### HR
+
+| App | Install Command |
+|-----|----------------|
+| BambooHR | `npx skills add ComposioHQ/awesome-claude-skills --skill bamboohr-automation` |
+
+#### Automation
+
+| App | Install Command |
+|-----|----------------|
+| Make | `npx skills add ComposioHQ/awesome-claude-skills --skill make-automation` |
+
+#### Other
+
+| App | Install Command |
+|-----|----------------|
+| Supabase | `npx skills add ComposioHQ/awesome-claude-skills --skill supabase-automation` |
+| Webflow | `npx skills add ComposioHQ/awesome-claude-skills --skill webflow-automation` |
+| Todoist | `npx skills add ComposioHQ/awesome-claude-skills --skill todoist-automation` |
+| DocuSign | `npx skills add ComposioHQ/awesome-claude-skills --skill docusign-automation` |
+
+---
+
 ## Contents
 
+- [Quick Install](#quick-install)
 - [What Are Claude Skills?](#what-are-claude-skills)
 - [Skills](#skills)
   - [Document Processing](#document-processing)
