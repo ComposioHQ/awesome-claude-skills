@@ -56,6 +56,38 @@ The body contains Markdown instructions written in **imperative/infinitive form*
 | `references/` | Documentation Claude reads as needed          | On demand           |
 | `assets/`     | Files used in output (templates, fonts, etc.) | No                  |
 
+## Claude Code Plugin System
+
+This repository also participates in the Claude Code plugin ecosystem. The official plugin directory is at [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official).
+
+### Skills vs Plugins
+
+- **Skills** are the core unit of this repository — a `SKILL.md` with optional bundled resources (`scripts/`, `references/`, `assets/`). They work across Claude.ai, Claude Code, and the API.
+- **Plugins** are Claude Code-specific packages that can bundle skills together with slash commands, agents, MCP servers, and hooks. A plugin follows this structure:
+
+```
+plugin-name/
+├── .claude-plugin/
+│   └── plugin.json      # Plugin metadata (required)
+├── .mcp.json            # MCP server configuration (optional)
+├── commands/            # Slash commands (optional)
+├── agents/              # Agent definitions (optional)
+├── skills/              # Skill definitions (optional)
+└── README.md
+```
+
+### Plugin in This Repository
+
+`connect-apps-plugin/` is a real Claude Code plugin that follows the official structure. It provides:
+- `.claude-plugin/plugin.json` — metadata for Composio's 500+ app integration
+- `commands/setup.md` — a `/connect-apps:setup` slash command for API key configuration
+
+Install it with: `claude --plugin-dir ./connect-apps-plugin`
+
+### Marketplace Metadata
+
+`.claude-plugin/marketplace.json` at the repo root registers 25 local skills as discoverable plugins in the Claude Code marketplace. Each entry has `name`, `description`, `source` (path), and `category`. When adding a new skill, consider adding a corresponding entry here.
+
 ## Languages Used
 
 - **Markdown** — All skill definitions (primary)
@@ -131,6 +163,15 @@ All skills must:
 5. Be tested across Claude platforms
 6. Confirm before destructive operations
 7. Be portable across Claude.ai, Claude Code, and API
+
+## Local vs External Skills
+
+The README.md lists two types of skills:
+
+- **Local skills** — Directories in this repository (e.g., `./slack-gif-creator/`). Linked with relative paths.
+- **External skills** — Hosted in other GitHub repositories (e.g., `https://github.com/obra/superpowers/...`). Linked with full URLs and attributed to their authors with `*By [@username](url)*`.
+
+When adding a new README entry, use relative paths for skills in this repo and full GitHub URLs for external ones.
 
 ## Key Files to Know
 
