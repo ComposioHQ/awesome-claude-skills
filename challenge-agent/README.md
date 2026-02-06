@@ -6,19 +6,21 @@ A browser automation agent that solves 30 browser-based challenges at `https://s
 
 | Metric | Value |
 |--------|-------|
-| Challenges Solved | 4-5 out of 30 per run |
+| Challenges Solved | 4-6 out of 30 per run |
 | Success Rate | ~15-20% |
 | Time | ~5 minutes |
-| Cost | ~$0.40-0.50 per run |
+| Cost | ~$0.20-0.50 per run |
 
 **Supported Challenge Types:**
-- ✅ Scroll to Reveal
-- ✅ Click to Reveal  
-- ✅ Hidden DOM (cursor-pointer click)
-- ✅ Delayed Reveal (timed wait)
-- ⚠️ Memory Challenge (partial)
-- ❌ Hover Challenge
-- ❌ Drag-and-Drop
+- ✅ Scroll to Reveal - Scrolls to reveal hidden codes
+- ✅ Click to Reveal - Clicks "Reveal Code" button
+- ✅ Hidden DOM - Clicks cursor-pointer elements
+- ✅ Delayed Reveal - Waits for timed reveals
+- ✅ Memory Challenge - Clicks "I Remember" to reveal real code
+- ⚠️ Hover Challenge - Attempts hover interactions
+- ⚠️ Code Visible - Extracts visible codes
+- ❌ Drag-and-Drop - Not implemented
+- ❌ Keyboard Sequence - Not implemented
 
 ## Quick Start
 
