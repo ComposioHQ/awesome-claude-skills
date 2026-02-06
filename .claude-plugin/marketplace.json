@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "awesome-claude-skills",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A curated marketplace of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API",
   "owner": {
     "name": "ComposioHQ",
@@ -181,6 +181,474 @@
       "description": "Skills for working with Excel spreadsheets including creation, editing, formulas, and data manipulation.",
       "source": "./document-skills/xlsx",
       "category": "productivity-organization"
+    },
+    {
+      "name": "activecampaign-automation",
+      "description": "Automate ActiveCampaign tasks via Rube MCP (Composio): manage contacts, tags, list subscriptions, automation enrollment, and tasks.",
+      "source": "./activecampaign-automation",
+      "category": "email"
+    },
+    {
+      "name": "airtable-automation",
+      "description": "Automate Airtable tasks via Rube MCP (Composio): records, bases, tables, fields, views.",
+      "source": "./airtable-automation",
+      "category": "storage-docs"
+    },
+    {
+      "name": "amplitude-automation",
+      "description": "Automate Amplitude tasks via Rube MCP (Composio): events, user activity, cohorts, user identification.",
+      "source": "./amplitude-automation",
+      "category": "analytics"
+    },
+    {
+      "name": "asana-automation",
+      "description": "Automate Asana tasks via Rube MCP (Composio): tasks, projects, sections, teams, workspaces.",
+      "source": "./asana-automation",
+      "category": "project-management"
+    },
+    {
+      "name": "bamboohr-automation",
+      "description": "Automate BambooHR tasks via Rube MCP (Composio): employees, time-off, benefits, dependents, employee updates.",
+      "source": "./bamboohr-automation",
+      "category": "hr"
+    },
+    {
+      "name": "basecamp-automation",
+      "description": "Automate Basecamp project management, to-dos, messages, people, and to-do list organization via Rube MCP (Composio).",
+      "source": "./basecamp-automation",
+      "category": "project-management"
+    },
+    {
+      "name": "bitbucket-automation",
+      "description": "Automate Bitbucket repositories, pull requests, branches, issues, and workspace management via Rube MCP (Composio).",
+      "source": "./bitbucket-automation",
+      "category": "devops"
+    },
+    {
+      "name": "box-automation",
+      "description": "Automate Box cloud storage operations including file upload/download, search, folder management, sharing, collaborations, and metadata queries via Rube MCP (Composio).",
+      "source": "./box-automation",
+      "category": "storage-docs"
+    },
+    {
+      "name": "brevo-automation",
+      "description": "Automate Brevo (Sendinblue) tasks via Rube MCP (Composio): manage email campaigns, create/edit templates, track senders, and monitor campaign performance.",
+      "source": "./brevo-automation",
+      "category": "email"
+    },
+    {
+      "name": "cal-com-automation",
+      "description": "Automate Cal.com tasks via Rube MCP (Composio): manage bookings, check availability, configure webhooks, and handle teams.",
+      "source": "./cal-com-automation",
+      "category": "calendar"
+    },
+    {
+      "name": "calendly-automation",
+      "description": "Automate Calendly scheduling, event management, invitee tracking, availability checks, and organization administration via Rube MCP (Composio).",
+      "source": "./calendly-automation",
+      "category": "calendar"
+    },
+    {
+      "name": "canva-automation",
+      "description": "Automate Canva tasks via Rube MCP (Composio): designs, exports, folders, brand templates, autofill.",
+      "source": "./canva-automation",
+      "category": "design"
+    },
+    {
+      "name": "circleci-automation",
+      "description": "Automate CircleCI tasks via Rube MCP (Composio): trigger pipelines, monitor workflows/jobs, retrieve artifacts and test metadata.",
+      "source": "./circleci-automation",
+      "category": "devops"
+    },
+    {
+      "name": "clickup-automation",
+      "description": "Automate ClickUp project management including tasks, spaces, folders, lists, comments, and team operations via Rube MCP (Composio).",
+      "source": "./clickup-automation",
+      "category": "project-management"
+    },
+    {
+      "name": "close-automation",
+      "description": "Automate Close CRM tasks via Rube MCP (Composio): create leads, manage calls/SMS, handle tasks, and track notes.",
+      "source": "./close-automation",
+      "category": "crm"
+    },
+    {
+      "name": "coda-automation",
+      "description": "Automate Coda tasks via Rube MCP (Composio): manage docs, pages, tables, rows, formulas, permissions, and publishing.",
+      "source": "./coda-automation",
+      "category": "project-management"
+    },
+    {
+      "name": "confluence-automation",
+      "description": "Automate Confluence page creation, content search, space management, labels, and hierarchy navigation via Rube MCP (Composio).",
+      "source": "./confluence-automation",
+      "category": "storage-docs"
+    },
+    {
+      "name": "convertkit-automation",
+      "description": "Automate ConvertKit (Kit) tasks via Rube MCP (Composio): manage subscribers, tags, broadcasts, and broadcast stats.",
+      "source": "./convertkit-automation",
+      "category": "email"
+    },
+    {
+      "name": "datadog-automation",
+      "description": "Automate Datadog tasks via Rube MCP (Composio): query metrics, search logs, manage monitors/dashboards, create events and downtimes.",
+      "source": "./datadog-automation",
+      "category": "devops"
+    },
+    {
+      "name": "discord-automation",
+      "description": "Automate Discord tasks via Rube MCP (Composio): messages, channels, roles, webhooks, reactions.",
+      "source": "./discord-automation",
+      "category": "communication"
+    },
+    {
+      "name": "docusign-automation",
+      "description": "Automate DocuSign tasks via Rube MCP (Composio): templates, envelopes, signatures, document management.",
+      "source": "./docusign-automation",
+      "category": "productivity-organization"
+    },
+    {
+      "name": "dropbox-automation",
+      "description": "Automate Dropbox file management, sharing, search, uploads, downloads, and folder operations via Rube MCP (Composio).",
+      "source": "./dropbox-automation",
+      "category": "storage-docs"
+    },
+    {
+      "name": "figma-automation",
+      "description": "Automate Figma tasks via Rube MCP (Composio): files, components, design tokens, comments, exports.",
+      "source": "./figma-automation",
+      "category": "design"
+    },
+    {
+      "name": "freshdesk-automation",
+      "description": "Automate Freshdesk helpdesk operations including tickets, contacts, companies, notes, and replies via Rube MCP (Composio).",
+      "source": "./freshdesk-automation",
+      "category": "support"
+    },
+    {
+      "name": "freshservice-automation",
+      "description": "Automate Freshservice ITSM tasks via Rube MCP (Composio): create/update tickets, bulk operations, service requests, and outbound emails.",
+      "source": "./freshservice-automation",
+      "category": "support"
+    },
+    {
+      "name": "github-automation",
+      "description": "Automate GitHub repositories, issues, pull requests, branches, CI/CD, and permissions via Rube MCP (Composio). Manage code workflows, review PRs, search code, and handle deployments programmatically.",
+      "source": "./github-automation",
+      "category": "devops"
+    },
+    {
+      "name": "gitlab-automation",
+      "description": "Automate GitLab project management, issues, merge requests, pipelines, branches, and user operations via Rube MCP (Composio).",
+      "source": "./gitlab-automation",
+      "category": "devops"
+    },
+    {
+      "name": "gmail-automation",
+      "description": "Automate Gmail tasks via Rube MCP (Composio): send/reply, search, labels, drafts, attachments.",
+      "source": "./gmail-automation",
+      "category": "email"
+    },
+    {
+      "name": "google-analytics-automation",
+      "description": "Automate Google Analytics tasks via Rube MCP (Composio): run reports, list accounts/properties, funnels, pivots, key events.",
+      "source": "./google-analytics-automation",
+      "category": "analytics"
+    },
+    {
+      "name": "google-calendar-automation",
+      "description": "Automate Google Calendar events, scheduling, availability checks, and attendee management via Rube MCP (Composio). Create events, find free slots, manage attendees, and list calendars programmatically.",
+      "source": "./google-calendar-automation",
+      "category": "calendar"
+    },
+    {
+      "name": "google-drive-automation",
+      "description": "Automate Google Drive file operations (upload, download, search, share, organize) via Rube MCP (Composio). Upload/download files, manage folders, share with permissions, and search across drives programmatically.",
+      "source": "./google-drive-automation",
+      "category": "storage-docs"
+    },
+    {
+      "name": "googlesheets-automation",
+      "description": "Automate Google Sheets operations (read, write, format, filter, manage spreadsheets) via Rube MCP (Composio). Read/write data, manage tabs, apply formatting, and search rows programmatically.",
+      "source": "./googlesheets-automation",
+      "category": "spreadsheets"
+    },
+    {
+      "name": "helpdesk-automation",
+      "description": "Automate HelpDesk tasks via Rube MCP (Composio): list tickets, manage views, use canned responses, and configure custom fields.",
+      "source": "./helpdesk-automation",
+      "category": "support"
+    },
+    {
+      "name": "hubspot-automation",
+      "description": "Automate HubSpot CRM operations (contacts, companies, deals, tickets, properties) via Rube MCP using Composio integration.",
+      "source": "./hubspot-automation",
+      "category": "crm"
+    },
+    {
+      "name": "instagram-automation",
+      "description": "Automate Instagram tasks via Rube MCP (Composio): create posts, carousels, manage media, get insights, and publishing limits.",
+      "source": "./instagram-automation",
+      "category": "social-media"
+    },
+    {
+      "name": "intercom-automation",
+      "description": "Automate Intercom tasks via Rube MCP (Composio): conversations, contacts, companies, segments, admins.",
+      "source": "./intercom-automation",
+      "category": "support"
+    },
+    {
+      "name": "jira-automation",
+      "description": "Automate Jira tasks via Rube MCP (Composio): issues, projects, sprints, boards, comments, users.",
+      "source": "./jira-automation",
+      "category": "project-management"
+    },
+    {
+      "name": "klaviyo-automation",
+      "description": "Automate Klaviyo tasks via Rube MCP (Composio): manage email/SMS campaigns, inspect campaign messages, track tags, and monitor send jobs.",
+      "source": "./klaviyo-automation",
+      "category": "email"
+    },
+    {
+      "name": "linear-automation",
+      "description": "Automate Linear tasks via Rube MCP (Composio): issues, projects, cycles, teams, labels.",
+      "source": "./linear-automation",
+      "category": "project-management"
+    },
+    {
+      "name": "linkedin-automation",
+      "description": "Automate LinkedIn tasks via Rube MCP (Composio): create posts, manage profile, company info, comments, and image uploads.",
+      "source": "./linkedin-automation",
+      "category": "social-media"
+    },
+    {
+      "name": "mailchimp-automation",
+      "description": "Automate Mailchimp email marketing including campaigns, audiences, subscribers, segments, and analytics via Rube MCP (Composio).",
+      "source": "./mailchimp-automation",
+      "category": "email"
+    },
+    {
+      "name": "make-automation",
+      "description": "Automate Make (Integromat) tasks via Rube MCP (Composio): operations, enums, language and timezone lookups.",
+      "source": "./make-automation",
+      "category": "automation"
+    },
+    {
+      "name": "microsoft-teams-automation",
+      "description": "Automate Microsoft Teams tasks via Rube MCP (Composio): send messages, manage channels, create meetings, handle chats, and search messages.",
+      "source": "./microsoft-teams-automation",
+      "category": "communication"
+    },
+    {
+      "name": "miro-automation",
+      "description": "Automate Miro tasks via Rube MCP (Composio): boards, items, sticky notes, frames, sharing, connectors.",
+      "source": "./miro-automation",
+      "category": "design"
+    },
+    {
+      "name": "mixpanel-automation",
+      "description": "Automate Mixpanel tasks via Rube MCP (Composio): events, segmentation, funnels, cohorts, user profiles, JQL queries.",
+      "source": "./mixpanel-automation",
+      "category": "analytics"
+    },
+    {
+      "name": "monday-automation",
+      "description": "Automate Monday.com work management including boards, items, columns, groups, subitems, and updates via Rube MCP (Composio).",
+      "source": "./monday-automation",
+      "category": "project-management"
+    },
+    {
+      "name": "notion-automation",
+      "description": "Automate Notion tasks via Rube MCP (Composio): pages, databases, blocks, comments, users.",
+      "source": "./notion-automation",
+      "category": "storage-docs"
+    },
+    {
+      "name": "one-drive-automation",
+      "description": "Automate OneDrive file management, search, uploads, downloads, sharing, permissions, and folder operations via Rube MCP (Composio).",
+      "source": "./one-drive-automation",
+      "category": "storage-docs"
+    },
+    {
+      "name": "outlook-automation",
+      "description": "Automate Outlook tasks via Rube MCP (Composio): emails, calendar, contacts, folders, attachments.",
+      "source": "./outlook-automation",
+      "category": "email"
+    },
+    {
+      "name": "outlook-calendar-automation",
+      "description": "Automate Outlook Calendar tasks via Rube MCP (Composio): create events, manage attendees, find meeting times, and handle invitations.",
+      "source": "./outlook-calendar-automation",
+      "category": "calendar"
+    },
+    {
+      "name": "pagerduty-automation",
+      "description": "Automate PagerDuty tasks via Rube MCP (Composio): manage incidents, services, schedules, escalation policies, and on-call rotations.",
+      "source": "./pagerduty-automation",
+      "category": "devops"
+    },
+    {
+      "name": "pipedrive-automation",
+      "description": "Automate Pipedrive CRM operations including deals, contacts, organizations, activities, notes, and pipeline management via Rube MCP (Composio).",
+      "source": "./pipedrive-automation",
+      "category": "crm"
+    },
+    {
+      "name": "posthog-automation",
+      "description": "Automate PostHog tasks via Rube MCP (Composio): events, feature flags, projects, user profiles, annotations.",
+      "source": "./posthog-automation",
+      "category": "devops"
+    },
+    {
+      "name": "postmark-automation",
+      "description": "Automate Postmark email delivery tasks via Rube MCP (Composio): send templated emails, manage templates, monitor delivery stats and bounces.",
+      "source": "./postmark-automation",
+      "category": "email"
+    },
+    {
+      "name": "reddit-automation",
+      "description": "Automate Reddit tasks via Rube MCP (Composio): search subreddits, create posts, manage comments, and browse top content.",
+      "source": "./reddit-automation",
+      "category": "social-media"
+    },
+    {
+      "name": "render-automation",
+      "description": "Automate Render tasks via Rube MCP (Composio): services, deployments, projects.",
+      "source": "./render-automation",
+      "category": "devops"
+    },
+    {
+      "name": "salesforce-automation",
+      "description": "Automate Salesforce tasks via Rube MCP (Composio): leads, contacts, accounts, opportunities, SOQL queries.",
+      "source": "./salesforce-automation",
+      "category": "crm"
+    },
+    {
+      "name": "segment-automation",
+      "description": "Automate Segment tasks via Rube MCP (Composio): track events, identify users, manage groups, page views, aliases, batch operations.",
+      "source": "./segment-automation",
+      "category": "analytics"
+    },
+    {
+      "name": "sendgrid-automation",
+      "description": "Automate SendGrid email operations including sending emails, managing contacts/lists, sender identities, templates, and analytics via Rube MCP (Composio).",
+      "source": "./sendgrid-automation",
+      "category": "email"
+    },
+    {
+      "name": "sentry-automation",
+      "description": "Automate Sentry tasks via Rube MCP (Composio): manage issues/events, configure alerts, track releases, monitor projects and teams.",
+      "source": "./sentry-automation",
+      "category": "devops"
+    },
+    {
+      "name": "shopify-automation",
+      "description": "Automate Shopify tasks via Rube MCP (Composio): products, orders, customers, inventory, collections.",
+      "source": "./shopify-automation",
+      "category": "ecommerce"
+    },
+    {
+      "name": "slack-automation",
+      "description": "Automate Slack messaging, channel management, search, reactions, and threads via Rube MCP (Composio). Send messages, search conversations, manage channels/users, and react to messages programmatically.",
+      "source": "./slack-automation",
+      "category": "communication"
+    },
+    {
+      "name": "square-automation",
+      "description": "Automate Square tasks via Rube MCP (Composio): payments, orders, invoices, locations.",
+      "source": "./square-automation",
+      "category": "ecommerce"
+    },
+    {
+      "name": "stripe-automation",
+      "description": "Automate Stripe tasks via Rube MCP (Composio): customers, charges, subscriptions, invoices, products, refunds.",
+      "source": "./stripe-automation",
+      "category": "ecommerce"
+    },
+    {
+      "name": "supabase-automation",
+      "description": "Automate Supabase database queries, table management, project administration, storage, edge functions, and SQL execution via Rube MCP (Composio).",
+      "source": "./supabase-automation",
+      "category": "development"
+    },
+    {
+      "name": "telegram-automation",
+      "description": "Automate Telegram tasks via Rube MCP (Composio): send messages, manage chats, share photos/documents, and handle bot commands.",
+      "source": "./telegram-automation",
+      "category": "communication"
+    },
+    {
+      "name": "tiktok-automation",
+      "description": "Automate TikTok tasks via Rube MCP (Composio): upload/publish videos, post photos, manage content, and view user profiles/stats.",
+      "source": "./tiktok-automation",
+      "category": "social-media"
+    },
+    {
+      "name": "todoist-automation",
+      "description": "Automate Todoist task management, projects, sections, filtering, and bulk operations via Rube MCP (Composio).",
+      "source": "./todoist-automation",
+      "category": "productivity-organization"
+    },
+    {
+      "name": "trello-automation",
+      "description": "Automate Trello boards, cards, and workflows via Rube MCP (Composio). Create cards, manage lists, assign members, and search across boards programmatically.",
+      "source": "./trello-automation",
+      "category": "project-management"
+    },
+    {
+      "name": "twitter-automation",
+      "description": "Automate Twitter/X tasks via Rube MCP (Composio): posts, search, users, bookmarks, lists, media.",
+      "source": "./twitter-automation",
+      "category": "social-media"
+    },
+    {
+      "name": "vercel-automation",
+      "description": "Automate Vercel tasks via Rube MCP (Composio): manage deployments, domains, DNS, env vars, projects, and teams.",
+      "source": "./vercel-automation",
+      "category": "devops"
+    },
+    {
+      "name": "webflow-automation",
+      "description": "Automate Webflow CMS collections, site publishing, page management, asset uploads, and ecommerce orders via Rube MCP (Composio).",
+      "source": "./webflow-automation",
+      "category": "development"
+    },
+    {
+      "name": "whatsapp-automation",
+      "description": "Automate WhatsApp Business tasks via Rube MCP (Composio): send messages, manage templates, upload media, and handle contacts.",
+      "source": "./whatsapp-automation",
+      "category": "communication"
+    },
+    {
+      "name": "wrike-automation",
+      "description": "Automate Wrike project management via Rube MCP (Composio): create tasks/folders, manage projects, assign work, and track progress.",
+      "source": "./wrike-automation",
+      "category": "project-management"
+    },
+    {
+      "name": "youtube-automation",
+      "description": "Automate YouTube tasks via Rube MCP (Composio): upload videos, manage playlists, search content, get analytics, and handle comments.",
+      "source": "./youtube-automation",
+      "category": "social-media"
+    },
+    {
+      "name": "zendesk-automation",
+      "description": "Automate Zendesk tasks via Rube MCP (Composio): tickets, users, organizations, replies.",
+      "source": "./zendesk-automation",
+      "category": "support"
+    },
+    {
+      "name": "zoho-crm-automation",
+      "description": "Automate Zoho CRM tasks via Rube MCP (Composio): create/update records, search contacts, manage leads, and convert leads.",
+      "source": "./zoho-crm-automation",
+      "category": "crm"
+    },
+    {
+      "name": "zoom-automation",
+      "description": "Automate Zoom meeting creation, management, recordings, webinars, and participant tracking via Rube MCP (Composio).",
+      "source": "./zoom-automation",
+      "category": "automation"
     }
   ]
 }
