@@ -22,7 +22,17 @@ def extract_code_from_text(text: str) -> Optional[str]:
         'normal', 'simple', 'double', 'single', 'change', 'select', 'option', 'middle',
         'center', 'bottom', 'yellow', 'purple', 'orange', 'border', 'shadow', 'height',
         'length', 'inside', 'output', 'source', 'target', 'before', 'status', 'cookie',
-        'accept', 'signup', 'labels', 'forward', 'block1', 'block2', 'block3', 'content'
+        'accept', 'signup', 'labels', 'forward', 'block1', 'block2', 'block3', 'content',
+        # UI/interaction words often falsely extracted
+        'escape', 'choose', 'select', 'delete', 'cancel', 'finish', 'verify', 'create',
+        'search', 'enable', 'disable', 'toggle', 'switch', 'active', 'button', 'inputs',
+        'action', 'events', 'handle', 'dialog', 'prompt', 'alerts', 'notice', 'inform',
+        'remove', 'insert', 'append', 'prepend', 'styles', 'script', 'module', 'import',
+        'export', 'public', 'private', 'static', 'values', 'errors', 'logger', 'debugs',
+        'points', 'sounds', 'visuals', 'images', 'videos', 'audios', 'tracks', 'player',
+        'accept', 'reject', 'ignore', 'filter', 'sorted', 'reduce', 'mapped', 'breaks',
+        'starts', 'ending', 'closes', 'opens', 'begins', 'finish', 'pauses', 'resume',
+        'popup', 'popups', 'modals', 'alerts', 'banner', 'toasts', 'notice', 'inform'
     }
     
     # Skip patterns that look like measurements (e.g., "3308px", "1500ms")
