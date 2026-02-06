@@ -2,6 +2,24 @@
 
 A browser automation agent that solves 30 browser-based challenges at `https://serene-frangipane-7fd25b.netlify.app` using Playwright and Claude AI.
 
+## Current Performance
+
+| Metric | Value |
+|--------|-------|
+| Challenges Solved | 4-5 out of 30 per run |
+| Success Rate | ~15-20% |
+| Time | ~5 minutes |
+| Cost | ~$0.40-0.50 per run |
+
+**Supported Challenge Types:**
+- ✅ Scroll to Reveal
+- ✅ Click to Reveal  
+- ✅ Hidden DOM (cursor-pointer click)
+- ✅ Delayed Reveal (timed wait)
+- ⚠️ Memory Challenge (partial)
+- ❌ Hover Challenge
+- ❌ Drag-and-Drop
+
 ## Quick Start
 
 ```bash

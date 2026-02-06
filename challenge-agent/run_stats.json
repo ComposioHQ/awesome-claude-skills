@@ -1,183 +1,207 @@
 {
-  "start_time": 1770372865.2349842,
-  "end_time": 1770373172.2877765,
-  "total_time_seconds": 307.05,
-  "total_time_formatted": "5m 7s",
+  "start_time": 1770373281.1079216,
+  "end_time": 1770373596.0181167,
+  "total_time_seconds": 314.91,
+  "total_time_formatted": "5m 14s",
   "under_5_minutes": false,
   "total_challenges": 30,
-  "challenges_completed": 5,
-  "challenges_failed": 23,
+  "challenges_completed": 4,
+  "challenges_failed": 24,
   "challenges_skipped": 2,
-  "success_rate": "16.7%",
+  "success_rate": "13.3%",
   "aborted": true,
-  "route_pattern": "SPA:https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+  "route_pattern": "SPA:https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
   "llm_stats": {
-    "total_calls": 29,
-    "total_input_tokens": 107800,
-    "total_output_tokens": 7419,
-    "total_tokens": 115219,
-    "total_cost_usd": 0.4347,
+    "total_calls": 28,
+    "total_input_tokens": 105576,
+    "total_output_tokens": 8269,
+    "total_tokens": 113845,
+    "total_cost_usd": 0.4408,
     "calls_by_model": {
-      "claude-sonnet-4-20250514": 29
+      "claude-sonnet-4-20250514": 28
     }
   },
   "challenges": [
     {
       "number": 1,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": true,
-      "answer": "8YFH8S",
+      "answer": "L83URY",
       "attempts": 1,
       "time_seconds": 4.64,
       "error": null,
       "tried_answers": [
-        "8YFH8S"
+        "L83URY"
       ]
     },
     {
       "number": 2,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": true,
-      "answer": "KQX2QZ",
+      "answer": "FYAEMX",
       "attempts": 1,
-      "time_seconds": 9.93,
+      "time_seconds": 5.43,
       "error": null,
       "tried_answers": [
-        "KQX2QZ"
+        "FYAEMX"
       ]
     },
     {
       "number": 3,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": true,
-      "answer": "6945HA",
+      "answer": "WRELL4",
       "attempts": 1,
-      "time_seconds": 4.9,
+      "time_seconds": 4.91,
       "error": null,
       "tried_answers": [
-        "6945HA"
+        "WRELL4"
       ]
     },
     {
       "number": 4,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": true,
-      "answer": "GBU6A5",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
       "attempts": 1,
-      "time_seconds": 4.9,
-      "error": null,
-      "tried_answers": [
-        "GBU6A5"
-      ]
+      "time_seconds": 12.37,
+      "error": "Timeout",
+      "tried_answers": []
     },
     {
       "number": 5,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": true,
-      "answer": "F5RJ4Q",
+      "answer": "TPTGES",
       "attempts": 1,
-      "time_seconds": 5.41,
+      "time_seconds": 9.91,
       "error": null,
       "tried_answers": [
-        "F5RJ4Q"
+        "TPTGES"
       ]
     },
     {
       "number": 6,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
-      "answer": "Dismiss",
+      "answer": "Here!",
       "attempts": 2,
-      "time_seconds": 19.57,
+      "time_seconds": 19.83,
       "error": "Timeout",
       "tried_answers": [
-        "Dismiss"
+        "Here!",
+        "NZVX8N"
       ]
     },
     {
       "number": 7,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
-      "answer": "ORANGE",
+      "answer": "Click Here!",
       "attempts": 2,
-      "time_seconds": 17.9,
+      "time_seconds": 20.69,
       "error": "Timeout",
       "tried_answers": [
-        "ORANGE",
-        "58AUR5"
+        "Click Here!"
       ]
     },
     {
       "number": 8,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": "Click Eta!",
-      "attempts": 2,
-      "time_seconds": 19.36,
-      "error": "Timeout",
-      "tried_answers": [
-        "Click Eta!"
-      ]
-    },
-    {
-      "number": 9,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": "CLICK789",
-      "attempts": 2,
-      "time_seconds": 20.78,
-      "error": "Timeout",
-      "tried_answers": [
-        "CLICK789"
-      ]
-    },
-    {
-      "number": 10,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": "Content Block 4 Loaded!",
-      "attempts": 2,
-      "time_seconds": 19.55,
-      "error": "Timeout",
-      "tried_answers": [
-        "Content Block 4 Loaded!"
-      ]
-    },
-    {
-      "number": 11,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
       "answer": null,
       "attempts": 1,
-      "time_seconds": 8.6,
+      "time_seconds": 10.55,
+      "error": "Timeout",
+      "tried_answers": []
+    },
+    {
+      "number": 9,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 11.83,
+      "error": "Timeout",
+      "tried_answers": []
+    },
+    {
+      "number": 10,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 10.58,
+      "error": "Timeout",
+      "tried_answers": []
+    },
+    {
+      "number": 11,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 11.95,
       "error": "Timeout",
       "tried_answers": []
     },
     {
       "number": 12,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
-      "answer": "Close",
+      "answer": "1500ms",
       "attempts": 2,
-      "time_seconds": 20.42,
+      "time_seconds": 20.4,
       "error": "Timeout",
       "tried_answers": [
-        "Close"
+        "1500ms"
       ]
     },
     {
       "number": 13,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
       "answer": null,
       "attempts": 1,
-      "time_seconds": 8.22,
+      "time_seconds": 8.75,
       "error": "Timeout",
       "tried_answers": []
     },
     {
       "number": 14,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 2,
+      "time_seconds": 18.7,
+      "error": "Timeout",
+      "tried_answers": []
+    },
+    {
+      "number": 15,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 0.51,
+      "error": "[Errno 32] Broken pipe",
+      "tried_answers": []
+    },
+    {
+      "number": 16,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": "Challenge #16",
+      "attempts": 2,
+      "time_seconds": 21.34,
+      "error": "Timeout",
+      "tried_answers": [
+        "Challenge #16"
+      ]
+    },
+    {
+      "number": 17,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
       "answer": null,
       "attempts": 1,
@@ -186,28 +210,100 @@
       "tried_answers": []
     },
     {
-      "number": 15,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "number": 18,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
       "answer": null,
       "attempts": 1,
-      "time_seconds": 8.26,
+      "time_seconds": 10.62,
       "error": "Timeout",
       "tried_answers": []
     },
     {
-      "number": 16,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "number": 19,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
       "answer": null,
       "attempts": 1,
-      "time_seconds": 8.16,
+      "time_seconds": 10.2,
       "error": "Timeout",
       "tried_answers": []
     },
     {
-      "number": 17,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "number": 20,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 10.62,
+      "error": "Timeout",
+      "tried_answers": []
+    },
+    {
+      "number": 21,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": "Next",
+      "attempts": 2,
+      "time_seconds": 15.57,
+      "error": "Timeout",
+      "tried_answers": [
+        "Next"
+      ]
+    },
+    {
+      "number": 22,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 8.12,
+      "error": "Timeout",
+      "tried_answers": []
+    },
+    {
+      "number": 23,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 9.25,
+      "error": "Timeout",
+      "tried_answers": []
+    },
+    {
+      "number": 24,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 0.51,
+      "error": "[Errno 32] Broken pipe",
+      "tried_answers": []
+    },
+    {
+      "number": 25,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 8.39,
+      "error": "Timeout",
+      "tried_answers": []
+    },
+    {
+      "number": 26,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
+      "success": false,
+      "answer": null,
+      "attempts": 1,
+      "time_seconds": 8.18,
+      "error": "Timeout",
+      "tried_answers": []
+    },
+    {
+      "number": 27,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
       "answer": null,
       "attempts": 1,
@@ -216,116 +312,16 @@
       "tried_answers": []
     },
     {
-      "number": 18,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
+      "number": 28,
+      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=1",
       "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 9.05,
-      "error": "Timeout",
-      "tried_answers": []
-    },
-    {
-      "number": 19,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 8.96,
-      "error": "Timeout",
-      "tried_answers": []
-    },
-    {
-      "number": 20,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 9.13,
-      "error": "Timeout",
-      "tried_answers": []
-    },
-    {
-      "number": 21,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 9.11,
-      "error": "Timeout",
-      "tried_answers": []
-    },
-    {
-      "number": 22,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": "Forward",
+      "answer": "Keep Going",
       "attempts": 2,
-      "time_seconds": 17.66,
+      "time_seconds": 20.18,
       "error": "Timeout",
       "tried_answers": [
-        "Forward"
+        "Keep Going"
       ]
-    },
-    {
-      "number": 23,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 8.16,
-      "error": "Timeout",
-      "tried_answers": []
-    },
-    {
-      "number": 24,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 8.13,
-      "error": "Timeout",
-      "tried_answers": []
-    },
-    {
-      "number": 25,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 9.34,
-      "error": "Timeout",
-      "tried_answers": []
-    },
-    {
-      "number": 26,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 8.58,
-      "error": "Timeout",
-      "tried_answers": []
-    },
-    {
-      "number": 27,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 9.05,
-      "error": "Timeout",
-      "tried_answers": []
-    },
-    {
-      "number": 28,
-      "url": "https://serene-frangipane-7fd25b.netlify.app/step1?version=3",
-      "success": false,
-      "answer": null,
-      "attempts": 1,
-      "time_seconds": 8.38,
-      "error": "Timeout",
-      "tried_answers": []
     }
   ]
 }
