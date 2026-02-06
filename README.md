@@ -455,12 +455,12 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 ---
 
 <p align="center">
-  <b>Join 20,000+ developers building agents that ship</b>
+  <b>Join 200,000+ developers building agents in production</b>
 </p>
 
 <p align="center">
   <a href="https://platform.composio.dev/?utm_source=Github&utm_content=AwesomeSkills">
-    <img src="https://img.shields.io/badge/Get_Started_Free-4F46E5?style=for-the-badge" alt="Get Started"/>
+    <img src="https://img.shields.io/badge/Get_Started_For_Free-4F46E5?style=for-the-badge" alt="Get Started For Free"/>
   </a>
 </p>
 
