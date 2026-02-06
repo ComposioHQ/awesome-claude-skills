@@ -135,11 +135,12 @@ DETECT_INTERACTIONS = """
 CHECK_RESULT = """
 (function() {
   const text = (document.body.innerText || '').toLowerCase();
-  const success = /correct|success|well done|congratulations|passed|solved/.test(text);
-  const failure = /incorrect|wrong|try again|failed|invalid/.test(text);
-  const match = text.match(/step\\s*(\\d+)/i);
-  const stepNumber = match ? parseInt(match[1]) : null;
-  return {success, failure, challengeNumber: stepNumber, bodyTextSample: text.slice(0,300)};
+  const success = /correct|success|well done|congratulations|passed|solved|✓|✅/.test(text);
+  const failure = /incorrect|wrong|try again|failed|invalid|✗|❌/.test(text);
+  // Look for "Step X of 30" pattern
+  const stepMatch = text.match(/step\\s*(\\d+)\\s*(?:of|\\/)\\s*30/i);
+  const stepNumber = stepMatch ? parseInt(stepMatch[1]) : null;
+  return {success, failure, challengeNumber: stepNumber, bodyTextSample: text.slice(0,500)};
 })();
 """
 
@@ -190,18 +191,12 @@ class BrowserController:
         if self.playwright:
             await self.playwright.stop()
             
-    async def navigate(self, url: str, timeout: int = 30000):
+    async def navigate(self, url: str, timeout: int = 15000):
         """Navigate to URL with wait for render"""
         self.dialog_messages = []  # Clear dialogs
-        await self.page.goto(url, wait_until='networkidle', timeout=timeout)
-        # Extra render delay for SPAs
-        await asyncio.sleep(1.5)
-        # Wait for any spinners to disappear
-        try:
-            await self.page.wait_for_selector('.loading, .spinner, [class*="load"]', 
-                                              state='hidden', timeout=3000)
-        except:
-            pass
+        await self.page.goto(url, wait_until='domcontentloaded', timeout=timeout)
+        # Shorter render delay
+        await asyncio.sleep(0.8)
             
     async def reload_page(self):
         """Full reload to clear stale state"""

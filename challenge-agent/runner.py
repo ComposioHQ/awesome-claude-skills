@@ -100,9 +100,9 @@ class ChallengeRunner:
                     self.metrics.challenges_skipped = self.TOTAL_CHALLENGES - i + 1
                     break
                     
-                # Calculate adaptive timeout per challenge
+                # Calculate adaptive timeout per challenge - minimum 8 seconds
                 challenges_left = self.TOTAL_CHALLENGES - i + 1
-                per_challenge_timeout = min(25, remaining / challenges_left)
+                per_challenge_timeout = max(8, min(15, remaining / challenges_left))
                 
                 self.log(f"\n{'='*50}")
                 self.log(f"Challenge {i}/{self.TOTAL_CHALLENGES} (budget: {per_challenge_timeout:.1f}s)")
@@ -172,33 +172,13 @@ class ChallengeRunner:
         await self.browser.navigate(self.BASE_URL)
         await asyncio.sleep(1)
         
-        # Strategy 1: Click START button (this specific site has a prominent START button)
-        start_clicked = False
-        
-        # Try direct text selectors first
-        for selector in ['text=START', 'text=Start', 'button:has-text("START")', 
-                        'button:has-text("Start")', '.start-btn', '#start']:
-            try:
-                clicked = await self.browser.click(selector, timeout=2000)
-                if clicked:
-                    self.log(f"Clicked START button via: {selector}")
-                    start_clicked = True
-                    await asyncio.sleep(1.5)
-                    break
-            except:
-                pass
-                
-        # Fallback: search extracted buttons
-        if not start_clicked:
-            data = await self.browser.extract_page_data()
-            for btn in data.get('buttons', []):
-                text = btn.get('text', '').lower()
-                if any(w in text for w in ['start', 'begin', 'play', 'challenge']):
-                    self.log(f"Found start button: {btn.get('text')}")
-                    await self.browser.click(btn.get('selector', 'button'))
-                    start_clicked = True
-                    await asyncio.sleep(1.5)
-                    break
+        # Click START button quickly
+        try:
+            await self.browser.page.click('text=START', timeout=3000)
+            self.log("Clicked START")
+            await asyncio.sleep(1.0)
+        except:
+            self.log("Could not find START button")
                 
         # Check current URL
         current_url = await self.browser.get_current_url()

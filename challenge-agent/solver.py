@@ -141,17 +141,18 @@ class ChallengeSolver:
                 result.attempts = attempt
                 self.log(f"Attempt {attempt}/{self.MAX_ATTEMPTS}")
                 
-                # Escalate strategy based on attempt number
+                # Go directly to interactions - text extraction alone never works
                 if attempt == 1:
-                    solution = await self._attempt_text_extraction(
-                        challenge_number, result.tried_answers
-                    )
-                elif attempt == 2:
                     solution = await self._attempt_with_interactions(
                         challenge_number, result.tried_answers
                     )
-                else:
+                elif attempt == 2:
                     solution = await self._attempt_with_vision(
+                        challenge_number, result.tried_answers
+                    )
+                else:
+                    # Third attempt: try interactions again with more aggressive approach
+                    solution = await self._attempt_with_interactions(
                         challenge_number, result.tried_answers
                     )
                     
@@ -184,11 +185,17 @@ class ChallengeSolver:
                     
                 result.answer_submitted = answer
                 
-                # Wait a moment and check result
-                await asyncio.sleep(0.8)
+                # Wait longer for page update and check result
+                await asyncio.sleep(1.5)
                 check = await self.browser.check_result()
                 
-                if check.get('success'):
+                # Check if step number changed (most reliable indicator)
+                new_num = check.get('challengeNumber')
+                if new_num and challenge_number and new_num > challenge_number:
+                    self.log(f"✓ Advanced to step {new_num}")
+                    result.success = True
+                    break
+                elif check.get('success') and not check.get('failure'):
                     self.log(f"✓ SUCCESS: {answer}")
                     result.success = True
                     break
@@ -196,19 +203,16 @@ class ChallengeSolver:
                     self.log(f"✓ CHALLENGE COMPLETE")
                     result.success = True
                     break
-                elif check.get('failure'):
+                elif check.get('failure') and not check.get('success'):
                     self.log(f"✗ Failed: {answer}")
-                    # DON'T reload - just continue to next attempt
                 else:
-                    # Ambiguous - check if we moved to next challenge
-                    new_num = check.get('challengeNumber')
-                    if new_num and challenge_number and new_num > challenge_number:
-                        self.log(f"✓ Advanced to challenge {new_num}")
+                    # Ambiguous - check body text for step change
+                    body_sample = check.get('bodyTextSample', '')
+                    if f'step {challenge_number + 1}' in body_sample:
+                        self.log(f"✓ Detected step {challenge_number + 1} in body")
                         result.success = True
                         break
-                    else:
-                        self.log(f"Result unclear, trying again")
-                        # DON'T reload - just continue
+                    self.log(f"Result unclear, continuing...")
                         
         except Exception as e:
             result.error = str(e)
@@ -316,44 +320,87 @@ class ChallengeSolver:
         self.log(f"Body sample: {body_text[:100]}...")
         self.log(f"Detection: scroll={'scroll' in body_text}, reveal={'reveal' in body_text}, hidden={'hidden dom' in body_text}")
         
-        # TRY ALL INTERACTION TYPES - the challenge types are randomized
-        self.log("Trying all interaction types...")
+        # TRY ALL INTERACTION TYPES - challenge types are randomized
+        self.log("Interactions...")
         
-        # 1. Try scrolling down FIRST (most common challenge type)
-        self.log("Scrolling down...")
-        await self.browser.page.evaluate('window.scrollBy(0, 600)')
-        await asyncio.sleep(0.5)
-        await self.browser.page.evaluate('window.scrollBy(0, 600)')
-        await asyncio.sleep(0.5)
+        # Check for Delayed Reveal challenge - wait for timer
+        data = await self.browser.extract_page_data()
+        body = data.get('bodyText', '').lower()
+        if 'delayed reveal' in body or 'waiting' in body:
+            self.log("Delayed Reveal detected - waiting 5s...")
+            await asyncio.sleep(5)
         
-        # 2. Try clicking "Reveal Code" button
+        # 1. Scroll down (for Scroll to Reveal)
+        await self.browser.page.evaluate('window.scrollBy(0, 700)')
+        await asyncio.sleep(0.4)
+        await self.browser.page.evaluate('window.scrollBy(0, 700)')
+        await asyncio.sleep(0.4)
+        
+        # 2. Try clicking "Reveal Code" via JS (for Click to Reveal)
         try:
-            await self.browser.page.click('text=Reveal Code', timeout=1000, force=True)
-            self.log("Clicked Reveal Code")
-            await asyncio.sleep(0.5)
+            clicked = await self.browser.page.evaluate("""
+                () => {
+                    const btns = Array.from(document.querySelectorAll('button'));
+                    const revealBtn = btns.find(b => b.textContent.includes('Reveal'));
+                    if (revealBtn) { revealBtn.click(); return true; }
+                    return false;
+                }
+            """)
+            if clicked:
+                self.log("Clicked Reveal Code (JS)")
+                await asyncio.sleep(0.5)
         except:
             pass
         
-        # 3. Try clicking "click here" multiple times (Hidden DOM challenge)
-        for i in range(5):
+        # 3. Click "click here" multiple times (for Hidden DOM)
+        for i in range(4):
             try:
                 await self.browser.page.keyboard.press('Escape')
-                await asyncio.sleep(0.1)
+                await asyncio.sleep(0.05)
                 await self.browser.page.click('text=click here', timeout=800, force=True)
-                self.log(f"Click here #{i+1}")
+                self.log(f"Click #{i+1}")
                 await asyncio.sleep(0.2)
             except:
                 break
         
-        # 4. Try hover
+        # 4. Hover (for hover challenges)
         try:
-            await self.browser.page.evaluate("""
-                document.querySelectorAll('*').forEach(el => {
-                    el.dispatchEvent(new MouseEvent('mouseenter', {bubbles: true}));
-                });
-            """)
+            await self.browser.page.evaluate("document.querySelectorAll('*').forEach(el => el.dispatchEvent(new MouseEvent('mouseenter', {bubbles: true})))")
         except:
             pass
+        
+        # 5. Drag-and-drop (for drag challenges)
+        if 'drag' in body:
+            self.log("Drag-and-Drop detected - performing drag...")
+            try:
+                # Find source and target elements
+                drag_result = await self.browser.page.evaluate("""
+                    () => {
+                        const source = document.querySelector('[draggable="true"]');
+                        const target = document.querySelector('[data-drop], .drop-zone, .drop-target, [class*="drop"]');
+                        if (source && target) {
+                            const sourceRect = source.getBoundingClientRect();
+                            const targetRect = target.getBoundingClientRect();
+                            return {
+                                source: { x: sourceRect.x + sourceRect.width/2, y: sourceRect.y + sourceRect.height/2 },
+                                target: { x: targetRect.x + targetRect.width/2, y: targetRect.y + targetRect.height/2 }
+                            };
+                        }
+                        return null;
+                    }
+                """)
+                
+                if drag_result:
+                    await self.browser.page.mouse.move(drag_result['source']['x'], drag_result['source']['y'])
+                    await self.browser.page.mouse.down()
+                    await asyncio.sleep(0.1)
+                    await self.browser.page.mouse.move(drag_result['target']['x'], drag_result['target']['y'])
+                    await asyncio.sleep(0.1)
+                    await self.browser.page.mouse.up()
+                    self.log("Drag performed")
+                    await asyncio.sleep(0.5)
+            except Exception as e:
+                self.log(f"Drag failed: {e}")
         
         # Re-extract after interactions
         data = await self.browser.extract_page_data()
@@ -431,6 +478,45 @@ class ChallengeSolver:
             '#code'
         ]
         
+        # Use Playwright's fill() method for proper React compatibility
+        try:
+            # Fill input using Playwright (this properly triggers React events)
+            await self.browser.page.fill('input[placeholder*="code"]', answer, force=True, timeout=2000)
+            self.log(f"Filled input with Playwright")
+            
+            # Wait for React to update and enable button
+            await asyncio.sleep(0.3)
+            
+            # Click submit button using JS to ensure it finds the right one
+            clicked = await self.browser.page.evaluate("""
+                () => {
+                    const btns = Array.from(document.querySelectorAll('button'));
+                    // Look for the form submit button specifically
+                    const form = document.querySelector('form');
+                    if (form) {
+                        const formBtn = form.querySelector('button');
+                        if (formBtn) { formBtn.click(); return 'form_button'; }
+                    }
+                    // Fallback: find button with "Submit" text
+                    const submitBtn = btns.find(b => b.textContent.includes('Submit'));
+                    if (submitBtn && !submitBtn.disabled) { submitBtn.click(); return 'submit_text'; }
+                    return 'not_found';
+                }
+            """)
+            self.log(f"Clicked submit: {clicked}")
+            return clicked != 'not_found'
+        except Exception as e:
+            self.log(f"Fill/click failed: {e}")
+            
+            if submitted.get('success'):
+                self.log(f"Submitted via JS ({submitted.get('method')})")
+                return True
+            else:
+                self.log(f"JS submit failed: {submitted.get('error')}")
+        except Exception as e:
+            self.log(f"JS submit error: {e}")
+        
+        # Fallback to Playwright methods
         typed = False
         for sel in input_selectors:
             if not sel:
@@ -447,28 +533,15 @@ class ChallengeSolver:
             self.log("Could not find input field")
             return False
         
-        # Dismiss popups again before clicking submit
+        # Dismiss popups and submit
         await self._dismiss_popups()
-            
-        # Submit - try button first with force click to bypass overlays
-        submit_selectors = [
-            button_selector,
-            'button:has-text("Submit")',
-            'button:has-text("submit")',
-            'input[type="submit"]',
-            'button[type="submit"]'
-        ]
         
-        for sel in submit_selectors:
-            if not sel:
-                continue
-            try:
-                # Use force=True to bypass intercepting elements
-                await self.browser.page.click(sel, timeout=2000, force=True)
-                self.log(f"Clicked submit: {sel}")
-                return True
-            except:
-                pass
+        try:
+            await self.browser.page.click('button:has-text("Submit")', timeout=2000, force=True)
+            self.log("Clicked submit: button:has-text('Submit')")
+            return True
+        except:
+            pass
         
         # Fallback: press Enter
         await self.browser.page.keyboard.press('Enter')
