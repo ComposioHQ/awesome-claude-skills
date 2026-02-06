@@ -401,10 +401,28 @@ class ChallengeSolver:
                 break
         
         # 4. Hover (for hover challenges)
-        try:
-            await self.browser.page.evaluate("document.querySelectorAll('*').forEach(el => el.dispatchEvent(new MouseEvent('mouseenter', {bubbles: true})))")
-        except:
-            pass
+        if 'hover' in body:
+            self.log("Hover Challenge detected - hovering...")
+            try:
+                # Find all cursor-pointer elements and hover
+                hover_targets = await self.browser.page.evaluate("""
+                    () => Array.from(document.querySelectorAll('.cursor-pointer, [class*="hover"]:not(button), [onmouseover], [onmouseenter]')).slice(0, 10).map(el => ({
+                        x: el.getBoundingClientRect().x + el.getBoundingClientRect().width / 2,
+                        y: el.getBoundingClientRect().y + el.getBoundingClientRect().height / 2
+                    }))
+                """)
+                for t in hover_targets:
+                    if t['x'] > 0 and t['y'] > 0:
+                        await self.browser.page.mouse.move(t['x'], t['y'])
+                        await asyncio.sleep(0.5)
+            except:
+                pass
+        else:
+            # Generic hover dispatch
+            try:
+                await self.browser.page.evaluate("document.querySelectorAll('*').forEach(el => el.dispatchEvent(new MouseEvent('mouseenter', {bubbles: true})))")
+            except:
+                pass
         
         # 5. Drag-and-drop (for drag challenges)
         if 'drag' in body:
