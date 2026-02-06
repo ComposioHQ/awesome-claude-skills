@@ -352,14 +352,23 @@ class ChallengeSolver:
         except:
             pass
         
-        # 3. Click "click here" multiple times (for Hidden DOM)
-        for i in range(4):
+        # 3. Click cursor-pointer divs (for Hidden DOM challenge)
+        for i in range(5):
             try:
                 await self.browser.page.keyboard.press('Escape')
                 await asyncio.sleep(0.05)
-                await self.browser.page.click('text=click here', timeout=800, force=True)
-                self.log(f"Click #{i+1}")
-                await asyncio.sleep(0.2)
+                clicked = await self.browser.page.evaluate("""
+                    () => {
+                        const el = document.querySelector('.cursor-pointer');
+                        if (el) { el.click(); return true; }
+                        return false;
+                    }
+                """)
+                if clicked:
+                    self.log(f"Click #{i+1}")
+                    await asyncio.sleep(0.25)
+                else:
+                    break
             except:
                 break
         
