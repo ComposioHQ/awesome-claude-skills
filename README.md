@@ -187,6 +187,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [outline](https://github.com/sanjay3290/ai-skills/tree/main/skills/outline) - Search, read, create, and manage documents in Outline wiki instances (cloud or self-hosted). *By [@sanjay3290](https://github.com/sanjay3290)*
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
 - [test-fixing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing) - Detect failing tests and propose patches or fixes.
+- [claude-thunderdome](https://github.com/chickensintrees/claude-thunderdome) - AI-powered scrum master and queue-driven workflow for Claude Code teams.
 
 ### Security & Systems
 
