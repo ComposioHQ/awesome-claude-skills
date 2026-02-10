@@ -193,6 +193,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
+- [skill-auditor](https://github.com/lee-fuhr/skill-auditor) - Normalize components from any source into production-ready parts. Security scanning + performance optimization + multi-source normalization for skills, agents, hooks, and plugins. *By [@lee-fuhr](https://github.com/lee-fuhr)*
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
 ### App Automation via Composio
