@@ -236,3 +236,6 @@ Most OneDrive tools accept either paths or IDs:
 | Get quota | `ONE_DRIVE_GET_QUOTA` | (none) |
 | Track changes | `ONE_DRIVE_LIST_SITE_DRIVE_ITEMS_DELTA` | `site_id`, `token` |
 | Version history | `ONE_DRIVE_GET_ITEM_VERSIONS` | `item_id` |
+
+---
+*Powered by [Composio](https://composio.dev)*

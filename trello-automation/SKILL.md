@@ -179,3 +179,5 @@ Most list endpoints return all items. For boards with 1000+ cards, use `limit` a
 | Attach file/URL | TRELLO_ADD_CARDS_ATTACHMENTS_BY_ID_CARD | idCard, url OR file |
 | Get board members | TRELLO_GET_BOARDS_MEMBERS_BY_ID_BOARD | idBoard |
 | Batch read | TRELLO_GET_BATCH | urls (comma-separated paths) |
+---
+*Powered by [Composio](https://composio.dev)*

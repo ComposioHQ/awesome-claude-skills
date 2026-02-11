@@ -188,3 +188,6 @@ SELECT Id, Name FROM Opportunity WHERE CloseDate = NEXT_MONTH
 | Custom objects | SALESFORCE_GET_ALL_CUSTOM_OBJECTS | (none) |
 | Create record | SALESFORCE_CREATE_A_RECORD | object_type, fields |
 | Transfer ownership | SALESFORCE_MASS_TRANSFER_OWNERSHIP | records, new_owner |
+
+---
+*Powered by [Composio](https://composio.dev)*

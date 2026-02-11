@@ -225,3 +225,6 @@ Automate Google Analytics 4 (GA4) reporting and property management through Comp
 | Pivot report | GOOGLE_ANALYTICS_RUN_PIVOT_REPORT | property, dateRanges, pivots |
 | Funnel report | GOOGLE_ANALYTICS_RUN_FUNNEL_REPORT | property, dateRanges, funnel |
 | List key events | GOOGLE_ANALYTICS_LIST_KEY_EVENTS | parent, pageSize |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -193,3 +193,6 @@ Kit uses cursor-based pagination:
 | Get broadcast | KIT_GET_BROADCAST | id |
 | Get broadcast stats | KIT_GET_BROADCAST_STATS | id |
 | Delete broadcast | KIT_DELETE_BROADCAST | id |
+
+---
+*Powered by [Composio](https://composio.dev)*

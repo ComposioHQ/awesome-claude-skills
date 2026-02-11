@@ -222,3 +222,6 @@ Bitbucket Query Language is available on list endpoints:
 | Comment on issue | `BITBUCKET_CREATE_ISSUE_COMMENT` | `workspace`, `repo_slug`, `issue_id`, `content` |
 | Delete issue | `BITBUCKET_DELETE_ISSUE` | `workspace`, `repo_slug`, `issue_id` |
 | List members | `BITBUCKET_LIST_WORKSPACE_MEMBERS` | `workspace` |
+
+---
+*Powered by [Composio](https://composio.dev)*

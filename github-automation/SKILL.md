@@ -225,3 +225,6 @@ All list endpoints use page-based pagination:
 | Check CI | `GITHUB_LIST_CHECK_RUNS_FOR_A_REF` | `owner`, `repo`, ref |
 | List collaborators | `GITHUB_LIST_REPOSITORY_COLLABORATORS` | `owner`, `repo` |
 | Branch protection | `GITHUB_GET_BRANCH_PROTECTION` | `owner`, `repo`, `branch` |
+
+---
+*Powered by [Composio](https://composio.dev)*

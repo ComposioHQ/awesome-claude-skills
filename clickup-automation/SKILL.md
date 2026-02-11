@@ -232,3 +232,6 @@ Always resolve names to IDs through the hierarchy:
 | List user groups | `CLICKUP_GET_TEAMS` | `team_id` |
 | Get user details | `CLICKUP_GET_USER` | `team_id`, `user_id` |
 | Custom roles | `CLICKUP_GET_CUSTOM_ROLES` | `team_id` |
+
+---
+*Powered by [Composio](https://composio.dev)*

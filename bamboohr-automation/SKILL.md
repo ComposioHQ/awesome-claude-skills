@@ -218,3 +218,6 @@ For keeping external systems in sync with BambooHR:
 | Update employee | BAMBOOHR_UPDATE_EMPLOYEE | id, (field updates) |
 | List dependents | BAMBOOHR_DEPENDENTS_GET_ALL | employeeId |
 | Benefit coverages | BAMBOOHR_BENEFIT_GET_COVERAGES | (check schema) |
+
+---
+*Powered by [Composio](https://composio.dev)*

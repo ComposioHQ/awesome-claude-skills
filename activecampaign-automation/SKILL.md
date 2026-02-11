@@ -207,3 +207,6 @@ Automate ActiveCampaign CRM and marketing automation operations through Composio
 | Subscribe/unsubscribe | ACTIVE_CAMPAIGN_MANAGE_LIST_SUBSCRIPTION | action, list_id, email |
 | Add to automation | ACTIVE_CAMPAIGN_ADD_CONTACT_TO_AUTOMATION | contact_email, automation_id |
 | Create task | ACTIVE_CAMPAIGN_CREATE_CONTACT_TASK | relid, duedate, dealTasktype, title |
+
+---
+*Powered by [Composio](https://composio.dev)*

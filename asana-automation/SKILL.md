@@ -169,3 +169,6 @@ Automate Asana operations through Composio's Asana toolkit via Rube MCP.
 | Workspace users | ASANA_GET_USERS_FOR_WORKSPACE | workspace_gid |
 | Current user | ASANA_GET_CURRENT_USER | (none) |
 | Parallel requests | ASANA_SUBMIT_PARALLEL_REQUESTS | actions |
+
+---
+*Powered by [Composio](https://composio.dev)*

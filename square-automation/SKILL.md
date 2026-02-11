@@ -174,3 +174,6 @@ Automate Square payment processing, order management, and invoicing through Comp
 | List invoices | SQUARE_LIST_INVOICES | location_id, cursor |
 | Get invoice | SQUARE_GET_INVOICE | invoice_id |
 | Cancel invoice | SQUARE_CANCEL_INVOICE | invoice_id, version |
+
+---
+*Powered by [Composio](https://composio.dev)*

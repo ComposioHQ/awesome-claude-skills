@@ -222,3 +222,6 @@ Feature flags support sophisticated targeting:
 | List projects | POSTHOG_LIST_PROJECTS_IN_ORGANIZATION_WITH_PAGINATION | organization_id |
 | Who am I | POSTHOG_WHOAMI | (none) |
 | User profile | POSTHOG_RETRIEVE_CURRENT_USER_PROFILE | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

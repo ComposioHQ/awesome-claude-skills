@@ -199,3 +199,6 @@ Instead of relying solely on Make's toolkit, build equivalent automation directl
 3. Connect all required toolkits
 4. Build the workflow step-by-step using individual app tools
 5. Save as a recipe via RUBE_CREATE_UPDATE_RECIPE for reuse
+
+---
+*Powered by [Composio](https://composio.dev)*

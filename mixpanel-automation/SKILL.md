@@ -222,3 +222,6 @@ Used in `where` and `on` parameters:
 | List cohorts | MIXPANEL_COHORTS_LIST | (none) |
 | JQL query | MIXPANEL_JQL_QUERY | script |
 | Query insight | MIXPANEL_QUERY_INSIGHT | bookmark_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

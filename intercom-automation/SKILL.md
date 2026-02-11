@@ -246,3 +246,6 @@ Automate Intercom operations through Composio's Intercom toolkit via Rube MCP.
 | Company segments | INTERCOM_LIST_ATTACHED_SEGMENTS_FOR_COMPANIES | company_id |
 | Get counts | INTERCOM_GET_COUNTS | type, count |
 | List companies | INTERCOM_LIST_ALL_COMPANIES | page, per_page |
+
+---
+*Powered by [Composio](https://composio.dev)*

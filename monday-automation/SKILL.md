@@ -231,3 +231,6 @@ Different column types require different value formats:
 | List subitems | `MONDAY_LIST_SUBITEMS_BY_PARENT` | `parent_item_ids` |
 | Add comment/update | `MONDAY_CREATE_UPDATE` | `item_id`, `body` |
 | Raw GraphQL mutation | `MONDAY_CREATE_OBJECT` | `query`, `variables` |
+
+---
+*Powered by [Composio](https://composio.dev)*

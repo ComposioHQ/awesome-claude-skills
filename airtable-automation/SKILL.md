@@ -168,3 +168,6 @@ Automate Airtable operations through Composio's Airtable toolkit via Rube MCP.
 | Update field | AIRTABLE_UPDATE_FIELD | baseId, tableIdOrName, fieldId |
 | Update table | AIRTABLE_UPDATE_TABLE | baseId, tableIdOrName, name |
 | List comments | AIRTABLE_LIST_COMMENTS | baseId, tableIdOrName, recordId |
+
+---
+*Powered by [Composio](https://composio.dev)*

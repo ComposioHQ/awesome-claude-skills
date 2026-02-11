@@ -166,3 +166,6 @@ For advanced operations:
 | Fulfillment | SHOPIFY_GET_FULFILLMENT | order_id, fulfillment_id |
 | GraphQL | SHOPIFY_GRAPH_QL_QUERY | query |
 | Bulk query | SHOPIFY_BULK_QUERY_OPERATION | query |
+
+---
+*Powered by [Composio](https://composio.dev)*

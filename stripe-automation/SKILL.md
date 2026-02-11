@@ -196,3 +196,6 @@ Stripe uses smallest currency unit:
 | Payment methods | STRIPE_LIST_CUSTOMER_PAYMENT_METHODS | customer |
 | Checkout session | STRIPE_CREATE_CHECKOUT_SESSION | line_items |
 | List payment intents | STRIPE_LIST_PAYMENT_INTENTS | customer |
+
+---
+*Powered by [Composio](https://composio.dev)*

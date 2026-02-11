@@ -204,3 +204,6 @@ criteria: '((Last_Name:equals:Doe)AND(Email:contains:example.com))'
 | Convert lead | ZOHO_CONVERT_ZOHO_LEAD | lead_id, deal, account, contact |
 | Create tag | ZOHO_CREATE_ZOHO_TAG | module, tag_name |
 | Update related records | ZOHO_UPDATE_RELATED_RECORDS | module, record_id, related_module, data |
+
+---
+*Powered by [Composio](https://composio.dev)*

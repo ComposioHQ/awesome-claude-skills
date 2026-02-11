@@ -239,3 +239,6 @@ Automate Coda document and data operations through Composio's Coda toolkit via R
 | Publish doc | CODA_PUBLISH_DOC | docId, slug |
 | Unpublish doc | CODA_UNPUBLISH_DOC | docId |
 | List packs | CODA_LIST_PACKS | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

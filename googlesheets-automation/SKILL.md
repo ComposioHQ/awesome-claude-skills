@@ -195,3 +195,6 @@ Google Sheets enforces strict rate limits:
 | Delete rows/cols | `GOOGLESHEETS_DELETE_DIMENSION` | `spreadsheet_id`, `sheet_name`, dimension |
 | Spreadsheet info | `GOOGLESHEETS_GET_SPREADSHEET_INFO` | `spreadsheet_id` |
 | Update tab props | `GOOGLESHEETS_UPDATE_SHEET_PROPERTIES` | `spreadsheetId`, properties |
+
+---
+*Powered by [Composio](https://composio.dev)*

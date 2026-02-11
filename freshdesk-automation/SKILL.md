@@ -217,3 +217,6 @@ Freshdesk uses page-based pagination:
 | List companies | `FRESHDESK_GET_COMPANIES` | `page` |
 | List ticket fields | `FRESHDESK_LIST_TICKET_FIELDS` | (none) |
 | List company fields | `FRESHDESK_LIST_COMPANY_FIELDS` | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*
