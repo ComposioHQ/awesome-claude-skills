@@ -193,6 +193,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
+- [agent-os-governance](https://github.com/imran-siddique/agent-os) - Kernel-level governance for AI agents — deterministic policy enforcement, compliance checking (SOC2/GDPR/HIPAA), and audit logging. Featured in [awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) (92k ⭐). *By [@imran-siddique](https://github.com/imran-siddique)*
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
 ### App Automation via Composio
