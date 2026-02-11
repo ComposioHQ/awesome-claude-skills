@@ -1,91 +1,145 @@
 ---
-name: workday-automation
-description: "Automate Workday tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Workday Automation
+description: "Automate HR operations in Workday -- manage workers, time off requests, absence balances, and employee data through natural language commands."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Workday Automation via Rube MCP
+# Workday Automation
 
-Automate Workday operations through Composio's Workday toolkit via Rube MCP.
+Automate your Workday HR operations directly from Claude Code. Look up workers, create time off requests, check absence balances, and validate time off eligibility -- all without leaving your terminal.
 
-**Toolkit docs**: [composio.dev/toolkits/workday](https://composio.dev/toolkits/workday)
+**Toolkit docs:** [composio.dev/toolkits/workday](https://composio.dev/toolkits/workday)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Workday connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `workday`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Rube MCP server to your Claude Code config with URL: `https://rube.app/mcp`
+2. When prompted, authenticate your Workday account through the connection link provided
+3. Start automating your HR workflows with natural language
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `workday`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. Search and List Workers
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Workday operations", known_fields: ""}]
-session: {generate_id: true}
-```
+Retrieve worker information with search and pagination.
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
+**Tool:** `WORKDAY_LIST_WORKERS`
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Workday task"}]
-session: {id: "existing_session_id"}
+Search for workers named "Sarah" and include terminated employees
 ```
 
-### Step 2: Check Connection
+Key parameters:
+- `search` -- search by name or worker ID (case-insensitive, space-delimited for OR search)
+- `includeTerminatedWorkers` -- include terminated workers in results
+- `limit` (default 20, max 100) / `offset` -- pagination controls
+
+### 2. Create Time Off Requests
+
+Submit time off requests for workers with full business process support.
+
+**Tool:** `WORKDAY_CREATE_TIME_OFF_REQUEST`
 
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["workday"]
-session_id: "your_session_id"
+Create a vacation request for worker abc123 for March 15-17, 2026 (8 hours each day)
 ```
 
-### Step 3: Execute Tools
+Key parameters:
+- `ID` (required) -- Workday worker ID
+- `businessProcessParameters` (required) -- must include `action` with `id` field (use `"d9e4223e446c11de98360015c5e6daf6"` for submit action)
+- `days` (required) -- array of time off entries, each with:
+  - `date` (required) -- date in `yyyy-mm-dd` format
+  - `timeOffType` (required) -- object with `id` of the eligible absence type
+  - `dailyQuantity` -- hours or days quantity
+  - `comment`, `start`, `end`, `position`, `reason` -- optional fields
+- `businessProcessParameters.comment` -- optional business process comment
+
+### 3. Check Time Off Eligibility
+
+Validate which dates a worker can take off before submitting a request.
+
+**Tool:** `WORKDAY_GET_WORKER_VALID_TIME_OFF_DATES`
 
 ```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
+Check if worker abc123 is eligible to take time off on March 15, 2026
 ```
+
+Key parameters:
+- `ID` (required) -- Workday worker ID
+- `date` -- specific date to validate (`yyyy-mm-dd`)
+- `position` -- filter by specific position ID
+- `timeOff` -- filter by specific time off plan/type ID
+- `limit` (max 100) / `offset` -- pagination
+
+### 4. View Absence Balances
+
+Check remaining time off balances for workers across all plans.
+
+**Tool:** `WORKDAY_LIST_ABSENCE_BALANCES`
+
+```
+Show me absence balances for all workers in the organization
+```
+
+- Retrieves balances for time off plans and leave of absence types
+- Can be filtered by worker ID, category, and effective date
+
+### 5. Get Current User Profile
+
+Retrieve the authenticated worker's profile information.
+
+**Tool:** `WORKDAY_GET_CURRENT_USER`
+
+```
+Show me my Workday profile information
+```
+
+- No parameters required
+- Returns the authenticated worker's profile
+- Use this first to get the worker ID for subsequent operations
+
+### 6. View Time Off History
+
+Retrieve time off details and history for a specific worker.
+
+**Tool:** `WORKDAY_GET_WORKER_TIME_OFF_DETAILS`
+
+```
+Show me the time off history for worker abc123
+```
+
+- Retrieves a collection of time off details for the specified worker
+- Useful for auditing time off usage and remaining balances
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+- **Worker ID resolution:** Always call `WORKDAY_GET_CURRENT_USER` or `WORKDAY_LIST_WORKERS` first to resolve Workday worker IDs. Worker IDs are Workday-specific UUIDs, not employee numbers.
+- **Time off type IDs must be valid:** The `timeOffType.id` in `WORKDAY_CREATE_TIME_OFF_REQUEST` must reference a valid eligible absence type for that worker. Use the "Get Worker Eligible Absence Types" flow to discover valid type IDs.
+- **Submit action ID:** The `businessProcessParameters.action.id` should be `"d9e4223e446c11de98360015c5e6daf6"` for the submit action. Using an incorrect ID will cause the business process to fail.
+- **Date format:** All date fields use `yyyy-mm-dd` format. ISO 8601 with timestamps is not accepted for date-only fields.
+- **Pagination limits:** The maximum `limit` is 100 across all Workday endpoints. Default is 20. Always paginate for complete datasets.
+- **Business process approval:** Creating a time off request initiates the business process but does not guarantee approval. The request enters the normal approval workflow.
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Workday-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `workday` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|---|---|
+| `WORKDAY_LIST_WORKERS` | Search and list workers with staffing info |
+| `WORKDAY_GET_CURRENT_USER` | Get the authenticated worker's profile |
+| `WORKDAY_CREATE_TIME_OFF_REQUEST` | Submit a time off request (requires `ID`, `businessProcessParameters`, `days`) |
+| `WORKDAY_GET_WORKER_VALID_TIME_OFF_DATES` | Check time off date eligibility (requires `ID`) |
+| `WORKDAY_LIST_ABSENCE_BALANCES` | Retrieve absence balances across time off plans |
+| `WORKDAY_GET_WORKER_TIME_OFF_DETAILS` | Get time off history for a worker |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

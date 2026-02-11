@@ -1,91 +1,153 @@
 ---
-name: uploadcare-automation
-description: "Automate Uploadcare tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Uploadcare Automation
+description: "Automate Uploadcare file management including listing, storing, inspecting, downloading, and organizing file groups through natural language commands"
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Uploadcare Automation via Rube MCP
+# Uploadcare Automation
 
-Automate Uploadcare operations through Composio's Uploadcare toolkit via Rube MCP.
+Automate Uploadcare file handling workflows -- list project files, permanently store uploads, retrieve file metadata, get download URLs, and manage file groups -- all through natural language.
 
-**Toolkit docs**: [composio.dev/toolkits/uploadcare](https://composio.dev/toolkits/uploadcare)
+**Toolkit docs:** [composio.dev/toolkits/uploadcare](https://composio.dev/toolkits/uploadcare)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Uploadcare connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `uploadcare`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Rube MCP server to your environment: `https://rube.app/mcp`
+2. Connect your Uploadcare account when prompted (API key auth via Composio)
+3. Start issuing natural language commands for Uploadcare automation
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `uploadcare`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List Project Files
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Uploadcare operations", known_fields: ""}]
-session: {generate_id: true}
-```
+Browse uploaded files in your Uploadcare project with filtering, sorting, and pagination.
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+**Tool:** `UPLOADCARE_LIST_FILES`
 
-## Core Workflow Pattern
+Key parameters:
+- `stored` -- filter by storage status: `"true"` for stored, `"false"` for unstored
+- `removed` -- filter by removal status: `"true"` for removed, `"false"` for active
+- `ordering` -- sort by `datetime_uploaded` (ascending) or `-datetime_uploaded` (descending)
+- `limit` -- files per page, 1-1000 (default 100)
+- `offset` -- zero-based pagination offset
+- `from_date` -- ISO 8601 timestamp to filter files uploaded after this date
+- `to_date` -- ISO 8601 timestamp to filter files uploaded before this date
+- `include` -- set to `"total"` to include total file count in response
 
-### Step 1: Discover Available Tools
+Example prompt:
+> "List the 50 most recently uploaded stored files in my Uploadcare project"
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Uploadcare task"}]
-session: {id: "existing_session_id"}
-```
+---
 
-### Step 2: Check Connection
+### 2. Store a File Permanently
 
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["uploadcare"]
-session_id: "your_session_id"
-```
+Mark an uploaded file as permanently stored. By default, Uploadcare files are temporary and will be deleted after 24 hours unless stored.
 
-### Step 3: Execute Tools
+**Tool:** `UPLOADCARE_STORE_FILE`
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+Key parameters:
+- `uuid` -- UUID of the file to store (required); must be in `8-4-4-4-12` hex format (e.g., `3e55317b-23d1-4f35-9b4c-b9accb7b53f4`)
+
+> Always store files after upload to prevent automatic deletion.
+
+Example prompt:
+> "Permanently store the file with UUID 3e55317b-23d1-4f35-9b4c-b9accb7b53f4"
+
+---
+
+### 3. Get File Metadata
+
+Retrieve detailed information about a specific file including size, MIME type, CDN URL, image dimensions, and more.
+
+**Tool:** `UPLOADCARE_GET_FILE_INFO`
+
+Key parameters:
+- `uuid` -- the UUID of the file to inspect (required); format: `8-4-4-4-12` hex
+
+Returns: filename, size, MIME type, CDN URL, upload date, storage status, image info (dimensions, color mode), and more.
+
+Example prompt:
+> "Get the metadata and dimensions for file 3e0923f2-e05a-4b37-9f0d-343b981c9d70"
+
+---
+
+### 4. Get a Temporary Download URL
+
+Retrieve a temporary direct download link for a specific file.
+
+**Tool:** `UPLOADCARE_GET_FILE_DOWNLOAD_URL`
+
+Key parameters:
+- `file_id` -- the unique file identifier (required)
+
+Returns a time-limited URL that can be used for direct file download.
+
+Example prompt:
+> "Get a download link for file 3e0923f2-e05a-4b37-9f0d-343b981c9d70"
+
+---
+
+### 5. Browse File Groups
+
+List file groups in your project. Groups are collections of files uploaded together.
+
+**Tool:** `UPLOADCARE_LIST_GROUPS`
+
+Key parameters:
+- `limit` -- groups per page, 1-1000 (default 20)
+- `offset` -- zero-based pagination offset (default 0)
+- `ordering` -- sort by `datetime_created` (ascending) or `-datetime_created` (descending)
+
+Example prompt:
+> "List my 10 most recent file groups"
+
+---
+
+### 6. File Lifecycle Workflow
+
+Combine tools for end-to-end file management:
+
+1. **Upload**: Files are uploaded via Uploadcare's upload API or widget (outside this toolkit)
+2. **Store**: `UPLOADCARE_STORE_FILE` -- mark files as permanent to prevent auto-deletion
+3. **Inspect**: `UPLOADCARE_GET_FILE_INFO` -- verify metadata, check dimensions and MIME type
+4. **Share**: `UPLOADCARE_GET_FILE_DOWNLOAD_URL` -- generate a temporary download link
+5. **Browse**: `UPLOADCARE_LIST_FILES` -- audit all files with status and date filters
+6. **Groups**: `UPLOADCARE_LIST_GROUPS` -- review batch uploads
+
+Example prompt:
+> "Store file abc-123, then get its metadata and a download link"
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Details |
+|---------|---------|
+| Auto-deletion of unstored files | Uploaded files are temporary by default and deleted after 24 hours -- always call `UPLOADCARE_STORE_FILE` to persist them |
+| UUID format strict | File UUIDs must be in exact `8-4-4-4-12` hex format (e.g., `3e55317b-23d1-4f35-9b4c-b9accb7b53f4`); invalid formats will be rejected |
+| Filter values are strings | The `stored` and `removed` parameters accept string values `"true"` or `"false"`, not booleans |
+| Temporary download URLs | URLs from `UPLOADCARE_GET_FILE_DOWNLOAD_URL` are time-limited and will expire |
+| Pagination is offset-based | Use `offset` + `limit` for pagination; there are no cursor-based pagination tokens |
+| No upload tool | File uploads happen through Uploadcare's upload API or widget, not through this toolkit -- these tools manage already-uploaded files |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Uploadcare-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `uploadcare` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Action | Tool Slug | Key Params |
+|--------|-----------|------------|
+| List files | `UPLOADCARE_LIST_FILES` | `stored`, `ordering`, `limit`, `offset` |
+| Store file | `UPLOADCARE_STORE_FILE` | `uuid` |
+| Get file info | `UPLOADCARE_GET_FILE_INFO` | `uuid` |
+| Get download URL | `UPLOADCARE_GET_FILE_DOWNLOAD_URL` | `file_id` |
+| List groups | `UPLOADCARE_LIST_GROUPS` | `limit`, `offset`, `ordering` |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

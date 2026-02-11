@@ -1,91 +1,148 @@
 ---
-name: jotform-automation
-description: "Automate Jotform tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Jotform Automation
+description: "Automate Jotform form listing, user management, activity history, folder organization, and plan inspection through natural language commands"
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Jotform Automation via Rube MCP
+# Jotform Automation
 
-Automate Jotform operations through Composio's Jotform toolkit via Rube MCP.
+Automate Jotform workflows -- list and search forms, inspect user details, browse activity history, manage folders and labels, and check plan limits -- all through natural language.
 
-**Toolkit docs**: [composio.dev/toolkits/jotform](https://composio.dev/toolkits/jotform)
+**Toolkit docs:** [composio.dev/toolkits/jotform](https://composio.dev/toolkits/jotform)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Jotform connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `jotform`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Rube MCP server to your environment: `https://rube.app/mcp`
+2. Connect your Jotform account when prompted (API key auth via Composio)
+3. Start issuing natural language commands for Jotform automation
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `jotform`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List and Search Forms
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Jotform operations", known_fields: ""}]
-session: {generate_id: true}
-```
+Retrieve all forms created by the authenticated user with search, filtering, sorting, and pagination.
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+**Tool:** `JOTFORM_GET_USER_FORMS`
 
-## Core Workflow Pattern
+Key parameters:
+- `search` -- search query to filter forms by name or content
+- `limit` -- number of forms to return
+- `offset` -- offset for pagination
+- `orderby` -- field to order by
+- `sorting` -- sorting direction: `ASC` or `DESC`
+- `folder` -- filter by folder ID
 
-### Step 1: Discover Available Tools
+Example prompt:
+> "List all my Jotform forms that contain 'feedback' in the name, sorted by most recent"
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Jotform task"}]
-session: {id: "existing_session_id"}
-```
+---
 
-### Step 2: Check Connection
+### 2. Get User Account Details
 
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["jotform"]
-session_id: "your_session_id"
-```
+Retrieve details about the authenticated user including account type, usage statistics, and limits.
 
-### Step 3: Execute Tools
+**Tool:** `JOTFORM_GET_USER_DETAILS`
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+No parameters required. Returns account info such as username, email, account type, form count, submission count, and usage limits.
+
+Example prompt:
+> "Show me my Jotform account details and current usage"
+
+---
+
+### 3. Browse Activity History
+
+Fetch user activity records for auditing, filtered by action type and date range.
+
+**Tool:** `JOTFORM_GET_USER_HISTORY`
+
+Key parameters:
+- `action` -- filter by action type (e.g., `formCreation`, `userLogin`, `formUpdate`, `apiKeyCreated`, `userLogout`)
+- `date` -- predefined date range: `lastWeek`, `lastMonth`, `last3Months`, `last6Months`, `lastYear`, `all`
+- `startDate` -- custom start date in `MM/DD/YYYY` format
+- `endDate` -- custom end date in `MM/DD/YYYY` format
+- `sortBy` -- sort order: `ASC` or `DESC`
+
+Example prompt:
+> "Show me all form creation activity from the last month, sorted newest first"
+
+---
+
+### 4. Manage Folders and Labels
+
+Browse the folder/label structure for organizing forms.
+
+**Tool:** `JOTFORM_GET_USER_FOLDERS`
+
+Key parameters:
+- `add_resources` -- set to `true` to include label resources (forms) in the response
+- `owner` -- owner username or workspace/team ID (conditionally required for some accounts)
+
+> Jotform has migrated from folders to labels. This tool uses the `GET /user/labels` endpoint.
+
+Example prompt:
+> "List all my Jotform folders with their forms included"
+
+---
+
+### 5. Check Plan Limits and Pricing
+
+Retrieve details about a specific Jotform system plan to understand limits and capabilities.
+
+**Tool:** `JOTFORM_GET_SYSTEM_PLAN`
+
+Key parameters:
+- `planName` -- the plan to inspect (required): `FREE`, `BRONZE`, `SILVER`, `GOLD`, or `PLATINUM`
+
+Example prompt:
+> "What are the limits on the Jotform GOLD plan?"
+
+---
+
+### 6. Full Form Management Workflow
+
+Combine tools for comprehensive form management:
+
+1. **Discover**: `JOTFORM_GET_USER_DETAILS` -- check account type and usage limits
+2. **Browse**: `JOTFORM_GET_USER_FORMS` -- list and search forms with filters
+3. **Organize**: `JOTFORM_GET_USER_FOLDERS` -- view folder structure with `add_resources=true`
+4. **Audit**: `JOTFORM_GET_USER_HISTORY` -- track form creation and modification activity
+5. **Plan**: `JOTFORM_GET_SYSTEM_PLAN` -- compare plan features before upgrading
+
+Example prompt:
+> "Show me my account usage, list my recent forms, and tell me if I'm close to my plan limits"
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Details |
+|---------|---------|
+| API key authentication | Jotform uses API key auth, not OAuth -- ensure valid API key is configured in the connection |
+| Folders migrated to labels | The folders endpoint now maps to Jotform's labels system; the API behavior may differ from legacy folder documentation |
+| Date format for history | Custom date filters use `MM/DD/YYYY` format (e.g., `01/15/2026`), not ISO 8601 |
+| Plan name must be exact | `planName` values are case-sensitive enum: `FREE`, `BRONZE`, `SILVER`, `GOLD`, `PLATINUM` |
+| Pagination is offset-based | Forms use `limit`/`offset` pagination, not cursor or page-based |
+| Owner field conditionally required | `JOTFORM_GET_USER_FOLDERS` may require the `owner` parameter for workspace/team accounts |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Jotform-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `jotform` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Action | Tool Slug | Key Params |
+|--------|-----------|------------|
+| List forms | `JOTFORM_GET_USER_FORMS` | `search`, `limit`, `offset`, `orderby` |
+| Get user details | `JOTFORM_GET_USER_DETAILS` | (none) |
+| Activity history | `JOTFORM_GET_USER_HISTORY` | `action`, `date`, `startDate`, `endDate` |
+| List folders/labels | `JOTFORM_GET_USER_FOLDERS` | `add_resources`, `owner` |
+| Check plan | `JOTFORM_GET_SYSTEM_PLAN` | `planName` |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

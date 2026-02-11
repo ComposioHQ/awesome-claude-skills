@@ -1,91 +1,139 @@
 ---
-name: neon-automation
-description: "Automate Neon tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Neon Automation
+description: "Automate Neon serverless Postgres operations -- manage projects, branches, databases, roles, and connection URIs via the Composio MCP integration."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Neon Automation via Rube MCP
+# Neon Automation
 
-Automate Neon operations through Composio's Neon toolkit via Rube MCP.
+Automate your Neon serverless Postgres workflows -- list projects and branches, inspect databases, retrieve connection URIs, manage roles, and integrate Neon database operations into cross-app pipelines.
 
-**Toolkit docs**: [composio.dev/toolkits/neon](https://composio.dev/toolkits/neon)
+**Toolkit docs:** [composio.dev/toolkits/neon](https://composio.dev/toolkits/neon)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Neon connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `neon`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your client: `https://rube.app/mcp`
+2. Connect your Neon account when prompted (API key authentication)
+3. Start using the workflows below
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `neon`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List Projects
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Neon operations", known_fields: ""}]
-session: {generate_id: true}
-```
-
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
+Use `NEON_RETRIEVE_PROJECTS_LIST` to discover all projects associated with the authenticated user.
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Neon task"}]
-session: {id: "existing_session_id"}
+Tool: NEON_RETRIEVE_PROJECTS_LIST
+Inputs:
+  - org_id: string (REQUIRED when using a personal API key)
+  - limit: integer (1-400, default 10)
+  - cursor: string (pagination cursor from previous response)
+  - search: string (search by project name or ID, supports partial match)
+  - timeout: integer (milliseconds; returns partial results on timeout)
 ```
 
-### Step 2: Check Connection
+**Important:** When using a personal API key, `org_id` is required. Retrieve it first via `NEON_GET_USER_ORGANIZATIONS`.
+
+### 2. Get Project Details
+
+Use `NEON_ACCESS_PROJECT_DETAILS_BY_ID` to inspect project configuration, owner info, and consumption metrics.
 
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["neon"]
-session_id: "your_session_id"
+Tool: NEON_ACCESS_PROJECT_DETAILS_BY_ID
+Inputs:
+  - project_id: string (required) -- format: "adjective-noun-number", e.g., "dry-smoke-26258271"
 ```
 
-### Step 3: Execute Tools
+### 3. List Branches for a Project
+
+Use `NEON_GET_BRANCHES_FOR_PROJECT` to enumerate branches (development stages) within a project.
 
 ```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
+Tool: NEON_GET_BRANCHES_FOR_PROJECT
+Inputs:
+  - project_id: string (required)
+  - search: string (optional, search by branch name or ID)
 ```
+
+### 4. List Databases on a Branch
+
+Use `NEON_FETCH_DATABASE_FOR_BRANCH` to inventory databases within a specific project and branch.
+
+```
+Tool: NEON_FETCH_DATABASE_FOR_BRANCH
+Inputs:
+  - project_id: string (required)
+  - branch_id: string (required)
+```
+
+### 5. Get Connection URI
+
+Use `NEON_GET_PROJECT_CONNECTION_URI` to obtain a Postgres connection string for a project/branch/database.
+
+```
+Tool: NEON_GET_PROJECT_CONNECTION_URI
+Inputs:
+  - project_id: string (required)
+  - database_name: string (required) -- e.g., "neondb"
+  - role_name: string (required) -- e.g., "neondb_owner"
+  - branch_id: string (optional, defaults to project default branch)
+  - endpoint_id: string (optional, defaults to read-write endpoint)
+  - pooled: boolean (optional, adds -pooler for connection pooling)
+```
+
+**Security:** The returned URI includes credentials. Treat it as a secret -- do not log or share it.
+
+### 6. Inspect Database Details and Roles
+
+Use `NEON_RETRIEVE_BRANCH_DATABASE_DETAILS` to verify a database before connecting, and `NEON_GET_BRANCH_ROLES_FOR_PROJECT` to list available roles.
+
+```
+Tool: NEON_RETRIEVE_BRANCH_DATABASE_DETAILS
+Inputs:
+  - project_id: string (required)
+  - branch_id: string (required)
+  - database_name: string (required)
+
+Tool: NEON_GET_BRANCH_ROLES_FOR_PROJECT
+Inputs:
+  - project_id: string (required)
+  - branch_id: string (required)
+```
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Detail |
+|---------|--------|
+| org_id required | `NEON_RETRIEVE_PROJECTS_LIST` returns HTTP 400 "org_id is required" when using a personal API key. Call `NEON_GET_USER_ORGANIZATIONS` first. |
+| Incomplete pagination | Project lists may be incomplete without pagination. Iterate using `cursor` until it is empty. |
+| Rate limiting | `NEON_RETRIEVE_PROJECTS_LIST` returns HTTP 429 on bursty listing. Avoid redundant calls and back off before retrying. |
+| Invalid role/database pairing | `NEON_GET_PROJECT_CONNECTION_URI` returns 401/403 when the database_name/role_name pairing is invalid. Use `NEON_GET_BRANCH_ROLES_FOR_PROJECT` to select an allowed role. |
+| Connection URI is a secret | The returned URI includes credentials. Never log, display, or share it in plain text. |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Neon-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `neon` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|-----------|-------------|
+| `NEON_RETRIEVE_PROJECTS_LIST` | List all Neon projects with pagination and search |
+| `NEON_ACCESS_PROJECT_DETAILS_BY_ID` | Get project configuration and consumption metrics |
+| `NEON_GET_BRANCHES_FOR_PROJECT` | List branches within a project |
+| `NEON_FETCH_DATABASE_FOR_BRANCH` | List databases on a specific branch |
+| `NEON_GET_PROJECT_CONNECTION_URI` | Get a Postgres connection URI (with credentials) |
+| `NEON_RETRIEVE_BRANCH_DATABASE_DETAILS` | Inspect database metadata and settings |
+| `NEON_GET_USER_ORGANIZATIONS` | List organizations for the authenticated user |
+| `NEON_CREATE_API_KEY_FOR_ORGANIZATION` | Create a new API key for an organization |
+| `NEON_GET_BRANCH_ROLES_FOR_PROJECT` | List roles available on a branch |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

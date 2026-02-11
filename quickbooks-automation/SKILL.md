@@ -1,91 +1,160 @@
 ---
-name: quickbooks-automation
-description: "Automate Quickbooks tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: QuickBooks Automation
+description: "QuickBooks Automation: manage invoices, customers, accounts, and payments in QuickBooks Online for streamlined bookkeeping"
 requires:
   mcp: [rube]
 ---
 
-# Quickbooks Automation via Rube MCP
+# QuickBooks Automation
 
-Automate Quickbooks operations through Composio's Quickbooks toolkit via Rube MCP.
+Automate QuickBooks Online operations including creating invoices, managing customers, querying accounts, and listing invoices for financial reporting.
 
-**Toolkit docs**: [composio.dev/toolkits/quickbooks](https://composio.dev/toolkits/quickbooks)
+**Toolkit docs:** [composio.dev/toolkits/quickbooks](https://composio.dev/toolkits/quickbooks)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Quickbooks connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `quickbooks`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+This skill requires the **Rube MCP server** connected at `https://rube.app/mcp`.
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `quickbooks`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+Before executing any tools, ensure an active connection exists for the `quickbooks` toolkit. If no connection is active, initiate one via `RUBE_MANAGE_CONNECTIONS`.
 
-## Tool Discovery
+---
 
-Always discover available tools before executing workflows:
+## Core Workflows
 
+### 1. Create an Invoice
+
+Create a new invoice for a customer with line items.
+
+**Tool:** `QUICKBOOKS_CREATE_INVOICE`
+
+**Key Parameters:**
+- `customer_id` (required) -- ID of the customer (CustomerRef.value)
+- `lines` (required) -- Array of line item objects. Each must include:
+  - `DetailType` -- e.g., `"SalesItemLineDetail"`
+  - `Amount` -- Line item total
+  - `SalesItemLineDetail` -- Object with `ItemRef` containing `value` (item ID)
+- `minorversion` -- Optional API version parameter
+
+**Example:**
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Quickbooks operations", known_fields: ""}]
-session: {generate_id: true}
+Tool: QUICKBOOKS_CREATE_INVOICE
+Arguments:
+  customer_id: "21"
+  lines: [
+    {
+      "DetailType": "SalesItemLineDetail",
+      "Amount": 150.00,
+      "SalesItemLineDetail": {
+        "ItemRef": {"value": "1", "name": "Services"}
+      }
+    }
+  ]
 ```
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+**Prerequisites:** Resolve the customer ID using `QUICKBOOKS_READ_CUSTOMER` or create one with `QUICKBOOKS_CREATE_CUSTOMER`. Resolve item/account IDs using `QUICKBOOKS_QUERY_ACCOUNT`.
 
-## Core Workflow Pattern
+---
 
-### Step 1: Discover Available Tools
+### 2. Manage Customers
 
+Create and read customer records.
+
+**Tools:**
+- `QUICKBOOKS_CREATE_CUSTOMER` -- Create a new customer
+- `QUICKBOOKS_READ_CUSTOMER` -- Read a customer by ID
+
+**Key Parameters for `QUICKBOOKS_CREATE_CUSTOMER`:**
+- `display_name` -- Display name (must be unique across customers, vendors, employees; max 500 chars)
+- `given_name` -- First name (max 100 chars)
+- `family_name` -- Last name (max 100 chars)
+- `middle_name` -- Middle name (max 100 chars)
+- `title` -- Title, e.g., `"Mr."`, `"Dr."` (max 16 chars)
+- `suffix` -- Name suffix, e.g., `"Jr."` (max 16 chars)
+
+> At least one of `display_name`, `title`, `given_name`, `middle_name`, `family_name`, or `suffix` is required.
+
+**Key Parameters for `QUICKBOOKS_READ_CUSTOMER`:**
+- `customer_id` (required) -- ID of the customer to read
+
+**Example:**
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Quickbooks task"}]
-session: {id: "existing_session_id"}
+Tool: QUICKBOOKS_CREATE_CUSTOMER
+Arguments:
+  display_name: "Acme Corporation"
+  given_name: "John"
+  family_name: "Doe"
 ```
 
-### Step 2: Check Connection
+---
 
+### 3. Query and Read Accounts
+
+Retrieve account information for use in invoice line items and financial reporting.
+
+**Tools:**
+- `QUICKBOOKS_QUERY_ACCOUNT` -- Execute a query against accounts
+- `QUICKBOOKS_READ_ACCOUNT` -- Read a specific account by ID
+
+**Key Parameters for `QUICKBOOKS_QUERY_ACCOUNT`:**
+- `query` (required) -- SQL-like query string, e.g., `"SELECT * FROM Account WHERE AccountType = 'Income'"`
+
+**Example:**
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["quickbooks"]
-session_id: "your_session_id"
+Tool: QUICKBOOKS_QUERY_ACCOUNT
+Arguments:
+  query: "SELECT * FROM Account WHERE AccountType = 'Income' MAXRESULTS 10"
 ```
 
-### Step 3: Execute Tools
+---
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+### 4. List and Filter Invoices
+
+Retrieve invoices with optional pagination and filtering.
+
+**Tool:** `QUICKBOOKS_LIST_INVOICES`
+
+**Steps:**
+1. Call `QUICKBOOKS_LIST_INVOICES` with pagination parameters
+2. Use `start_position` and `max_results` to page through results
+3. Filter by specific criteria as needed
+
+---
+
+## Recommended Execution Plan
+
+1. **Resolve the customer** using `QUICKBOOKS_READ_CUSTOMER` (if you have a customer ID) or create one with `QUICKBOOKS_CREATE_CUSTOMER`
+2. **Resolve item/revenue accounts** using `QUICKBOOKS_QUERY_ACCOUNT` and `QUICKBOOKS_READ_ACCOUNT` to get account or item IDs for invoice line items
+3. **Create the invoice** using `QUICKBOOKS_CREATE_INVOICE` with the resolved `customer_id` and well-formed line items
+4. **Verify creation** using `QUICKBOOKS_LIST_INVOICES` to locate the new invoice by ID or DocNumber
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Detail |
+|---------|--------|
+| **Invalid references** | `QUICKBOOKS_CREATE_INVOICE` fails if `customer_id` or `ItemRef.value` point to non-existent or inactive records. Always resolve IDs first. |
+| **Line item validation** | Incorrect `DetailType` or missing `SalesItemLineDetail` fields cause schema/validation errors during invoice creation. |
+| **Pagination** | `QUICKBOOKS_LIST_INVOICES` uses `start_position` and `max_results`. Incomplete pagination settings can miss invoices in larger books. |
+| **Sync tokens** | Any later edits require the latest `SyncToken` from a fresh invoice read. Stale sync tokens cause update rejections. |
+| **Rate limits** | QuickBooks enforces per-minute and daily API caps. High-volume runs should include backoff to avoid throttling errors. |
+| **DisplayName uniqueness** | Customer `display_name` must be unique across all Customer, Vendor, and Employee objects. Duplicates cause creation failures. |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Quickbooks-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `quickbooks` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|-----------|-------------|
+| `QUICKBOOKS_CREATE_INVOICE` | Create a new invoice with line items |
+| `QUICKBOOKS_READ_CUSTOMER` | Read a customer record by ID |
+| `QUICKBOOKS_CREATE_CUSTOMER` | Create a new customer record |
+| `QUICKBOOKS_QUERY_ACCOUNT` | Query accounts with SQL-like syntax |
+| `QUICKBOOKS_READ_ACCOUNT` | Read a specific account by ID |
+| `QUICKBOOKS_LIST_INVOICES` | List invoices with pagination |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

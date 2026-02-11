@@ -1,91 +1,128 @@
 ---
-name: phantombuster-automation
-description: "Automate Phantombuster tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: PhantomBuster Automation
+description: "Automate lead generation, web scraping, and social media data extraction workflows through PhantomBuster's cloud platform via Composio"
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Phantombuster Automation via Rube MCP
+# PhantomBuster Automation
 
-Automate Phantombuster operations through Composio's Phantombuster toolkit via Rube MCP.
+Automate cloud-based data extraction and lead generation -- manage agents and scripts, monitor organization resources and usage, track container execution, and solve captcha challenges -- all orchestrated through the Composio MCP integration.
 
-**Toolkit docs**: [composio.dev/toolkits/phantombuster](https://composio.dev/toolkits/phantombuster)
+**Toolkit docs:** [composio.dev/toolkits/phantombuster](https://composio.dev/toolkits/phantombuster)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Phantombuster connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `phantombuster`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Connect your PhantomBuster account through the Composio MCP server at `https://rube.app/mcp`
+2. The agent will prompt you with an authentication link if no active connection exists
+3. Once connected, all `PHANTOMBUSTER_*` tools become available for execution
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `phantombuster`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List All Agents
+Fetch every agent associated with your account or organization to inventory automation workflows.
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Phantombuster operations", known_fields: ""}]
-session: {generate_id: true}
-```
-
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
+**Tool:** `PHANTOMBUSTER_GET_AGENTS_FETCH_ALL`
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Phantombuster task"}]
-session: {id: "existing_session_id"}
+No parameters required -- returns all agents with IDs and metadata.
+Authenticate your API key first.
 ```
 
-### Step 2: Check Connection
+Use agent IDs from this response when fetching containers or monitoring specific automations.
+
+---
+
+### 2. List All Scripts
+Retrieve all scripts available under your account (without code bodies) for script management.
+
+**Tool:** `PHANTOMBUSTER_GET_SCRIPTS_FETCH_ALL`
 
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["phantombuster"]
-session_id: "your_session_id"
+No parameters required -- returns script metadata without source code.
 ```
 
-### Step 3: Execute Tools
+---
+
+### 3. Monitor Organization Resources & Quotas
+Check your organization's current resource usage and quota limits to plan automation capacity.
+
+**Tool:** `PHANTOMBUSTER_GET_ORGS_FETCH_RESOURCES`
 
 ```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
+No parameters required -- returns resource allocation and current usage metrics.
 ```
+
+---
+
+### 4. Retrieve Agent Containers
+Fetch all execution containers for a specific agent to monitor run history and status.
+
+**Tool:** `PHANTOMBUSTER_GET_CONTAINERS_FETCH_ALL`
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `agentId` | string | Yes | Agent ID from `PHANTOMBUSTER_GET_AGENTS_FETCH_ALL` |
+
+---
+
+### 5. Export Agent Usage Report
+Download a CSV report of all agents' run statistics for your organization.
+
+**Tool:** `PHANTOMBUSTER_GET_ORGS_EXPORT_AGENT_USAGE`
+
+```
+Returns a downloadable CSV with comprehensive agent execution statistics.
+```
+
+---
+
+### 6. Solve hCaptcha Challenges
+Obtain a valid hCaptcha token for automated form submissions or scraping flows that require captcha solving.
+
+**Tool:** `PHANTOMBUSTER_POST_HCAPTCHA`
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `siteKey` | string | Yes | Public site key of the hCaptcha widget |
+| `pageUrl` | string | Yes | Full URL of the page with the captcha |
+| `proxy` | string | No | Proxy URL (e.g., `http://user:pass@host:port`) |
+| `userAgent` | string | No | Custom User-Agent string to simulate |
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Details |
+|---------|---------|
+| **Agent ID required for containers** | `PHANTOMBUSTER_GET_CONTAINERS_FETCH_ALL` requires a valid `agentId` -- always resolve it first via `PHANTOMBUSTER_GET_AGENTS_FETCH_ALL` |
+| **API key authentication** | All PhantomBuster tools require a valid API key connection -- verify authentication before calling any tools |
+| **Script bodies not included** | `PHANTOMBUSTER_GET_SCRIPTS_FETCH_ALL` returns metadata only, not source code |
+| **Organization scope** | Resource and usage tools operate at the organization level tied to your API key -- ensure the correct org is targeted |
+| **Branch operations** | `PHANTOMBUSTER_GET_BRANCHES_FETCH_ALL` and `PHANTOMBUSTER_GET_BRANCHES_DIFF` are for advanced script versioning -- use them to assess staging vs. release changes before deployment |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Phantombuster-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `phantombuster` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Purpose |
+|-----------|---------|
+| `PHANTOMBUSTER_GET_AGENTS_FETCH_ALL` | List all agents in your account |
+| `PHANTOMBUSTER_GET_SCRIPTS_FETCH_ALL` | List all scripts (metadata only) |
+| `PHANTOMBUSTER_GET_ORGS_FETCH_RESOURCES` | Check organization resource usage and quotas |
+| `PHANTOMBUSTER_GET_CONTAINERS_FETCH_ALL` | Get all containers for a specific agent |
+| `PHANTOMBUSTER_GET_ORGS_EXPORT_AGENT_USAGE` | Export agent usage as CSV |
+| `PHANTOMBUSTER_POST_HCAPTCHA` | Solve hCaptcha challenges for automation |
+| `PHANTOMBUSTER_GET_ORGS_FETCH` | Fetch organization details |
+| `PHANTOMBUSTER_GET_ORGS_FETCH_AGENT_GROUPS` | Get agent groups and ordering |
+| `PHANTOMBUSTER_GET_BRANCHES_FETCH_ALL` | List all script branches |
+| `PHANTOMBUSTER_GET_BRANCHES_DIFF` | Compare staging vs. release branches |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

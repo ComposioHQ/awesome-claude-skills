@@ -1,91 +1,110 @@
 ---
-name: coinbase-automation
-description: "Automate Coinbase tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Coinbase Automation
+description: "Coinbase Automation: list and manage cryptocurrency wallets, accounts, and portfolio data via Coinbase CDP SDK"
 requires:
   mcp: [rube]
 ---
 
-# Coinbase Automation via Rube MCP
+# Coinbase Automation
 
-Automate Coinbase operations through Composio's Coinbase toolkit via Rube MCP.
+Automate Coinbase operations including listing cryptocurrency wallets, paginating through wallet collections, and retrieving portfolio data.
 
-**Toolkit docs**: [composio.dev/toolkits/coinbase](https://composio.dev/toolkits/coinbase)
+**Toolkit docs:** [composio.dev/toolkits/coinbase](https://composio.dev/toolkits/coinbase)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Coinbase connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `coinbase`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+This skill requires the **Rube MCP server** connected at `https://rube.app/mcp`.
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `coinbase`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+Before executing any tools, ensure an active connection exists for the `coinbase` toolkit. If no connection is active, initiate one via `RUBE_MANAGE_CONNECTIONS`.
 
-## Tool Discovery
+---
 
-Always discover available tools before executing workflows:
+## Core Workflows
 
+### 1. List All Wallets
+
+Retrieve all wallets from Coinbase with pagination support.
+
+**Tool:** `COINBASE_LIST_WALLETS`
+
+**Key Parameters:**
+- `limit` -- Results per page (1--100, default: 25)
+- `order` -- Sort order: `"asc"` (ascending) or `"desc"` (descending, default)
+- `starting_after` -- Cursor for forward pagination: ID of the last wallet from the previous page
+- `ending_before` -- Cursor for backward pagination: ID of the first wallet from the previous page
+
+**Example (first page):**
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Coinbase operations", known_fields: ""}]
-session: {generate_id: true}
-```
-
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
-
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Coinbase task"}]
-session: {id: "existing_session_id"}
-```
-
-### Step 2: Check Connection
-
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["coinbase"]
-session_id: "your_session_id"
+Tool: COINBASE_LIST_WALLETS
+Arguments:
+  limit: 50
+  order: "desc"
 ```
 
-### Step 3: Execute Tools
+**Example (next page):**
+```
+Tool: COINBASE_LIST_WALLETS
+Arguments:
+  limit: 50
+  order: "desc"
+  starting_after: "wallet_abc123_last_id_from_prev_page"
+```
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+---
+
+### 2. Paginate Through All Wallets
+
+To retrieve a complete wallet inventory, iterate through pages.
+
+**Steps:**
+1. Call `COINBASE_LIST_WALLETS` with desired `limit` and `order`
+2. If the response contains more results, note the ID of the last wallet returned
+3. Call `COINBASE_LIST_WALLETS` again with `starting_after` set to that last wallet ID
+4. Repeat until no more results are returned
+
+---
+
+### 3. Audit Wallet Portfolio
+
+Retrieve wallet data for portfolio analysis and reporting.
+
+**Steps:**
+1. Call `COINBASE_LIST_WALLETS` with `limit: 100` to maximize per-page results
+2. Collect wallet balances and metadata from each page
+3. Aggregate data across all pages for a complete portfolio view
+
+---
+
+### 4. Monitor Wallet Changes
+
+Periodically list wallets to detect new additions or changes.
+
+**Steps:**
+1. Call `COINBASE_LIST_WALLETS` with `order: "desc"` to get newest wallets first
+2. Compare against previously stored wallet IDs to identify new entries
+3. Schedule periodic checks for continuous monitoring
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Detail |
+|---------|--------|
+| **Pagination required** | Wallet lists are paginated. Always check for additional pages using cursor-based pagination (`starting_after`/`ending_before`). |
+| **Limit bounds** | The `limit` parameter accepts 1--100. Values outside this range cause errors. Default is 25. |
+| **Cursor-based pagination** | Uses wallet IDs as cursors, not page numbers. You must extract the last/first wallet ID from each response to navigate pages. |
+| **CDP SDK scope** | This tool uses the Coinbase CDP SDK. Available operations depend on the API key permissions granted during connection setup. |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Coinbase-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `coinbase` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|-----------|-------------|
+| `COINBASE_LIST_WALLETS` | List cryptocurrency wallets with pagination |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

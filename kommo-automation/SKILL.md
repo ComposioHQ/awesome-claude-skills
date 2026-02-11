@@ -1,91 +1,163 @@
 ---
-name: kommo-automation
-description: "Automate Kommo tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Kommo Automation
+description: "Automate Kommo CRM operations -- manage leads, pipelines, pipeline stages, tasks, and custom fields -- using natural language through the Composio MCP integration."
+category: crm
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Kommo Automation via Rube MCP
+# Kommo Automation
 
-Automate Kommo operations through Composio's Kommo toolkit via Rube MCP.
+Manage your Kommo CRM sales pipeline -- list and filter leads, navigate pipeline stages, create and update deals, assign tasks, and work with custom fields -- all through natural language commands.
 
-**Toolkit docs**: [composio.dev/toolkits/kommo](https://composio.dev/toolkits/kommo)
+**Toolkit docs:** [composio.dev/toolkits/kommo](https://composio.dev/toolkits/kommo)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Kommo connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `kommo`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your client configuration:
+   ```
+   https://rube.app/mcp
+   ```
+2. Connect your Kommo account when prompted (OAuth authentication).
+3. Start issuing natural language commands to manage your CRM.
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `kommo`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. Navigate Pipelines and Stages
+List all lead pipelines, then drill into specific pipeline stages to understand your sales funnel structure.
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Kommo operations", known_fields: ""}]
-session: {generate_id: true}
-```
+**Tools:** `KOMMO_LIST_LEADS_PIPELINES`, `KOMMO_LIST_PIPELINE_STAGES`
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+**Example prompt:**
+> "Show all my Kommo pipelines and the stages in my main sales pipeline"
 
-## Core Workflow Pattern
+**Key parameters for List Pipelines:** None required.
 
-### Step 1: Discover Available Tools
+**Key parameters for List Stages:**
+- `pipeline_id` (required) -- The pipeline ID to list stages for
+- `with_description` -- Include stage descriptions in the response (boolean)
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Kommo task"}]
-session: {id: "existing_session_id"}
-```
+---
 
-### Step 2: Check Connection
+### 2. List and Filter Leads
+Retrieve leads with powerful filtering by pipeline, status, date ranges, responsible users, price, and more.
 
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["kommo"]
-session_id: "your_session_id"
-```
+**Tool:** `KOMMO_LIST_LEADS`
 
-### Step 3: Execute Tools
+**Example prompt:**
+> "Show all leads in pipeline 12345 created this week, sorted by newest first"
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+**Key parameters:**
+- `query` -- Free-text search across all filled fields
+- `filter_pipeline_ids` -- Filter by pipeline IDs (array of integers)
+- `filter_status` -- Filter by status within a pipeline: `{"pipeline_id": 123, "status_id": 456}`
+- `filter_responsible_user_ids` -- Filter by assigned user IDs
+- `filter_names` -- Filter by lead names
+- `filter_price` -- Filter by deal value
+- `filter_created_at` -- Date range: `{"from": <unix_timestamp>, "to": <unix_timestamp>}`
+- `filter_updated_at` -- Date range for last update
+- `filter_closed_at` -- Date range for closure
+- `order_by_created_at` -- Sort: "asc" or "desc"
+- `order_by_updated_at` -- Sort by update date
+- `limit` -- Max 250 per page
+- `page` -- Page number for pagination
+- `with_params` -- Additional data: "contacts", "loss_reason", "catalog_elements", "source_id"
+
+---
+
+### 3. Create New Leads
+Add new deals to your Kommo pipeline with custom fields, tags, and pipeline placement.
+
+**Tool:** `KOMMO_CREATE_LEAD`
+
+**Example prompt:**
+> "Create a new lead called 'Acme Corp Deal' worth $50,000 in pipeline 12345"
+
+**Key parameters:**
+- `name` (required) -- Name of the lead/deal
+- `price` -- Deal value (integer)
+- `pipeline_id` -- Pipeline to add the lead to
+- `status_id` -- Stage within the pipeline (defaults to first stage of main pipeline)
+- `responsible_user_id` -- Assigned user ID
+- `custom_fields_values` -- Array of custom field value objects
+- `tags_to_add` -- Array of tags (by name or ID)
+- `created_by` -- User ID of creator (0 for robot)
+- `loss_reason_id` -- Reason for loss (if applicable)
+
+---
+
+### 4. Update Existing Leads
+Modify lead properties including name, price, pipeline stage, responsible user, tags, and custom fields.
+
+**Tool:** `KOMMO_UPDATE_LEAD`
+
+**Example prompt:**
+> "Move lead 789 to stage 456 in pipeline 123 and update the price to $75,000"
+
+**Key parameters:**
+- Lead ID (required)
+- Any combination of: `name`, `price`, `pipeline_id`, `status_id`, `responsible_user_id`, `tags_to_add`, `tags_to_delete`, `custom_fields_values`
+
+---
+
+### 5. Create Tasks
+Assign follow-up tasks linked to leads, contacts, or companies.
+
+**Tool:** `KOMMO_CREATE_TASK`
+
+**Example prompt:**
+> "Create a follow-up call task for lead 789 due tomorrow assigned to user 42"
+
+**Key parameters:**
+- Task text/description
+- Entity type and ID (lead, contact, company)
+- Responsible user ID
+- Due date (Unix timestamp)
+- Task type
+
+---
+
+### 6. Discover Custom Fields
+List all custom fields for leads, contacts, or companies to understand your CRM schema.
+
+**Tool:** `KOMMO_LIST_CUSTOM_FIELDS`
+
+**Example prompt:**
+> "What custom fields are available for leads in Kommo?"
+
+**Key parameters:**
+- Entity type (leads, contacts, companies)
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+- **Date filters use Unix timestamps**: All date range filters (`filter_created_at`, `filter_updated_at`, `filter_closed_at`) require Unix timestamp format in `{"from": <timestamp>, "to": <timestamp>}` structure, not ISO8601 strings.
+- **Pipeline and stage IDs are required**: To filter leads by status, you need both `pipeline_id` and `status_id`. Always call `KOMMO_LIST_LEADS_PIPELINES` and `KOMMO_LIST_PIPELINE_STAGES` first to discover valid IDs.
+- **Max 250 leads per page**: The `limit` parameter caps at 250. For large datasets, implement pagination using the `page` parameter.
+- **Custom field values format**: Custom fields use a specific nested object format. Use `KOMMO_LIST_CUSTOM_FIELDS` to discover field IDs and expected value formats before setting values.
+- **Status filter requires both IDs**: The `filter_status` parameter requires both `pipeline_id` and `status_id` as a combined object -- you cannot filter by status alone.
+- **Created_by 0 means robot**: When setting `created_by` or `updated_by` to 0, the action is attributed to a robot/automation, not a human user.
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Kommo-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `kommo` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Action | Tool Slug | Required Params |
+|---|---|---|
+| List pipelines | `KOMMO_LIST_LEADS_PIPELINES` | None |
+| List pipeline stages | `KOMMO_LIST_PIPELINE_STAGES` | `pipeline_id` |
+| List leads | `KOMMO_LIST_LEADS` | None (optional filters) |
+| Create lead | `KOMMO_CREATE_LEAD` | `name` |
+| Update lead | `KOMMO_UPDATE_LEAD` | Lead ID |
+| Create task | `KOMMO_CREATE_TASK` | Task details |
+| List custom fields | `KOMMO_LIST_CUSTOM_FIELDS` | Entity type |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

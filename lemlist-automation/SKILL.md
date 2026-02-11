@@ -1,91 +1,135 @@
 ---
-name: lemlist-automation
-description: "Automate Lemlist tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Lemlist Automation
+description: "Automate Lemlist multichannel outreach -- manage campaigns, enroll leads, add personalization variables, export campaign data, and handle unsubscribes via the Composio MCP integration."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Lemlist Automation via Rube MCP
+# Lemlist Automation
 
-Automate Lemlist operations through Composio's Lemlist toolkit via Rube MCP.
+Automate your Lemlist multichannel outreach workflows -- manage campaigns, enroll leads at scale, enrich with custom variables, export campaign data, and clean up unsubscribes.
 
-**Toolkit docs**: [composio.dev/toolkits/lemlist](https://composio.dev/toolkits/lemlist)
+**Toolkit docs:** [composio.dev/toolkits/lemlist](https://composio.dev/toolkits/lemlist)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Lemlist connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `lemlist`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your client: `https://rube.app/mcp`
+2. Connect your Lemlist account when prompted (API key authentication)
+3. Start using the workflows below
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `lemlist`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List and Discover Campaigns
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Lemlist operations", known_fields: ""}]
-session: {generate_id: true}
-```
-
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
+Use `LEMLIST_GET_LIST_CAMPAIGNS` to enumerate all campaigns by status, with pagination support.
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Lemlist task"}]
-session: {id: "existing_session_id"}
+Tool: LEMLIST_GET_LIST_CAMPAIGNS
+Inputs:
+  - status: "running" | "draft" | "archived" | "ended" | "paused" | "errors" (optional)
+  - limit: integer (max 100, default 100)
+  - offset: integer (pagination offset)
+  - sortBy: "createdAt"
+  - sortOrder: "asc" | "desc"
 ```
 
-### Step 2: Check Connection
+**Important:** The response may be wrapped as `{campaigns: [...], pagination: {...}}` instead of a flat list. Always extract from the `campaigns` key.
+
+### 2. Get Campaign Details
+
+Use `LEMLIST_GET_CAMPAIGN_BY_ID` to validate campaign configuration before writes.
 
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["lemlist"]
-session_id: "your_session_id"
+Tool: LEMLIST_GET_CAMPAIGN_BY_ID
+Inputs:
+  - campaignId: string (required) -- e.g., "cam_A1B2C3D4E5F6G7H8I9"
 ```
 
-### Step 3: Execute Tools
+### 3. Enroll Leads into a Campaign
+
+Use `LEMLIST_POST_CREATE_LEAD_IN_CAMPAIGN` to add leads with optional email finding, phone lookup, and LinkedIn enrichment.
 
 ```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
+Tool: LEMLIST_POST_CREATE_LEAD_IN_CAMPAIGN
+Inputs:
+  - campaignId: string (required)
+  - email: string (required)
+  - firstName, lastName, companyName, companyDomain: string (optional)
+  - jobTitle, phone, linkedinUrl, icebreaker: string (optional)
+  - deduplicate: boolean (prevents cross-campaign duplicates)
+  - findEmail, findPhone, verifyEmail, linkedinEnrichment: boolean (optional)
+  - timezone: string (IANA format, e.g., "America/New_York")
 ```
+
+**Bulk pattern:** Chunk leads into batches of ~50 and checkpoint progress between batches.
+
+### 4. Add Custom Variables to a Lead
+
+Use `LEMLIST_POST_ADD_VARIABLES_TO_LEAD` to enrich leads with personalization fields after enrollment.
+
+```
+Tool: LEMLIST_POST_ADD_VARIABLES_TO_LEAD
+Inputs:
+  - leadId: string (required) -- internal Lemlist lead ID (NOT email)
+  - company: string (required) -- must match your company name in Lemlist
+  - variables: object (required) -- key-value pairs, e.g., {"score": "42", "color": "yellow"}
+```
+
+**Important:** This is NOT an upsert -- attempting to add variables that already exist will fail. Resolve the internal `leadId` via `LEMLIST_GET_RETRIEVE_LEAD_BY_EMAIL` if you only have the email address.
+
+### 5. Export Campaign Leads
+
+Use `LEMLIST_GET_EXPORT_CAMPAIGN_LEADS` to download leads with state filtering for reporting or QA.
+
+```
+Tool: LEMLIST_GET_EXPORT_CAMPAIGN_LEADS
+Inputs:
+  - campaignId: string (required)
+  - (supports state filtering and JSON/CSV output)
+```
+
+### 6. Unsubscribe Lead from Campaign
+
+Use `LEMLIST_DELETE_UNSUBSCRIBE_LEAD_FROM_CAMPAIGN` to stop outreach by removing a lead from a campaign.
+
+```
+Tool: LEMLIST_DELETE_UNSUBSCRIBE_LEAD_FROM_CAMPAIGN
+Inputs:
+  - campaignId: string (required)
+  - leadId or email: string (required)
+```
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Detail |
+|---------|--------|
+| Wrapped campaign list | `LEMLIST_GET_LIST_CAMPAIGNS` may return `{campaigns: [...], pagination: {...}}` instead of a flat array. Always extract from the `campaigns` key. |
+| Cross-campaign deduplication | `LEMLIST_POST_CREATE_LEAD_IN_CAMPAIGN` with deduplication enabled fails with HTTP 500 "Lead already in other campaign" -- disable deduplication for intentional cross-campaign enrollment. |
+| Bulk import failures | Chunk bulk imports to ~50 per batch with checkpoints to avoid losing partial progress on intermittent failures. |
+| Invalid leadId | `LEMLIST_POST_ADD_VARIABLES_TO_LEAD` returns HTTP 400 "Invalid leadId" when using an email as the leadId -- resolve the internal ID via `LEMLIST_GET_RETRIEVE_LEAD_BY_EMAIL` first. |
+| Variable collisions | `LEMLIST_POST_ADD_VARIABLES_TO_LEAD` is not an upsert. Adding keys that already exist returns HTTP 400 "Variables X already exist". |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Lemlist-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `lemlist` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|-----------|-------------|
+| `LEMLIST_GET_LIST_CAMPAIGNS` | List all campaigns with status filter and pagination |
+| `LEMLIST_GET_CAMPAIGN_BY_ID` | Get detailed campaign info by ID |
+| `LEMLIST_POST_CREATE_LEAD_IN_CAMPAIGN` | Create and enroll a lead into a campaign |
+| `LEMLIST_POST_ADD_VARIABLES_TO_LEAD` | Add custom personalization variables to a lead |
+| `LEMLIST_GET_RETRIEVE_LEAD_BY_EMAIL` | Look up a lead by email address |
+| `LEMLIST_GET_EXPORT_CAMPAIGN_LEADS` | Export leads from a campaign with state filtering |
+| `LEMLIST_DELETE_UNSUBSCRIBE_LEAD_FROM_CAMPAIGN` | Remove a lead from a campaign |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

@@ -1,91 +1,138 @@
 ---
-name: replicate-automation
-description: "Automate Replicate tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Replicate Automation
+description: "Automate Replicate AI model operations -- run predictions, upload files, inspect model schemas, list versions, and manage prediction history via the Composio MCP integration."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Replicate Automation via Rube MCP
+# Replicate Automation
 
-Automate Replicate operations through Composio's Replicate toolkit via Rube MCP.
+Automate your Replicate AI model workflows -- run predictions on any public model (image generation, LLMs, audio, video), upload input files, inspect model schemas and documentation, list model versions, and track prediction history.
 
-**Toolkit docs**: [composio.dev/toolkits/replicate](https://composio.dev/toolkits/replicate)
+**Toolkit docs:** [composio.dev/toolkits/replicate](https://composio.dev/toolkits/replicate)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Replicate connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `replicate`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your client: `https://rube.app/mcp`
+2. Connect your Replicate account when prompted (API token authentication)
+3. Start using the workflows below
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `replicate`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. Get Model Details and Schema
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Replicate operations", known_fields: ""}]
-session: {generate_id: true}
-```
-
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
+Use `REPLICATE_MODELS_GET` to inspect a model's input/output schema before running predictions.
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Replicate task"}]
-session: {id: "existing_session_id"}
+Tool: REPLICATE_MODELS_GET
+Inputs:
+  - model_owner: string (required) -- e.g., "meta", "black-forest-labs", "stability-ai"
+  - model_name: string (required) -- e.g., "meta-llama-3-8b-instruct", "flux-1.1-pro"
 ```
 
-### Step 2: Check Connection
+**Important:** Each model has unique input keys and types. Always check the `openapi_schema` from this response before constructing prediction inputs.
+
+### 2. Run a Prediction
+
+Use `REPLICATE_MODELS_PREDICTIONS_CREATE` to run inference on any model with optional synchronous waiting and webhooks.
 
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["replicate"]
-session_id: "your_session_id"
+Tool: REPLICATE_MODELS_PREDICTIONS_CREATE
+Inputs:
+  - model_owner: string (required) -- e.g., "meta", "black-forest-labs"
+  - model_name: string (required) -- e.g., "flux-1.1-pro", "sdxl"
+  - input: object (required) -- model-specific inputs, e.g., { "prompt": "A sunset over mountains" }
+  - wait_for: integer (1-60 seconds, optional) -- synchronous wait for completion
+  - cancel_after: string (optional) -- max execution time, e.g., "300s", "5m"
+  - webhook: string (optional) -- HTTPS URL for async completion notifications
+  - webhook_events_filter: array (optional) -- ["start", "output", "logs", "completed"]
 ```
 
-### Step 3: Execute Tools
+**Sync vs Async:** Use `wait_for` (1-60s) for fast models. For long-running jobs, omit it and use webhooks or poll via `REPLICATE_PREDICTIONS_LIST`.
+
+### 3. Upload Files for Model Input
+
+Use `REPLICATE_CREATE_FILE` to upload images, documents, or other binary inputs that models need.
 
 ```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
+Tool: REPLICATE_CREATE_FILE
+Inputs:
+  - content: string (required) -- base64-encoded file content
+  - filename: string (required) -- e.g., "input.png", "audio.wav" (max 255 bytes UTF-8)
+  - content_type: string (default "application/octet-stream") -- MIME type
+  - metadata: object (optional) -- custom JSON metadata
 ```
+
+### 4. Read Model Documentation
+
+Use `REPLICATE_MODELS_README_GET` to access a model's README in Markdown format for detailed usage instructions.
+
+```
+Tool: REPLICATE_MODELS_README_GET
+Inputs:
+  - model_owner: string (required)
+  - model_name: string (required)
+```
+
+### 5. List Model Versions
+
+Use `REPLICATE_MODELS_VERSIONS_LIST` to see all available versions of a model, sorted newest first.
+
+```
+Tool: REPLICATE_MODELS_VERSIONS_LIST
+Inputs:
+  - model_owner: string (required)
+  - model_name: string (required)
+```
+
+### 6. Track Prediction History and Files
+
+Use `REPLICATE_PREDICTIONS_LIST` to retrieve prediction history, and `REPLICATE_FILES_GET`/`REPLICATE_FILES_LIST` to manage uploaded files.
+
+```
+Tool: REPLICATE_PREDICTIONS_LIST
+  - Lists all predictions for the authenticated user with pagination
+
+Tool: REPLICATE_FILES_LIST
+  - Lists uploaded files, most recent first
+
+Tool: REPLICATE_FILES_GET
+  - Get details of a specific file by ID
+```
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Detail |
+|---------|--------|
+| Model-specific input keys | Each model has unique input keys and types. Using the wrong key causes validation errors. Always call `REPLICATE_MODELS_GET` first to check the `openapi_schema`. |
+| File upload encoding | `REPLICATE_CREATE_FILE` requires base64-encoded content. Binary files treated as text (UTF-8) will fail with decode errors. |
+| Public vs deployment paths | Public models must be run via `REPLICATE_MODELS_PREDICTIONS_CREATE`. Using deployment-oriented paths causes HTTP 404 failures. |
+| Sync wait limits | `wait_for` supports 1-60 seconds only. Long-running jobs need async handling via webhooks or polling `REPLICATE_PREDICTIONS_LIST`. |
+| Image model constraints | Image models like flux-1.1-pro have specific constraints (e.g., max width/height 1440px, valid aspect ratios). Check the model schema first. |
+| Stale file references | Heavy usage creates many uploads. Routinely check `REPLICATE_FILES_LIST` to avoid using stale `file_id` references. |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Replicate-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `replicate` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|-----------|-------------|
+| `REPLICATE_MODELS_GET` | Get model details, schema, and metadata |
+| `REPLICATE_MODELS_PREDICTIONS_CREATE` | Run a prediction on a model |
+| `REPLICATE_CREATE_FILE` | Upload a file for model input |
+| `REPLICATE_MODELS_README_GET` | Get model README documentation |
+| `REPLICATE_MODELS_VERSIONS_LIST` | List all versions of a model |
+| `REPLICATE_PREDICTIONS_LIST` | List prediction history with pagination |
+| `REPLICATE_FILES_LIST` | List uploaded files |
+| `REPLICATE_FILES_GET` | Get file details by ID |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

@@ -1,91 +1,40 @@
 ---
-name: wave-accounting-automation
-description: "Automate Wave Accounting tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Wave Accounting Automation
+description: "Wave Accounting toolkit is not currently available as a native integration. No Wave-specific tools were found in the Composio platform. This skill is a placeholder pending future integration."
+category: accounting
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Wave Accounting Automation via Rube MCP
+# Wave Accounting Automation
 
-Automate Wave Accounting operations through Composio's Wave Accounting toolkit via Rube MCP.
+> **Note:** The Wave Accounting toolkit (`wave_accounting`) does not currently have native tools available in the Composio platform. Searches for Wave Accounting-specific tools return results from other accounting/invoicing platforms (Stripe, Zoho Invoice) instead.
 
-**Toolkit docs**: [composio.dev/toolkits/wave_accounting](https://composio.dev/toolkits/wave_accounting)
+**Toolkit docs:** [composio.dev/toolkits/wave_accounting](https://composio.dev/toolkits/wave_accounting)
 
-## Prerequisites
+---
 
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Wave Accounting connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `wave_accounting`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+## Status
+
+This integration is **not yet available** with native Wave Accounting tools. When Wave Accounting tools become available in Composio, this skill file will be updated with real tool slugs, workflows, and pitfalls.
+
+For accounting and invoicing automation needs, consider these alternatives that are available today:
+- **Stripe** -- Payment processing, invoicing, and subscription management
+- **Zoho Invoice** -- Invoice creation, payment tracking, and contact management
+- **QuickBooks** -- Full accounting suite with invoicing and expense tracking
+- **FreshBooks** -- Cloud accounting with time tracking and invoicing
+
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
-
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `wave_accounting`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
-
-## Tool Discovery
-
-Always discover available tools before executing workflows:
-
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Wave Accounting operations", known_fields: ""}]
-session: {generate_id: true}
-```
-
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
-
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Wave Accounting task"}]
-session: {id: "existing_session_id"}
-```
-
-### Step 2: Check Connection
-
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["wave_accounting"]
-session_id: "your_session_id"
-```
-
-### Step 3: Execute Tools
-
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
-
-## Known Pitfalls
-
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
-
-## Quick Reference
-
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Wave Accounting-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `wave_accounting` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+1. Add the Composio MCP server to your client configuration:
+   ```
+   https://rube.app/mcp
+   ```
+2. Check back for Wave Accounting integration availability.
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

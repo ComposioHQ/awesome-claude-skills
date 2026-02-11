@@ -1,91 +1,150 @@
 ---
-name: prismic-automation
-description: "Automate Prismic tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Prismic Automation
+description: "Automate headless CMS operations in Prismic -- query documents, search content, retrieve custom types, and manage repository refs through the Composio Prismic integration."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Prismic Automation via Rube MCP
+# Prismic Automation
 
-Automate Prismic operations through Composio's Prismic toolkit via Rube MCP.
+Manage your **Prismic** headless CMS directly from Claude Code. Query documents by type, full-text search content, inspect custom types, and work with repository refs for content versioning.
 
-**Toolkit docs**: [composio.dev/toolkits/prismic](https://composio.dev/toolkits/prismic)
+**Toolkit docs:** [composio.dev/toolkits/prismic](https://composio.dev/toolkits/prismic)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Prismic connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `prismic`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your configuration:
+   ```
+   https://rube.app/mcp
+   ```
+2. Connect your Prismic account when prompted. The agent will provide an authentication link.
+3. Most content queries require a `ref` token. Always start by calling `PRISMIC_REPOSITORY_API_GET_REFS` or `PRISMIC_REPOSITORY_API_GET_INFO` to obtain the master ref.
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `prismic`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. Get Repository Info and Refs
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Prismic operations", known_fields: ""}]
-session: {generate_id: true}
-```
+Retrieve comprehensive repository metadata including available refs (content versions), custom types, languages, tags, and bookmarks. This is typically your first API call.
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+**Tools:** `PRISMIC_REPOSITORY_API_GET_INFO`, `PRISMIC_REPOSITORY_API_GET_REFS`
 
-## Core Workflow Pattern
+No parameters required -- these endpoints return the full repository configuration. The `refs` field is critical since refs are required for all content queries.
 
-### Step 1: Discover Available Tools
+Example prompt: *"Get my Prismic repository info and the current master ref"*
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Prismic task"}]
-session: {id: "existing_session_id"}
-```
+---
 
-### Step 2: Check Connection
+### 2. Query Documents with Predicates
 
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["prismic"]
-session_id: "your_session_id"
-```
+Fetch documents using Prismic's predicate query syntax with full pagination and filtering support.
 
-### Step 3: Execute Tools
+**Tool:** `PRISMIC_CONTENT_API_QUERY_DOCUMENTS`
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+Key parameters:
+- `ref` (required) -- content release reference ID (typically the master ref)
+- `q` -- predicate query, e.g., `[[at(document.type, "page")]]`
+- `page` (min 1) and `pageSize` (1-100) -- pagination
+- `lang` -- language code, e.g., `en-us` (default `*` for all)
+- `orderings` -- sort order, e.g., `[my.article.date desc]`
+- `fetch` -- comma-separated fields to fetch, reducing response size
+- `fetchLinks` -- resolve linked document fields inline
+
+Example prompt: *"Query all published blog posts in Prismic, sorted by date descending, in English"*
+
+---
+
+### 3. Fetch Documents by Type
+
+Retrieve all documents of a specific custom type with automatic master ref resolution.
+
+**Tool:** `PRISMIC_GET_DOCUMENTS_BY_TYPE`
+
+Key parameters:
+- `type` (required) -- custom type API ID, e.g., `blog_post`, `article`, `page`
+- `page` (default 1) and `pageSize` (1-100, default 20)
+- `lang` -- language code filter
+- `orderings` -- sort order, e.g., `[my.article.date desc]`
+- `after` -- cursor-based pagination for deep pagination beyond page 50
+
+Example prompt: *"Get all blog_post documents in Prismic, 20 per page"*
+
+---
+
+### 4. Full-Text Search
+
+Search across all text fields in documents for specified terms. Case-insensitive, matches on root words.
+
+**Tool:** `PRISMIC_CONTENT_API_GET_DOCUMENTS_WITH_FULLTEXT_SEARCH`
+
+Key parameters:
+- `q` (required) -- full-text predicate, e.g., `[[fulltext(document, "machine learning")]]`
+- `page`, `pageSize`, `lang`, `orderings` -- same pagination/filtering as other queries
+
+Example prompt: *"Search all Prismic documents for 'machine learning'"*
+
+---
+
+### 5. Get a Single Document by ID
+
+Retrieve a specific document by its unique identifier.
+
+**Tool:** `PRISMIC_GET_DOCUMENT_BY_ID`
+
+Key parameters:
+- `document_id` (required) -- unique document identifier
+- `ref` (required) -- content ref from repository
+- `lang` -- optional language filter
+
+Example prompt: *"Fetch Prismic document Xx2KLhEAAJljVWaA"*
+
+---
+
+### 6. List Custom Types
+
+Discover all custom types (content models) defined in the repository, including their structure definitions.
+
+**Tool:** `PRISMIC_TYPES_API_GET_TYPES`
+
+Key parameters:
+- `limit` -- max number of types to return per page
+- `page` -- page number (1-indexed)
+- `sort` -- sort order, e.g., `name`
+
+Example prompt: *"List all custom types in my Prismic repository"*
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+- **Ref is required for all content queries:** You must obtain a valid `ref` (typically the master ref) from `PRISMIC_REPOSITORY_API_GET_REFS` or `PRISMIC_REPOSITORY_API_GET_INFO` before querying any documents. Queries without a ref will fail.
+- **Predicate syntax requires double brackets:** Prismic queries use double square brackets: `[[at(document.type, "page")]]`. For multiple predicates, combine them: `[[at(document.type, "blog")][at(document.tags, ["featured"])]]`.
+- **Deep pagination limit:** Standard page-based pagination may fail beyond page 50. For deep pagination, use the `after` parameter with the last document ID from your previous result set.
+- **pageSize cap is 100:** Requesting more than 100 documents per page will be rejected. Use pagination to iterate through larger result sets.
+- **Language filtering:** The default language filter is `*` (all languages). If you need documents in a specific locale, always pass `lang` explicitly (e.g., `en-us`, `fr-fr`).
+- **Integration fields require separate ref:** When using `PRISMIC_CONTENT_API_GET_DOCUMENTS_WITH_INTEGRATION_FIELDS`, you need an `integrationFieldsRef` in addition to the standard content `ref`.
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Prismic-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `prismic` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|---|---|
+| `PRISMIC_REPOSITORY_API_GET_INFO` | Get repository metadata, refs, types, languages |
+| `PRISMIC_REPOSITORY_API_GET_REFS` | List all refs (master + releases) |
+| `PRISMIC_TYPES_API_GET_TYPES` | List all custom types / content models |
+| `PRISMIC_CONTENT_API_QUERY_DOCUMENTS` | Query documents with predicates and pagination |
+| `PRISMIC_GET_DOCUMENTS_BY_TYPE` | Fetch documents filtered by custom type |
+| `PRISMIC_GET_DOCUMENT_BY_ID` | Retrieve a single document by ID |
+| `PRISMIC_CONTENT_API_GET_DOCUMENTS_WITH_FULLTEXT_SEARCH` | Full-text search across all documents |
+| `PRISMIC_CONTENT_API_GET_DOCUMENTS_WITH_PREDICATES` | Filter documents with multiple predicate conditions |
+| `PRISMIC_CONTENT_API_GET_DOCUMENTS_WITH_INTEGRATION_FIELDS` | Fetch documents with integration fields data |
+| `PRISMIC_GET_DOCUMENTS_ORDERED` | Fetch documents sorted by specified fields |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

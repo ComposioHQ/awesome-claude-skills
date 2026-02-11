@@ -1,91 +1,148 @@
 ---
-name: eventbrite-automation
-description: "Automate Eventbrite tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Eventbrite Automation
+description: "Automate Eventbrite event management, attendee tracking, organization discovery, and category browsing through natural language commands"
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Eventbrite Automation via Rube MCP
+# Eventbrite Automation
 
-Automate Eventbrite operations through Composio's Eventbrite toolkit via Rube MCP.
+Automate Eventbrite event management workflows -- list organization events, track attendees, browse categories and formats, and manage organizations -- all through natural language.
 
-**Toolkit docs**: [composio.dev/toolkits/eventbrite](https://composio.dev/toolkits/eventbrite)
+**Toolkit docs:** [composio.dev/toolkits/eventbrite](https://composio.dev/toolkits/eventbrite)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Eventbrite connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `eventbrite`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Rube MCP server to your environment: `https://rube.app/mcp`
+2. Connect your Eventbrite account when prompted (OAuth flow via Composio)
+3. Start issuing natural language commands for Eventbrite automation
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `eventbrite`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. Discover Your Organizations
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Eventbrite operations", known_fields: ""}]
-session: {generate_id: true}
-```
+Retrieve the organizations the authenticated user belongs to. This is a prerequisite for most other Eventbrite operations since `organization_id` is required.
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+**Tool:** `EVENTBRITE_LIST_USER_ORGANIZATIONS`
 
-## Core Workflow Pattern
+No parameters required. Returns organization IDs, names, and metadata.
 
-### Step 1: Discover Available Tools
+> Always call this first to obtain the `organization_id` needed by event and attendee endpoints.
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Eventbrite task"}]
-session: {id: "existing_session_id"}
-```
+Example prompt:
+> "List my Eventbrite organizations"
 
-### Step 2: Check Connection
+---
 
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["eventbrite"]
-session_id: "your_session_id"
-```
+### 2. List and Search Organization Events
 
-### Step 3: Execute Tools
+Browse events owned by a specific organization with filtering by status, time period, and pagination.
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+**Tool:** `EVENTBRITE_LIST_ORGANIZATION_EVENTS`
+
+Key parameters:
+- `organization_id` -- the organization whose events to list (required; get from `EVENTBRITE_LIST_USER_ORGANIZATIONS`)
+- `status` -- filter by `live`, `draft`, `canceled`, `started`, `ended`, `completed`, or `all`
+- `time_filter` -- filter by `current_future` or `past`
+- `order_by` -- sort by `start_asc`, `start_desc`, `created_asc`, `created_desc`, `name_asc`, `name_desc`
+- `page_size` -- number of events per page
+- `continuation` -- pagination token from previous response
+- `expand` -- comma-separated fields to expand: `organizer`, `venue`, `ticket_classes`
+
+Example prompt:
+> "Show me all live events for my organization, sorted by start date"
+
+---
+
+### 3. Track Event Attendees
+
+Retrieve the attendee list for any event, with optional status filtering and pagination.
+
+**Tool:** `EVENTBRITE_LIST_EVENT_ATTENDEES`
+
+Key parameters:
+- `event_id` -- the event to retrieve attendees for (required)
+- `status` -- filter by `attending`, `not_attending`, or `cancelled`
+- `changed_since` -- ISO 8601 timestamp to get only recently changed attendees
+- `continuation` -- pagination token for subsequent pages
+
+Example prompt:
+> "Get all attending attendees for event 123456789 who changed since January 1st"
+
+---
+
+### 4. Browse Event Categories
+
+Retrieve available event categories for use when creating or filtering events.
+
+**Tool:** `EVENTBRITE_GET_EVENT_CATEGORIES`
+
+Key parameters:
+- `locale` -- BCP-47 locale for localized names (e.g., `en_US`, `es_ES`)
+
+Follow up with `EVENTBRITE_GET_EVENT_SUBCATEGORIES` to get subcategories within a selected category.
+
+Example prompt:
+> "List all Eventbrite event categories in English"
+
+---
+
+### 5. List Event Formats
+
+Retrieve all available event format types (conference, seminar, workshop, etc.).
+
+**Tool:** `EVENTBRITE_GET_EVENT_FORMATS`
+
+No parameters required. Returns format IDs and display names.
+
+Example prompt:
+> "What event formats are available on Eventbrite?"
+
+---
+
+### 6. Browse Event Subcategories
+
+Retrieve subcategories for more granular event classification.
+
+**Tool:** `EVENTBRITE_GET_EVENT_SUBCATEGORIES`
+
+Key parameters:
+- `locale` -- BCP-47 locale for localized names (e.g., `en_US`)
+
+Example prompt:
+> "List all Eventbrite event subcategories"
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Details |
+|---------|---------|
+| Organization ID required | Most event operations require `organization_id` -- always call `EVENTBRITE_LIST_USER_ORGANIZATIONS` first |
+| Pagination via continuation | Results use continuation-token pagination, not page numbers -- pass the `continuation` value from the previous response to get the next page |
+| Event ID discovery | You need to list events first via `EVENTBRITE_LIST_ORGANIZATION_EVENTS` to get `event_id` values for attendee queries |
+| Status values are specific | Event status values (`live`, `draft`, `canceled`, `started`, `ended`, `completed`) must match exactly |
+| Expand fields are comma-separated | The `expand` parameter takes a comma-separated string, not an array (e.g., `"organizer,venue"`) |
+| changed_since format | The `changed_since` parameter must be in ISO 8601 format (e.g., `2024-01-01T00:00:00Z`) |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Eventbrite-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `eventbrite` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Action | Tool Slug | Key Params |
+|--------|-----------|------------|
+| List organizations | `EVENTBRITE_LIST_USER_ORGANIZATIONS` | (none) |
+| List events | `EVENTBRITE_LIST_ORGANIZATION_EVENTS` | `organization_id`, `status`, `time_filter` |
+| List attendees | `EVENTBRITE_LIST_EVENT_ATTENDEES` | `event_id`, `status`, `changed_since` |
+| Get categories | `EVENTBRITE_GET_EVENT_CATEGORIES` | `locale` |
+| Get subcategories | `EVENTBRITE_GET_EVENT_SUBCATEGORIES` | `locale` |
+| Get formats | `EVENTBRITE_GET_EVENT_FORMATS` | (none) |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

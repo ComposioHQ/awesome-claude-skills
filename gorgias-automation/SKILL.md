@@ -1,91 +1,145 @@
 ---
-name: gorgias-automation
-description: "Automate Gorgias tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Gorgias Automation
+description: "Automate e-commerce customer support workflows in Gorgias -- manage tickets, customers, tags, and teams through natural language commands."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Gorgias Automation via Rube MCP
+# Gorgias Automation
 
-Automate Gorgias operations through Composio's Gorgias toolkit via Rube MCP.
+Automate your Gorgias helpdesk operations directly from Claude Code. Create, update, and triage support tickets, manage customers, and organize your support team -- all without leaving your terminal.
 
-**Toolkit docs**: [composio.dev/toolkits/gorgias](https://composio.dev/toolkits/gorgias)
+**Toolkit docs:** [composio.dev/toolkits/gorgias](https://composio.dev/toolkits/gorgias)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Gorgias connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `gorgias`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Rube MCP server to your Claude Code config with URL: `https://rube.app/mcp`
+2. When prompted, authenticate your Gorgias account through the connection link provided
+3. Start automating your support workflows with natural language
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `gorgias`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List and Filter Tickets
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Gorgias operations", known_fields: ""}]
-session: {generate_id: true}
-```
+Retrieve tickets with filtering by status, channel, assignee, date range, and more.
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
+**Tool:** `GORGIAS_LIST_TICKETS`
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Gorgias task"}]
-session: {id: "existing_session_id"}
+List all open tickets from the email channel created in the last 7 days
 ```
 
-### Step 2: Check Connection
+Key parameters:
+- `status` -- filter by ticket status (e.g., "open", "closed")
+- `channel` -- filter by channel (e.g., "email", "chat")
+- `assignee_user_id` / `assignee_team_id` -- filter by assigned agent or team
+- `created_from` / `created_to` -- ISO date range filters
+- `limit` (max 100) / `offset` -- pagination controls
+- `order_by` / `order_dir` -- sorting options
+
+### 2. Create and Update Tickets
+
+Create new tickets or update existing ones with assignment, priority, and status changes.
+
+**Tools:** `GORGIAS_CREATE_TICKET`, `GORGIAS_UPDATE_TICKET`, `GORGIAS_GET_TICKET`
 
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["gorgias"]
-session_id: "your_session_id"
+Create a high-priority ticket for customer 12345 about a missing order with subject "Order #9876 not delivered"
 ```
 
-### Step 3: Execute Tools
+- `GORGIAS_CREATE_TICKET` requires `customer_id`; accepts `subject`, `status`, `priority`, `channel`, `messages`, `tags`
+- `GORGIAS_UPDATE_TICKET` requires `ticket_id`; all other fields are optional partial updates
+- `GORGIAS_GET_TICKET` retrieves full ticket details by `ticket_id`
+
+### 3. Manage Ticket Tags
+
+Add tags to tickets for categorization, routing, and reporting.
+
+**Tools:** `GORGIAS_ADD_TICKET_TAGS`, `GORGIAS_LIST_TICKET_TAGS`
 
 ```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
+Add tags 101 and 202 to ticket 5678, then show me all tags on that ticket
 ```
+
+- `GORGIAS_ADD_TICKET_TAGS` requires `ticket_id` and `tag_ids` (array of integers)
+- `GORGIAS_LIST_TICKET_TAGS` requires `ticket_id` to retrieve current tags
+
+### 4. Customer Management
+
+Create new customers or merge duplicate customer records.
+
+**Tools:** `GORGIAS_CREATE_CUSTOMER`, `GORGIAS_MERGE_CUSTOMERS`, `GORGIAS_LIST_CUSTOMERS`
+
+```
+Create a new customer named "Jane Doe" with email jane@example.com and phone channel
+```
+
+- `GORGIAS_CREATE_CUSTOMER` requires `name`; accepts `email`, `channels` (array with `type` and `value`), `external_id`, `address`, `data`
+- `GORGIAS_MERGE_CUSTOMERS` requires `source_customer_id` and `target_customer_id` -- source is merged into target
+- `GORGIAS_LIST_CUSTOMERS` retrieves customers with filtering options
+
+### 5. Team and Account Operations
+
+List teams, retrieve account info, and inspect ticket custom fields.
+
+**Tools:** `GORGIAS_LIST_TEAMS`, `GORGIAS_GET_TEAM`, `GORGIAS_GET_ACCOUNT`, `GORGIAS_LIST_TICKET_FIELD_VALUES`
+
+```
+Show me all support teams in our Gorgias account
+```
+
+- `GORGIAS_GET_ACCOUNT` returns account-level metrics and configuration
+- `GORGIAS_LIST_TEAMS` / `GORGIAS_GET_TEAM` manage team lookup
+- `GORGIAS_LIST_TICKET_FIELD_VALUES` returns custom field values for a given ticket
+
+### 6. Activity and Event Tracking
+
+Monitor ticket activity and customer event history.
+
+**Tools:** `GORGIAS_LIST_EVENTS`
+
+```
+List recent events to see what activity has happened across our support queue
+```
+
+- `GORGIAS_LIST_EVENTS` provides an activity timeline with filtering options
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+- **Pagination required:** `GORGIAS_LIST_TICKETS` uses `limit`/`offset` pagination. Failing to loop through pages will miss older tickets and produce incomplete data.
+- **Filter specificity:** Missing or overly broad filters on `GORGIAS_LIST_TICKETS` can overload the export or omit the desired reporting window. Always set `created_from`/`created_to` for time-bound queries.
+- **Custom fields are separate:** Key business KPIs may only exist in custom fields. You must query `GORGIAS_LIST_TICKET_FIELD_VALUES` explicitly to include them.
+- **Rate limits:** High-volume exports across `GORGIAS_LIST_TICKETS` and related endpoints can hit Gorgias rate limits. Add backoff and resume from the last offset.
+- **Auth errors:** 401/403 responses on any Gorgias tool indicate token or permission issues. Do not treat partial data as a complete dataset.
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Gorgias-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `gorgias` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|---|---|
+| `GORGIAS_LIST_TICKETS` | List tickets with filters (status, channel, date, assignee) |
+| `GORGIAS_GET_TICKET` | Retrieve a specific ticket by ID |
+| `GORGIAS_CREATE_TICKET` | Create a new ticket (requires `customer_id`) |
+| `GORGIAS_UPDATE_TICKET` | Update ticket fields (requires `ticket_id`) |
+| `GORGIAS_ADD_TICKET_TAGS` | Add tags to a ticket |
+| `GORGIAS_LIST_TICKET_TAGS` | List all tags on a ticket |
+| `GORGIAS_LIST_TICKET_FIELD_VALUES` | List custom field values for a ticket |
+| `GORGIAS_CREATE_CUSTOMER` | Create a new customer (requires `name`) |
+| `GORGIAS_MERGE_CUSTOMERS` | Merge two customer records |
+| `GORGIAS_LIST_CUSTOMERS` | List customers with filters |
+| `GORGIAS_LIST_TEAMS` | List all teams |
+| `GORGIAS_GET_TEAM` | Retrieve a specific team |
+| `GORGIAS_GET_ACCOUNT` | Retrieve account information |
+| `GORGIAS_LIST_EVENTS` | List activity events with filters |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

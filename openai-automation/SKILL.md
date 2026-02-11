@@ -1,91 +1,122 @@
 ---
-name: openai-automation
-description: "Automate OpenAI tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: OpenAI Automation
+description: "Automate OpenAI API operations -- generate responses with multimodal and structured output support, create embeddings, generate images, and list models via the Composio MCP integration."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# OpenAI Automation via Rube MCP
+# OpenAI Automation
 
-Automate OpenAI operations through Composio's OpenAI toolkit via Rube MCP.
+Automate your OpenAI API workflows -- generate text with the Responses API (including multimodal image+text inputs and structured JSON outputs), create embeddings for search and clustering, generate images with DALL-E and GPT Image models, and list available models.
 
-**Toolkit docs**: [composio.dev/toolkits/openai](https://composio.dev/toolkits/openai)
+**Toolkit docs:** [composio.dev/toolkits/openai](https://composio.dev/toolkits/openai)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active OpenAI connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `openai`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your client: `https://rube.app/mcp`
+2. Connect your OpenAI account when prompted (API key authentication)
+3. Start using the workflows below
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `openai`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. Generate a Response (Text, Multimodal, Structured)
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "OpenAI operations", known_fields: ""}]
-session: {generate_id: true}
-```
-
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
+Use `OPENAI_CREATE_RESPONSE` for one-shot model responses including text, image analysis, OCR, and structured JSON outputs.
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific OpenAI task"}]
-session: {id: "existing_session_id"}
+Tool: OPENAI_CREATE_RESPONSE
+Inputs:
+  - model: string (required) -- e.g., "gpt-5", "gpt-4o", "o3-mini"
+  - input: string | array (required)
+    Simple: "Explain quantum computing"
+    Multimodal: [
+      { role: "user", content: [
+        { type: "input_text", text: "What is in this image?" },
+        { type: "input_image", image_url: { url: "https://..." } }
+      ]}
+    ]
+  - temperature: number (0-2, optional -- not supported with reasoning models)
+  - max_output_tokens: integer (optional)
+  - reasoning: { effort: "none" | "minimal" | "low" | "medium" | "high" }
+  - text: object (structured output config)
+    - format: { type: "json_schema", name: "...", schema: {...}, strict: true }
+  - tools: array (function, code_interpreter, file_search, web_search)
+  - tool_choice: "auto" | "none" | "required" | { type: "function", function: { name: "..." } }
+  - store: boolean (false to opt out of model distillation)
+  - stream: boolean
 ```
 
-### Step 2: Check Connection
+**Structured output example:** Set `text.format` to `{ type: "json_schema", name: "person", schema: { type: "object", properties: { name: { type: "string" }, age: { type: "integer" } }, required: ["name", "age"], additionalProperties: false }, strict: true }`.
+
+### 2. Create Embeddings
+
+Use `OPENAI_CREATE_EMBEDDINGS` for vector search, clustering, recommendations, and RAG pipelines.
 
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["openai"]
-session_id: "your_session_id"
+Tool: OPENAI_CREATE_EMBEDDINGS
+Inputs:
+  - input: string | string[] | int[] | int[][] (required) -- max 8192 tokens, max 2048 items
+  - model: string (required) -- "text-embedding-3-small", "text-embedding-3-large", "text-embedding-ada-002"
+  - dimensions: integer (optional, only for text-embedding-3 and later)
+  - encoding_format: "float" | "base64" (default "float")
+  - user: string (optional, end-user ID for abuse monitoring)
 ```
 
-### Step 3: Execute Tools
+### 3. Generate Images
+
+Use `OPENAI_CREATE_IMAGE` to create images from text prompts using GPT Image or DALL-E models.
 
 ```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
+Tool: OPENAI_CREATE_IMAGE
+Inputs:
+  - model: string (required) -- "gpt-image-1", "gpt-image-1.5", "dall-e-3", "dall-e-2"
+  - prompt: string (required) -- max 32000 chars (GPT Image), 4000 (DALL-E 3), 1000 (DALL-E 2)
+  - size: "1024x1024" | "1536x1024" | "1024x1536" | "auto" | "256x256" | "512x512" | "1792x1024" | "1024x1792"
+  - quality: "standard" | "hd" | "auto" | "high" | "medium" | "low"
+  - n: integer (1-10; DALL-E 3 supports n=1 only)
+  - background: "transparent" | "opaque" | "auto" (GPT Image models only)
+  - style: "vivid" | "natural" (DALL-E 3 only)
+  - user: string (optional)
 ```
+
+### 4. List Available Models
+
+Use `OPENAI_LIST_MODELS` to discover which models are accessible with your API key.
+
+```
+Tool: OPENAI_LIST_MODELS
+Inputs: (none)
+```
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Detail |
+|---------|--------|
+| DALL-E deprecation | DALL-E 2 and DALL-E 3 are deprecated and will stop being supported on 05/12/2026. Prefer GPT Image models. |
+| DALL-E 3 single image only | `OPENAI_CREATE_IMAGE` with DALL-E 3 only supports `n=1`. Use GPT Image models or DALL-E 2 for multiple images. |
+| Token limits for embeddings | Input must not exceed 8192 tokens per item and 2048 items per batch for embedding models. |
+| Reasoning model restrictions | `temperature` and `top_p` are not supported with reasoning models (o3-mini, etc.). Use `reasoning.effort` instead. |
+| Structured output strict mode | When `strict: true` in json_schema format, ALL schema properties must be listed in the `required` array. |
+| Prompt length varies by model | Image prompt max lengths differ: 32000 (GPT Image), 4000 (DALL-E 3), 1000 (DALL-E 2). |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with OpenAI-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `openai` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|-----------|-------------|
+| `OPENAI_CREATE_RESPONSE` | Generate text/multimodal responses with structured output support |
+| `OPENAI_CREATE_EMBEDDINGS` | Create text embeddings for search, clustering, and RAG |
+| `OPENAI_CREATE_IMAGE` | Generate images from text prompts |
+| `OPENAI_LIST_MODELS` | List all models available to your API key |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

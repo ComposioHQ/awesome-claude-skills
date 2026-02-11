@@ -1,91 +1,123 @@
 ---
-name: gumroad-automation
-description: "Automate Gumroad tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Gumroad Automation
+description: "Automate Gumroad product management, sales tracking, license verification, and webhook subscriptions using natural language through the Composio MCP integration."
+category: e-commerce
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Gumroad Automation via Rube MCP
+# Gumroad Automation
 
-Automate Gumroad operations through Composio's Gumroad toolkit via Rube MCP.
+Automate your Gumroad storefront -- list products, track sales, verify licenses, and manage real-time webhooks -- all through natural language commands.
 
-**Toolkit docs**: [composio.dev/toolkits/gumroad](https://composio.dev/toolkits/gumroad)
+**Toolkit docs:** [composio.dev/toolkits/gumroad](https://composio.dev/toolkits/gumroad)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Gumroad connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `gumroad`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your client configuration:
+   ```
+   https://rube.app/mcp
+   ```
+2. Connect your Gumroad account when prompted (API key authentication).
+3. Start issuing natural language commands to manage your Gumroad store.
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `gumroad`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List All Products
+Retrieve every product in your authenticated Gumroad account to get product IDs for downstream operations.
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Gumroad operations", known_fields: ""}]
-session: {generate_id: true}
-```
+**Tool:** `GUMROAD_LIST_PRODUCTS`
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+**Example prompt:**
+> "List all my Gumroad products"
 
-## Core Workflow Pattern
+**Parameters:** None required -- returns all products for the authenticated account.
 
-### Step 1: Discover Available Tools
+---
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Gumroad task"}]
-session: {id: "existing_session_id"}
-```
+### 2. Track Sales with Filters
+Retrieve successful sales with optional filtering by email, date range, product, or pagination.
 
-### Step 2: Check Connection
+**Tool:** `GUMROAD_GET_SALES`
 
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["gumroad"]
-session_id: "your_session_id"
-```
+**Example prompt:**
+> "Show me all Gumroad sales from January 2025 for product prod_ABC123"
 
-### Step 3: Execute Tools
+**Key parameters:**
+- `after` -- ISO8601 date/time to filter sales after (e.g., `2025-01-01T00:00:00Z`)
+- `before` -- ISO8601 date/time to filter sales before
+- `email` -- Filter by customer email address
+- `product_id` -- Filter by specific product ID
+- `page` -- Page number for paginated results (minimum 1)
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+---
+
+### 3. Verify License Keys
+Check if a license key is valid against a specific product, inspect usage count, or verify membership entitlement.
+
+**Tool:** `GUMROAD_VERIFY_LICENSE`
+
+**Example prompt:**
+> "Verify license key ABCD-EFGH-IJKL-MNOP for product prod_ABC123"
+
+**Key parameters (all required):**
+- `product_id` -- The product ID to verify against (required for products created on/after Jan 9, 2023)
+- `license_key` -- The license key string (e.g., `ABCD-EFGH-IJKL-MNOP`)
+- `increment_uses_count` -- Whether to increment usage count (defaults to true)
+
+---
+
+### 4. Subscribe to Webhook Events
+Set up real-time event notifications by subscribing your endpoint URL to specific Gumroad resource events.
+
+**Tool:** `GUMROAD_SUBSCRIBE_TO_RESOURCE`
+
+**Example prompt:**
+> "Subscribe my webhook https://example.com/hook to Gumroad sale events"
+
+**Key parameters (all required):**
+- `resource_name` -- One of: `sale`, `refund`, `dispute`, `dispute_won`, `cancellation`, `subscription_updated`, `subscription_ended`, `subscription_restarted`
+- `post_url` -- Your endpoint URL that receives HTTP POST notifications
+
+---
+
+### 5. List Active Webhook Subscriptions
+Review existing webhook subscriptions for a given resource type before adding new ones to avoid duplicates.
+
+**Tool:** `GUMROAD_GET_RESOURCE_SUBSCRIPTIONS`
+
+**Example prompt:**
+> "Show all my active Gumroad webhook subscriptions for sale events"
+
+**Key parameters (required):**
+- `resource_name` -- One of the eight supported event types (e.g., `sale`, `refund`)
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+- **Product ID required for license verification**: Products created on or after January 9, 2023 require the `product_id` parameter. Older products may work without it but providing it is recommended.
+- **Pagination on sales**: Sales results are paginated. Always check if more pages exist by incrementing the `page` parameter.
+- **Webhook deduplication**: Before subscribing to a resource, use `GUMROAD_GET_RESOURCE_SUBSCRIPTIONS` to check for existing subscriptions and avoid duplicate webhooks.
+- **ISO8601 date format**: Date filters on sales must use ISO8601 format (e.g., `2025-01-01T00:00:00Z`), not plain dates.
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Gumroad-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `gumroad` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Action | Tool Slug | Required Params |
+|---|---|---|
+| List products | `GUMROAD_LIST_PRODUCTS` | None |
+| Get sales | `GUMROAD_GET_SALES` | None (all optional filters) |
+| Verify license | `GUMROAD_VERIFY_LICENSE` | `product_id`, `license_key` |
+| Subscribe to events | `GUMROAD_SUBSCRIBE_TO_RESOURCE` | `resource_name`, `post_url` |
+| List webhook subs | `GUMROAD_GET_RESOURCE_SUBSCRIPTIONS` | `resource_name` |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

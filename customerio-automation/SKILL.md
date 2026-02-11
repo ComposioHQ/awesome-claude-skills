@@ -1,91 +1,153 @@
 ---
-name: customerio-automation
-description: "Automate Customerio tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Customer.io Automation
+description: "Automate customer engagement workflows including broadcast triggers, message analytics, segment management, and newsletter tracking through Customer.io via Composio"
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Customerio Automation via Rube MCP
+# Customer.io Automation
 
-Automate Customerio operations through Composio's Customerio toolkit via Rube MCP.
+Automate customer engagement operations -- trigger targeted broadcasts, retrieve delivery metrics, manage audience segments, list newsletters and transactional templates, and inspect trigger execution history -- all orchestrated through the Composio MCP integration.
 
-**Toolkit docs**: [composio.dev/toolkits/customerio](https://composio.dev/toolkits/customerio)
+**Toolkit docs:** [composio.dev/toolkits/customerio](https://composio.dev/toolkits/customerio)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Customerio connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `customerio`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Connect your Customer.io account through the Composio MCP server at `https://rube.app/mcp`
+2. The agent will prompt you with an authentication link if no active connection exists
+3. Once connected, all `CUSTOMERIO_*` tools become available for execution
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `customerio`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. Trigger a Broadcast
+Manually fire a pre-configured broadcast to a specific audience with personalization data.
+
+**Tool:** `CUSTOMERIO_TRIGGER_BROADCAST`
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `broadcast_id` | integer | Yes | Broadcast ID from Customer.io Triggering Details |
+| `ids` | array | No | List of customer IDs to target |
+| `emails` | array | No | List of email addresses to target |
+| `recipients` | object | No | Complex filter with `and`/`or`/`not`/`segment` operators |
+| `per_user_data` | array | No | Per-user personalization with `id`/`email` + `data` |
+| `data` | object | No | Global key-value data for Liquid template personalization |
+| `data_file_url` | string | No | URL to JSON file with per-line user data |
+| `email_add_duplicates` | boolean | No | Allow duplicate recipients (default: false) |
+| `email_ignore_missing` | boolean | No | Skip people without emails (default: false) |
+| `id_ignore_missing` | boolean | No | Skip people without customer IDs (default: false) |
+
+**Important:** Provide exactly ONE audience option: `recipients`, `ids`, `emails`, `per_user_data`, or `data_file_url`. Rate limit: 1 request per 10 seconds per broadcast.
+
+---
+
+### 2. Retrieve Message Delivery Metrics
+Fetch paginated delivery metrics for messages with filtering by campaign, type, and time window.
+
+**Tool:** `CUSTOMERIO_GET_MESSAGES`
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `type` | string | No | Message type: `email`, `webhook`, `twilio`, `slack`, `push`, `in_app` |
+| `metric` | string | No | Metric: `attempted`, `sent`, `delivered`, `opened`, `clicked`, `converted` |
+| `campaign_id` | integer | No | Filter by campaign ID |
+| `newsletter_id` | integer | No | Filter by newsletter ID |
+| `action_id` | integer | No | Filter by action ID |
+| `start_ts` | integer | No | Start of time window (Unix timestamp) |
+| `end_ts` | integer | No | End of time window (Unix timestamp) |
+| `limit` | integer | No | Results per page, 1-1000 (default: 50) |
+| `start` | string | No | Pagination token from previous response `next` value |
+| `drafts` | boolean | No | Return draft messages instead of active/sent |
+
+---
+
+### 3. List Audience Segments
+Retrieve all segments defined in your workspace for audience analysis and broadcast targeting.
+
+**Tool:** `CUSTOMERIO_GET_SEGMENTS`
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Customerio operations", known_fields: ""}]
-session: {generate_id: true}
+No parameters required -- returns all segments with IDs and metadata.
 ```
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+Use segment IDs when targeting broadcasts via the `recipients.segment.id` filter.
 
-## Core Workflow Pattern
+---
 
-### Step 1: Discover Available Tools
+### 4. List Newsletters
+Paginate through all newsletter metadata for tracking and analysis.
+
+**Tool:** `CUSTOMERIO_LIST_NEWSLETTERS`
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `limit` | integer | No | Max per page, 1-100 |
+| `sort` | string | No | `asc` (chronological) or `desc` (reverse) |
+| `start` | string | No | Pagination cursor from previous response `next` value |
+
+---
+
+### 5. Discover Transactional Message Templates
+List all transactional message templates to find IDs for sending via the API.
+
+**Tool:** `CUSTOMERIO_LIST_TRANSACTIONAL_MESSAGES`
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Customerio task"}]
-session: {id: "existing_session_id"}
+No parameters required -- returns template IDs and trigger names.
 ```
 
-### Step 2: Check Connection
+---
 
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["customerio"]
-session_id: "your_session_id"
-```
+### 6. Inspect Broadcast Trigger History
+Review all trigger executions for a broadcast and inspect individual trigger details.
 
-### Step 3: Execute Tools
+**Tools:** `CUSTOMERIO_GET_TRIGGERS` and `CUSTOMERIO_GET_TRIGGER`
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+**List all triggers for a broadcast:**
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `broadcast_id` | integer | Yes | The broadcast/campaign ID |
+
+**Get a specific trigger:**
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `broadcast_id` | integer | Yes | The campaign/broadcast ID |
+| `trigger_id` | string | Yes | Trigger identifier (e.g., `456` or `5-37`) |
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Details |
+|---------|---------|
+| **Mutually exclusive audience params** | `CUSTOMERIO_TRIGGER_BROADCAST` requires exactly ONE of `recipients`, `ids`, `emails`, `per_user_data`, or `data_file_url` -- providing multiple causes errors |
+| **Rate limiting on broadcasts** | Broadcasts are limited to 1 trigger request per 10 seconds per broadcast ID |
+| **Unix timestamp format** | `start_ts` and `end_ts` in `CUSTOMERIO_GET_MESSAGES` must be Unix timestamps, not ISO strings |
+| **Pagination tokens** | Messages and newsletters use cursor-based pagination via the `start` parameter -- use the `next` value from previous responses |
+| **Segment ID resolution** | To target a segment in a broadcast, first fetch segment IDs via `CUSTOMERIO_GET_SEGMENTS`, then reference by ID in `recipients.segment.id` |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Customerio-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `customerio` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Purpose |
+|-----------|---------|
+| `CUSTOMERIO_TRIGGER_BROADCAST` | Trigger a broadcast to a defined audience |
+| `CUSTOMERIO_GET_MESSAGES` | Retrieve message delivery metrics with filters |
+| `CUSTOMERIO_GET_SEGMENTS` | List all audience segments |
+| `CUSTOMERIO_GET_SEGMENT_DETAILS` | Get details for a specific segment |
+| `CUSTOMERIO_LIST_NEWSLETTERS` | Paginate through newsletters |
+| `CUSTOMERIO_LIST_TRANSACTIONAL_MESSAGES` | List transactional message templates |
+| `CUSTOMERIO_GET_TRIGGERS` | List all trigger executions for a broadcast |
+| `CUSTOMERIO_GET_TRIGGER` | Inspect a specific trigger execution |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

@@ -1,91 +1,148 @@
 ---
-name: new-relic-automation
-description: "Automate New Relic tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: New Relic Automation
+description: "Automate New Relic observability workflows -- manage alert policies, notification channels, alert conditions, and monitor applications and browser apps via the Composio MCP integration."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# New Relic Automation via Rube MCP
+# New Relic Automation
 
-Automate New Relic operations through Composio's New Relic toolkit via Rube MCP.
+Automate your New Relic observability workflows -- create and manage alert policies, configure notification channels (email, Slack, webhook, PagerDuty), monitor APM applications, inspect alert conditions, and integrate New Relic alerting into cross-app pipelines.
 
-**Toolkit docs**: [composio.dev/toolkits/new_relic](https://composio.dev/toolkits/new_relic)
+**Toolkit docs:** [composio.dev/toolkits/new_relic](https://composio.dev/toolkits/new_relic)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active New Relic connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `new_relic`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your client: `https://rube.app/mcp`
+2. Connect your New Relic account when prompted (API key authentication)
+3. Start using the workflows below
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `new_relic`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List Alert Policies
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "New Relic operations", known_fields: ""}]
-session: {generate_id: true}
-```
-
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
+Use `NEW_RELIC_GET_ALERT_POLICIES` to discover existing alert policies with optional filtering.
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific New Relic task"}]
-session: {id: "existing_session_id"}
+Tool: NEW_RELIC_GET_ALERT_POLICIES
+Inputs:
+  - name: string (optional, partial match supported)
+  - incident_preference: "PER_POLICY" | "PER_CONDITION" | "PER_CONDITION_AND_TARGET"
+  - page: integer (1-indexed pagination)
 ```
 
-### Step 2: Check Connection
+### 2. Create an Alert Policy
+
+Use `NEW_RELIC_CREATE_ALERT_POLICY` to set up a new policy container for alert conditions.
 
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["new_relic"]
-session_id: "your_session_id"
+Tool: NEW_RELIC_CREATE_ALERT_POLICY
+Inputs:
+  - name: string (required) -- must be unique within the account
+  - incident_preference: "PER_POLICY" | "PER_CONDITION" | "PER_CONDITION_AND_TARGET" (default: PER_POLICY)
 ```
 
-### Step 3: Execute Tools
+**Incident preferences explained:**
+- `PER_POLICY` -- one issue per policy (recommended for most use cases)
+- `PER_CONDITION` -- one issue per alert condition
+- `PER_CONDITION_AND_TARGET` -- one issue per condition and signal/target
+
+### 3. Create Alert Notification Channels
+
+Use `NEW_RELIC_CREATE_ALERT_CHANNEL` to register notification endpoints for alert delivery.
 
 ```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
+Tool: NEW_RELIC_CREATE_ALERT_CHANNEL
+Inputs:
+  - type: "email" | "slack" | "webhook" | "pagerduty" | "opsgenie" | "victorops" (required)
+  - name: string (required) -- human-readable channel name
+  - configuration: object (required) -- varies by type:
+    Email:     { recipients: "devops@example.com,oncall@example.com" }
+    Slack:     { url: "<slack_webhook_url>", channel: "alerts" }
+    Webhook:   { url: "https://hooks.example.com/alerts", auth_username, auth_password }
+    PagerDuty: { service_key: "<integration_key>" }
+    OpsGenie:  { api_key, recipients, tags, teams }
+    VictorOps: { key: "<api_key>", route_key: "<routing_key>" }
 ```
+
+### 4. Get Alert Conditions for a Policy
+
+Use `NEW_RELIC_GET_ALERT_CONDITIONS` to inspect the conditions attached to a specific policy.
+
+```
+Tool: NEW_RELIC_GET_ALERT_CONDITIONS
+Inputs:
+  - policy_id: integer (required)
+```
+
+### 5. Monitor Applications
+
+Use `NEW_RELIC_GET_APPLICATIONS` and `NEW_RELIC_GET_BROWSER_APPLICATIONS` to list APM and browser-monitored apps.
+
+```
+Tool: NEW_RELIC_GET_APPLICATIONS
+Inputs:
+  - name: string (optional, case-insensitive partial match)
+  - host: string (optional, case-insensitive partial match)
+  - ids: string (optional, comma-separated list of app IDs)
+  - page: integer (1-indexed)
+
+Tool: NEW_RELIC_GET_BROWSER_APPLICATIONS
+Inputs:
+  - filter[name]: string (optional, case-insensitive partial match)
+  - page: integer (1-indexed)
+```
+
+### 6. Manage Channels and Policies
+
+Use `NEW_RELIC_UPDATE_ALERT_CHANNEL` to modify existing channels and `NEW_RELIC_DELETE_ALERT_POLICY` to remove policies.
+
+```
+Tool: NEW_RELIC_UPDATE_ALERT_CHANNEL
+Inputs:
+  - alert_channel_id: integer (required)
+  - name: string (optional)
+  - type: string (optional, only to change type)
+  - configuration: object (optional, fields vary by type)
+
+Tool: NEW_RELIC_DELETE_ALERT_POLICY
+Inputs:
+  - policy_id: string (required) -- ID of the policy to delete
+```
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Detail |
+|---------|--------|
+| Unique policy names | `NEW_RELIC_CREATE_ALERT_POLICY` requires the name to be unique within the account. |
+| Channel config varies by type | The `configuration` object for `NEW_RELIC_CREATE_ALERT_CHANNEL` has different required fields per channel type (e.g., `recipients` for email, `service_key` for PagerDuty). |
+| Pagination required | All list endpoints return paginated results. Iterate pages until results are exhausted. |
+| Policy ID type mismatch | `NEW_RELIC_GET_ALERT_CONDITIONS` expects `policy_id` as an integer, while `NEW_RELIC_DELETE_ALERT_POLICY` expects it as a string. |
+| Channel-policy linking | After creating a channel, you must separately associate it with a policy for alerts to flow to that channel. |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with New Relic-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `new_relic` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|-----------|-------------|
+| `NEW_RELIC_GET_ALERT_POLICIES` | List alert policies with optional filtering |
+| `NEW_RELIC_CREATE_ALERT_POLICY` | Create a new alert policy |
+| `NEW_RELIC_DELETE_ALERT_POLICY` | Delete an alert policy by ID |
+| `NEW_RELIC_CREATE_ALERT_CHANNEL` | Create a notification channel (email, Slack, webhook, etc.) |
+| `NEW_RELIC_GET_ALERT_CHANNELS` | List all configured alert channels |
+| `NEW_RELIC_UPDATE_ALERT_CHANNEL` | Update an existing alert channel |
+| `NEW_RELIC_GET_ALERT_CONDITIONS` | Get alert conditions for a policy |
+| `NEW_RELIC_GET_APPLICATIONS` | List APM applications |
+| `NEW_RELIC_GET_BROWSER_APPLICATIONS` | List browser-monitored applications |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

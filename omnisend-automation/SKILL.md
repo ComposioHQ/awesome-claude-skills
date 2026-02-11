@@ -1,91 +1,125 @@
 ---
-name: omnisend-automation
-description: "Automate Omnisend tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Omnisend Automation
+description: "Automate ecommerce marketing workflows including contact management, bulk operations, and subscriber segmentation through Omnisend via Composio"
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Omnisend Automation via Rube MCP
+# Omnisend Automation
 
-Automate Omnisend operations through Composio's Omnisend toolkit via Rube MCP.
+Automate ecommerce marketing operations -- create and update contacts, manage subscriber lists with cursor pagination, run bulk batch operations, and segment audiences -- all orchestrated through the Composio MCP integration.
 
-**Toolkit docs**: [composio.dev/toolkits/omnisend](https://composio.dev/toolkits/omnisend)
+**Toolkit docs:** [composio.dev/toolkits/omnisend](https://composio.dev/toolkits/omnisend)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Omnisend connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `omnisend`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Connect your Omnisend account through the Composio MCP server at `https://rube.app/mcp`
+2. The agent will prompt you with an authentication link if no active connection exists
+3. Once connected, all `OMNISEND_*` tools become available for execution
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `omnisend`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. Create or Update a Contact
+Upsert a contact by email identifier with subscription status, profile fields, and optional welcome message.
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Omnisend operations", known_fields: ""}]
-session: {generate_id: true}
-```
+**Tool:** `OMNISEND_CREATE_OR_UPDATE_CONTACT`
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `identifiers` | array | Yes | At least one identifier object with `id` (email), `type` (`email`), optional `channels.email.status` (`subscribed`, `nonSubscribed`, `unsubscribed`), and `sendWelcomeMessage` (boolean) |
+| `firstName` | string | No | Contact's first name |
+| `lastName` | string | No | Contact's last name |
+| `gender` | string | No | `m` or `f` |
+| `birthdate` | string | No | Format: `YYYY-MM-DD` |
+| `country` | string | No | Full country name |
+| `countryCode` | string | No | ISO 3166-1 alpha-2 code (e.g., `US`) |
+| `city` | string | No | City name |
+| `address` | string | No | Street address |
+| `postalCode` | string | No | ZIP/postal code |
 
-## Core Workflow Pattern
+---
 
-### Step 1: Discover Available Tools
+### 2. List Contacts with Pagination
+Retrieve contacts in batches with optional filters for email, phone, status, segment, or tag.
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Omnisend task"}]
-session: {id: "existing_session_id"}
-```
+**Tool:** `OMNISEND_LIST_CONTACTS`
 
-### Step 2: Check Connection
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `limit` | integer | No | Results per page (default: 100, max: 250) |
+| `after` | string | No | Cursor for next page (base64-encoded ContactID) |
+| `before` | string | No | Cursor for previous page |
+| `email` | string | No | Filter by exact email address |
+| `phone` | string | No | Filter by full phone number with country code |
+| `status` | string | No | Filter by: `subscribed`, `nonSubscribed`, `unsubscribed` |
+| `segmentID` | integer | No | Filter by segment ID |
+| `tag` | string | No | Filter by tag (e.g., `VIP`) |
 
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["omnisend"]
-session_id: "your_session_id"
-```
+---
 
-### Step 3: Execute Tools
+### 3. Get Contact Details
+Retrieve the full profile for a single contact when you already have their contact ID.
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+**Tool:** `OMNISEND_GET_CONTACT`
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `contactId` | string | Yes | Unique contact identifier (e.g., `60e7412b1234567890abcdef`) |
+
+---
+
+### 4. Update an Existing Contact
+Patch specific fields on a contact by ID without overwriting the entire record.
+
+**Tool:** `OMNISEND_UPDATE_CONTACT`
+
+Requires the `contactId` and the fields to update. Retrieve the contact ID first via `OMNISEND_LIST_CONTACTS` or `OMNISEND_GET_CONTACT`.
+
+---
+
+### 5. Bulk Batch Operations
+Process many records asynchronously in a single call -- contacts, products, orders, events, or categories.
+
+**Tool:** `OMNISEND_CREATE_BATCH`
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `method` | string | Yes | `POST` or `PUT` |
+| `endpoint` | string | Yes | Target: `contacts`, `orders`, `products`, `events`, `categories` |
+| `items` | array | Yes | Array of payload objects for each operation |
+| `eventID` | string | Conditional | Required when endpoint is `events` |
+
+Use batch operations to avoid rate limits when processing large data sets.
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Details |
+|---------|---------|
+| **Identifier required** | `OMNISEND_CREATE_OR_UPDATE_CONTACT` requires at least one identifier in the `identifiers` array -- only `email` type is supported |
+| **Cursor-based pagination** | `OMNISEND_LIST_CONTACTS` uses base64-encoded `after`/`before` cursors, not page numbers -- follow cursors to avoid incomplete data |
+| **Contact ID resolution** | `OMNISEND_UPDATE_CONTACT` requires a `contactId` -- always resolve it first via list or get operations |
+| **Batch method constraints** | `OMNISEND_CREATE_BATCH` only accepts `POST` or `PUT` methods -- no `DELETE` or `PATCH` |
+| **Event ID dependency** | When batching events, the `eventID` parameter is mandatory -- omitting it causes the batch to fail |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Omnisend-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `omnisend` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Purpose |
+|-----------|---------|
+| `OMNISEND_CREATE_OR_UPDATE_CONTACT` | Create or upsert a contact by email |
+| `OMNISEND_LIST_CONTACTS` | List contacts with filtering and cursor pagination |
+| `OMNISEND_GET_CONTACT` | Get full profile for a single contact by ID |
+| `OMNISEND_UPDATE_CONTACT` | Patch specific fields on an existing contact |
+| `OMNISEND_CREATE_BATCH` | Bulk async operations for contacts, products, orders, events |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

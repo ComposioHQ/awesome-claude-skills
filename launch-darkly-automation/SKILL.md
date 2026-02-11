@@ -1,91 +1,130 @@
 ---
-name: launch-darkly-automation
-description: "Automate LaunchDarkly tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: LaunchDarkly Automation
+description: "Automate LaunchDarkly feature flag management -- list projects and environments, create and delete trigger workflows, and track code references via the Composio MCP integration."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# LaunchDarkly Automation via Rube MCP
+# LaunchDarkly Automation
 
-Automate LaunchDarkly operations through Composio's LaunchDarkly toolkit via Rube MCP.
+Automate your LaunchDarkly feature flag workflows -- enumerate projects and environments, create webhook-driven flag triggers, manage trigger lifecycle, and audit code references across repositories.
 
-**Toolkit docs**: [composio.dev/toolkits/launch_darkly](https://composio.dev/toolkits/launch_darkly)
+**Toolkit docs:** [composio.dev/toolkits/launch_darkly](https://composio.dev/toolkits/launch_darkly)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active LaunchDarkly connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `launch_darkly`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your client: `https://rube.app/mcp`
+2. Connect your LaunchDarkly account when prompted (API key authentication)
+3. Start using the workflows below
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `launch_darkly`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List Projects
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "LaunchDarkly operations", known_fields: ""}]
-session: {generate_id: true}
-```
-
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
+Use `LAUNCH_DARKLY_LIST_PROJECTS` to discover all projects and their keys for subsequent operations.
 
 ```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific LaunchDarkly task"}]
-session: {id: "existing_session_id"}
+Tool: LAUNCH_DARKLY_LIST_PROJECTS
+Inputs:
+  - filter: string (e.g., "query:myproject" or "keys:proj1,proj2" or "tags:mytag")
+  - expand: string (e.g., "environments" to include env list per project)
+  - limit: integer (default 20)
+  - offset: integer (pagination start index)
+  - sort: string (e.g., "name" or "-name" for descending)
 ```
 
-### Step 2: Check Connection
+### 2. Get Environments for a Project
+
+Use `LAUNCH_DARKLY_GET_ENVIRONMENTS` to list all environments within a project (production, staging, test, etc.).
 
 ```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["launch_darkly"]
-session_id: "your_session_id"
+Tool: LAUNCH_DARKLY_GET_ENVIRONMENTS
+Inputs:
+  - project_key: string (required) -- e.g., "my-project", "default"
+  - filter: string (e.g., "query:production")
+  - limit: integer (default 20)
+  - offset: integer (pagination)
+  - sort: string (e.g., "name" or "-name")
 ```
 
-### Step 3: Execute Tools
+### 3. Create a Flag Trigger Workflow
+
+Use `LAUNCH_DARKLY_CREATE_TRIGGER_WORKFLOW` to set up automated flag toggles triggered by external events (webhooks, Datadog alerts, etc.).
 
 ```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
+Tool: LAUNCH_DARKLY_CREATE_TRIGGER_WORKFLOW
+Inputs:
+  - project_key: string (required)
+  - feature_flag_key: string (required) -- e.g., "new-feature", "enable-dark-mode"
+  - environment_key: string (required) -- e.g., "production", "staging"
+  - integration_key: string (default "generic-trigger") -- or "datadog", "honeycomb", "dynatrace"
+  - instructions: array of objects (optional):
+      - kind: "flag_action" (fixed)
+      - action: "turnFlagOn" | "turnFlagOff"
+  - comment: string (optional) -- description of the trigger purpose
 ```
+
+The trigger generates a unique webhook URL that can be called to execute the configured flag action.
+
+### 4. Delete a Flag Trigger Workflow
+
+Use `LAUNCH_DARKLY_DELETE_TRIGGER_WORKFLOW` to permanently remove a trigger and its URL.
+
+```
+Tool: LAUNCH_DARKLY_DELETE_TRIGGER_WORKFLOW
+Inputs:
+  - project_key: string (required)
+  - feature_flag_key: string (required)
+  - environment_key: string (required)
+  - id: string (required) -- the trigger ID returned during creation
+```
+
+**Warning:** Deletion is irreversible. The trigger and its URL cannot be recovered.
+
+### 5. List Code Reference Repositories
+
+Use `LAUNCH_DARKLY_LIST_CODE_REFERENCE_REPOSITORIES` to track where feature flags are used in your codebase.
+
+```
+Tool: LAUNCH_DARKLY_LIST_CODE_REFERENCE_REPOSITORIES
+Inputs:
+  - projKey: string (optional) -- filter by project key
+  - flagKey: string (optional) -- filter by feature flag key
+  - withBranches: string (any value to include branch data)
+  - withReferencesForDefaultBranch: string (any value to include code refs for default branch)
+```
+
+**Note:** Code references is an Enterprise feature requiring `code-reference-repository` write permissions.
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+| Pitfall | Detail |
+|---------|--------|
+| Project key discovery | Always use `LAUNCH_DARKLY_LIST_PROJECTS` first to find valid project keys before calling other tools. |
+| Environment key format | Environment keys are lowercase slugs (e.g., "production", "test"), not display names. |
+| Trigger deletion is permanent | Once deleted via `LAUNCH_DARKLY_DELETE_TRIGGER_WORKFLOW`, the trigger URL is unrecoverable. |
+| Enterprise-only code refs | `LAUNCH_DARKLY_LIST_CODE_REFERENCE_REPOSITORIES` requires Enterprise plan and write permissions. |
+| Trigger instructions format | Each instruction object requires `kind: "flag_action"` (fixed constant) and `action` as either `turnFlagOn` or `turnFlagOff`. |
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with LaunchDarkly-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `launch_darkly` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|-----------|-------------|
+| `LAUNCH_DARKLY_LIST_PROJECTS` | List all projects with filtering and pagination |
+| `LAUNCH_DARKLY_GET_ENVIRONMENTS` | List environments within a project |
+| `LAUNCH_DARKLY_CREATE_TRIGGER_WORKFLOW` | Create a webhook-driven flag trigger |
+| `LAUNCH_DARKLY_DELETE_TRIGGER_WORKFLOW` | Permanently delete a flag trigger |
+| `LAUNCH_DARKLY_LIST_CODE_REFERENCE_REPOSITORIES` | List repos with code references to flags |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*

@@ -1,91 +1,106 @@
 ---
-name: contentful-automation
-description: "Automate Contentful tasks via Rube MCP (Composio). Always search tools first for current schemas."
+name: Contentful Automation
+description: "Automate headless CMS operations in Contentful -- list spaces, retrieve space metadata, and update space configurations through the Composio Contentful integration."
 requires:
-  mcp: [rube]
+  mcp:
+    - rube
 ---
 
-# Contentful Automation via Rube MCP
+# Contentful Automation
 
-Automate Contentful operations through Composio's Contentful toolkit via Rube MCP.
+Manage your **Contentful** headless CMS spaces directly from Claude Code. List spaces, retrieve metadata, and update space configurations without leaving your terminal.
 
-**Toolkit docs**: [composio.dev/toolkits/contentful](https://composio.dev/toolkits/contentful)
+**Toolkit docs:** [composio.dev/toolkits/contentful](https://composio.dev/toolkits/contentful)
 
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Contentful connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `contentful`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+---
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Add the Composio MCP server to your configuration:
+   ```
+   https://rube.app/mcp
+   ```
+2. Connect your Contentful account when prompted. The agent will provide an authentication link. Ensure your access token has space management scopes.
 
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `contentful`
-3. If connection is not ACTIVE, follow the returned auth link to complete setup
-4. Confirm connection status shows ACTIVE before running any workflows
+---
 
-## Tool Discovery
+## Core Workflows
 
-Always discover available tools before executing workflows:
+### 1. List All Spaces
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "Contentful operations", known_fields: ""}]
-session: {generate_id: true}
-```
+Discover all Contentful spaces accessible to your authenticated account. This is typically the first operation since most other actions require a `space_id`.
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
+**Tool:** `CONTENTFUL_LIST_SPACES`
 
-## Core Workflow Pattern
+Key parameters:
+- `limit` (1-1000) -- maximum number of spaces to return (default: 100)
+- `skip` -- number of spaces to skip for pagination
+- `order` -- sort by field, e.g., `sys.createdAt` or `-sys.createdAt` for descending
 
-### Step 1: Discover Available Tools
+Example prompt: *"List all my Contentful spaces"*
 
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Contentful task"}]
-session: {id: "existing_session_id"}
-```
+---
 
-### Step 2: Check Connection
+### 2. Get Space Details
 
-```
-RUBE_MANAGE_CONNECTIONS
-toolkits: ["contentful"]
-session_id: "your_session_id"
-```
+Retrieve detailed metadata for a specific space including its current `sys.version`, which is required for updates.
 
-### Step 3: Execute Tools
+**Tool:** `CONTENTFUL_GET_SPACE`
 
-```
-RUBE_MULTI_EXECUTE_TOOL
-tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
-}]
-memory: {}
-session_id: "your_session_id"
-```
+Key parameters:
+- `space_id` (required) -- the ID of the space to retrieve (alphanumeric, 1-64 chars)
+
+Example prompt: *"Get details for Contentful space abc123def"*
+
+---
+
+### 3. Update Space Name
+
+Update the name of a specific space. Requires the current version number for optimistic locking to prevent concurrent modification conflicts.
+
+**Tool:** `CONTENTFUL_UPDATE_SPACE`
+
+Key parameters:
+- `space_id` (required) -- ID of the space to update
+- `name` (required) -- new name for the space (1-255 chars)
+- `version` (required) -- current space version from `sys.version` (must be > 0)
+
+Example prompt: *"Rename Contentful space abc123def to 'Production Content Hub'"*
+
+---
+
+### 4. Audit Space Inventory
+
+Combine space listing and detail retrieval to audit your organization's Contentful spaces.
+
+**Tools:** `CONTENTFUL_LIST_SPACES` then `CONTENTFUL_GET_SPACE`
+
+Workflow:
+1. List all spaces to get IDs and names
+2. Fetch details for each space to get version info, creation dates, and metadata
+
+Example prompt: *"Audit all Contentful spaces -- list them with their creation dates and current versions"*
+
+---
 
 ## Known Pitfalls
 
-- **Always search first**: Tool schemas change. Never hardcode tool slugs or arguments without calling `RUBE_SEARCH_TOOLS`
-- **Check connection**: Verify `RUBE_MANAGE_CONNECTIONS` shows ACTIVE status before executing tools
-- **Schema compliance**: Use exact field names and types from the search results
-- **Memory parameter**: Always include `memory` in `RUBE_MULTI_EXECUTE_TOOL` calls, even if empty (`{}`)
-- **Session reuse**: Reuse session IDs within a workflow. Generate new ones for new workflows
-- **Pagination**: Check responses for pagination tokens and continue fetching until complete
+- **Version conflicts on update:** `CONTENTFUL_UPDATE_SPACE` requires the latest `sys.version` from `CONTENTFUL_GET_SPACE`. If someone else modified the space between your read and write, the update will fail with a version conflict. Always fetch the space immediately before updating.
+- **Pagination for many spaces:** `CONTENTFUL_LIST_SPACES` uses `limit` and `skip` parameters. When you have many spaces, iterate by incrementing `skip` until no more results are returned to avoid missing spaces.
+- **Scope limitations:** These tools only manage space-level metadata (names). They cannot create or modify entries, content types, or assets within a space.
+- **Auth/permissions mismatch:** Updates via `CONTENTFUL_UPDATE_SPACE` will fail if your token lacks space management scopes, even if reads via `CONTENTFUL_GET_SPACE` succeed. Verify your token has write permissions.
+- **Space ID format:** The `space_id` must match the pattern `^[a-zA-Z0-9-_.]{1,64}$`. Invalid characters will be rejected.
+
+---
 
 ## Quick Reference
 
-| Operation | Approach |
-|-----------|----------|
-| Find tools | `RUBE_SEARCH_TOOLS` with Contentful-specific use case |
-| Connect | `RUBE_MANAGE_CONNECTIONS` with toolkit `contentful` |
-| Execute | `RUBE_MULTI_EXECUTE_TOOL` with discovered tool slugs |
-| Bulk ops | `RUBE_REMOTE_WORKBENCH` with `run_composio_tool()` |
-| Full schema | `RUBE_GET_TOOL_SCHEMAS` for tools with `schemaRef` |
+| Tool Slug | Description |
+|---|---|
+| `CONTENTFUL_LIST_SPACES` | List all spaces accessible to your account |
+| `CONTENTFUL_GET_SPACE` | Retrieve detailed metadata for a single space |
+| `CONTENTFUL_UPDATE_SPACE` | Update the name of a space (requires version) |
 
 ---
+
 *Powered by [Composio](https://composio.dev)*
