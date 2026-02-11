@@ -233,3 +233,6 @@ logs("service:web status:error").index("main").rollup("count").last("5m") > 10
 | Create downtime | DATADOG_CREATE_DOWNTIME | scope, start, end |
 | List hosts | DATADOG_LIST_HOSTS | filter, sort_field |
 | Get trace | DATADOG_GET_TRACE_BY_ID | trace_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

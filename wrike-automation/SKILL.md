@@ -231,3 +231,6 @@ Automate Wrike project management operations through Composio's Wrike toolkit vi
 | Delete space | WRIKE_DELETE_SPACE | spaceId |
 | Get contacts | WRIKE_GET_CONTACTS | (none) |
 | Invite user | WRIKE_CREATE_INVITATION | email, role |
+
+---
+*Powered by [Composio](https://composio.dev)*

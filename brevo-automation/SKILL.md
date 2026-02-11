@@ -195,3 +195,6 @@ Automate Brevo (formerly Sendinblue) email marketing operations through Composio
 | Update template | BREVO_CREATE_OR_UPDATE_EMAIL_TEMPLATE | templateId, htmlContent |
 | Delete template | BREVO_DELETE_EMAIL_TEMPLATE | templateId |
 | List senders | BREVO_GET_ALL_SENDERS | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -214,3 +214,6 @@ For cohort membership updates:
 | Update cohort members | AMPLITUDE_UPDATE_COHORT_MEMBERSHIP | cohort_id, memberships |
 | Check cohort status | AMPLITUDE_CHECK_COHORT_STATUS | request_id |
 | List event categories | AMPLITUDE_GET_EVENT_CATEGORIES | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

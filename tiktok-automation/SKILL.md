@@ -176,3 +176,6 @@ Automate TikTok content creation and profile operations through Composio's TikTo
 | Get user stats | TIKTOK_GET_USER_STATS | (none) |
 | Get basic info | TIKTOK_GET_USER_BASIC_INFO | (none) |
 | Check publish status | TIKTOK_FETCH_PUBLISH_STATUS | publish_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

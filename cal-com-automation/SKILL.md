@@ -201,3 +201,6 @@ Automate Cal.com scheduling operations through Composio's Cal toolkit via Rube M
 | Create team | CAL_CREATE_TEAM_IN_ORGANIZATION | name, slug |
 | Team event types | CAL_RETRIEVE_TEAM_EVENT_TYPES | teamId |
 | Get org ID | CAL_GET_ORGANIZATION_ID | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

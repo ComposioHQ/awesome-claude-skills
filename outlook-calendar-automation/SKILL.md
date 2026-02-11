@@ -234,3 +234,6 @@ filter: "contains(subject, 'Review') and categories/any(c:c eq 'Work')"
 | Get schedule | OUTLOOK_GET_SCHEDULE | Schedules, StartTime, EndTime |
 | List calendars | OUTLOOK_LIST_CALENDARS | user_id |
 | Mailbox settings | OUTLOOK_GET_MAILBOX_SETTINGS | select |
+
+---
+*Powered by [Composio](https://composio.dev)*

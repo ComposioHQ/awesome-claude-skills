@@ -222,3 +222,6 @@ Most list endpoints use offset-based pagination:
 | Deals in pipeline | `PIPEDRIVE_GET_DEALS_IN_A_PIPELINE` | `id`, `stage_id` |
 | Deals in stage | `PIPEDRIVE_GET_DEALS_IN_A_STAGE` | `id`, `start`, `limit` |
 | Add product to deal | `PIPEDRIVE_ADD_A_PRODUCT_TO_A_DEAL` | `id`, `product_id`, `item_price` |
+
+---
+*Powered by [Composio](https://composio.dev)*

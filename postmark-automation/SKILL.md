@@ -185,3 +185,6 @@ Automate Postmark transactional email operations through Composio's Postmark too
 | Tracked email counts | POSTMARK_GET_TRACKED_EMAIL_COUNTS | fromdate, todate, tag |
 | Get server config | POSTMARK_GET_SERVER | (none) |
 | Edit server config | POSTMARK_EDIT_SERVER | Name, TrackOpens, TrackLinks |
+
+---
+*Powered by [Composio](https://composio.dev)*

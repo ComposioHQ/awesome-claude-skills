@@ -164,3 +164,6 @@ Backward pagination:
 | List views | HELPDESK_LIST_VIEWS | (none) |
 | List canned responses | HELPDESK_LIST_CANNED_RESPONSES | (none) |
 | List custom fields | HELPDESK_LIST_CUSTOM_FIELDS | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

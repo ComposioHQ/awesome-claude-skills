@@ -252,3 +252,6 @@ When using project paths as identifiers:
 | User status | `GITLAB_GET_USERS_ID_STATUS` | user ID |
 | List project members | `GITLAB_LIST_ALL_PROJECT_MEMBERS` | `id`, `query`, `state` |
 | List project users | `GITLAB_LIST_PROJECT_USERS` | `id`, `search` |
+
+---
+*Powered by [Composio](https://composio.dev)*

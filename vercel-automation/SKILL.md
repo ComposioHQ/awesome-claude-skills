@@ -224,3 +224,6 @@ Automate Vercel platform operations through Composio's Vercel toolkit via Rube M
 | List teams | VERCEL_LIST_TEAMS | (none) |
 | Get team | VERCEL_GET_TEAM | teamId |
 | Get team members | VERCEL_GET_TEAM_MEMBERS | teamId, limit |
+
+---
+*Powered by [Composio](https://composio.dev)*

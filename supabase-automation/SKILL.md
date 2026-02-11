@@ -234,3 +234,6 @@ Automate Supabase operations including database queries, table schema inspection
 | Get edge function | `SUPABASE_RETRIEVE_A_FUNCTION` | `ref`, function slug |
 | List storage buckets | `SUPABASE_LISTS_ALL_BUCKETS` | `ref` |
 | List DB branches | `SUPABASE_LIST_ALL_DATABASE_BRANCHES` | `ref` |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -226,3 +226,6 @@ Contact operations (`ADD_OR_UPDATE_A_CONTACT`, `IMPORT_CONTACTS`) are asynchrono
 | Suppression groups | `SENDGRID_GET_SUPPRESSION_GROUPS` | (none) |
 | Get template | `SENDGRID_RETRIEVE_A_SINGLE_TRANSACTIONAL_TEMPLATE` | `template_id` |
 | Duplicate template | `SENDGRID_DUPLICATE_A_TRANSACTIONAL_TEMPLATE` | `template_id`, `name` |
+
+---
+*Powered by [Composio](https://composio.dev)*

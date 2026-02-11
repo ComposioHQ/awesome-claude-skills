@@ -215,3 +215,6 @@ Most Zoom list endpoints use token-based pagination:
 | Register for meeting | `ZOOM_ADD_A_MEETING_REGISTRANT` | `meetingId`, participant details |
 | Register for webinar | `ZOOM_ADD_A_WEBINAR_REGISTRANT` | webinar ID, participant details |
 | List archived files | `ZOOM_LIST_ARCHIVED_FILES` | `from`, `to` |
+
+---
+*Powered by [Composio](https://composio.dev)*
