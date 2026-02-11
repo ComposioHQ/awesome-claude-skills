@@ -133,6 +133,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [production-readiness](https://github.com/Meghshyams/production-readiness) - Comprehensive production readiness audit covering security, visual QA, code quality, testing, error handling, build config, and performance. Runs 40+ checks, auto-detects your stack, and produces an actionable report with severity levels. *By [@Meghshyams](https://github.com/Meghshyams)*
 
 ### Data & Analysis
 
