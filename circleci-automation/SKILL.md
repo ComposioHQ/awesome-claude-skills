@@ -9,6 +9,8 @@ requires:
 
 Automate CircleCI CI/CD operations through Composio's CircleCI toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/circleci](https://composio.dev/toolkits/circleci)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -175,3 +177,6 @@ Format: {vcs_type}/{org_name}/{repo_name}
 | Get job details | CIRCLECI_GET_JOB_DETAILS | project_slug, job_number |
 | Get job artifacts | CIRCLECI_GET_JOB_ARTIFACTS | project_slug, job_number |
 | Get test metadata | CIRCLECI_GET_TEST_METADATA | project_slug, job_number |
+
+---
+*Powered by [Composio](https://composio.dev)*

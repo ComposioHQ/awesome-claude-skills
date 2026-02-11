@@ -9,6 +9,8 @@ requires:
 
 Automate OneDrive operations including file upload/download, search, folder management, sharing links, permissions management, and drive browsing through Composio's OneDrive toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/one_drive](https://composio.dev/toolkits/one_drive)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -236,3 +238,6 @@ Most OneDrive tools accept either paths or IDs:
 | Get quota | `ONE_DRIVE_GET_QUOTA` | (none) |
 | Track changes | `ONE_DRIVE_LIST_SITE_DRIVE_ITEMS_DELTA` | `site_id`, `token` |
 | Version history | `ONE_DRIVE_GET_ITEM_VERSIONS` | `item_id` |
+
+---
+*Powered by [Composio](https://composio.dev)*

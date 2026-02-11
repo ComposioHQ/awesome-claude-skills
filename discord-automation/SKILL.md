@@ -9,6 +9,8 @@ requires:
 
 Automate Discord operations through Composio's Discord/Discordbot toolkits via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/discord](https://composio.dev/toolkits/discord)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -185,3 +187,6 @@ Permissions are combined using bitwise OR:
 | Clear reactions | DISCORDBOT_DELETE_ALL_MESSAGE_REACTIONS | channel_id, message_id |
 | Test auth | DISCORDBOT_TEST_AUTH | (none) |
 | Get channel | DISCORDBOT_GET_CHANNEL | channel_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

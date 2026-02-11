@@ -9,6 +9,8 @@ requires:
 
 Automate Telegram operations through Composio's Telegram toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/telegram](https://composio.dev/toolkits/telegram)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -217,3 +219,6 @@ Automate Telegram operations through Composio's Telegram toolkit via Rube MCP.
 | Get chat history | TELEGRAM_GET_CHAT_HISTORY | chat_id |
 | Set bot commands | TELEGRAM_SET_MY_COMMANDS | commands |
 | Answer callback | TELEGRAM_ANSWER_CALLBACK_QUERY | callback_query_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

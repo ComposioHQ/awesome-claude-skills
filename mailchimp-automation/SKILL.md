@@ -9,6 +9,8 @@ requires:
 
 Automate Mailchimp email marketing workflows including campaign creation and sending, audience/list management, subscriber operations, segmentation, and performance analytics through Composio's Mailchimp toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/mailchimp](https://composio.dev/toolkits/mailchimp)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -229,3 +231,6 @@ subscriber_hash = hashlib.md5(email.lower().encode()).hexdigest()
 | Subscriber activity | `MAILCHIMP_GET_SUBSCRIBER_EMAIL_ACTIVITY` | `campaign_id`, `subscriber_hash` |
 | Member recent activity | `MAILCHIMP_VIEW_RECENT_ACTIVITY` | `list_id`, `subscriber_hash` |
 | Campaign content | `MAILCHIMP_GET_CAMPAIGN_CONTENT` | `campaign_id` |
+
+---
+*Powered by [Composio](https://composio.dev)*

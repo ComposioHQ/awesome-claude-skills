@@ -9,6 +9,8 @@ requires:
 
 Automate Google Drive workflows including file upload/download, search, folder management, sharing/permissions, and organization through Composio's Google Drive toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/googledrive](https://composio.dev/toolkits/googledrive)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -191,3 +193,6 @@ For Google Workspace files, set `mime_type` to export:
 | List shared drives | `GOOGLEDRIVE_LIST_SHARED_DRIVES` | `pageSize` |
 | Drive info | `GOOGLEDRIVE_GET_ABOUT` | (none) |
 | Create shortcut | `GOOGLEDRIVE_CREATE_SHORTCUT_TO_FILE` | target file_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

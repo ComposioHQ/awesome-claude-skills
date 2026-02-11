@@ -9,6 +9,8 @@ requires:
 
 Automate Webflow operations including CMS collection management, site publishing, page inspection, asset uploads, and ecommerce order retrieval through Composio's Webflow toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/webflow](https://composio.dev/toolkits/webflow)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -234,3 +236,6 @@ Typical CMS content creation flow:
 | Upload asset | `WEBFLOW_UPLOAD_ASSET` | `site_id`, `file_name`, `file_content`, `content_type`, `md5` |
 | List orders | `WEBFLOW_LIST_ORDERS` | `site_id`, `status` |
 | Get order | `WEBFLOW_GET_ORDER` | `site_id`, `order_id` |
+
+---
+*Powered by [Composio](https://composio.dev)*

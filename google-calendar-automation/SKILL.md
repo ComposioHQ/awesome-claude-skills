@@ -9,6 +9,8 @@ requires:
 
 Automate Google Calendar workflows including event creation, scheduling, availability checks, attendee management, and calendar browsing through Composio's Google Calendar toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/googlecalendar](https://composio.dev/toolkits/googlecalendar)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -174,3 +176,6 @@ Automate Google Calendar workflows including event creation, scheduling, availab
 | Remove attendee | `GOOGLECALENDAR_REMOVE_ATTENDEE` | `event_id`, `attendee_email` |
 | Get current time | `GOOGLECALENDAR_GET_CURRENT_DATE_TIME` | `timezone` |
 | Get calendar | `GOOGLECALENDAR_GET_CALENDAR` | `calendar_id` |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate Mixpanel product analytics through Composio's Mixpanel toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/mixpanel](https://composio.dev/toolkits/mixpanel)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -222,3 +224,6 @@ Used in `where` and `on` parameters:
 | List cohorts | MIXPANEL_COHORTS_LIST | (none) |
 | JQL query | MIXPANEL_JQL_QUERY | script |
 | Query insight | MIXPANEL_QUERY_INSIGHT | bookmark_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

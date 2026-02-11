@@ -9,6 +9,8 @@ requires:
 
 Automate Freshservice IT Service Management operations through Composio's Freshservice toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/freshservice](https://composio.dev/toolkits/freshservice)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -211,3 +213,6 @@ Automate Freshservice IT Service Management operations through Composio's Freshs
 | Bulk update | FRESHSERVICE_BULK_UPDATE_TICKETS | ids, update_fields |
 | Outbound email ticket | FRESHSERVICE_CREATE_TICKET_OUTBOUND_EMAIL | email, subject, description |
 | Service request | FRESHSERVICE_CREATE_SERVICE_REQUEST | item_display_id, email, quantity |
+
+---
+*Powered by [Composio](https://composio.dev)*

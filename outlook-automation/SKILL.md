@@ -9,6 +9,8 @@ requires:
 
 Automate Microsoft Outlook operations through Composio's Outlook toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/outlook](https://composio.dev/toolkits/outlook)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -189,3 +191,6 @@ Automate Microsoft Outlook operations through Composio's Outlook toolkit via Rub
 | List contacts | OUTLOOK_LIST_CONTACTS | top, filter |
 | Create contact | OUTLOOK_CREATE_CONTACT | givenName, emailAddresses |
 | Contact folders | OUTLOOK_GET_CONTACT_FOLDERS | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate Segment customer data platform operations through Composio's Segment toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/segment](https://composio.dev/toolkits/segment)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -223,3 +225,6 @@ Segment recommends consistent event naming:
 | Source schema | SEGMENT_LIST_SCHEMA_SETTINGS_IN_SOURCE | sourceId |
 | Update source | SEGMENT_UPDATE_SOURCE | sourceId |
 | Warehouses | SEGMENT_LIST_CONNECTED_WAREHOUSES_FROM_SOURCE | sourceId |
+
+---
+*Powered by [Composio](https://composio.dev)*

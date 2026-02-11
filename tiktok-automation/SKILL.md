@@ -9,6 +9,8 @@ requires:
 
 Automate TikTok content creation and profile operations through Composio's TikTok toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/tiktok](https://composio.dev/toolkits/tiktok)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -176,3 +178,6 @@ Automate TikTok content creation and profile operations through Composio's TikTo
 | Get user stats | TIKTOK_GET_USER_STATS | (none) |
 | Get basic info | TIKTOK_GET_USER_BASIC_INFO | (none) |
 | Check publish status | TIKTOK_FETCH_PUBLISH_STATUS | publish_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

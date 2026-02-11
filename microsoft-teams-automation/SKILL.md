@@ -9,6 +9,8 @@ requires:
 
 Automate Microsoft Teams operations through Composio's Microsoft Teams toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/microsoft_teams](https://composio.dev/toolkits/microsoft_teams)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -209,3 +211,6 @@ Automate Microsoft Teams operations through Composio's Microsoft Teams toolkit v
 | Search messages | MICROSOFT_TEAMS_SEARCH_MESSAGES | query |
 | Get chat message | MICROSOFT_TEAMS_GET_CHAT_MESSAGE | chat_id, message_id |
 | List joined teams | MICROSOFT_TEAMS_LIST_USER_JOINED_TEAMS | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate Shopify operations through Composio's Shopify toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/shopify](https://composio.dev/toolkits/shopify)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -166,3 +168,6 @@ For advanced operations:
 | Fulfillment | SHOPIFY_GET_FULFILLMENT | order_id, fulfillment_id |
 | GraphQL | SHOPIFY_GRAPH_QL_QUERY | query |
 | Bulk query | SHOPIFY_BULK_QUERY_OPERATION | query |
+
+---
+*Powered by [Composio](https://composio.dev)*

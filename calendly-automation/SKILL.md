@@ -9,6 +9,8 @@ requires:
 
 Automate Calendly operations including event listing, invitee management, scheduling link creation, availability queries, and organization administration through Composio's Calendly toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/calendly](https://composio.dev/toolkits/calendly)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -209,3 +211,6 @@ Most Calendly list endpoints use token-based pagination:
 | List org invitations | `CALENDLY_LIST_ORGANIZATION_INVITATIONS` | `uuid`, `status` |
 | Revoke org invitation | `CALENDLY_REVOKE_USER_S_ORGANIZATION_INVITATION` | org UUID, invitation UUID |
 | Remove from org | `CALENDLY_REMOVE_USER_FROM_ORGANIZATION` | membership UUID |
+
+---
+*Powered by [Composio](https://composio.dev)*

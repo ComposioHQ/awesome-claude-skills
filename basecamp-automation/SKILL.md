@@ -9,6 +9,8 @@ requires:
 
 Automate Basecamp operations including project management, to-do list creation, task management, message board posting, people management, and to-do group organization through Composio's Basecamp toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/basecamp](https://composio.dev/toolkits/basecamp)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -232,3 +234,6 @@ Basecamp uses page-based pagination on list endpoints:
 | List all people | `BASECAMP_GET_PEOPLE` | (none) |
 | List project people | `BASECAMP_LIST_PROJECT_PEOPLE` | `project_id` |
 | Manage access | `BASECAMP_PUT_PROJECTS_PEOPLE_USERS` | `project_id`, `grant`, `revoke`, `create` |
+
+---
+*Powered by [Composio](https://composio.dev)*

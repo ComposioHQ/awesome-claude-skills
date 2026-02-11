@@ -9,6 +9,8 @@ requires:
 
 Automate ConvertKit (now known as Kit) email marketing operations through Composio's Kit toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/kit](https://composio.dev/toolkits/kit)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -193,3 +195,6 @@ Kit uses cursor-based pagination:
 | Get broadcast | KIT_GET_BROADCAST | id |
 | Get broadcast stats | KIT_GET_BROADCAST_STATS | id |
 | Delete broadcast | KIT_DELETE_BROADCAST | id |
+
+---
+*Powered by [Composio](https://composio.dev)*

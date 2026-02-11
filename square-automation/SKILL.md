@@ -9,6 +9,8 @@ requires:
 
 Automate Square payment processing, order management, and invoicing through Composio's Square toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/square](https://composio.dev/toolkits/square)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -174,3 +176,6 @@ Automate Square payment processing, order management, and invoicing through Comp
 | List invoices | SQUARE_LIST_INVOICES | location_id, cursor |
 | Get invoice | SQUARE_GET_INVOICE | invoice_id |
 | Cancel invoice | SQUARE_CANCEL_INVOICE | invoice_id, version |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate Gmail operations through Composio's Gmail toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/gmail](https://composio.dev/toolkits/gmail)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -268,3 +270,5 @@ Automate Gmail operations through Composio's Gmail toolkit via Rube MCP.
 | Get attachment | GMAIL_GET_ATTACHMENT | message_id, attachment_id |
 | Search contacts | GMAIL_SEARCH_PEOPLE | query |
 | Get profile | GMAIL_GET_PROFILE | (none) |
+---
+*Powered by [Composio](https://composio.dev)*
