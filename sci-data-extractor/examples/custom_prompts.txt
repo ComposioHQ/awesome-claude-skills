@@ -1,0 +1,69 @@
+# Custom Extraction Prompt Examples
+
+## Example 1: Extract Protein Structure Data
+
+Please extract all protein structure data from scientific papers, including the following fields:
+- PDB_ID: Protein Data Bank ID
+- Resolution: Resolution (Å)
+- R_value: R value
+- R_free: R_free value
+- Method: Structure determination method (X-ray, NMR, Cryo-EM)
+- Space_group: Space group
+- Organism: Source organism
+
+Output in Markdown table format.
+
+## Example 2: Extract Drug Screening Data
+
+Please extract drug screening experiment data from literature, including:
+- Compound_Name: Compound name
+- IC50: Half maximal inhibitory concentration (numerical value)
+- Unit_IC50: IC50 unit
+- EC50: Half maximal effective concentration (numerical value)
+- Unit_EC50: EC50 unit
+- Target: Target protein
+- Cell_Line: Cell line
+- Selectivity: Selectivity index
+
+Output in Markdown table format, keeping only mean values without standard deviation.
+
+## Example 3: Extract Material Properties Data
+
+Please extract mechanical property data of materials:
+- Material: Material name
+- Tensile_Strength: Tensile strength (MPa)
+- Yield_Strength: Yield strength (MPa)
+- Elongation: Elongation at break (%)
+- Modulus: Elastic modulus (GPa)
+- Density: Density (g/cm³)
+- Processing_Method: Processing method
+
+Store numerical values and units separately. Output as Markdown table.
+
+## Example 4: Extract Clinical Trial Data
+
+Please extract key clinical trial data:
+- Phase: Trial phase (I/II/III/IV)
+- Sample_Size: Sample size
+- Treatment_Group: Treatment group intervention
+- Control_Group: Control group intervention
+- Primary_Endpoint: Primary endpoint
+- Response_Rate: Response rate (%)
+- Adverse_Events: Adverse event rate (%)
+- p_value: Statistical significance
+
+Output in Markdown table format.
+
+## Example 5: Extract Gene Expression Data
+
+Please extract gene expression analysis data:
+- Gene: Gene name
+- Organism: Organism
+- Tissue: Tissue type
+- Condition: Experimental condition
+- Expression_Level: Expression level
+- Unit: Expression unit (e.g., FPKM, TPM, RPKM)
+- Fold_Change: Fold change
+- Regulation: Up-regulated/Down-regulated/No change
+
+Output in Markdown table format.
