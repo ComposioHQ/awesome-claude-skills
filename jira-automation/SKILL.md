@@ -9,6 +9,8 @@ requires:
 
 Automate Jira operations through Composio's Jira toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/jira](https://composio.dev/toolkits/jira)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -183,3 +185,6 @@ Automate Jira operations through Composio's Jira toolkit via Rube MCP.
 | List filters | JIRA_LIST_FILTERS | (none) |
 | Project roles | JIRA_GET_PROJECT_ROLES | projectIdOrKey |
 | Project versions | JIRA_GET_PROJECT_VERSIONS | projectIdOrKey |
+
+---
+*Powered by [Composio](https://composio.dev)*

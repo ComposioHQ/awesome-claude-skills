@@ -9,6 +9,8 @@ requires:
 
 Automate Amplitude product analytics through Composio's Amplitude toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/amplitude](https://composio.dev/toolkits/amplitude)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -214,3 +216,6 @@ For cohort membership updates:
 | Update cohort members | AMPLITUDE_UPDATE_COHORT_MEMBERSHIP | cohort_id, memberships |
 | Check cohort status | AMPLITUDE_CHECK_COHORT_STATUS | request_id |
 | List event categories | AMPLITUDE_GET_EVENT_CATEGORIES | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

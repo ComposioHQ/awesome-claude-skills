@@ -9,6 +9,8 @@ requires:
 
 Automate YouTube operations through Composio's YouTube toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/youtube](https://composio.dev/toolkits/youtube)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -216,3 +218,6 @@ Automate YouTube operations through Composio's YouTube toolkit via Rube MCP.
 | List subscriptions | YOUTUBE_LIST_USER_SUBSCRIPTIONS | (check schema) |
 | List comments | YOUTUBE_LIST_COMMENT_THREADS | videoId |
 | Channel activities | YOUTUBE_GET_CHANNEL_ACTIVITIES | (check schema) |
+
+---
+*Powered by [Composio](https://composio.dev)*

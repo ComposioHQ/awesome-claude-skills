@@ -9,6 +9,8 @@ requires:
 
 Automate WhatsApp Business operations through Composio's WhatsApp toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/whatsapp](https://composio.dev/toolkits/whatsapp)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -212,3 +214,6 @@ Automate WhatsApp Business operations through Composio's WhatsApp toolkit via Ru
 | Create template | WHATSAPP_CREATE_MESSAGE_TEMPLATE | template_name, category, language |
 | List templates | WHATSAPP_GET_MESSAGE_TEMPLATES | (none) |
 | Check template status | WHATSAPP_GET_TEMPLATE_STATUS | template_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

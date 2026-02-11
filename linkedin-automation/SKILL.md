@@ -9,6 +9,8 @@ requires:
 
 Automate LinkedIn operations through Composio's LinkedIn toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/linkedin](https://composio.dev/toolkits/linkedin)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -173,3 +175,6 @@ Automate LinkedIn operations through Composio's LinkedIn toolkit via Rube MCP.
 | Get uploaded images | LINKEDIN_GET_IMAGES | image_id |
 | Delete post | LINKEDIN_DELETE_LINKED_IN_POST | post_id |
 | Comment on post | LINKEDIN_CREATE_COMMENT_ON_POST | post_id, text, actor |
+
+---
+*Powered by [Composio](https://composio.dev)*

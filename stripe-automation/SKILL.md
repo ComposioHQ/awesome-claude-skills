@@ -9,6 +9,8 @@ requires:
 
 Automate Stripe payment operations through Composio's Stripe toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/stripe](https://composio.dev/toolkits/stripe)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -196,3 +198,6 @@ Stripe uses smallest currency unit:
 | Payment methods | STRIPE_LIST_CUSTOMER_PAYMENT_METHODS | customer |
 | Checkout session | STRIPE_CREATE_CHECKOUT_SESSION | line_items |
 | List payment intents | STRIPE_LIST_PAYMENT_INTENTS | customer |
+
+---
+*Powered by [Composio](https://composio.dev)*

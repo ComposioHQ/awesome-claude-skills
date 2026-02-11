@@ -9,6 +9,8 @@ requires:
 
 Automate Supabase operations including database queries, table schema inspection, SQL execution, project and organization management, storage buckets, edge functions, and service health monitoring through Composio's Supabase toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/supabase](https://composio.dev/toolkits/supabase)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -234,3 +236,6 @@ Automate Supabase operations including database queries, table schema inspection
 | Get edge function | `SUPABASE_RETRIEVE_A_FUNCTION` | `ref`, function slug |
 | List storage buckets | `SUPABASE_LISTS_ALL_BUCKETS` | `ref` |
 | List DB branches | `SUPABASE_LIST_ALL_DATABASE_BRANCHES` | `ref` |
+
+---
+*Powered by [Composio](https://composio.dev)*

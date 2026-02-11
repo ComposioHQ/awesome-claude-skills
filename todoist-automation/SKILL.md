@@ -9,6 +9,8 @@ requires:
 
 Automate Todoist operations including task creation and management, project organization, section management, filtering, and bulk task workflows through Composio's Todoist toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/todoist](https://composio.dev/toolkits/todoist)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -229,3 +231,6 @@ Always resolve human-readable names to IDs before operations:
 | Delete task | `TODOIST_DELETE_TASK` | `task_id` |
 | Completed tasks | `TODOIST_GET_COMPLETED_TASKS_BY_COMPLETION_DATE` | `since`, `until` |
 | List filters | `TODOIST_LIST_FILTERS` | `sync_token` |
+
+---
+*Powered by [Composio](https://composio.dev)*

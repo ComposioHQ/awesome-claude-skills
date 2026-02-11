@@ -9,6 +9,8 @@ requires:
 
 Automate Cal.com scheduling operations through Composio's Cal toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/cal](https://composio.dev/toolkits/cal)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -201,3 +203,6 @@ Automate Cal.com scheduling operations through Composio's Cal toolkit via Rube M
 | Create team | CAL_CREATE_TEAM_IN_ORGANIZATION | name, slug |
 | Team event types | CAL_RETRIEVE_TEAM_EVENT_TYPES | teamId |
 | Get org ID | CAL_GET_ORGANIZATION_ID | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

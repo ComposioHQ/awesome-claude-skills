@@ -9,6 +9,8 @@ requires:
 
 Automate DocuSign e-signature workflows through Composio's DocuSign toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/docusign](https://composio.dev/toolkits/docusign)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -206,3 +208,6 @@ created (draft) -> sent -> delivered -> signed -> completed
 | Send envelope | DOCUSIGN_SEND_ENVELOPE | envelopeId |
 | Get envelope status | DOCUSIGN_GET_ENVELOPE | envelopeId |
 | Add template to envelope | DOCUSIGN_ADD_TEMPLATES_TO_DOCUMENT_IN_ENVELOPE | envelopeId, documentId, templateId |
+
+---
+*Powered by [Composio](https://composio.dev)*

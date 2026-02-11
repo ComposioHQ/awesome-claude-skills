@@ -9,6 +9,8 @@ requires:
 
 Automate Freshdesk customer support workflows including ticket management, contact and company operations, notes, replies, and ticket search through Composio's Freshdesk toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/freshdesk](https://composio.dev/toolkits/freshdesk)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -217,3 +219,6 @@ Freshdesk uses page-based pagination:
 | List companies | `FRESHDESK_GET_COMPANIES` | `page` |
 | List ticket fields | `FRESHDESK_LIST_TICKET_FIELDS` | (none) |
 | List company fields | `FRESHDESK_LIST_COMPANY_FIELDS` | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

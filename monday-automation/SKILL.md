@@ -9,6 +9,8 @@ requires:
 
 Automate Monday.com work management workflows including board creation, item management, column value updates, group organization, subitems, and update/comment threads through Composio's Monday toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/monday](https://composio.dev/toolkits/monday)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -231,3 +233,6 @@ Different column types require different value formats:
 | List subitems | `MONDAY_LIST_SUBITEMS_BY_PARENT` | `parent_item_ids` |
 | Add comment/update | `MONDAY_CREATE_UPDATE` | `item_id`, `body` |
 | Raw GraphQL mutation | `MONDAY_CREATE_OBJECT` | `query`, `variables` |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate Brevo (formerly Sendinblue) email marketing operations through Composio's Brevo toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/brevo](https://composio.dev/toolkits/brevo)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -195,3 +197,6 @@ Automate Brevo (formerly Sendinblue) email marketing operations through Composio
 | Update template | BREVO_CREATE_OR_UPDATE_EMAIL_TEMPLATE | templateId, htmlContent |
 | Delete template | BREVO_DELETE_EMAIL_TEMPLATE | templateId |
 | List senders | BREVO_GET_ALL_SENDERS | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

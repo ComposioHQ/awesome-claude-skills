@@ -9,6 +9,8 @@ requires:
 
 Automate Wrike project management operations through Composio's Wrike toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/wrike](https://composio.dev/toolkits/wrike)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -231,3 +233,6 @@ Automate Wrike project management operations through Composio's Wrike toolkit vi
 | Delete space | WRIKE_DELETE_SPACE | spaceId |
 | Get contacts | WRIKE_GET_CONTACTS | (none) |
 | Invite user | WRIKE_CREATE_INVITATION | email, role |
+
+---
+*Powered by [Composio](https://composio.dev)*

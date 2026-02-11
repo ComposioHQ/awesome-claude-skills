@@ -9,6 +9,8 @@ requires:
 
 Automate Coda document and data operations through Composio's Coda toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/coda](https://composio.dev/toolkits/coda)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -239,3 +241,6 @@ Automate Coda document and data operations through Composio's Coda toolkit via R
 | Publish doc | CODA_PUBLISH_DOC | docId, slug |
 | Unpublish doc | CODA_UNPUBLISH_DOC | docId |
 | List packs | CODA_LIST_PACKS | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*
