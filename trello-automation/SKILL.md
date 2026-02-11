@@ -9,6 +9,8 @@ requires:
 
 Automate Trello board management, card creation, and team workflows through Composio's Rube MCP integration.
 
+**Toolkit docs**: [composio.dev/toolkits/trello](https://composio.dev/toolkits/trello)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -179,3 +181,5 @@ Most list endpoints return all items. For boards with 1000+ cards, use `limit` a
 | Attach file/URL | TRELLO_ADD_CARDS_ATTACHMENTS_BY_ID_CARD | idCard, url OR file |
 | Get board members | TRELLO_GET_BOARDS_MEMBERS_BY_ID_BOARD | idBoard |
 | Batch read | TRELLO_GET_BATCH | urls (comma-separated paths) |
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate Klaviyo email and SMS marketing operations through Composio's Klaviyo toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/klaviyo](https://composio.dev/toolkits/klaviyo)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -188,3 +190,6 @@ fields__template=['name', 'html', 'text']
 | Get campaign message | KLAVIYO_GET_CAMPAIGN_MESSAGE | id, fields__campaign__message |
 | Get campaign tags | KLAVIYO_GET_CAMPAIGN_RELATIONSHIPS_TAGS | id |
 | Get send job status | KLAVIYO_GET_CAMPAIGN_SEND_JOB | id |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate Slack workspace operations including messaging, search, channel management, and reaction workflows through Composio's Slack toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/slack](https://composio.dev/toolkits/slack)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -187,3 +189,6 @@ Most list endpoints use cursor-based pagination:
 | Get channel info | `SLACK_RETRIEVE_CONVERSATION_INFORMATION` | channel ID |
 | Channel history | `SLACK_FETCH_CONVERSATION_HISTORY` | `channel`, `oldest`, `latest` |
 | Workspace info | `SLACK_FETCH_TEAM_INFO` | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

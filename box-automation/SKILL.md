@@ -9,6 +9,8 @@ requires:
 
 Automate Box operations including file upload/download, content search, folder management, collaboration, metadata queries, and sign requests through Composio's Box toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/box](https://composio.dev/toolkits/box)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -231,3 +233,6 @@ Box tools use double underscore notation for nested objects:
 | Cancel sign request | `BOX_CANCEL_BOX_SIGN_REQUEST` | `sign_request_id` |
 | Recent items | `BOX_LIST_RECENTLY_ACCESSED_ITEMS` | (none) |
 | Create zip download | `BOX_CREATE_ZIP_DOWNLOAD` | item IDs |
+
+---
+*Powered by [Composio](https://composio.dev)*

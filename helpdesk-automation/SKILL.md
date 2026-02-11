@@ -9,6 +9,8 @@ requires:
 
 Automate HelpDesk ticketing operations through Composio's HelpDesk toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/helpdesk](https://composio.dev/toolkits/helpdesk)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -164,3 +166,6 @@ Backward pagination:
 | List views | HELPDESK_LIST_VIEWS | (none) |
 | List canned responses | HELPDESK_LIST_CANNED_RESPONSES | (none) |
 | List custom fields | HELPDESK_LIST_CUSTOM_FIELDS | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate Notion operations through Composio's Notion toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/notion](https://composio.dev/toolkits/notion)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -213,3 +215,6 @@ Automate Notion operations through Composio's Notion toolkit via Rube MCP.
 | List users | NOTION_LIST_USERS | (none) |
 | Create comment | NOTION_CREATE_COMMENT | page_id, rich_text |
 | List comments | NOTION_FETCH_COMMENTS | page_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

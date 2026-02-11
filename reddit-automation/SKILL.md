@@ -9,6 +9,8 @@ requires:
 
 Automate Reddit operations through Composio's Reddit toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/reddit](https://composio.dev/toolkits/reddit)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -210,3 +212,6 @@ t5_ = Subreddit
 | Get specific comment | REDDIT_RETRIEVE_SPECIFIC_COMMENT | comment_id |
 | List post flairs | REDDIT_LIST_SUBREDDIT_POST_FLAIRS | subreddit |
 | Get user flair | REDDIT_GET_USER_FLAIR | subreddit |
+
+---
+*Powered by [Composio](https://composio.dev)*

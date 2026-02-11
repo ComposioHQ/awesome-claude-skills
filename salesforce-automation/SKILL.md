@@ -9,6 +9,8 @@ requires:
 
 Automate Salesforce CRM operations through Composio's Salesforce toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/salesforce](https://composio.dev/toolkits/salesforce)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -188,3 +190,6 @@ SELECT Id, Name FROM Opportunity WHERE CloseDate = NEXT_MONTH
 | Custom objects | SALESFORCE_GET_ALL_CUSTOM_OBJECTS | (none) |
 | Create record | SALESFORCE_CREATE_A_RECORD | object_type, fields |
 | Transfer ownership | SALESFORCE_MASS_TRANSFER_OWNERSHIP | records, new_owner |
+
+---
+*Powered by [Composio](https://composio.dev)*

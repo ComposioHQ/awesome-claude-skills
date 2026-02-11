@@ -9,6 +9,8 @@ requires:
 
 Automate HubSpot CRM workflows including contact/company management, deal pipeline tracking, ticket search, and custom property creation through Composio's HubSpot toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/hubspot](https://composio.dev/toolkits/hubspot)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -176,3 +178,5 @@ Automate HubSpot CRM workflows including contact/company management, deal pipeli
 | Create property | `HUBSPOT_CREATE_PROPERTY_FOR_SPECIFIED_OBJECT_TYPE` | `objectType, name, label, type, fieldType` |
 | Get owners | `HUBSPOT_RETRIEVE_OWNERS` | None |
 | Verify connection | `HUBSPOT_GET_ACCOUNT_INFO` | None |
+---
+*Powered by [Composio](https://composio.dev)*

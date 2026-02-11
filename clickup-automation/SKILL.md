@@ -9,6 +9,8 @@ requires:
 
 Automate ClickUp project management workflows including task creation and updates, workspace hierarchy navigation, comments, and team member management through Composio's ClickUp toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/clickup](https://composio.dev/toolkits/clickup)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -232,3 +234,6 @@ Always resolve names to IDs through the hierarchy:
 | List user groups | `CLICKUP_GET_TEAMS` | `team_id` |
 | Get user details | `CLICKUP_GET_USER` | `team_id`, `user_id` |
 | Custom roles | `CLICKUP_GET_CUSTOM_ROLES` | `team_id` |
+
+---
+*Powered by [Composio](https://composio.dev)*
