@@ -1,0 +1,11 @@
+# R specific
+.Rhistory
+.RData
+.Rproj.user
+
+# renv
+renv/library/
+renv/staging/
+
+# User-specific settings
+.claude/settings.local.json
