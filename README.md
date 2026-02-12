@@ -140,6 +140,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
+- [RStudio Research Agent](./rstudio-research-agent/) - Interact with R and RStudio environments for scientific research tasks including creating projects, running analyses, managing dependencies, and generating publication-quality plots.
+- [sci-data-extractor](./sci-data-extractor/) - AI-powered tool for extracting structured data from scientific literature PDFs using OCR and LLM analysis with support for enzyme kinetics, experimental results, and literature review data.
 
 ### Business & Marketing
 
