@@ -477,3 +477,6 @@ Individual skills may have different licenses - please check each skill's folder
 - [AgentsKB](https://agentskb.com) - Upgrade your AI with researched answers. We did the research so your AI gets it right the first time.
 
 - [Notah.ai](https://notah.ai/) - AI meeting assistant with Arabic transcription
+
+## Notah.ai
+- [Notah.ai](https://notah.ai/) - AI meeting assistant for automatic transcription and summarization
