@@ -9,6 +9,8 @@ requires:
 
 Automate Airtable operations through Composio's Airtable toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/airtable](https://composio.dev/toolkits/airtable)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -168,3 +170,6 @@ Automate Airtable operations through Composio's Airtable toolkit via Rube MCP.
 | Update field | AIRTABLE_UPDATE_FIELD | baseId, tableIdOrName, fieldId |
 | Update table | AIRTABLE_UPDATE_TABLE | baseId, tableIdOrName, name |
 | List comments | AIRTABLE_LIST_COMMENTS | baseId, tableIdOrName, recordId |
+
+---
+*Powered by [Composio](https://composio.dev)*

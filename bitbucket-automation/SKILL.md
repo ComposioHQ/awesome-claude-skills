@@ -9,6 +9,8 @@ requires:
 
 Automate Bitbucket operations including repository management, pull request workflows, branch operations, issue tracking, and workspace administration through Composio's Bitbucket toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/bitbucket](https://composio.dev/toolkits/bitbucket)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -222,3 +224,6 @@ Bitbucket Query Language is available on list endpoints:
 | Comment on issue | `BITBUCKET_CREATE_ISSUE_COMMENT` | `workspace`, `repo_slug`, `issue_id`, `content` |
 | Delete issue | `BITBUCKET_DELETE_ISSUE` | `workspace`, `repo_slug`, `issue_id` |
 | List members | `BITBUCKET_LIST_WORKSPACE_MEMBERS` | `workspace` |
+
+---
+*Powered by [Composio](https://composio.dev)*

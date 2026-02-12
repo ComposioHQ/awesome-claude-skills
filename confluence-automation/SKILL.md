@@ -9,6 +9,8 @@ requires:
 
 Automate Confluence operations including page creation and updates, content search with CQL, space management, label tagging, and page hierarchy navigation through Composio's Confluence toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/confluence](https://composio.dev/toolkits/confluence)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -206,3 +208,6 @@ Confluence uses two pagination styles:
 | Add label | `CONFLUENCE_ADD_CONTENT_LABEL` | content ID, label |
 | Page versions | `CONFLUENCE_GET_PAGE_VERSIONS` | `id` |
 | Space labels | `CONFLUENCE_GET_LABELS_FOR_SPACE` | space ID |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate Close CRM operations through Composio's Close toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/close](https://composio.dev/toolkits/close)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -210,3 +212,6 @@ Close data model:
 | Create task | CLOSE_CREATE_TASK | lead_id, text, date, assigned_to |
 | Get note | CLOSE_GET_NOTE | note_id |
 | Delete call | CLOSE_DELETE_CALL | call_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

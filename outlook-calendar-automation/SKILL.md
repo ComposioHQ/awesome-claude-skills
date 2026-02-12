@@ -9,6 +9,8 @@ requires:
 
 Automate Outlook Calendar operations through Composio's Outlook toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/outlook](https://composio.dev/toolkits/outlook)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -234,3 +236,6 @@ filter: "contains(subject, 'Review') and categories/any(c:c eq 'Work')"
 | Get schedule | OUTLOOK_GET_SCHEDULE | Schedules, StartTime, EndTime |
 | List calendars | OUTLOOK_LIST_CALENDARS | user_id |
 | Mailbox settings | OUTLOOK_GET_MAILBOX_SETTINGS | select |
+
+---
+*Powered by [Composio](https://composio.dev)*

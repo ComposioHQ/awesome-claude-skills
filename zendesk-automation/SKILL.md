@@ -9,6 +9,8 @@ requires:
 
 Automate Zendesk operations through Composio's Zendesk toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/zendesk](https://composio.dev/toolkits/zendesk)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -213,3 +215,6 @@ new -> open -> pending -> solved -> closed
 | Create org | ZENDESK_CREATE_ZENDESK_ORGANIZATION | name |
 | Update org | ZENDESK_UPDATE_ZENDESK_ORGANIZATION | organization_id, name |
 | Count orgs | ZENDESK_COUNT_ZENDESK_ORGANIZATIONS | (none) |
+
+---
+*Powered by [Composio](https://composio.dev)*

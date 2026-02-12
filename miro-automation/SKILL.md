@@ -9,6 +9,8 @@ requires:
 
 Automate Miro whiteboard operations through Composio's Miro toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/miro](https://composio.dev/toolkits/miro)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -203,3 +205,6 @@ Automate Miro whiteboard operations through Composio's Miro toolkit via Rube MCP
 | Share board | MIRO_SHARE_BOARD | board_id, emails, role |
 | Get members | MIRO_GET_BOARD_MEMBERS | board_id |
 | Get connectors | MIRO_GET_CONNECTORS2 | board_id |
+
+---
+*Powered by [Composio](https://composio.dev)*

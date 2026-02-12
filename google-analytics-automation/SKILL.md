@@ -9,6 +9,8 @@ requires:
 
 Automate Google Analytics 4 (GA4) reporting and property management through Composio's Google Analytics toolkit via Rube MCP.
 
+**Toolkit docs**: [composio.dev/toolkits/google_analytics](https://composio.dev/toolkits/google_analytics)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -225,3 +227,6 @@ Automate Google Analytics 4 (GA4) reporting and property management through Comp
 | Pivot report | GOOGLE_ANALYTICS_RUN_PIVOT_REPORT | property, dateRanges, pivots |
 | Funnel report | GOOGLE_ANALYTICS_RUN_FUNNEL_REPORT | property, dateRanges, funnel |
 | List key events | GOOGLE_ANALYTICS_LIST_KEY_EVENTS | parent, pageSize |
+
+---
+*Powered by [Composio](https://composio.dev)*

@@ -9,6 +9,8 @@ requires:
 
 Automate GitLab operations including project management, issue tracking, merge request workflows, CI/CD pipeline monitoring, branch management, and user administration through Composio's GitLab toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/gitlab](https://composio.dev/toolkits/gitlab)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -252,3 +254,6 @@ When using project paths as identifiers:
 | User status | `GITLAB_GET_USERS_ID_STATUS` | user ID |
 | List project members | `GITLAB_LIST_ALL_PROJECT_MEMBERS` | `id`, `query`, `state` |
 | List project users | `GITLAB_LIST_PROJECT_USERS` | `id`, `search` |
+
+---
+*Powered by [Composio](https://composio.dev)*

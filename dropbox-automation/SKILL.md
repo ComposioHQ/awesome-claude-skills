@@ -9,6 +9,8 @@ requires:
 
 Automate Dropbox operations including file upload/download, search, folder management, sharing links, batch operations, and metadata retrieval through Composio's Dropbox toolkit.
 
+**Toolkit docs**: [composio.dev/toolkits/dropbox](https://composio.dev/toolkits/dropbox)
+
 ## Prerequisites
 
 - Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
@@ -228,3 +230,6 @@ Several Dropbox operations run asynchronously:
 | Delete batch | `DROPBOX_DELETE_BATCH` | `entries` |
 | Copy file/folder | `DROPBOX_COPY_FILE_OR_FOLDER` | `from_path`, `to_path` |
 | Check batch status | `DROPBOX_CHECK_MOVE_BATCH` | `async_job_id` |
+
+---
+*Powered by [Composio](https://composio.dev)*
