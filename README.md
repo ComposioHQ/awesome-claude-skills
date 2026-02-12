@@ -148,6 +148,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [x-collect](https://github.com/SamCuipogobongo/x-collect) - X/Twitter topic intelligence via Playwright browser automation — scrapes real tweets, engagement metrics, and KOL accounts for content research. *By [@SamCuipogobongo](https://github.com/SamCuipogobongo)*
 
 ### Communication & Writing
 
