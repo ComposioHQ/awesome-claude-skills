@@ -163,6 +163,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 - [Canvas Design](./canvas-design/) - Creates beautiful visual art in PNG and PDF documents using design philosophy and aesthetic principles for posters, designs, and static pieces.
 - [imagen](https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen) - Generate images using Google Gemini's image generation API for UI mockups, icons, illustrations, and visual assets. *By [@sanjay3290](https://github.com/sanjay3290)*
+- [elevenlabs](https://github.com/sanjay3290/ai-skills/tree/main/skills/elevenlabs) - Text-to-speech narration and two-host podcast generation from documents (PDF, DOCX, MD, TXT) using ElevenLabs API. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [Image Enhancer](./image-enhancer/) - Improves image and screenshot quality by enhancing resolution, sharpness, and clarity for professional presentations and documentation.
 - [Slack GIF Creator](./slack-gif-creator/) - Creates animated GIFs optimized for Slack with validators for size constraints and composable animation primitives.
 - [Theme Factory](./theme-factory/) - Applies professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages with 10 pre-set themes.
