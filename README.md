@@ -313,13 +313,37 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 
 ## Getting Started
 
-### Using Skills in Claude.ai
+### Option 1: SkillKit (Multi-Agent Support - Recommended)
+
+Use [skillkit](https://github.com/rohitg00/skillkit) to install skills across multiple AI agents:
+
+```bash
+# Install skills from any repository
+npx skillkit install ComposioHQ/awesome-claude-skills
+
+# Install specific skills
+npx skillkit install ComposioHQ/awesome-claude-skills --skill skill-name
+
+# Install to multiple agents at once
+npx skillkit install ComposioHQ/awesome-claude-skills --agent cursor --agent claude-code --agent windsurf
+
+# List available skills without installing
+npx skillkit install ComposioHQ/awesome-claude-skills --list
+```
+
+**Why SkillKit?**
+- **Multi-agent sync**: Install and sync skills across 17+ AI agents (Claude Code, Cursor, Codex, Gemini CLI, Windsurf, Goose, Amp, GitHub Copilot, and more)
+- **Auto-detection**: Automatically detects which AI agent you're using
+- **Global or project-level**: Install skills globally (`--global`) or per-project
+- **Extended discovery**: Searches 20+ standard skill paths with recursive fallback
+
+### Option 2: Using Skills in Claude.ai
 
 1. Click the skill icon (🧩) in your chat interface.
 2. Add skills from the marketplace or upload custom skills.
 3. Claude automatically activates relevant skills based on your task.
 
-### Using Skills in Claude Code
+### Option 3: Using Skills in Claude Code (Manual)
 
 1. Place the skill in `~/.config/claude-code/skills/`:
    ```bash
@@ -339,7 +363,7 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 
 4. The skill loads automatically and activates when relevant.
 
-### Using Skills via API
+### Option 4: Using Skills via API
 
 Use the Claude Skills API to programmatically load and manage skills:
 
