@@ -186,6 +186,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [google-workspace-skills](https://github.com/sanjay3290/ai-skills/tree/main/skills) - Suite of Google Workspace integrations: Gmail, Calendar, Chat, Docs, Sheets, Slides, and Drive with cross-platform OAuth. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [outline](https://github.com/sanjay3290/ai-skills/tree/main/skills/outline) - Search, read, create, and manage documents in Outline wiki instances (cloud or self-hosted). *By [@sanjay3290](https://github.com/sanjay3290)*
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
+- [Taskade MCP Server](https://github.com/taskade/mcp) - MCP server with 62+ tools for managing Taskade workspaces, projects, tasks, AI agents, templates, media, and sharing. Works with Claude Desktop, Claude Code, and all MCP clients. *By [@taskade](https://github.com/taskade)*
 - [test-fixing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing) - Detect failing tests and propose patches or fixes.
 
 ### Security & Systems
