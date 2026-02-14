@@ -134,6 +134,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
+- [claude-pipe](https://github.com/bluzir/claude-pipe) - Conventions for multi-step Claude Code pipelines. Flat orchestration, YAML state tracking, data layer contracts, and resume-from-failure. Includes research pipeline and batch classifier examples. *By [@bluzir](https://github.com/bluzir)*
+
 ### Data & Analysis
 
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
