@@ -339,6 +339,9 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 
 4. The skill loads automatically and activates when relevant.
 
+### Using Skills in VS Code Distribution
+In Cursor, Antigravity, Windsurf, Trae, etc., you can search for and install [AgentSkillsManager](https://github.com/lasoons/AgentSkillsManager) from the extension marketplace. This repository is already available as a preconfigured SKILL repository for direct use.
+
 ### Using Skills via API
 
 Use the Claude Skills API to programmatically load and manage skills:
