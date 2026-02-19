@@ -194,6 +194,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+- [shieldcortex](https://github.com/Drakon-Systems-Ltd/ShieldCortex/tree/main/skills/shieldcortex) - Persistent memory with knowledge graphs, decay, contradiction detection, and a 6-layer defence pipeline that blocks memory poisoning attacks. MCP server with 19 tools.
 
 ### App Automation via Composio
 
