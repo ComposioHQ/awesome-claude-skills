@@ -1,0 +1,34 @@
+{
+  "R": {
+    "Version": "4.3.2",
+    "Platforms": [
+      {
+        "Platform": "x86_64-pc-linux-gnu",
+        "Path": "library"
+      }
+    ]
+  },
+  "Packages": {
+    " tidyverse ": " {
+      "Package": "tidyverse",
+      "Version": "2.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "abc123..."
+    },
+    "ggplot2": {
+      "Package": "ggplot2",
+      "Version": "3.4.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "def456..."
+    },
+    "dplyr": {
+      "Package": "dplyr",
+      "Version": "1.1.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ghi789..."
+    }
+  }
+}
