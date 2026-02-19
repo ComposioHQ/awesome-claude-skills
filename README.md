@@ -439,6 +439,7 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official example skills
 - [Claude Community](https://community.anthropic.com) - Discuss skills with other users
 - [Skills Marketplace](https://claude.ai/marketplace) - Discover and share skills
+- [Claudebin](https://claudebin.com) ([GitHub](https://github.com/wunderlabs-dev/claudebin.com/)) - A minimalistic tool for publishing and sharing Claude coding sessions
 
 ### Inspiration & Use Cases
 
