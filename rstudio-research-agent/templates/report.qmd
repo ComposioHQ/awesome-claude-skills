@@ -1,0 +1,65 @@
+---
+title: "Report Title"
+author: "Author Name"
+date: "`r Sys.Date()`"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-tools: true
+  pdf:
+    toc: true
+    number-sections: true
+engine: knitr
+---
+
+# Introduction
+
+Brief description of the research question and objectives.
+
+# Methods
+
+## Data Preparation
+
+```{r}
+# Load libraries
+library(tidyverse)
+library(here)
+```
+
+Describe the data processing steps.
+
+## Analysis
+
+```{r}
+# Your analysis code here
+```
+
+# Results
+
+```{r}
+# Results
+```
+
+# Discussion
+
+Interpretation of results and conclusions.
+
+# Session Info
+
+```{r}
+sessionInfo()
+```
+
+# References
+
+---
+
+## Appendices
+
+### Additional Analyses
+
+```{r}
+# Additional code
+```

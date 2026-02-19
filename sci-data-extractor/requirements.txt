@@ -1,0 +1,13 @@
+# Sci-Data-Extractor 依赖列表
+
+# 核心 PDF 处理
+pymupdf>=1.23.0
+
+# LLM API 调用
+openai>=1.12.0
+
+# HTTP 请求 (Mathpix OCR)
+requests>=2.31.0
+
+# 环境变量管理 (可选)
+python-dotenv>=1.0.0
