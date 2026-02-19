@@ -143,6 +143,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Business & Marketing
 
+- [Brand Consistency AI Skill](https://github.com/piaoyinghuang/brand-consistency-ai-skill) - Keep every marketing deliverable on-brand. Includes 100-point compliance audit, platform-specific specs (50+ formats), and tone-of-voice engine for 10+ channels. Works with Claude, GPT-4, and Gemini.
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
