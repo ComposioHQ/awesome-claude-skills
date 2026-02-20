@@ -267,6 +267,7 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 - [Reddit Automation](./reddit-automation/) - Automate Reddit: posts, comments, subreddits, voting, and moderation.
 - [TikTok Automation](./tiktok-automation/) - Automate TikTok: video uploads, queries, and creator management.
 - [Twitter Automation](./twitter-automation/) - Automate Twitter/X: tweets, search, users, lists, and engagement.
+- - [ADHX](https://github.com/itsmemeworks/adhx) – Fetch X/Twitter posts as clean LLM-friendly JSON. Supports regular tweets and full X Articles. No auth required.
 - [YouTube Automation](./youtube-automation/) - Automate YouTube: videos, channels, playlists, comments, and subscriptions.
 
 **Marketing & Email Marketing**
