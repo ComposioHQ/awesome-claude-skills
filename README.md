@@ -35,6 +35,8 @@
 
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
+> **Note on naming**: This repository contains **Composio platform integrations** for Claude - connecting Claude to 500+ external apps via the Composio SDK and API. These are distinct from [Claude Agent Skills](https://github.com/anthropics/skills) (SKILL.md format), which are self-contained instruction packages following the [AgentSkills.io specification](https://agentskills.io). For the official Claude Agent Skills, see the [anthropics/skills](https://github.com/anthropics/skills) repository.
+
 
 > **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
 
