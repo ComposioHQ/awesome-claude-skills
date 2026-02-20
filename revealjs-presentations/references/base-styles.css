@@ -1,0 +1,356 @@
+/* Base reveal.js styles
+ *
+ * Copy this file as styles.css for each new presentation.
+ * Customize the CSS variables (especially colors) for your theme.
+ *
+ * IMPORTANT: All font sizes use pt (points) for predictable sizing.
+ * Base text is intentionally small (16pt) to fit content-heavy slides.
+ * Use .text-lg, .text-xl, etc. classes when slides have less content.
+ */
+
+/* ===========================================
+   CSS VARIABLES - Customize these for each presentation
+   =========================================== */
+:root {
+  /* ===========================================
+     BACKGROUND COLORS
+     For dark presentations, change to dark colors (e.g., #1a1a2e, #0d1117)
+     Then update --text-color and --muted-color to light colors below.
+     =========================================== */
+  --background-color: #ffffff;              /* Main slide background */
+  --section-divider-bg: #ffffff;            /* Section divider background (set different for contrast) */
+
+  /* Typography - ALWAYS use pt for font sizes */
+  --heading-font: "Source Sans Pro", Helvetica, sans-serif;
+  --body-font: "Source Sans Pro", Helvetica, sans-serif;
+  --base-font-size: 32px;   /* Only px value - sets reveal.js base */
+  --text-size: 16pt;        /* Base body text - intentionally small */
+  --h1-size: 48pt;
+  --h2-size: 36pt;
+  --h3-size: 24pt;
+  --footnote-size: 11pt;
+
+  /* Colors - CUSTOMIZE THESE */
+  --primary-color: #2196F3;    /* Main accent color */
+  --secondary-color: #ff9800;  /* Secondary accent */
+  --text-color: #222;          /* Main text - use light color (e.g., #f0f0f0) for dark backgrounds */
+  --muted-color: #666;         /* Secondary text - use lighter color for dark backgrounds */
+  --line-color: #333;          /* Decorative lines */
+
+  /* Layout */
+  --slide-padding: 60px;
+  --slide-padding-top: 40px;
+  --content-gap: 30px;
+
+  /* Boxes & Borders */
+  --box-radius: 8px;           /* Set to 0 for sharp corners */
+  --box-bg: #f5f5f5;
+  --box-border: #ddd;
+  --accent-border-width: 6px;
+
+  /* Callout colors */
+  --blue: #2196F3;
+  --blue-bg: #e3f2fd;
+  --blue-border: #90caf9;
+
+  --orange: #ff9800;
+  --orange-bg: #fff3e0;
+  --orange-border: #ffcc80;
+
+  --green: #4caf50;
+  --green-bg: #e8f5e9;
+  --green-border: #a5d6a7;
+
+  --gray: #666;
+  --gray-bg: #f5f5f5;
+  --gray-border: #bdbdbd;
+}
+
+/* ===========================================
+   BASE STYLES - Override reveal.js defaults
+   =========================================== */
+
+.reveal {
+  font-family: var(--body-font);
+  font-size: var(--base-font-size);
+}
+
+/* Apply background colors */
+.reveal-viewport {
+  background-color: var(--background-color);
+}
+
+/* Section divider background via data-state */
+.reveal-viewport.is-section-divider .slide-background.present {
+  background-color: var(--section-divider-bg) !important;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: var(--heading-font);
+  text-transform: none;
+  color: var(--text-color);
+}
+
+.reveal h1 { font-size: var(--h1-size); }
+.reveal h2 { font-size: var(--h2-size); }
+.reveal h3 { font-size: var(--h3-size); }
+
+.reveal p,
+.reveal li,
+.reveal .callout,
+.reveal blockquote {
+  font-size: var(--text-size);
+  color: var(--text-color);
+}
+
+/* Prevent double-sizing for nested elements */
+.reveal .callout p,
+.reveal .callout li,
+.reveal blockquote p {
+  font-size: inherit;
+}
+
+/* ===========================================
+   SLIDE LAYOUT
+   =========================================== */
+
+.reveal .slides section {
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: var(--slide-padding-top) var(--slide-padding) var(--slide-padding) var(--slide-padding) !important;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Vertical stack wrapper - no padding, just pass through */
+.reveal .slides section.stack {
+  padding: 0 !important;
+}
+
+/* Content area - fills remaining space */
+.reveal .slides section > .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: var(--content-gap);
+  text-align: left;
+}
+
+/* Footnotes at bottom */
+.reveal .slides section > .footnote {
+  position: absolute;
+  bottom: 15px;
+  left: var(--slide-padding);
+  right: var(--slide-padding);
+  font-size: var(--footnote-size);
+  color: var(--muted-color);
+}
+
+/* ===========================================
+   SECTION DIVIDERS - Centered title slides
+   =========================================== */
+
+.reveal .slides section.section-divider {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center;
+}
+
+.reveal .slides section.section-divider h1 {
+  font-size: 56pt;
+  text-align: center;
+}
+
+.reveal .slides section.section-divider p {
+  font-size: 20pt;
+  color: var(--muted-color);
+}
+
+/* ===========================================
+   TEXT SIZE UTILITIES
+
+   Base text is 16pt - use these to scale UP when
+   slides have less content and you want to fill space.
+   =========================================== */
+
+.text-lg { font-size: 18pt !important; }   /* Slightly larger */
+.text-xl { font-size: 20pt !important; }   /* Medium emphasis */
+.text-2xl { font-size: 24pt !important; }  /* Strong emphasis */
+.text-3xl { font-size: 28pt !important; }  /* Very large */
+.text-4xl { font-size: 32pt !important; }  /* Maximum body text */
+
+/* Other text utilities */
+.text-muted { color: var(--muted-color) !important; }
+.text-center { text-align: center !important; }
+.text-uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
+.font-light { font-weight: 300; }
+.font-bold { font-weight: 600; }
+
+/* ===========================================
+   BOXES / CONTAINERS
+   =========================================== */
+
+/* Basic box - filled background with border */
+.box {
+  background: var(--box-bg);
+  border: 1px solid var(--box-border);
+  border-radius: var(--box-radius);
+  padding: 20px;
+  margin: 10px 0;
+}
+
+/* Outlined box - border only, no fill */
+.box-outlined {
+  border: 1px solid var(--box-border);
+  border-radius: var(--box-radius);
+  padding: 20px;
+  margin: 10px 0;
+}
+
+/* ===========================================
+   BLOCKQUOTES
+   =========================================== */
+
+.reveal blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding-left: 20px;
+  margin: 20px 0;
+  font-style: italic;
+  background: none;
+  box-shadow: none;
+  width: 100%;
+  max-width: none;
+}
+
+.reveal blockquote cite {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  color: var(--muted-color);
+}
+
+/* ===========================================
+   CALLOUTS - Accent-bordered containers
+   =========================================== */
+
+.callout {
+  border-left: var(--accent-border-width) solid var(--primary-color);
+  padding: 15px 20px;
+  margin: 15px 0;
+  background: #f9f9f9;
+  border-radius: var(--box-radius);
+}
+
+/* Color variants */
+.callout-blue {
+  border-left-color: var(--blue);
+  background: var(--blue-bg);
+}
+
+.callout-orange {
+  border-left-color: var(--orange);
+  background: var(--orange-bg);
+}
+
+.callout-green {
+  border-left-color: var(--green);
+  background: var(--green-bg);
+}
+
+.callout-gray {
+  border-left-color: var(--gray);
+  background: var(--gray-bg);
+}
+
+/* Bordered variant - adds border on all sides */
+.callout-bordered {
+  border: 1px solid var(--box-border);
+  border-left: var(--accent-border-width) solid var(--primary-color);
+}
+
+.callout-bordered.callout-blue {
+  border-color: var(--blue-border);
+  border-left-color: var(--blue);
+}
+
+.callout-bordered.callout-orange {
+  border-color: var(--orange-border);
+  border-left-color: var(--orange);
+}
+
+.callout-bordered.callout-green {
+  border-color: var(--green-border);
+  border-left-color: var(--green);
+}
+
+.callout-bordered.callout-gray {
+  border-color: var(--gray-border);
+  border-left-color: var(--gray);
+}
+
+/* Top border variant */
+.callout-top {
+  border-left: none;
+  border-top: var(--accent-border-width) solid var(--primary-color);
+}
+
+.callout-top.callout-blue { border-top-color: var(--blue); }
+.callout-top.callout-orange { border-top-color: var(--orange); }
+.callout-top.callout-green { border-top-color: var(--green); }
+.callout-top.callout-gray { border-top-color: var(--gray); }
+
+/* ===========================================
+   OPTIONAL: TITLE WITH UNDERLINE
+
+   Add this to presentations where you want
+   a line under the slide title.
+   =========================================== */
+
+/*
+.reveal .slides section > h1,
+.reveal .slides section > h2 {
+  flex-shrink: 0;
+  margin: 0;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--line-color);
+}
+*/
+
+/* ===========================================
+   OPTIONAL: DECORATIVE ELEMENTS
+   =========================================== */
+
+/* Top decorative line on all slides */
+/*
+.reveal .slides section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-color);
+}
+*/
+
+/* Bottom decorative line */
+/*
+.reveal .slides section::after {
+  content: '';
+  position: absolute;
+  bottom: 40px;
+  left: var(--slide-padding);
+  right: var(--slide-padding);
+  height: 2px;
+  background: var(--line-color);
+}
+*/
