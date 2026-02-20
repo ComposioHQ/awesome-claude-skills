@@ -106,6 +106,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) - Read, generate, and adjust slides, layouts, templates.
 - [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
 - [Markdown to EPUB Converter](https://github.com/smerchek/claude-epub-skill) - Converts markdown documents and chat summaries into professional EPUB ebook files. *By [@smerchek](https://github.com/smerchek)*
+- [Paper Writing](./paper-writing/) - Academic paper writing assistant for checking LaTeX, formulas, figures, and        
+  citations. Based on [MLNLP-World's guidelines](https://github.com/MLNLP-World/Paper-Writing-Tips).  
 
 ### Development & Code Tools
 
