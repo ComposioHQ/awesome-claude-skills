@@ -179,6 +179,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [metamemory](https://github.com/xvirobotics/metamemory) - Shared memory server with Claude Code skill for persistent, searchable knowledge documents across sessions. Features Web UI, folder organization, full-text search, and multi-agent knowledge sharing. *By [@xvirobotics](https://github.com/xvirobotics)*
 
 ### Collaboration & Project Management
 
