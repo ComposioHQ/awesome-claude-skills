@@ -99,6 +99,10 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ## Skills
 
+### Agent Intelligence Matrix (ClawForge)
+- [ClawForge Suite](https://github.com/jackjin1997/ClawForge) - A power-user collection of Claude Skills and MCP servers, featuring GitHub Trending analysis, LangChain 1.0 primitives, and automated career tools.
+
+
 ### Document Processing
 
 - [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
