@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "awesome-claude-skills",
-      "description": "Curated skills for dev workflows, code quality, testing, and productivity - includes MCP builder, webapp testing, changelog generator, file organizer, and more",
+      "description": "27 curated skills for dev workflows, productivity, creativity, and business - includes artifacts builder, changelog generator, file organizer, resume generator, lead research, MCP builder, webapp testing, and more",
       "author": {
         "name": "awesome-claude-skills",
         "email": "support@composio.dev"
