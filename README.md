@@ -437,6 +437,7 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 ### Community Resources
 
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official example skills
+- [agentskill.sh](https://agentskill.sh) - Community skills directory with 44,000+ skills, security scanning, and cross-platform support
 - [Claude Community](https://community.anthropic.com) - Discuss skills with other users
 - [Skills Marketplace](https://claude.ai/marketplace) - Discover and share skills
 
