@@ -258,7 +258,7 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 **Calendar & Scheduling**
 - [Cal.com Automation](./cal-com-automation/) - Automate Cal.com: event types, bookings, availability, and scheduling.
 - [Calendly Automation](./calendly-automation/) - Automate Calendly: events, invitees, event types, scheduling links, and availability.
-- [Calendar Scheduling](https://github.com/billylui/temporal-cortex-skill/tree/main/calendar-scheduling) - Multi-provider calendar scheduling: resolve natural language times, merge availability across Google/Outlook/CalDAV, and book slots with Two-Phase Commit safety. *By [@billylui](https://github.com/billylui)*
+- [Calendar Scheduling](https://github.com/billylui/temporal-cortex-skill/tree/main/calendar-scheduling) - Schedule meetings, check availability, and manage calendar events across Google, Outlook, and CalDAV. Resolves natural language times, finds free slots, and books with conflict prevention. *By [@billylui](https://github.com/billylui)*
 - [Google Calendar Automation](./google-calendar-automation/) - Automate Google Calendar: events, attendees, free/busy, and recurring schedules.
 - [Outlook Calendar Automation](./outlook-calendar-automation/) - Automate Outlook Calendar: events, attendees, reminders, and recurring schedules.
 
