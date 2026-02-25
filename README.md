@@ -148,6 +148,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [AgentKits Marketing](https://github.com/aitytech/agentkits-marketing) - Complete AI marketing toolkit with 18 specialized agents, 93 slash commands, and 28 marketing skills covering SEO, CRO, copywriting, email sequences, competitive analysis, and more. Includes 19 training modules in 11 languages.
 
 ### Communication & Writing
 
