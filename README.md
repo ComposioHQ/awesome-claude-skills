@@ -475,3 +475,12 @@ Individual skills may have different licenses - please check each skill's folder
 **Note**: Claude Skills work across Claude.ai, Claude Code, and the Claude API. Once you create a skill, it's portable across all platforms, making your workflows consistent everywhere you use Claude.
 
 - [AgentsKB](https://agentskb.com) - Upgrade your AI with researched answers. We did the research so your AI gets it right the first time.
+
+
+## Development Tools
+
+- [context7-auto-research](./context7-auto-research/) - Auto-fetch latest library/framework documentation. Inspired by [BenedictKing](https://github.com/BenedictKing).
+- [tavily-web](./tavily-web/) - Web search, extraction, crawling. Inspired by [BenedictKing](https://github.com/BenedictKing).
+- [exa-search](./exa-search/) - Semantic search using Exa API. Inspired by [BenedictKing](https://github.com/BenedictKing).
+- [firecrawl-scraper](./firecrawl-scraper/) - Deep web scraping, screenshots, PDF parsing. Inspired by [BenedictKing](https://github.com/BenedictKing).
+- [codex-review](./codex-review/) - Professional code review with auto CHANGELOG. Inspired by [BenedictKing](https://github.com/BenedictKing).
