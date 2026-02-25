@@ -1,0 +1,313 @@
+# Multi-Archetype Code Audit
+
+**Version**: 4.0.0 (January 2026)
+
+A comprehensive code audit skill using **20 specialized archetypes** and **45+ detection patterns** with **full NILE system integration** and **unified audit pipeline**:
+
+```
+┌──────────────────────────────────────────────────────┐
+│              UNIFIED AUDIT PIPELINE                  │
+├──────────────────────────────────────────────────────┤
+│  1. FENRIR 2.0  → 6-pass scanner (4776 LOC)          │
+│     ├── P1-P5   → Regex + AST + Ruff                 │
+│     ├── GARM    → Zombie/leak detection              │
+│     └── 20 Archetypes (45+ patterns)                 │
+│  2. OUROBOROS   → Anti self-detection filter         │
+│  3. RAG         → Lucioles context enrichment        │
+│  4. MEMORY      → Past verdicts lookup               │
+│  5. MEMNARCH    → SPO triplets + decisions (opt)     │
+│  6. OSIRIS      → Final verdict + score              │
+└──────────────────────────────────────────────────────┘
+```
+
+**No external LLM required** - Claude Code does the intelligent triage.
+
+## Installation
+
+```bash
+# Copy to Claude Code skills directory
+cp -r multi-archetype-audit ~/.claude/skills/
+
+# Or add to your project
+cp -r multi-archetype-audit .claude/skills/
+```
+
+## Usage
+
+### Interactive (with Claude Code)
+
+Just ask Claude:
+- "Run an audit on app/core/"
+- "Check for security issues"
+- "Find silent failures in the codebase"
+
+Claude will:
+1. Run FENRIR for fast static analysis
+2. Triage findings intelligently (filter false positives)
+3. Report prioritized issues
+
+### Slash Command
+
+```
+/audit                    # Audit current directory
+/audit app/core/          # Audit specific path
+/audit --quick            # FENRIR only (fast, no triage)
+```
+
+### Standalone Script (CI/CD)
+
+```bash
+# FENRIR only (no API needed, instant)
+python scripts/audit.py /path/to/project --fenrir-only
+
+# With Claude API triage (requires ANTHROPIC_API_KEY)
+python scripts/audit.py /path/to/project
+
+# CI mode (exit 1 if critical issues found)
+python scripts/audit.py /path/to/project --ci
+
+# JSON output
+python scripts/audit.py /path/to/project --json
+```
+
+### Pre-commit Hook
+
+```bash
+# Install hook
+ln -sf skills/multi-archetype-audit/scripts/pre-commit .git/hooks/pre-commit
+
+# Behavior:
+# - MORTEL findings → blocks commit
+# - GRAVE findings → warning (allows commit)
+# - SUSPECT → info only
+```
+
+## The 19 Archetypes
+
+### Core 7 (Greek Mythology)
+
+| Icon | Name | Domain | What It Finds |
+|------|------|--------|---------------|
+| ⚡ | **HERMES** | API | Endpoint naming, auth gaps, response models |
+| ☀️ | **RA** | Performance | Blocking calls, N+1 patterns, cache misses |
+| 🔮 | **CASSANDRA** | Warnings | TODOs, FIXMEs, deprecated code |
+| 🪨 | **SISYPHUS** | Repetition | DRY violations, duplicate code |
+| 🌞 | **ICARUS** | Complexity | God classes, over-abstraction |
+| 🍷 | **DIONYSUS** | Robustness | Silent failures, injection risks |
+| 🔨 | **HEPHAESTUS** | Build | Unpinned deps, Docker issues |
+
+### Extended 12 (Security, AI, Quality)
+
+| Icon | Name | Domain | What It Finds |
+|------|------|--------|---------------|
+| 📦 | **PANDORA** | Security | Hardcoded secrets, CORS issues |
+| 🔮 | **DELPHI** | AI Safety | Prompt injection, LLM guardrails |
+| 💰 | **MIDAS** | LLM Costs | Missing caching, token waste |
+| 🌊 | **LETHE** | Data Leakage | Sensitive data in logs, PII |
+| 🏔️ | **ANTAEUS** | Resilience | Missing retries, timeouts |
+| 👁️ | **TIRESIAS** | Testing | Coverage gaps, weak assertions |
+| 📚 | **MENTOR** | Documentation | Missing docstrings, types |
+| 🌀 | **PROTEUS** | State | Mutable defaults, globals |
+| 🧠 | **MNEMOSYNE** | Context | Correlation IDs, tracing |
+| 🧵 | **ARIADNE** | Dependencies | Circular imports, versions |
+| 🚪 | **JANUS** | Versioning | API versions, migrations |
+| 👁️ | **ARGUS** | Observability | Logging, metrics, health |
+
+### Nordic Hunters (Silent Failure Specialists)
+
+| Icon | Name | Domain | What It Finds |
+|------|------|--------|---------------|
+| 🐺 | **FENRIR** | Silent Failures | `except: pass`, swallowed errors |
+| 🐕 | **GARM** | Zombie Patterns | Dead code, resource leaks, orphan asyncs |
+
+### Meta Archetype (Architecture)
+
+| Icon | Name | Domain | What It Finds |
+|------|------|--------|---------------|
+| 🎭 | **ORPHEUS** | Parallel Blindness | Versioned modules without DEPRECATED, orphan candidates |
+
+## Severity Levels
+
+| Level | Icon | Meaning |
+|-------|------|---------|
+| CRITICAL | 🔴 | Security vulnerability - fix immediately |
+| HIGH | 🟠 | Significant issue - fix before release |
+| MEDIUM | 🟡 | Technical debt - plan to fix |
+| LOW | 🟢 | Minor improvement |
+| INFO | ⚪ | Informational only |
+
+## Pattern Details (45+ Patterns)
+
+### FENRIR 🐺 (Silent Failures)
+- `bare_except_pass` - `except: pass` swallows all exceptions
+- `except_pass` - Specific exception ignored with pass
+- `except_return_empty` - Returns empty value on failure
+
+### DIONYSUS 🍷 (Robustness)
+- `broad_except` - `except Exception: return` catches too broadly
+- `sql_injection` - SQL via f-string or format()
+
+### PANDORA 📦 (Security)
+- `hardcoded_password` - Secrets in code
+
+### DELPHI 🔮 (AI Safety)
+- `prompt_injection` - User input directly in prompt
+
+### RA ☀️ (Performance)
+- `sync_in_async` - Blocking call in async function
+
+### ARGUS 👁️ (Observability)
+- `logging_error_in_except` - Use logging.exception() for tracebacks
+
+### HERMES ⚡ (API)
+- `missing_auth_decorator` - Endpoint without auth
+- `api_returns_dict` - Raw dict instead of Pydantic model
+
+### ICARUS 🌞 (Complexity)
+- `too_many_params` - Function signature >200 chars
+- `nested_if_deep` - 4+ levels of nesting
+- `god_class_methods` - Class >500 lines
+
+### HEPHAESTUS 🔨 (Build)
+- `unpinned_dependency` - No version specified
+- `dockerfile_root` - Running as root
+- `dockerfile_latest` - Using :latest tag
+
+### MIDAS 💰 (LLM Costs)
+- `llm_no_cache` - LLM call without caching
+- `expensive_model` - Using GPT-4/Opus when cheaper works
+- `llm_max_tokens_high` - max_tokens > 4000
+
+### ANTAEUS 🏔️ (Resilience)
+- `http_no_timeout` - HTTP without timeout
+- `no_retry_pattern` - No retry/backoff
+- `db_no_pool` - Database without connection pooling
+
+### PROTEUS 🌀 (State)
+- `mutable_default` - `def f(x=[])` bug
+- `global_state` - `global` keyword usage
+- `singleton_pattern` - Singleton without thread safety check
+
+### ARIADNE 🧵 (Dependencies)
+- `star_import` - `from x import *`
+- `relative_import_deep` - `from ...` 3+ levels
+
+### JANUS 🚪 (Versioning)
+- `missing_api_version` - Endpoint without /v1/ prefix
+- `deprecated_no_warning` - Deprecated without warnings.warn()
+
+### GARM 🐕 (Zombie Patterns)
+- `zombie_subprocess` - Popen without communicate/wait
+- `orphan_thread` - Thread without join
+- `infinite_loop` - while True without break
+- `resource_leak` - open() without context manager
+- `async_orphan` - create_task without await
+
+### ORPHEUS 🎭 (Parallel Implementation Blindness)
+- `versioned_no_deprecation` - `_v2`, `_v3` without DEPRECATED marker
+- `parallel_implementations` - Multiple versions of same module
+- `orphan_candidate` - Module with 0 imports (potential dead code)
+
+### CASSANDRA 🔮, LETHE 🌊, TIRESIAS 👁️, etc.
+See `scripts/audit.py` for the complete pattern list.
+
+## How It Works
+
+```
+┌─────────────────────────────────────────────────────────┐
+│              UNIFIED AUDIT PIPELINE (V4.0)              │
+├─────────────────────────────────────────────────────────┤
+│                                                          │
+│  1. FENRIR 2.0 (Static Analysis)      ~2 seconds         │
+│     ├── 6 passes: P1 (Regex) → P5 (AST) → GARM          │
+│     ├── 20 archetypes (45+ patterns)                    │
+│     ├── AST string filter (eliminates FP)               │
+│     └── ORPHEUS (parallel implementation detector)       │
+│                                                          │
+│  2. OUROBOROS (Anti Self-Detection)                      │
+│     └── Excludes audit/detection code from findings      │
+│                                                          │
+│  3. RAG Enrichment (Lucioles)         ~1 second          │
+│     └── Adds context from 350+ indexed docs              │
+│                                                          │
+│  4. MEMORY (Past Verdicts)                               │
+│     └── Checks if finding was seen before                │
+│                                                          │
+│  5. MEMNARCH (Optional)                                  │
+│     ├── SPO triplets (pattern relationships)            │
+│     └── Decision correlation (past architecture)         │
+│                                                          │
+│  6. Claude Code (Intelligent Triage)  ~5 seconds         │
+│     ├── Read context (±10 lines per finding)            │
+│     ├── Classify: TRUE_POSITIVE / FALSE_POSITIVE        │
+│     └── Prioritize by actual risk                       │
+│                                                          │
+│  7. OSIRIS (Final Verdict)                               │
+│     ├── Score calculation                               │
+│     └── WORTHY / CURSED / FORBIDDEN                     │
+│                                                          │
+└─────────────────────────────────────────────────────────┘
+```
+
+## False Positive Handling
+
+Claude Code automatically filters:
+- **Example code**: Patterns in docstrings, `example_code` strings
+- **Defensive parsing**: AST/JSON parsing with graceful fallback
+- **Status functions**: Health checks that intentionally catch all
+- **Test fixtures**: Intentionally bad code for testing
+
+## CI/CD Integration
+
+### GitHub Actions
+
+```yaml
+name: Code Audit
+on: [push, pull_request]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run FENRIR
+        run: python skills/multi-archetype-audit/scripts/audit.py . --fenrir-only --json > fenrir.json
+
+      - name: Claude Triage (optional)
+        if: github.event_name == 'pull_request'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python skills/multi-archetype-audit/scripts/audit.py . --ci
+```
+
+### Pre-commit
+
+```yaml
+# .pre-commit-config.yaml
+repos:
+  - repo: local
+    hooks:
+      - id: fenrir
+        name: FENRIR Audit
+        entry: python skills/multi-archetype-audit/scripts/audit.py
+        language: python
+        args: [--fenrir-only, --ci]
+        types: [python]
+```
+
+## Cost
+
+| Mode | Cost | Speed |
+|------|------|-------|
+| FENRIR only | Free | ~2s |
+| + Claude triage | ~$0.02/audit | ~7s |
+
+## License
+
+MIT
+
+## Credits
+
+Inspired by the multi-perspective audit methodology from the Smash Coach AI project.
+Archetypes named after figures from Greek mythology and Norse legends.
