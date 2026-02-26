@@ -109,7 +109,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Development & Code Tools
 
-- [booklib-ai/skills](https://github.com/booklib-ai/skills) - 18 book-grounded skills covering Clean Code, DDD, System Design, Design Patterns, Effective Python/Java/Kotlin, Microservices, and more. Each skill packages expert practices from a canonical programming book. `npx skills add booklib-ai/skills` *By [@ZLStas](https://github.com/ZLStas)*
+- [booklib-ai/skills](https://github.com/booklib-ai/skills) - Book-grounded skills covering Clean Code, DDD, System Design, Design Patterns, Effective Python/Java/Kotlin, Microservices, and more. Each skill packages expert practices from a canonical programming book. `npx skills add booklib-ai/skills` *By [@ZLStas](https://github.com/ZLStas)*
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
