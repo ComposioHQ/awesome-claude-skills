@@ -1,0 +1,8 @@
+{
+  "name": "coderio-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "coderio": "latest"
+  }
+}
