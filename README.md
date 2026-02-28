@@ -144,6 +144,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Business & Marketing
 
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
+- [Become CEO](https://github.com/wanikua/become-ceo) - Run a 7-agent AI executive team on Discord — Engineering, Finance, Marketing, DevOps, Legal, Management, Chief of Staff — each with its own Claude model. One-click setup, MIT licensed. *By [@wanikua](https://github.com/wanikua)*
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
