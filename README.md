@@ -195,6 +195,10 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
+### AI Services Gateway
+
+- [SkillBoss MCP Server](https://github.com/heeyo-life/skillboss-mcp) - One API key for 100+ AI services: Claude, GPT, Gemini, DeepSeek, image/video generation (DALL-E, Midjourney, Runway, Kling), voice (ElevenLabs), web scraping, payments, and more. OpenAI-compatible. [Website](https://skillboss.co)
+
 ### App Automation via Composio
 
 Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://composio.dev). Each skill includes tool sequences, parameter guidance, known pitfalls, and quick reference tables — all using real tool slugs discovered from Composio's API.
