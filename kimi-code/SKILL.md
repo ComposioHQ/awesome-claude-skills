@@ -1,49 +1,104 @@
 ---
 name: kimi-code
-description: Delegate tasks to Kimi Code CLI as a subagent for file operations, code summarization, and analysis. Use when you need to delegate simple to moderate coding tasks. Kimi provides transparent execution with ThinkPart/ToolCall visibility, safe --print mode, and working directory isolation.
+description: Delegate simple to moderate coding tasks to Kimi Code CLI as a subagent for file operations, code summarization, and analysis. Use when you need transparent execution with ThinkPart/ToolCall visibility, safe --print mode, and working directory isolation.
 license: Complete terms in LICENSE.txt
 ---
 
 # Kimi Code Delegation
 
-This skill enables delegation of appropriate tasks to Kimi Code CLI (Moonshot AI's command-line programming assistant) for efficient task distribution.
+This skill teaches Claude how to delegate appropriate tasks to Kimi Code CLI (Moonshot AI's command-line programming assistant) for efficient task distribution.
 
-## When to Use
+Kimi Code provides transparent execution with detailed ThinkPart reasoning, ToolCall visibility, and StatusUpdate with token usage statistics. It's ideal for tasks where you want to see exactly what the AI is doing.
 
-Delegate to Kimi Code for tasks that are:
-- **Simple to moderate complexity**: File listing, code reading, basic analysis
-- **Well-defined**: Clear requirements and expected outputs
-- **Independent**: Can be executed without extensive context sharing
-- **Resource-efficient**: Benefit from Kimi's caching system
+## When to Use This Skill
 
-### Suitable Tasks
-- List files in directory and subdirectories
-- Find all Python files and show their sizes
-- Read README.md and summarize key points
-- Explain the purpose of a function
-- Check if specific tools are installed
-- Run simple tests and report results
-- Rename variables in a file
-- Extract functions from code
+- **File operations**: List files, find specific file types, check file sizes
+- **Code reading**: Read and summarize code files, explain functions
+- **Basic analysis**: Count lines, check imports, analyze simple code patterns
+- **Environment checks**: Verify tool installations, check system status
+- **Simple testing**: Run basic tests and report results
 
-### Keep with Claude Code
-- Complex architectural decisions
-- Multi-step feature implementation
-- Security-critical operations
-- Tasks requiring deep contextual understanding
-- Team coordination and integration
+## What This Skill Does
+
+1. **Task delegation**: Teaches Claude when to delegate tasks to Kimi Code vs handling them directly
+2. **Command construction**: Shows how to build proper kimi commands with --print flag for safety
+3. **Output parsing**: Guides parsing of Kimi's ThinkPart/ToolCall/StatusUpdate output format
+4. **Safety enforcement**: Ensures safe use with --print mode and working directory isolation
+5. **Error handling**: Provides fallback strategies when Kimi Code fails
+
+## How to Use
+
+### Basic Usage
+
+When Claude identifies a task suitable for Kimi Code, it will construct a command like:
+
+```bash
+kimi -p "List all Python files in current directory with sizes" --print
+```
+
+### Advanced Usage
+
+For more complex tasks, use working directory isolation and session continuation:
+
+```bash
+# With specific working directory
+kimi -w /path/to/project -p "Analyze project structure" --print
+
+# Continue from previous session
+kimi -C -p "Continue analysis from last task" --print
+
+# With timeout for safety
+timeout 30 kimi -p "Task description" --print
+```
+
+## Example
+
+**User**: "List all Python files in the current directory and show their line counts"
+
+**Claude (using this skill)**: Delegates to Kimi Code with:
+
+```bash
+kimi -p "Find all .py files in current directory, show their names, sizes, and line counts" --print
+```
+
+**Output from Kimi**:
+```
+ThinkPart(type='think', text='I need to list Python files...')
+ToolCall(type='shell', command='find . -name "*.py" -exec wc -l {} \;')
+ToolResult(type='result', result='./main.py: 45\n./utils.py: 120\n./test.py: 67')
+TextPart(type='text', text='Found 3 Python files:\n- main.py: 45 lines\n- utils.py: 120 lines\n- test.py: 67 lines\nTotal: 232 lines')
+StatusUpdate(type='status', token_usage=TokenUsage(input_other=150, output=37, input_cache_read=320))
+```
+
+**Inspired by**: Real-world usage of Kimi Code CLI for development workflow automation
+
+## Tips
+
+- **Always use --print**: This prevents accidental approval of destructive actions
+- **Use -w for isolation**: Restrict file operations to specific directories
+- **Monitor token usage**: Check StatusUpdate for cache efficiency (input_cache_read)
+- **Extract TextPart**: The final answer is in the TextPart section of output
+- **Have fallbacks**: If Kimi fails, be prepared to handle the task directly
+
+## Common Use Cases
+
+1. **Project onboarding**: Quickly analyze a new codebase structure
+2. **Code review prep**: Gather statistics about files to be reviewed
+3. **Documentation**: Generate summaries of code files for documentation
+4. **Environment setup**: Verify required tools and dependencies are installed
+5. **Test automation**: Run simple tests and summarize results
 
 ## Key Characteristics
 
 ### Strengths
 - **Transparent Execution**: Shows detailed ThinkPart reasoning, ToolCall details, and StatusUpdate with token usage
-- **Cache Efficiency**: Built-in caching with input_cache_read statistics
-- **Safe by Default**: --print mode is non-interactive and doesn't auto-approve destructive actions
-- **Context Management**: -w flag for working directory isolation, -C for session continuation
+- **Cache Efficiency**: Built-in caching system with `input_cache_read` statistics showing cost savings
+- **Safe by Default**: `--print` mode is non-interactive and doesn't auto-approve destructive actions
+- **Context Management**: `-w` flag for working directory isolation, `-C` for session continuation
 - **Multi-step Reasoning**: Can plan and execute complex multi-step tasks autonomously
 
 ### Limitations
-- **Slower Output**: Detailed transparency comes at parsing complexity cost
+- **Slower Output**: Detailed transparency comes at the cost of parsing complexity
 - **Tool Dependency**: Relies on external tool calls via Shell for many operations
 - **Less Built-in Tools**: Fewer native tools compared to Qwen Code
 - **Python Dependency**: Requires Python/uv installation environment
@@ -72,7 +127,7 @@ kimi -C -p "Continue from last task" --print
 
 ### 1. Task Assessment
 - Is task well-defined and suitable for Kimi?
-- Does kimi command exist? (which kimi)
+- Does `kimi` command exist? (`which kimi`)
 - What working directory is needed?
 
 ### 2. Command Construction
@@ -97,58 +152,18 @@ echo $?
 ```
 
 ### 4. Extract Results
-Look for TextPart sections in Kimi's output:
+Look for `TextPart` sections in Kimi's output:
 ```
 TextPart(type='text', text='The answer here...')
-```
-
-## Output Parsing
-
-### Key Output Components
-1. **TextPart**: Final answer (extract this)
-2. **ThinkPart**: Reasoning process (debugging)
-3. **ToolCall/ToolResult**: Tool execution details
-4. **StatusUpdate**: Token usage statistics
-
-### Token Usage Monitoring
-```
-TokenUsage(
-    input_other=2650,    # Prompt tokens
-    output=37,           # Response tokens
-    input_cache_read=5376,  # Cache hits (saves cost)
-    input_cache_creation=0  # Cache writes
-)
-```
-
-## Examples
-
-### Example 1: File System Analysis
-```bash
-kimi -p "Find all .py files in the project, show line counts and last modified dates" --print
-```
-
-### Example 2: Code Documentation
-```bash
-kimi -p "Read src/utils.py and create a table of functions with their parameters and return types" --print
-```
-
-### Example 3: Environment Check
-```bash
-kimi -p "Check Python version, pip availability, and list installed packages" --print
-```
-
-### Example 4: Test Summary
-```bash
-kimi -p "Run pytest on tests/ and summarize which tests passed/failed" --print
 ```
 
 ## Security Considerations
 
 ### Kimi Code Safety Features
-- **Non-interactive by Default**: --print mode prevents accidental approval of destructive actions
-- **Transparent Tool Execution**: All ToolCall and ToolResult details are visible in output
-- **No Auto-approval**: Unlike Qwen's --yolo, Kimi requires explicit approval for risky operations
-- **Working Directory Isolation**: -w flag limits file operations to specified directory
+- **Non-interactive by Default**: `--print` mode prevents accidental approval of destructive actions
+- **Transparent Tool Execution**: All `ToolCall` and `ToolResult` details are visible in output
+- **No Auto-approval**: Unlike Qwen's `--yolo`, Kimi requires explicit approval for risky operations
+- **Working Directory Isolation**: `-w` flag limits file operations to specified directory
 
 ### Recommended Safety Configuration
 ```bash
@@ -161,40 +176,6 @@ kimi -w /workspace -C -p "Continue analysis" --print
 # Avoid dangerous patterns
 # DON'T: kimi -p "Delete temporary files" --print
 # DO: kimi -p "List temporary files that could be deleted" --print
-```
-
-### Emergency Stop
-If Kimi starts executing dangerous operations:
-1. **Send SIGINT**: Ctrl+C to interrupt the process
-2. **Check output**: Review ToolCall sections for executed commands
-3. **Verify files**: Check if any files were modified or deleted
-4. **Use git**: If working in git repository, git status and git checkout -- . to restore
-
-## Integration Pattern
-
-```bash
-# Pseudo-implementation for delegation
-delegate_to_kimi() {
-    local task="$1"
-    local workdir="${2:-.}"
-    
-    if ! command -v kimi &> /dev/null; then
-        echo "Kimi Code not found, handling task directly"
-        return 1
-    fi
-    
-    echo "Delegating to Kimi Code: $task"
-    output=$(kimi -w "$workdir" -p "$task" --print 2>&1)
-    
-    if [ $? -eq 0 ]; then
-        # Extract TextPart content
-        echo "$output" | grep -A1 "TextPart.*text=" | tail -1 | sed "s/.*text='\(.*\)'.*/\1/"
-        return 0
-    else
-        echo "Kimi Code failed, fallback to direct handling"
-        return 1
-    fi
-}
 ```
 
 ## Troubleshooting
