@@ -133,6 +133,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [qwen-code](https://github.com/Dominic789654/qwen-code-skills) - Delegate tasks to Qwen Code CLI (Alibaba) as a subagent for file operations, web research, and code analysis with rich built-in tools and 1M context window. *By [@Dominic789654](https://github.com/Dominic789654)*
+- [kimi-code](https://github.com/Dominic789654/kimi-code-skills) - Delegate tasks to Kimi Code CLI (Moonshot AI) as a subagent for file operations, code summarization, and analysis with transparent execution and safe --print mode. *By [@Dominic789654](https://github.com/Dominic789654)*
 
 ### Data & Analysis
 
