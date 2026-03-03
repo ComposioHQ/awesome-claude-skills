@@ -167,6 +167,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Slack GIF Creator](./slack-gif-creator/) - Creates animated GIFs optimized for Slack with validators for size constraints and composable animation primitives.
 - [Theme Factory](./theme-factory/) - Applies professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages with 10 pre-set themes.
 - [Video Downloader](./video-downloader/) - Downloads videos from YouTube and other platforms for offline viewing, editing, or archival with support for various formats and quality options.
+- [VideoDB Skills](https://github.com/video-db/skills) - See, Understand, Act on video and audio — ingest any media (files, streams, desktop), build semantic/visual/spoken understanding pipelines, create complex editing timelines programmatically, generate and stream media content, and trigger real-time alerts. *By [@video-db](https://github.com/video-db)*
 - [youtube-transcript](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript) - Fetch transcripts from YouTube videos and prepare summaries.
 
 ### Productivity & Organization
