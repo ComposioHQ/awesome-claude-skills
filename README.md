@@ -407,6 +407,15 @@ Detailed description of the skill's purpose and capabilities.
 - Document prerequisites and dependencies
 - Include error handling guidance
 
+
+## Audio & Podcast
+
+- [AudioMind](https://github.com/wells1137/skill-audiomind) - AI Podcast Studio for Manus. Orchestrates ElevenLabs TTS (29+ voices), AI background music, and server-side audio mixing to produce full podcasts from a single prompt. Free tier included. By @wells1137
+
+## Image Generation
+
+- [Imagen](https://github.com/wells1137/skill-imagen) - Generate images using Google Gemini — UI mockups, illustrations, icons, concept art, and any visual content from text descriptions. By @wells1137
+
 ## Contributing
 
 We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on:
