@@ -1,11 +1,11 @@
 ---
 name: appdeploy
-description: Deploy web apps with backend APIs, database, and file storage. Use when the user asks to deploy or publish a website or web app and wants a public URL. Uses HTTP API via curl.
+description: Deploy web apps with backend APIs, database, file storage, AI operations, authentication, realtime, and cron jobs. Use when the user asks to deploy or publish a website or web app and wants a public URL. Uses HTTP API via curl.
 allowed-tools:
   - Bash
 metadata:
   author: appdeploy
-  version: "1.0.5"
+  version: "1.0.7"
 ---
 
 # AppDeploy Skill
@@ -122,6 +122,7 @@ Use this when deploy_app tool call returns or when the user asks to check the de
 **Parameters:**
   - `app_id`: string (required) - Target app id
   - `since`: integer (optional) - Optional timestamp in epoch milliseconds to filter errors. When provided, returns only errors since that timestamp.
+  - `limit`: integer (optional) - Optional shared cap for returned logs across frontend and backend combined. Defaults to 50 when omitted.
 
 ### delete_app
 
