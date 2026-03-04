@@ -195,6 +195,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+- [x-api-spend-guard](https://github.com/clawdioversace-beep/skill-vault/tree/main/skills/x-api-spend-guard) - System-wide daily spend cap for the X API shared across multiple services.
 
 ### App Automation via Composio
 
