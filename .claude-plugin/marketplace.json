@@ -1,0 +1,186 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "awesome-claude-skills",
+  "version": "1.0.0",
+  "description": "A curated collection of community skills for Claude Code, including productivity tools, content creation, development utilities, and app integrations",
+  "owner": {
+    "name": "ComposioHQ",
+    "url": "https://github.com/ComposioHQ"
+  },
+  "plugins": [
+    {
+      "name": "artifacts-builder",
+      "description": "Suite of tools for creating elaborate, multi-component HTML artifacts using React, Tailwind CSS, and shadcn/ui",
+      "source": "./artifacts-builder",
+      "category": "development"
+    },
+    {
+      "name": "brand-guidelines",
+      "description": "Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity",
+      "source": "./brand-guidelines",
+      "category": "design"
+    },
+    {
+      "name": "canvas-design",
+      "description": "Create beautiful visual art in PNG and PDF documents using design philosophy for posters, art, and static pieces",
+      "source": "./canvas-design",
+      "category": "design"
+    },
+    {
+      "name": "changelog-generator",
+      "description": "Automatically creates user-facing changelogs from git commits by analyzing history and categorizing changes",
+      "source": "./changelog-generator",
+      "category": "development"
+    },
+    {
+      "name": "competitive-ads-extractor",
+      "description": "Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches",
+      "source": "./competitive-ads-extractor",
+      "category": "marketing"
+    },
+    {
+      "name": "connect",
+      "description": "Connect Claude to any app. Send emails, create issues, post messages, update databases across 1000+ services",
+      "source": "./connect",
+      "category": "integration"
+    },
+    {
+      "name": "connect-apps",
+      "description": "Connect Claude to external apps like Gmail, Slack, GitHub for sending emails, creating issues, posting messages",
+      "source": "./connect-apps",
+      "category": "integration"
+    },
+    {
+      "name": "connect-apps-plugin",
+      "description": "Let Claude perform real actions in 500+ apps. Handles auth and connections using Composio",
+      "source": "./connect-apps-plugin",
+      "category": "integration"
+    },
+    {
+      "name": "content-research-writer",
+      "description": "Assists in writing high-quality content by conducting research, adding citations, improving hooks, and providing feedback",
+      "source": "./content-research-writer",
+      "category": "content"
+    },
+    {
+      "name": "developer-growth-analysis",
+      "description": "Analyzes Claude Code chat history to identify coding patterns, development gaps, and curate learning resources",
+      "source": "./developer-growth-analysis",
+      "category": "productivity"
+    },
+    {
+      "name": "document-skills",
+      "description": "Working with documents including DOCX, PDF, PPTX, and XLSX creation, editing, and formatting",
+      "source": "./document-skills",
+      "category": "productivity"
+    },
+    {
+      "name": "domain-name-brainstormer",
+      "description": "Generates creative domain name ideas and checks availability across multiple TLDs",
+      "source": "./domain-name-brainstormer",
+      "category": "productivity"
+    },
+    {
+      "name": "file-organizer",
+      "description": "Intelligently organizes files and folders by understanding context, finding duplicates, suggesting better structures",
+      "source": "./file-organizer",
+      "category": "productivity"
+    },
+    {
+      "name": "image-enhancer",
+      "description": "Improves image quality by enhancing resolution, sharpness, and clarity",
+      "source": "./image-enhancer",
+      "category": "media"
+    },
+    {
+      "name": "internal-comms",
+      "description": "Resources for writing internal communications including status reports, leadership updates, newsletters, and incident reports",
+      "source": "./internal-comms",
+      "category": "content"
+    },
+    {
+      "name": "invoice-organizer",
+      "description": "Automatically organizes invoices and receipts for tax preparation by extracting info, renaming, and sorting",
+      "source": "./invoice-organizer",
+      "category": "productivity"
+    },
+    {
+      "name": "langsmith-fetch",
+      "description": "Debug LangChain/LangGraph agents by fetching execution traces from LangSmith Studio",
+      "source": "./langsmith-fetch",
+      "category": "development"
+    },
+    {
+      "name": "lead-research-assistant",
+      "description": "Identifies high-quality leads by analyzing your business, searching for target companies, and providing contact strategies",
+      "source": "./lead-research-assistant",
+      "category": "marketing"
+    },
+    {
+      "name": "mcp-builder",
+      "description": "Guide for creating high-quality MCP servers to integrate external APIs and services with LLMs",
+      "source": "./mcp-builder",
+      "category": "development"
+    },
+    {
+      "name": "meeting-insights-analyzer",
+      "description": "Analyzes meeting transcripts to uncover behavioral patterns, communication insights, and actionable feedback",
+      "source": "./meeting-insights-analyzer",
+      "category": "productivity"
+    },
+    {
+      "name": "raffle-winner-picker",
+      "description": "Picks random winners from lists, spreadsheets, or Google Sheets for giveaways and contests",
+      "source": "./raffle-winner-picker",
+      "category": "productivity"
+    },
+    {
+      "name": "skill-creator",
+      "description": "Guide for creating effective skills that extend Claude's capabilities with specialized knowledge and workflows",
+      "source": "./skill-creator",
+      "category": "development"
+    },
+    {
+      "name": "skill-share",
+      "description": "Creates new Claude skills and automatically shares them on Slack for team collaboration",
+      "source": "./skill-share",
+      "category": "productivity"
+    },
+    {
+      "name": "slack-gif-creator",
+      "description": "Toolkit for creating animated GIFs optimized for Slack with size validators and composable animation primitives",
+      "source": "./slack-gif-creator",
+      "category": "media"
+    },
+    {
+      "name": "tailored-resume-generator",
+      "description": "Analyzes job descriptions and generates tailored resumes highlighting relevant experience and skills",
+      "source": "./tailored-resume-generator",
+      "category": "content"
+    },
+    {
+      "name": "theme-factory",
+      "description": "Toolkit for styling artifacts with themes including 10 pre-set themes with colors and fonts",
+      "source": "./theme-factory",
+      "category": "design"
+    },
+    {
+      "name": "twitter-algorithm-optimizer",
+      "description": "Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights",
+      "source": "./twitter-algorithm-optimizer",
+      "category": "marketing"
+    },
+    {
+      "name": "video-downloader",
+      "description": "Download YouTube videos with customizable quality and format options",
+      "source": "./video-downloader",
+      "category": "media"
+    },
+    {
+      "name": "webapp-testing",
+      "description": "Toolkit for testing local web applications using Playwright with screenshots, browser logs, and UI verification",
+      "source": "./webapp-testing",
+      "category": "development"
+    }
+  ]
+}
