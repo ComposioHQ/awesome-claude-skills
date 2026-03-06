@@ -257,10 +257,11 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 
 **Calendar & Scheduling**
 - [Cal.com Automation](./cal-com-automation/) - Automate Cal.com: event types, bookings, availability, and scheduling.
+- [Calendar Scheduling](https://github.com/temporal-cortex/skills/tree/main/skills/calendar-scheduling) - Schedule meetings, check availability, and manage calendars across Google, Outlook, and CalDAV. Alias for Temporal Cortex router — same 15 tools, kept for discoverability. *By [@temporal-cortex](https://github.com/temporal-cortex)*
 - [Calendly Automation](./calendly-automation/) - Automate Calendly: events, invitees, event types, scheduling links, and availability.
 - [Google Calendar Automation](./google-calendar-automation/) - Automate Google Calendar: events, attendees, free/busy, and recurring schedules.
 - [Outlook Calendar Automation](./outlook-calendar-automation/) - Automate Outlook Calendar: events, attendees, reminders, and recurring schedules.
-- [Temporal Cortex](https://github.com/temporal-cortex/skills/tree/main/skills/temporal-cortex) - Route to datetime or scheduling sub-skills for calendar management across Google, Outlook, and CalDAV. 12 tools, 5 layers. *By [@temporal-cortex](https://github.com/temporal-cortex)*
+- [Temporal Cortex](https://github.com/temporal-cortex/skills/tree/main/skills/temporal-cortex) - Route to datetime or scheduling sub-skills for calendar management across Google, Outlook, and CalDAV. 15 tools, 5 layers. *By [@temporal-cortex](https://github.com/temporal-cortex)*
 - [Temporal Cortex Datetime](https://github.com/temporal-cortex/skills/tree/main/skills/temporal-cortex-datetime) - Convert timezones, resolve natural language times, compute durations, and adjust timestamps with DST awareness. Zero-setup, no credentials needed. *By [@temporal-cortex](https://github.com/temporal-cortex)*
 - [Temporal Cortex Scheduling](https://github.com/temporal-cortex/skills/tree/main/skills/temporal-cortex-scheduling) - List events, find free slots, and book meetings across Google Calendar, Outlook, and CalDAV with Two-Phase Commit conflict prevention. *By [@temporal-cortex](https://github.com/temporal-cortex)*
 
