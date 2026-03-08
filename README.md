@@ -191,10 +191,30 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Blockchain & Web3
 
+**Cardano Wallet** — [IndigoProtocol/cardano-ai](https://github.com/IndigoProtocol/cardano-ai)
 - [cardano-balances](https://github.com/IndigoProtocol/cardano-ai/tree/main/packages/plugins/cardano-wallet/skills/cardano-balances) - Query wallet balances, addresses, and UTxOs on Cardano. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
 - [cardano-identity](https://github.com/IndigoProtocol/cardano-ai/tree/main/packages/plugins/cardano-wallet/skills/cardano-identity) - Resolve and list ADAHandles for a Cardano wallet. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
 - [cardano-staking](https://github.com/IndigoProtocol/cardano-ai/tree/main/packages/plugins/cardano-wallet/skills/cardano-staking) - Check stake delegation and ADA rewards. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
 - [cardano-transactions](https://github.com/IndigoProtocol/cardano-ai/tree/main/packages/plugins/cardano-wallet/skills/cardano-transactions) - Sign and submit Cardano transactions with safety confirmations. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+
+**Indigo Protocol DeFi** — [IndigoProtocol/indigo-ai](https://github.com/IndigoProtocol/indigo-ai)
+- [indigo-cdp](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-defi/skills/indigo-cdp) - Manage Collateralized Debt Positions (CDPs) on Indigo Protocol. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [indigo-stability](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-defi/skills/indigo-stability) - Manage Stability Pool positions on Indigo Protocol. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [indigo-staking](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-defi/skills/indigo-staking) - Query and manage INDY token staking positions. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [indigo-redemption](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-defi/skills/indigo-redemption) - Manage redemptions and Limited Redemption Protocol (LRP) positions. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [indigo-assets](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-data/skills/indigo-assets) - Query real-time prices for iAssets, ADA, and INDY tokens. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [indigo-analytics](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-data/skills/indigo-analytics) - Query TVL, protocol statistics, APR rewards, and DEX yields. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [indigo-governance](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-data/skills/indigo-governance) - Query governance data including protocol parameters and polls. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [indigo-dex](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-data/skills/indigo-dex) - Interact with Cardano DEXs through Indigo Protocol. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [indigo-oracle](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-data/skills/indigo-oracle) - Manage the Indigo Protocol interest oracle. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [indigo-ipfs](https://github.com/IndigoProtocol/indigo-ai/tree/main/packages/plugins/indigo-data/skills/indigo-ipfs) - Store and retrieve data on IPFS via Indigo Protocol. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+
+**OpenMM Trading** — [QBT-Labs/OpenMM-ai](https://github.com/QBT-Labs/OpenMM-ai)
+- [openmm-exchange-setup](https://github.com/QBT-Labs/OpenMM-ai/tree/main/packages/plugins/openmm-trading/skills/openmm-exchange-setup) - Configure exchange API credentials for multi-exchange trading. *By [@QBT-Labs](https://github.com/QBT-Labs)*
+- [openmm-order-management](https://github.com/QBT-Labs/OpenMM-ai/tree/main/packages/plugins/openmm-trading/skills/openmm-order-management) - Place, list, and cancel limit/market orders on supported exchanges. *By [@QBT-Labs](https://github.com/QBT-Labs)*
+- [openmm-grid-trading](https://github.com/QBT-Labs/OpenMM-ai/tree/main/packages/plugins/openmm-trading/skills/openmm-grid-trading) - Automated grid trading strategies with dry-run support. *By [@QBT-Labs](https://github.com/QBT-Labs)*
+- [openmm-portfolio](https://github.com/QBT-Labs/OpenMM-ai/tree/main/packages/plugins/openmm-market-data/skills/openmm-portfolio) - Balance tracking, order overview, and market data across exchanges. *By [@QBT-Labs](https://github.com/QBT-Labs)*
+- [openmm-cardano-dex](https://github.com/QBT-Labs/OpenMM-ai/tree/main/packages/plugins/openmm-market-data/skills/openmm-cardano-dex) - Cardano DEX pool discovery and aggregated pricing via Iris Protocol. *By [@QBT-Labs](https://github.com/QBT-Labs)*
 
 ### Security & Systems
 
