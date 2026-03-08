@@ -85,6 +85,7 @@ If you receive the email, Claude is now connected to 500+ apps.
   - [Creative & Media](#creative--media)
   - [Productivity & Organization](#productivity--organization)
   - [Collaboration & Project Management](#collaboration--project-management)
+  - [Blockchain & Web3](#blockchain--web3)
   - [Security & Systems](#security--systems)
   - [App Automation via Composio](#app-automation-via-composio)
 - [Getting Started](#getting-started)
@@ -187,6 +188,13 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [outline](https://github.com/sanjay3290/ai-skills/tree/main/skills/outline) - Search, read, create, and manage documents in Outline wiki instances (cloud or self-hosted). *By [@sanjay3290](https://github.com/sanjay3290)*
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
 - [test-fixing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing) - Detect failing tests and propose patches or fixes.
+
+### Blockchain & Web3
+
+- [cardano-balances](https://github.com/IndigoProtocol/cardano-ai/tree/main/packages/plugins/cardano-wallet/skills/cardano-balances) - Query wallet balances, addresses, and UTxOs on Cardano. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [cardano-identity](https://github.com/IndigoProtocol/cardano-ai/tree/main/packages/plugins/cardano-wallet/skills/cardano-identity) - Resolve and list ADAHandles for a Cardano wallet. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [cardano-staking](https://github.com/IndigoProtocol/cardano-ai/tree/main/packages/plugins/cardano-wallet/skills/cardano-staking) - Check stake delegation and ADA rewards. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
+- [cardano-transactions](https://github.com/IndigoProtocol/cardano-ai/tree/main/packages/plugins/cardano-wallet/skills/cardano-transactions) - Sign and submit Cardano transactions with safety confirmations. *By [@IndigoProtocol](https://github.com/IndigoProtocol)*
 
 ### Security & Systems
 
