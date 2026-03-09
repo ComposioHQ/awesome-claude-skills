@@ -140,6 +140,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
+- [X Twitter Scraper](https://github.com/Xquik-dev/x-twitter-scraper) - X/Twitter data extraction skill with 76 API endpoints, 20 bulk tools, account monitoring, giveaway draws, trending topics, write actions, Telegram integrations, and MCP server. *By [@Xquik-dev](https://github.com/Xquik-dev)*
 
 ### Business & Marketing
 
