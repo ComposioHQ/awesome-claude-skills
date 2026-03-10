@@ -172,6 +172,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Productivity & Organization
 
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
+- [Hobby-Skill](https://github.com/G4rb3n/Hobby-Skill) - Analyze digital footprints from social media platforms to discover personal interests and personality traits. Local-first privacy protection with trend tracking. *By [@G4rb3n](https://github.com/G4rb3n)*
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
 - [n8n-skills](https://github.com/haunchen/n8n-skills) - Enables AI assistants to directly understand and operate n8n workflows.
