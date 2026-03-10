@@ -137,6 +137,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Data & Analysis
 
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
+- [daily.dev](https://github.com/dailydotdev/daily/tree/master/skills/daily.dev) - Overcome LLM knowledge cutoffs with real-time developer content. Search articles from thousands of sources via keyword and semantic search, manage feeds, and access community-validated technical content. *By [@dailydotdev](https://github.com/dailydotdev)*
+- [daily-dev-ask](https://github.com/dailydotdev/daily/tree/master/skills/daily-dev-ask) - Answer technical questions using daily.dev's knowledge base. Searches developer community articles and synthesizes answers with source links. *By [@dailydotdev](https://github.com/dailydotdev)*
 - [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
