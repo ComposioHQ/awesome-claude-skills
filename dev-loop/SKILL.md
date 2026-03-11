@@ -5,7 +5,7 @@ description: Autonomous development loop that takes a feature description and de
 
 # Dev Loop
 
-An autonomous development loop that goes from a feature description to a reviewed pull request in one command. It composes existing Claude Code commands into a full lifecycle: brainstorm, plan, implement, create PR, then iteratively review (simplify + code review + security review) until clean.
+An autonomous development loop that goes from a feature description to a reviewed pull request in one command. It is an orchestration layer that composes existing skills from [Superpowers](https://github.com/obra/superpowers) (brainstorming, planning, executing) with built-in Claude Code commands (`/simplify`, `/security-review`) and the [code-review](https://github.com/anthropics/claude-code-plugins) plugin into a full lifecycle: brainstorm, plan, implement, create PR, then iteratively review until clean.
 
 ## When to Use This Skill
 
@@ -18,7 +18,7 @@ An autonomous development loop that goes from a feature description to a reviewe
 1. **Brainstorm** (interactive): Explores requirements and design with you before any code is written.
 2. **Plan** (interactive): Produces a step-by-step implementation plan, creates a GitHub issue.
 3. **Implement** (autonomous): Executes the plan in an isolated git worktree, runs quality gates (lint, typecheck, tests), creates a PR.
-4. **Review Loop** (autonomous, iterative): Runs `/simplify`, `/code-review`, and `/security-review` in parallel, waits for CI, then either fixes issues and loops or marks the PR as ready. Up to 5 iterations by default.
+4. **Review Loop** (autonomous, iterative): Runs `/simplify`, `/code-review`, and `/security-review` in parallel, waits for CI, then either fixes issues and loops or marks the PR as ready. The number of review iterations is configurable (default: 5).
 
 Each phase uses the appropriate model and effort level (Opus for implementation and review, Sonnet for lightweight decisions).
 
