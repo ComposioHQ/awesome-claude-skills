@@ -1,6 +1,6 @@
 ---
-name: Claude Ecom
-description: Turn order or sales CSV data into ecommerce business reviews with KPI decomposition, prioritized findings, and concrete next actions.
+name: claude-ecom
+description: Turn order or sales CSV data into ecommerce business reviews with KPI decomposition, prioritized findings, and concrete next actions. Use when analyzing ecommerce performance, building monthly business reviews, or investigating revenue and retention changes.
 ---
 
 # Claude Ecom
@@ -75,6 +75,8 @@ Executive summary → Multi-horizon dashboard → KPI trees → Findings with "w
 
 [See a full example report →](https://github.com/takechanman1228/claude-ecom/blob/main/examples/online-retail-ii/REVIEW.md)
 
+**Inspired by:** [claude-ads](https://github.com/AgriciDaniel/claude-ads) by [@AgriciDaniel](https://github.com/AgriciDaniel)
+
 ## Tips
 
 - Drop your CSV into the working directory before starting Claude Code — the skill auto-detects it.
@@ -82,14 +84,9 @@ Executive summary → Multi-horizon dashboard → KPI trees → Findings with "w
 - For multi-store analysis, run each CSV separately and compare the generated `REVIEW.md` files.
 - The Python backend owns all number crunching; Claude interprets. Numbers are always precise.
 
-## Related Use Cases
+## Common Use Cases
 
 - Monthly reporting for D2C brands, retail, or marketplace sellers
 - Board or stakeholder decks backed by structured data
 - Quick diagnostics when a metric moves unexpectedly
 - Onboarding new analysts to a store's performance patterns
-
-## Links
-
-- [GitHub Repository](https://github.com/takechanman1228/claude-ecom)
-- By [@takechanman1228](https://github.com/takechanman1228)
