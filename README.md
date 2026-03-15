@@ -439,6 +439,7 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official example skills
 - [Claude Community](https://community.anthropic.com) - Discuss skills with other users
 - [Skills Marketplace](https://claude.ai/marketplace) - Discover and share skills
+- [Skill Hub 中国](https://www.skill-cn.com) - Agent Skill 实战案例与可复用方案库（中文）
 
 ### Inspiration & Use Cases
 
