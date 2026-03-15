@@ -134,6 +134,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
+- [widemem-ai](https://github.com/remete618/widemem-ai) - Next-gen AI memory layer with importance scoring, temporal decay, hierarchical memory, and YMYL prioritization. *By [@remete618](https://github.com/remete618)*
 ### Data & Analysis
 
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
