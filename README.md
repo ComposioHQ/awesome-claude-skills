@@ -146,6 +146,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
+- [Frihet MCP](https://github.com/Frihet-io/frihet-mcp) - AI-native business management — 31 tools for invoicing, expenses, clients, products, quotes & tax compliance. Install: `npx skills add Frihet-io/frihet-mcp`. npm: [@frihet/mcp-server](https://www.npmjs.com/package/@frihet/mcp-server). MIT licensed. *By [@Frihet-io](https://github.com/Frihet-io)*
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
 
