@@ -27,14 +27,17 @@ A persistent memory layer for AI coding assistants that remembers context across
 
 ### Setup
 
+**macOS (Apple Silicon) / Linux:**
 ```bash
-# Clone and install
-git clone https://github.com/whynowlab/jarvis-orb.git
-cd jarvis-orb
-npm install
-
-# Add to Claude Code MCP config
+curl -fsSL https://raw.githubusercontent.com/whynowlab/jarvis-orb/main/install.sh | bash
 ```
+
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/whynowlab/jarvis-orb/main/install.ps1 | iex
+```
+
+The installer configures the MCP server and launches the desktop orb automatically.
 
 ### Basic Usage
 
