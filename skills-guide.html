@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #fafaf9;
+    color: #1a1a1a;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  /* ── COVER ─────────────────────────────────────────── */
+  .cover {
+    height: 100vh;
+    min-height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px;
+    background: #0f0f0f;
+    color: #f5f5f5;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 300px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(236,72,153,0.12) 0%, transparent 70%);
+  }
+
+  .cover-tag {
+    font-size: 9pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6366f1;
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+
+  .cover h1 {
+    font-size: 54pt;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    max-width: 600px;
+  }
+
+  .cover h1 span { color: #6366f1; }
+
+  .cover p {
+    font-size: 14pt;
+    color: #a3a3a3;
+    max-width: 480px;
+    font-weight: 300;
+    margin-bottom: 60px;
+  }
+
+  .cover-meta {
+    font-size: 9pt;
+    color: #525252;
+    letter-spacing: 0.05em;
+    border-top: 1px solid #262626;
+    padding-top: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cover-count {
+    font-size: 48pt;
+    font-weight: 700;
+    color: #262626;
+    position: absolute;
+    bottom: 80px;
+    right: 80px;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+  .cover-count span { font-size: 12pt; color: #525252; display: block; font-weight: 400; letter-spacing: 0.05em; text-align: right; margin-top: 4px; }
+
+  /* ── TOC ──────────────────────────────────────────── */
+  .toc-page {
+    padding: 80px;
+    page-break-after: always;
+    min-height: 100vh;
+  }
+
+  .toc-page h2 {
+    font-size: 9pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    font-weight: 500;
+    margin-bottom: 48px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px 40px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .toc-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .toc-label { font-size: 9.5pt; font-weight: 500; color: #374151; }
+  .toc-cat { font-size: 7.5pt; color: #9ca3af; }
+
+  /* ── SECTION DIVIDERS ─────────────────────────────── */
+  .section-divider {
+    padding: 80px;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    page-break-before: always;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-divider .section-num {
+    font-size: 120pt;
+    font-weight: 700;
+    color: #f3f4f6;
+    position: absolute;
+    top: 40px; right: 60px;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .section-divider .section-label {
+    font-size: 8pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 12px;
+  }
+
+  .section-divider h2 {
+    font-size: 36pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #111;
+  }
+  .section-divider h2 span { color: #6366f1; }
+
+  .section-divider p {
+    margin-top: 16px;
+    font-size: 12pt;
+    color: #6b7280;
+    max-width: 440px;
+    font-weight: 300;
+  }
+
+  /* ── SKILL CARDS ──────────────────────────────────── */
+  .skills-page {
+    padding: 64px 80px;
+    page-break-after: always;
+  }
+
+  .skills-page-header {
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #d1d5db;
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .skills-grid {
+    display: grid;
+    gap: 20px;
+  }
+  .skills-grid.cols-1 { grid-template-columns: 1fr; }
+  .skills-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+
+  .skill-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .skill-card.purple::before { background: #6366f1; }
+  .skill-card.pink::before   { background: #ec4899; }
+  .skill-card.teal::before   { background: #14b8a6; }
+  .skill-card.amber::before  { background: #f59e0b; }
+  .skill-card.blue::before   { background: #3b82f6; }
+  .skill-card.green::before  { background: #22c55e; }
+  .skill-card.red::before    { background: #ef4444; }
+  .skill-card.slate::before  { background: #64748b; }
+
+  .skill-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .skill-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .skill-icon.purple { background: #eef2ff; }
+  .skill-icon.pink   { background: #fdf2f8; }
+  .skill-icon.teal   { background: #f0fdfa; }
+  .skill-icon.amber  { background: #fffbeb; }
+  .skill-icon.blue   { background: #eff6ff; }
+  .skill-icon.green  { background: #f0fdf4; }
+  .skill-icon.red    { background: #fef2f2; }
+  .skill-icon.slate  { background: #f8fafc; }
+
+  .skill-name {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #111827;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .skill-trigger {
+    font-size: 8pt;
+    color: #9ca3af;
+    font-weight: 400;
+    margin-top: 2px;
+    letter-spacing: 0.01em;
+  }
+
+  .skill-body {
+    font-size: 9.5pt;
+    color: #4b5563;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 7.5pt;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .skill-tag.purple { background: #eef2ff; color: #6366f1; }
+  .skill-tag.pink   { background: #fdf2f8; color: #ec4899; }
+  .skill-tag.teal   { background: #f0fdfa; color: #14b8a6; }
+  .skill-tag.amber  { background: #fffbeb; color: #d97706; }
+  .skill-tag.blue   { background: #eff6ff; color: #3b82f6; }
+  .skill-tag.green  { background: #f0fdf4; color: #16a34a; }
+  .skill-tag.red    { background: #fef2f2; color: #ef4444; }
+  .skill-tag.slate  { background: #f8fafc; color: #475569; }
+
+  /* ── CLOSING ──────────────────────────────────────── */
+  .closing {
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #0f0f0f;
+    color: #f5f5f5;
+    page-break-before: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+  }
+  .closing h2 {
+    font-size: 32pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .closing p {
+    font-size: 12pt;
+    color: #6b7280;
+    font-weight: 300;
+  }
+  .closing .url {
+    margin-top: 40px;
+    font-size: 9pt;
+    color: #6366f1;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div class="cover-tag">Claude Code · Skills Reference</div>
+  <h1>Awesome<br><span>Claude</span><br>Skills</h1>
+  <p>A complete guide to every skill — what it does, when to use it, and how it fits into your workflow.</p>
+  <div class="cover-meta">
+    <span>2026 Edition</span>
+    <span>github.com/makladmk87-max/awesome-claude-skills</span>
+  </div>
+  <div class="cover-count">26<span>skills</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ TOC -->
+<div class="toc-page">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eef2ff">🧠</div>
+      <div><div class="toc-label">Brainstorming</div><div class="toc-cat">Creative</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eef2ff">📋</div>
+      <div><div class="toc-label">Planning</div><div class="toc-cat">Creative</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eef2ff">🔍</div>
+      <div><div class="toc-label">Code Review</div><div class="toc-cat">Dev</div></div>
+    </div>
+
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eef2ff">🐛</div>
+      <div><div class="toc-label">Debugging</div><div class="toc-cat">Dev</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eef2ff">✅</div>
+      <div><div class="toc-label">TDD</div><div class="toc-cat">Dev</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eef2ff">✨</div>
+      <div><div class="toc-label">Simplify</div><div class="toc-cat">Dev</div></div>
+    </div>
+
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eef2ff">🌿</div>
+      <div><div class="toc-label">Git Worktrees</div><div class="toc-cat">Dev</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eef2ff">⌨️</div>
+      <div><div class="toc-label">Keybindings</div><div class="toc-cat">Dev</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#14b8a6;opacity:0.15;background:#f0fdfa">🔁</div>
+      <div><div class="toc-label">Loop</div><div class="toc-cat">Automation</div></div>
+    </div>
+
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#f0fdf4">🚀</div>
+      <div><div class="toc-label">GSD New Project</div><div class="toc-cat">GSD Workflow</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#f0fdf4">🗺️</div>
+      <div><div class="toc-label">GSD Plan Phase</div><div class="toc-cat">GSD Workflow</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#f0fdf4">⚙️</div>
+      <div><div class="toc-label">GSD Execute Phase</div><div class="toc-cat">GSD Workflow</div></div>
+    </div>
+
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#f0fdf4">🔎</div>
+      <div><div class="toc-label">GSD Debug</div><div class="toc-cat">GSD Workflow</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#f0fdf4">📊</div>
+      <div><div class="toc-label">GSD Progress</div><div class="toc-cat">GSD Workflow</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#fdf2f8">🎨</div>
+      <div><div class="toc-label">Figma Implement</div><div class="toc-cat">Design</div></div>
+    </div>
+
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#fdf2f8">📐</div>
+      <div><div class="toc-label">Figma Design System</div><div class="toc-cat">Design</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#fdf2f8">🔗</div>
+      <div><div class="toc-label">Figma Code Connect</div><div class="toc-cat">Design</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#fffbeb">📝</div>
+      <div><div class="toc-label">Mintlify</div><div class="toc-cat">Docs</div></div>
+    </div>
+
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eff6ff">🔍</div>
+      <div><div class="toc-label">Notion Find</div><div class="toc-cat">Notion</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eff6ff">🔎</div>
+      <div><div class="toc-label">Notion Search</div><div class="toc-cat">Notion</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eff6ff">📄</div>
+      <div><div class="toc-label">Notion Create Page</div><div class="toc-cat">Notion</div></div>
+    </div>
+
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eff6ff">✅</div>
+      <div><div class="toc-label">Notion Create Task</div><div class="toc-cat">Notion</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#eff6ff">🗄️</div>
+      <div><div class="toc-label">Notion DB Query</div><div class="toc-cat">Notion</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#fef2f2">📸</div>
+      <div><div class="toc-label">Instagram Fetch</div><div class="toc-cat">Social</div></div>
+    </div>
+
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#fef2f2">💡</div>
+      <div><div class="toc-label">Instagram Extractor</div><div class="toc-cat">Social</div></div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-icon" style="background:#fef2f2">📣</div>
+      <div><div class="toc-label">Adspirer</div><div class="toc-cat">Ads</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ SECTION 1: Creative -->
+<div class="section-divider" style="background:#f9fafb;">
+  <div class="section-num" style="color:#eef2ff;">01</div>
+  <div class="section-label">Section 01</div>
+  <h2>Creative &<br><span>Planning</span></h2>
+  <p>Skills that help you think clearly, generate ideas, and structure work before you build.</p>
+</div>
+
+<div class="skills-page">
+  <div class="skills-page-header">Section 01 — Creative &amp; Planning</div>
+  <div class="skills-grid cols-1">
+
+    <div class="skill-card purple">
+      <div class="skill-header">
+        <div class="skill-icon purple">🧠</div>
+        <div>
+          <div class="skill-name">Brainstorming</div>
+          <div class="skill-trigger">say: "brainstorm", "generate ideas", "think through this"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Sometimes you don't need code — you need to think. The Brainstorming skill turns Claude into a structured creative partner. It helps you explore a problem from multiple angles, generate a wide range of options without judgment, and distill the best ideas into something actionable. Great for early-stage product decisions, naming, architecture trade-offs, or whenever you feel stuck and need fresh perspectives.
+      </div>
+      <span class="skill-tag purple">Creative</span>
+    </div>
+
+    <div class="skill-card purple">
+      <div class="skill-header">
+        <div class="skill-icon purple">📋</div>
+        <div>
+          <div class="skill-name">Planning</div>
+          <div class="skill-trigger">say: "plan this", "create a roadmap", "break this down"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        The Planning skill turns fuzzy goals into concrete, ordered steps. Given a project or feature, it produces a structured plan with clear milestones, dependencies, and priorities — without jumping straight to code. Use it before any significant piece of work to get alignment on what needs to happen and in what order. It keeps things high-level enough to be useful for stakeholders, yet specific enough to actually execute against.
+      </div>
+      <span class="skill-tag purple">Strategy</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ SECTION 2: Dev -->
+<div class="section-divider" style="background:#f9fafb;">
+  <div class="section-num" style="color:#eef2ff;">02</div>
+  <div class="section-label">Section 02</div>
+  <h2>Developer<br><span>Skills</span></h2>
+  <p>Core engineering skills — reviewing, fixing, testing, and refining code.</p>
+</div>
+
+<div class="skills-page">
+  <div class="skills-page-header">Section 02 — Developer Skills</div>
+  <div class="skills-grid cols-2">
+
+    <div class="skill-card purple">
+      <div class="skill-header">
+        <div class="skill-icon purple">🔍</div>
+        <div>
+          <div class="skill-name">Code Review</div>
+          <div class="skill-trigger">say: "review this", "check my PR", "give feedback"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Gives your code the same treatment a senior engineer would. It checks correctness, flags security issues, spots performance bottlenecks, and calls out style inconsistencies — with clear, constructive feedback rather than nitpicks. Useful before merging any PR or after finishing a feature.
+      </div>
+      <span class="skill-tag purple">Quality</span>
+    </div>
+
+    <div class="skill-card red">
+      <div class="skill-header">
+        <div class="skill-icon red">🐛</div>
+        <div>
+          <div class="skill-name">Debugging</div>
+          <div class="skill-trigger">say: "this is broken", "error:", "why is this failing"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Systematic bug hunting. Rather than guessing, this skill reads error messages, traces execution paths, and narrows down root causes methodically. It explains what's wrong, why it's wrong, and fixes it — without touching unrelated code.
+      </div>
+      <span class="skill-tag red">Fixing</span>
+    </div>
+
+    <div class="skill-card green">
+      <div class="skill-header">
+        <div class="skill-icon green">✅</div>
+        <div>
+          <div class="skill-name">TDD · Test-Driven Development</div>
+          <div class="skill-trigger">say: "write tests first", "TDD", "red-green-refactor"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Guides you through the red-green-refactor cycle properly. Write a failing test, implement just enough code to make it pass, then clean up. This skill keeps you honest about requirements and produces naturally well-tested code from the start.
+      </div>
+      <span class="skill-tag green">Testing</span>
+    </div>
+
+    <div class="skill-card teal">
+      <div class="skill-header">
+        <div class="skill-icon teal">✨</div>
+        <div>
+          <div class="skill-name">Simplify</div>
+          <div class="skill-trigger">say: "simplify this", "clean up my changes", "quality pass"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Runs a quality pass over code you just wrote — looking for redundant logic, missed reuse opportunities, and unnecessary complexity. It doesn't refactor for fun; it fixes what actually needs fixing and leaves the rest alone.
+      </div>
+      <span class="skill-tag teal">Refactor</span>
+    </div>
+
+    <div class="skill-card slate">
+      <div class="skill-header">
+        <div class="skill-icon slate">🌿</div>
+        <div>
+          <div class="skill-name">Git Worktrees</div>
+          <div class="skill-trigger">say: "work on multiple branches", "parallel development"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Lets you work on multiple branches at the same time without stashing or constantly switching context. Each worktree is an independent checkout — perfect for reviewing a colleague's PR while still building your own feature.
+      </div>
+      <span class="skill-tag slate">Git</span>
+    </div>
+
+    <div class="skill-card slate">
+      <div class="skill-header">
+        <div class="skill-icon slate">⌨️</div>
+        <div>
+          <div class="skill-name">Keybindings</div>
+          <div class="skill-trigger">say: "rebind ctrl+s", "change submit key", "add shortcut"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Customise your Claude Code keyboard shortcuts. Add chord bindings, change the submit key, or remap any action — all saved to <code>~/.claude/keybindings.json</code>. Makes Claude Code feel exactly how you want it.
+      </div>
+      <span class="skill-tag slate">Config</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- loop -->
+<div class="skills-page">
+  <div class="skills-page-header">Section 02 — Developer Skills (cont.)</div>
+  <div class="skills-grid cols-1">
+    <div class="skill-card teal">
+      <div class="skill-header">
+        <div class="skill-icon teal">🔁</div>
+        <div>
+          <div class="skill-name">Loop</div>
+          <div class="skill-trigger">say: "/loop 5m /foo", "check deploy every 5 minutes", "run this repeatedly"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Run any prompt or slash command on a recurring schedule. Useful for polling a deployment status, running a health check every few minutes, or automating any repeated task without babysitting the terminal. Just specify the interval and the command — Loop handles the rest. Not for one-off tasks; only invoke when repetition is the actual goal.
+      </div>
+      <span class="skill-tag teal">Automation</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ SECTION 3: GSD -->
+<div class="section-divider" style="background:#f9fafb;">
+  <div class="section-num" style="color:#f0fdf4;">03</div>
+  <div class="section-label">Section 03</div>
+  <h2>GSD<br><span>Workflow</span></h2>
+  <p>Get Stuff Done — a structured system for planning, building, and shipping features from start to finish.</p>
+</div>
+
+<div class="skills-page">
+  <div class="skills-page-header">Section 03 — GSD Workflow</div>
+  <div class="skills-grid cols-1">
+
+    <div class="skill-card green">
+      <div class="skill-header">
+        <div class="skill-icon green">🚀</div>
+        <div>
+          <div class="skill-name">GSD · New Project</div>
+          <div class="skill-trigger">say: "start a new project", "bootstrap", "scaffold"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        The starting point for any new software project. This skill scaffolds the folder structure, installs tooling, configures environments, and gets you to a clean first commit — so you can spend energy on the actual problem rather than boilerplate setup.
+      </div>
+      <span class="skill-tag green">Bootstrap</span>
+    </div>
+
+    <div class="skill-card green">
+      <div class="skill-header">
+        <div class="skill-icon green">🗺️</div>
+        <div>
+          <div class="skill-name">GSD · Plan Phase</div>
+          <div class="skill-trigger">say: "plan this feature", "how should I implement X"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Before writing a single line of code, this skill breaks a feature or task into a concrete, ordered implementation plan. It forces you to think through edge cases and dependencies upfront — reducing rewrites and surprises during execution.
+      </div>
+      <span class="skill-tag green">Planning</span>
+    </div>
+
+    <div class="skill-card green">
+      <div class="skill-header">
+        <div class="skill-icon green">⚙️</div>
+        <div>
+          <div class="skill-name">GSD · Execute Phase</div>
+          <div class="skill-trigger">say: "execute the plan", "implement this", "build it"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        The doing phase. Given a plan, this skill works through each step methodically — writing code, running tests, and keeping track of what's done. It avoids scope creep and stays focused on shipping what was planned.
+      </div>
+      <span class="skill-tag green">Build</span>
+    </div>
+
+    <div class="skill-card green">
+      <div class="skill-header">
+        <div class="skill-icon green">🔎</div>
+        <div>
+          <div class="skill-name">GSD · Debug</div>
+          <div class="skill-trigger">say: "GSD debug", "focused bug fix", used within a GSD workflow</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        A focused debugging session within a larger GSD workflow. When execution hits a bug, this skill isolates it, identifies the root cause, and resolves it — then hands control back to the execute phase without losing momentum.
+      </div>
+      <span class="skill-tag green">Debug</span>
+    </div>
+
+    <div class="skill-card green">
+      <div class="skill-header">
+        <div class="skill-icon green">📊</div>
+        <div>
+          <div class="skill-name">GSD · Progress</div>
+          <div class="skill-trigger">say: "where are we", "status update", "what's done"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        A status report for your current GSD workflow. It shows what's been completed, what's in progress, and what's still to come — keeping you and your team aligned without digging through commit logs.
+      </div>
+      <span class="skill-tag green">Status</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ SECTION 4: Design -->
+<div class="section-divider" style="background:#f9fafb;">
+  <div class="section-num" style="color:#fdf2f8;">04</div>
+  <div class="section-label">Section 04</div>
+  <h2>Figma &<br><span>Design</span></h2>
+  <p>Bridge the gap between design and production — implement designs, extract rules, and connect components.</p>
+</div>
+
+<div class="skills-page">
+  <div class="skills-page-header">Section 04 — Figma &amp; Design</div>
+  <div class="skills-grid cols-1">
+
+    <div class="skill-card pink">
+      <div class="skill-header">
+        <div class="skill-icon pink">🎨</div>
+        <div>
+          <div class="skill-name">Figma · Implement Design</div>
+          <div class="skill-trigger">say: share a Figma link or screenshot and ask to "implement this"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Share a Figma link or design screenshot and this skill converts it into production-ready frontend code — whether that's HTML/CSS, React, or another framework. It respects spacing, typography, colours, and component structure, producing clean code rather than rough approximations.
+      </div>
+      <span class="skill-tag pink">Design → Code</span>
+    </div>
+
+    <div class="skill-card pink">
+      <div class="skill-header">
+        <div class="skill-icon pink">📐</div>
+        <div>
+          <div class="skill-name">Figma · Design System Rules</div>
+          <div class="skill-trigger">say: "extract design system", "document our design tokens", "enforce design rules"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Takes your Figma design system and extracts formal rules — design tokens, component usage guidelines, spacing conventions, and colour semantics. The output keeps your codebase and designs in sync, and gives engineers a clear reference for how to use the system correctly.
+      </div>
+      <span class="skill-tag pink">Design System</span>
+    </div>
+
+    <div class="skill-card pink">
+      <div class="skill-header">
+        <div class="skill-icon pink">🔗</div>
+        <div>
+          <div class="skill-name">Figma · Code Connect</div>
+          <div class="skill-trigger">say: "set up Code Connect", "link Figma components to code"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Sets up Figma Code Connect so that when designers inspect a component in Figma Dev Mode, they see the actual code snippet from your codebase — not a generated approximation. Closes the loop between your component library and your design file, making handoff effortless.
+      </div>
+      <span class="skill-tag pink">Dev Mode</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ SECTION 5: Docs -->
+<div class="section-divider" style="background:#f9fafb;">
+  <div class="section-num" style="color:#fffbeb;">05</div>
+  <div class="section-label">Section 05</div>
+  <h2>Docs &<br><span>Content</span></h2>
+  <p>Build and maintain beautiful, structured documentation with Mintlify.</p>
+</div>
+
+<div class="skills-page">
+  <div class="skills-page-header">Section 05 — Docs &amp; Content</div>
+  <div class="skills-grid cols-1">
+    <div class="skill-card amber">
+      <div class="skill-header">
+        <div class="skill-icon amber">📝</div>
+        <div>
+          <div class="skill-name">Mintlify</div>
+          <div class="skill-trigger">say: "update our docs", "add a Mintlify page", "configure navigation"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Build, update, and optimise documentation sites powered by Mintlify. This skill handles adding new pages, writing MDX content, configuring navigation, customising themes, and deploying. Whether you're documenting an API, a product, or an internal tool — it makes your docs look professional and stay current. No more stale docs because updating them was too much friction.
+      </div>
+      <span class="skill-tag amber">Docs</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ SECTION 6: Notion -->
+<div class="section-divider" style="background:#f9fafb;">
+  <div class="section-num" style="color:#eff6ff;">06</div>
+  <div class="section-label">Section 06</div>
+  <h2>Notion<br><span>Integration</span></h2>
+  <p>Read, search, create, and query your Notion workspace — all from Claude.</p>
+</div>
+
+<div class="skills-page">
+  <div class="skills-page-header">Section 06 — Notion Integration</div>
+  <div class="skills-grid cols-2">
+
+    <div class="skill-card blue">
+      <div class="skill-header">
+        <div class="skill-icon blue">🔍</div>
+        <div>
+          <div class="skill-name">Notion · Find</div>
+          <div class="skill-trigger">say: "find my X page in Notion"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Locates a specific Notion page by title or partial title match and returns its ID and URL. The fast way to jump to a page when you know roughly what it's called but don't want to click around.
+      </div>
+      <span class="skill-tag blue">Notion</span>
+    </div>
+
+    <div class="skill-card blue">
+      <div class="skill-header">
+        <div class="skill-icon blue">🔎</div>
+        <div>
+          <div class="skill-name">Notion · Search</div>
+          <div class="skill-trigger">say: "search Notion for X", "what pages exist about Y"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Searches across your entire Notion workspace — pages and databases — by keyword. Great for discovery when you're not sure exactly where something lives, or to explore what exists on a given topic.
+      </div>
+      <span class="skill-tag blue">Notion</span>
+    </div>
+
+    <div class="skill-card blue">
+      <div class="skill-header">
+        <div class="skill-icon blue">📄</div>
+        <div>
+          <div class="skill-name">Notion · Create Page</div>
+          <div class="skill-trigger">say: "create a Notion page", "add a note in Notion"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Creates a new Notion page with content you specify. Whether it's a meeting note, a wiki entry, or a design doc — just tell Claude what to write and where, and it's done without opening the browser.
+      </div>
+      <span class="skill-tag blue">Notion</span>
+    </div>
+
+    <div class="skill-card blue">
+      <div class="skill-header">
+        <div class="skill-icon blue">✅</div>
+        <div>
+          <div class="skill-name">Notion · Create Task</div>
+          <div class="skill-trigger">say: "add a task to Notion", "create a to-do in my database"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Adds a new record to any Notion database — a task, a project, a CRM entry, whatever your database represents. Supports setting properties like status, priority, date, and assignee without touching the Notion UI.
+      </div>
+      <span class="skill-tag blue">Notion</span>
+    </div>
+
+    <div class="skill-card blue" style="grid-column: span 2;">
+      <div class="skill-header">
+        <div class="skill-icon blue">🗄️</div>
+        <div>
+          <div class="skill-name">Notion · Database Query</div>
+          <div class="skill-trigger">say: "list all tasks in Notion", "filter my database by status", "show overdue items"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Query any Notion database with filters, sorting, and pagination. Pull a list of all open tasks, items due this week, entries with a specific tag — whatever slice of data you need. The result comes back cleanly so you can act on it immediately, without building a Notion integration yourself.
+      </div>
+      <span class="skill-tag blue">Notion</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ SECTION 7: Social & Ads -->
+<div class="section-divider" style="background:#f9fafb;">
+  <div class="section-num" style="color:#fef2f2;">07</div>
+  <div class="section-label">Section 07</div>
+  <h2>Social &<br><span>Advertising</span></h2>
+  <p>Fetch Instagram content, extract creative prompts, and manage ad campaigns.</p>
+</div>
+
+<div class="skills-page">
+  <div class="skills-page-header">Section 07 — Social &amp; Advertising</div>
+  <div class="skills-grid cols-1">
+
+    <div class="skill-card red">
+      <div class="skill-header">
+        <div class="skill-icon red">📸</div>
+        <div>
+          <div class="skill-name">Instagram · Fetch</div>
+          <div class="skill-trigger">say: share an Instagram URL and ask to "fetch this" or "download this"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Paste an Instagram post, reel, or story URL and this skill downloads the media, extracts captions, and pulls metadata — all using <code>yt-dlp</code> under the hood. Works for public content out of the box; private content requires Instagram credentials. Useful for archiving content, analysing competitors, or repurposing media.
+      </div>
+      <span class="skill-tag red">Social Media</span>
+    </div>
+
+    <div class="skill-card red">
+      <div class="skill-header">
+        <div class="skill-icon red">💡</div>
+        <div>
+          <div class="skill-name">Instagram · Prompt Extractor</div>
+          <div class="skill-trigger">say: share an Instagram post and ask "what prompt was used for this"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Reverse-engineers the creative prompt or concept behind an AI-generated Instagram image. Share a post and this skill analyses the visual style, composition, and caption to deduce the most likely prompt — so you can recreate or riff on it. Great for creative research and understanding trending AI aesthetics.
+      </div>
+      <span class="skill-tag red">AI Creative</span>
+    </div>
+
+    <div class="skill-card amber">
+      <div class="skill-header">
+        <div class="skill-icon amber">📣</div>
+        <div>
+          <div class="skill-name">Adspirer</div>
+          <div class="skill-trigger">say: "create a Google Ads campaign", "analyse my Meta ads", "optimise my budget"</div>
+        </div>
+      </div>
+      <div class="skill-body">
+        Manage Google Ads and Meta (Facebook/Instagram) advertising campaigns directly from Claude. Create campaigns, analyse performance metrics, write ad copy, optimise budgets, and troubleshoot underperforming ads — without leaving the terminal. Built for marketers and founders who want to move fast without switching between ad dashboards all day.
+      </div>
+      <span class="skill-tag amber">Advertising</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ CLOSING -->
+<div class="closing">
+  <h2>Start building.</h2>
+  <p>All 26 skills install in one command.</p>
+  <div class="url">bash install.sh</div>
+</div>
+
+</body>
+</html>
