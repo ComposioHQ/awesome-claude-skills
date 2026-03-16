@@ -106,6 +106,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) - Read, generate, and adjust slides, layouts, templates.
 - [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
 - [Markdown to EPUB Converter](https://github.com/smerchek/claude-epub-skill) - Converts markdown documents and chat summaries into professional EPUB ebook files. *By [@smerchek](https://github.com/smerchek)*
+- [Typst Claude Skill](https://github.com/ChanMeng666/typst-claude-skill) - Generate professional PDFs, reports, academic papers, resumes, and slides using the Typst typesetting system. Includes complete language/CLI reference and 9 templates. *By [@ChanMeng666](https://github.com/ChanMeng666)*
 
 ### Development & Code Tools
 
