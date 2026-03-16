@@ -99,8 +99,7 @@ def parse_iso(ts: str):
 
 def count_lines(fpath: Path) -> int:
     try:
-        content = fpath.read_bytes()
-        return content.count(b'\n') + 1
+        return fpath.read_text(encoding='utf-8', errors='replace').count('\n') + 1
     except Exception:
         return 0
 
