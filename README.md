@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://platform.composio.dev/?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills">
-  <img width="1280" height="640" alt="Composio banner" src="https://github.com/user-attachments/assets/adb3f57a-2706-4329-856f-059a32059d48">
+  <img width="1280" height="640" alt="Composio banner" src="https://github.com/user-attachments/assets/e91255af-e4ba-4d71-b1a8-bd081e8a234a">
 </a>
 
 
@@ -36,8 +36,42 @@
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
 
-> If you want your skills to take actions across 500+ apps, wire them up with [Composio](https://platform.composio.dev/?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills)
+> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
 
+---
+
+## Quickstart: Connect Claude to 500+ Apps
+
+The **connect-apps** plugin lets Claude perform real actions - send emails, create issues, post to Slack. It handles auth and connects to 500+ apps using Composio under the hood.
+
+### 1. Install the Plugin
+
+```bash
+claude --plugin-dir ./connect-apps-plugin
+```
+
+### 2. Run Setup
+
+```
+/connect-apps:setup
+```
+
+Paste your API key when asked. (Get a free key at [platform.composio.dev](https://platform.composio.dev/?utm_source=Github&utm_content=AwesomeSkills))
+
+### 3. Restart & Try It
+
+```bash
+exit
+claude
+```
+
+> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
+
+If you receive the email, Claude is now connected to 500+ apps.
+
+**[See all supported apps →](https://composio.dev/toolkits)**
+
+---
 
 ## Contents
 
@@ -52,6 +86,7 @@ A curated list of practical Claude Skills for enhancing productivity across Clau
   - [Productivity & Organization](#productivity--organization)
   - [Collaboration & Project Management](#collaboration--project-management)
   - [Security & Systems](#security--systems)
+  - [App Automation via Composio](#app-automation-via-composio)
 - [Getting Started](#getting-started)
 - [Creating Skills](#creating-skills)
 - [Contributing](#contributing)
@@ -74,7 +109,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Development & Code Tools
 
-- [artifacts-builder](https://github.com/anthropics/skills/tree/main/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
+- [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
 - [Claude Code Terminal Title](https://github.com/bluzername/claude-code-terminal-title) - Gives each Claud-Code terminal window a dynamic title that describes the work being done so you don't lose track of what window is doing what.
@@ -82,23 +117,29 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [FFUF Web Fuzzing](https://github.com/jthack/ffuf_claude_skill) - Integrates the ffuf web fuzzer so Claude can run fuzzing tasks and analyze results for vulnerabilities. *By [@jthack](https://github.com/jthack)*
 - [finishing-a-development-branch](https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch) - Guides completion of development work by presenting clear options and handling chosen workflow.
 - [iOS Simulator](https://github.com/conorluddy/ios-simulator-skill) - Enables Claude to interact with iOS Simulator for testing and debugging iOS applications. *By [@conorluddy](https://github.com/conorluddy)*
+- [jules](https://github.com/sanjay3290/ai-skills/tree/main/skills/jules) - Delegate coding tasks to Google Jules AI agent for async bug fixes, documentation, tests, and feature implementation on GitHub repos. *By [@sanjay3290](https://github.com/sanjay3290)*
+- [LangSmith Fetch](./langsmith-fetch/) - Debug LangChain and LangGraph agents by automatically fetching and analyzing execution traces from LangSmith Studio. First AI observability skill for Claude Code. *By [@OthmanAdi](https://github.com/OthmanAdi)*
 - [MCP Builder](./mcp-builder/) - Guides creation of high-quality MCP (Model Context Protocol) servers for integrating external APIs and services with LLMs using Python or TypeScript.
 - [move-code-quality-skill](https://github.com/1NickPappas/move-code-quality-skill) - Analyzes Move language packages against the official Move Book Code Quality Checklist for Move 2024 Edition compliance and best practices.
 - [Playwright Browser Automation](https://github.com/lackeyjb/playwright-skill) - Model-invoked Playwright automation for testing and validating web applications. *By [@lackeyjb](https://github.com/lackeyjb)*
 - [prompt-engineering](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/customaize-agent/skills/prompt-engineering) - Teaches well-known prompt engineering techniques and patterns, including Anthropic best practices and agent persuasion principles.
 - [pypict-claude-skill](https://github.com/omkamal/pypict-claude-skill) - Design comprehensive test cases using PICT (Pairwise Independent Combinatorial Testing) for requirements or code, generating optimized test suites with pairwise coverage.
+- [reddit-fetch](https://github.com/ykdojo/claude-code-tips/tree/main/skills/reddit-fetch) - Fetches Reddit content via Gemini CLI when WebFetch is blocked or returns 403 errors.
 - [Skill Creator](./skill-creator/) - Provides guidance for creating effective Claude Skills that extend capabilities with specialized knowledge, workflows, and tool integrations.
 - [Skill Seekers](https://github.com/yusufkaraaslan/Skill_Seekers) - Automatically converts any documentation website into a Claude AI skill in minutes. *By [@yusufkaraaslan](https://github.com/yusufkaraaslan)*
 - [software-architecture](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/ddd/skills/software-architecture) - Implements design patterns including Clean Architecture, SOLID principles, and comprehensive software design best practices.
 - [subagent-driven-development](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - Dispatches independent subagents for individual tasks with code review checkpoints between iterations for rapid, controlled development.
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
+- [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
 ### Data & Analysis
 
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
 - [paper-search](https://github.com/ykdojo/paper-search) - Search academic papers via OpenAlex (250M+ works, free, no API key needed). Find papers by keyword, look up details by DOI, with sorting and pagination. *By [@ykdojo](https://github.com/ykdojo)*
+- [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
+- [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
 
 ### Business & Marketing
@@ -117,10 +158,12 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [family-history-research](https://github.com/emaynard/claude-family-history-research-skill) - Provides assistance with planning family history and genealogy research projects.
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
+- [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
 
 ### Creative & Media
 
 - [Canvas Design](./canvas-design/) - Creates beautiful visual art in PNG and PDF documents using design philosophy and aesthetic principles for posters, designs, and static pieces.
+- [imagen](https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen) - Generate images using Google Gemini's image generation API for UI mockups, icons, illustrations, and visual assets. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [Image Enhancer](./image-enhancer/) - Improves image and screenshot quality by enhancing resolution, sharpness, and clarity for professional presentations and documentation.
 - [Slack GIF Creator](./slack-gif-creator/) - Creates animated GIFs optimized for Slack with validators for size constraints and composable animation primitives.
 - [Theme Factory](./theme-factory/) - Applies professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages with 10 pre-set themes.
@@ -134,12 +177,15 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
 - [n8n-skills](https://github.com/haunchen/n8n-skills) - Enables AI assistants to directly understand and operate n8n workflows.
 - [Raffle Winner Picker](./raffle-winner-picker/) - Randomly selects winners from lists, spreadsheets, or Google Sheets for giveaways and contests with cryptographically secure randomness.
+- [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
 
 ### Collaboration & Project Management
 
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
+- [google-workspace-skills](https://github.com/sanjay3290/ai-skills/tree/main/skills) - Suite of Google Workspace integrations: Gmail, Calendar, Chat, Docs, Sheets, Slides, and Drive with cross-platform OAuth. *By [@sanjay3290](https://github.com/sanjay3290)*
+- [outline](https://github.com/sanjay3290/ai-skills/tree/main/skills/outline) - Search, read, create, and manage documents in Outline wiki instances (cloud or self-hosted). *By [@sanjay3290](https://github.com/sanjay3290)*
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
 - [test-fixing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing) - Detect failing tests and propose patches or fixes.
 
@@ -149,6 +195,122 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+
+### App Automation via Composio
+
+Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://composio.dev). Each skill includes tool sequences, parameter guidance, known pitfalls, and quick reference tables — all using real tool slugs discovered from Composio's API.
+
+**CRM & Sales**
+- [Close Automation](./close-automation/) - Automate Close CRM: leads, contacts, opportunities, activities, and pipelines.
+- [HubSpot Automation](./hubspot-automation/) - Automate HubSpot CRM: contacts, deals, companies, tickets, and email engagement.
+- [Pipedrive Automation](./pipedrive-automation/) - Automate Pipedrive: deals, contacts, organizations, activities, and pipelines.
+- [Salesforce Automation](./salesforce-automation/) - Automate Salesforce: objects, records, SOQL queries, and bulk operations.
+- [Zoho CRM Automation](./zoho-crm-automation/) - Automate Zoho CRM: leads, contacts, deals, accounts, and modules.
+
+**Project Management**
+- [Asana Automation](./asana-automation/) - Automate Asana: tasks, projects, sections, assignments, and workspaces.
+- [Basecamp Automation](./basecamp-automation/) - Automate Basecamp: to-do lists, messages, people, groups, and projects.
+- [ClickUp Automation](./clickup-automation/) - Automate ClickUp: tasks, lists, spaces, goals, and time tracking.
+- [Jira Automation](./jira-automation/) - Automate Jira: issues, projects, boards, sprints, and JQL queries.
+- [Linear Automation](./linear-automation/) - Automate Linear: issues, projects, cycles, teams, and workflows.
+- [Monday Automation](./monday-automation/) - Automate Monday.com: boards, items, columns, groups, and workspaces.
+- [Notion Automation](./notion-automation/) - Automate Notion: pages, databases, blocks, comments, and search.
+- [Todoist Automation](./todoist-automation/) - Automate Todoist: tasks, projects, sections, labels, and filters.
+- [Trello Automation](./trello-automation/) - Automate Trello: boards, cards, lists, members, and checklists.
+- [Wrike Automation](./wrike-automation/) - Automate Wrike: tasks, folders, projects, comments, and workflows.
+
+**Communication**
+- [Discord Automation](./discord-automation/) - Automate Discord: messages, channels, servers, roles, and reactions.
+- [Intercom Automation](./intercom-automation/) - Automate Intercom: conversations, contacts, companies, tickets, and articles.
+- [Microsoft Teams Automation](./microsoft-teams-automation/) - Automate Teams: messages, channels, teams, chats, and meetings.
+- [Slack Automation](./slack-automation/) - Automate Slack: messages, channels, search, reactions, threads, and scheduling.
+- [Telegram Automation](./telegram-automation/) - Automate Telegram: messages, chats, media, groups, and bots.
+- [WhatsApp Automation](./whatsapp-automation/) - Automate WhatsApp: messages, media, templates, groups, and business profiles.
+
+**Email**
+- [Gmail Automation](./gmail-automation/) - Automate Gmail: send/reply, search, labels, drafts, and attachments.
+- [Outlook Automation](./outlook-automation/) - Automate Outlook: emails, folders, contacts, and calendar integration.
+- [Postmark Automation](./postmark-automation/) - Automate Postmark: transactional emails, templates, servers, and delivery stats.
+- [SendGrid Automation](./sendgrid-automation/) - Automate SendGrid: emails, templates, contacts, lists, and campaign stats.
+
+**Code & DevOps**
+- [Bitbucket Automation](./bitbucket-automation/) - Automate Bitbucket: repos, PRs, branches, issues, and workspaces.
+- [CircleCI Automation](./circleci-automation/) - Automate CircleCI: pipelines, workflows, jobs, and project configuration.
+- [Datadog Automation](./datadog-automation/) - Automate Datadog: monitors, dashboards, metrics, incidents, and alerts.
+- [GitHub Automation](./github-automation/) - Automate GitHub: issues, PRs, repos, branches, actions, and code search.
+- [GitLab Automation](./gitlab-automation/) - Automate GitLab: issues, MRs, projects, pipelines, and branches.
+- [PagerDuty Automation](./pagerduty-automation/) - Automate PagerDuty: incidents, services, schedules, escalation policies, and on-call.
+- [Render Automation](./render-automation/) - Automate Render: services, deploys, and project management.
+- [Sentry Automation](./sentry-automation/) - Automate Sentry: issues, events, projects, releases, and alerts.
+- [Supabase Automation](./supabase-automation/) - Automate Supabase: SQL queries, table schemas, edge functions, and storage.
+- [Vercel Automation](./vercel-automation/) - Automate Vercel: deployments, projects, domains, environment variables, and logs.
+
+**Storage & Files**
+- [Box Automation](./box-automation/) - Automate Box: files, folders, search, sharing, collaborations, and sign requests.
+- [Dropbox Automation](./dropbox-automation/) - Automate Dropbox: files, folders, search, sharing, and batch operations.
+- [Google Drive Automation](./google-drive-automation/) - Automate Google Drive: upload, download, search, share, and organize files.
+- [OneDrive Automation](./one-drive-automation/) - Automate OneDrive: files, folders, search, sharing, permissions, and versioning.
+
+**Spreadsheets & Databases**
+- [Airtable Automation](./airtable-automation/) - Automate Airtable: records, tables, bases, views, and field management.
+- [Coda Automation](./coda-automation/) - Automate Coda: docs, tables, rows, formulas, and automations.
+- [Google Sheets Automation](./googlesheets-automation/) - Automate Google Sheets: read/write cells, formatting, formulas, and batch operations.
+
+**Calendar & Scheduling**
+- [Cal.com Automation](./cal-com-automation/) - Automate Cal.com: event types, bookings, availability, and scheduling.
+- [Calendly Automation](./calendly-automation/) - Automate Calendly: events, invitees, event types, scheduling links, and availability.
+- [Google Calendar Automation](./google-calendar-automation/) - Automate Google Calendar: events, attendees, free/busy, and recurring schedules.
+- [Outlook Calendar Automation](./outlook-calendar-automation/) - Automate Outlook Calendar: events, attendees, reminders, and recurring schedules.
+
+**Social Media**
+- [Instagram Automation](./instagram-automation/) - Automate Instagram: posts, stories, comments, media, and business insights.
+- [LinkedIn Automation](./linkedin-automation/) - Automate LinkedIn: posts, profiles, companies, images, and comments.
+- [Reddit Automation](./reddit-automation/) - Automate Reddit: posts, comments, subreddits, voting, and moderation.
+- [TikTok Automation](./tiktok-automation/) - Automate TikTok: video uploads, queries, and creator management.
+- [Twitter Automation](./twitter-automation/) - Automate Twitter/X: tweets, search, users, lists, and engagement.
+- [YouTube Automation](./youtube-automation/) - Automate YouTube: videos, channels, playlists, comments, and subscriptions.
+
+**Marketing & Email Marketing**
+- [ActiveCampaign Automation](./activecampaign-automation/) - Automate ActiveCampaign: contacts, deals, campaigns, lists, and automations.
+- [Brevo Automation](./brevo-automation/) - Automate Brevo: contacts, email campaigns, transactional emails, and lists.
+- [ConvertKit Automation](./convertkit-automation/) - Automate ConvertKit (Kit): subscribers, tags, sequences, broadcasts, and forms.
+- [Klaviyo Automation](./klaviyo-automation/) - Automate Klaviyo: profiles, lists, segments, campaigns, and events.
+- [Mailchimp Automation](./mailchimp-automation/) - Automate Mailchimp: audiences, campaigns, templates, segments, and reports.
+
+**Support & Helpdesk**
+- [Freshdesk Automation](./freshdesk-automation/) - Automate Freshdesk: tickets, contacts, agents, groups, and canned responses.
+- [Freshservice Automation](./freshservice-automation/) - Automate Freshservice: tickets, assets, changes, problems, and service catalog.
+- [Help Scout Automation](./helpdesk-automation/) - Automate Help Scout: conversations, customers, mailboxes, and tags.
+- [Zendesk Automation](./zendesk-automation/) - Automate Zendesk: tickets, users, organizations, search, and macros.
+
+**E-commerce & Payments**
+- [Shopify Automation](./shopify-automation/) - Automate Shopify: products, orders, customers, inventory, and GraphQL queries.
+- [Square Automation](./square-automation/) - Automate Square: payments, customers, catalog, orders, and locations.
+- [Stripe Automation](./stripe-automation/) - Automate Stripe: charges, customers, products, subscriptions, and refunds.
+
+**Design & Collaboration**
+- [Canva Automation](./canva-automation/) - Automate Canva: designs, templates, assets, folders, and brand kits.
+- [Confluence Automation](./confluence-automation/) - Automate Confluence: pages, spaces, search, CQL, labels, and versions.
+- [DocuSign Automation](./docusign-automation/) - Automate DocuSign: envelopes, templates, signing, and document management.
+- [Figma Automation](./figma-automation/) - Automate Figma: files, components, comments, projects, and team management.
+- [Miro Automation](./miro-automation/) - Automate Miro: boards, sticky notes, shapes, connectors, and items.
+- [Webflow Automation](./webflow-automation/) - Automate Webflow: CMS collections, items, sites, publishing, and assets.
+
+**Analytics & Data**
+- [Amplitude Automation](./amplitude-automation/) - Automate Amplitude: events, cohorts, user properties, and analytics queries.
+- [Google Analytics Automation](./google-analytics-automation/) - Automate Google Analytics: reports, dimensions, metrics, and property management.
+- [Mixpanel Automation](./mixpanel-automation/) - Automate Mixpanel: events, funnels, cohorts, annotations, and JQL queries.
+- [PostHog Automation](./posthog-automation/) - Automate PostHog: events, persons, feature flags, insights, and annotations.
+- [Segment Automation](./segment-automation/) - Automate Segment: sources, destinations, tracking, and warehouse connections.
+
+**HR & People**
+- [BambooHR Automation](./bamboohr-automation/) - Automate BambooHR: employees, time off, reports, and directory management.
+
+**Automation Platforms**
+- [Make Automation](./make-automation/) - Automate Make (Integromat): scenarios, connections, and execution management.
+
+**Zoom & Meetings**
+- [Zoom Automation](./zoom-automation/) - Automate Zoom: meetings, recordings, participants, webinars, and reports.
 
 ## Getting Started
 
@@ -287,9 +449,21 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 
 ## Join the Community
 
-- Have questions about integrating Composio with your auth setup? [Hop on a quick call with us](https://calendly.com/thomas-composio/composio-enterprise-setup)
-- [Follow us on Twitter](https://x.com/composio)
-- [Join our Discord](https://discord.com/invite/composio)
+- [Join our Discord](https://discord.com/invite/composio) - Chat with other developers building Claude Skills
+- [Follow on Twitter/X](https://x.com/composio) - Stay updated on new skills and features
+- Questions? [support@composio.dev](mailto:support@composio.dev)
+
+---
+
+<p align="center">
+  <b>Join 20,000+ developers building agents that ship</b>
+</p>
+
+<p align="center">
+  <a href="https://platform.composio.dev/?utm_source=Github&utm_content=AwesomeSkills">
+    <img src="https://img.shields.io/badge/Get_Started_Free-4F46E5?style=for-the-badge" alt="Get Started"/>
+  </a>
+</p>
 
 ## License
 
