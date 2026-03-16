@@ -269,7 +269,7 @@
   }
 
   .skill-trigger {
-    font-size: 8pt;
+    font-size: 7.5pt;
     color: #9ca3af;
     font-weight: 400;
     margin-top: 2px;
@@ -281,6 +281,42 @@
     color: #4b5563;
     line-height: 1.65;
     font-weight: 400;
+  }
+
+  /* slash command pill */
+  .skill-cmd {
+    display: inline-block;
+    font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 5px;
+    background: #0f0f0f;
+    color: #a5b4fc;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  /* example prompt bubble */
+  .skill-example {
+    margin-top: 12px;
+    background: #f9fafb;
+    border-left: 3px solid #e5e7eb;
+    border-radius: 0 6px 6px 0;
+    padding: 8px 12px;
+    font-size: 8.5pt;
+    color: #6b7280;
+    font-style: italic;
+  }
+  .skill-example strong {
+    font-style: normal;
+    font-weight: 600;
+    color: #374151;
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 3px;
   }
 
   .skill-tag {
@@ -357,6 +393,89 @@
     <span>github.com/makladmk87-max/awesome-claude-skills</span>
   </div>
   <div class="cover-count">26<span>skills</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════ HOW TO USE -->
+<div style="padding:80px; page-break-after:always; min-height:100vh; background:#fff;">
+  <div style="font-size:8pt;letter-spacing:0.2em;text-transform:uppercase;color:#9ca3af;font-weight:500;margin-bottom:48px;">How to use these skills</div>
+
+  <!-- Step diagram -->
+  <div style="display:flex;align-items:flex-start;gap:0;margin-bottom:56px;">
+
+    <div style="flex:1;text-align:center;padding:0 16px;">
+      <div style="width:48px;height:48px;border-radius:50%;background:#0f0f0f;color:#fff;font-size:18pt;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">1</div>
+      <div style="font-size:11pt;font-weight:600;color:#111;margin-bottom:8px;">Install the skills</div>
+      <div style="font-size:8.5pt;color:#6b7280;line-height:1.6;">Run <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:8pt;">bash install.sh</code> in the repo root. Skills are copied into <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:8pt;">~/.claude/skills/</code> and become available globally.</div>
+    </div>
+
+    <div style="padding-top:24px;color:#d1d5db;font-size:18pt;">→</div>
+
+    <div style="flex:1;text-align:center;padding:0 16px;">
+      <div style="width:48px;height:48px;border-radius:50%;background:#0f0f0f;color:#fff;font-size:18pt;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">2</div>
+      <div style="font-size:11pt;font-weight:600;color:#111;margin-bottom:8px;">Open Claude</div>
+      <div style="font-size:8.5pt;color:#6b7280;line-height:1.6;">Use <strong>claude.ai</strong> in your browser, or the <strong>Claude Code CLI</strong> in your terminal. Skills work in both places.</div>
+    </div>
+
+    <div style="padding-top:24px;color:#d1d5db;font-size:18pt;">→</div>
+
+    <div style="flex:1;text-align:center;padding:0 16px;">
+      <div style="width:48px;height:48px;border-radius:50%;background:#6366f1;color:#fff;font-size:18pt;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">3</div>
+      <div style="font-size:11pt;font-weight:600;color:#111;margin-bottom:8px;">Type a slash command</div>
+      <div style="font-size:8.5pt;color:#6b7280;line-height:1.6;">Every skill has a <code style="background:#eef2ff;color:#6366f1;padding:2px 6px;border-radius:4px;font-size:8pt;font-weight:600;">/skill-name</code> command. Type it in the chat box and hit Enter to activate the skill.</div>
+    </div>
+
+  </div>
+
+  <!-- Anatomy of a card -->
+  <div style="background:#f9fafb;border-radius:14px;padding:32px 36px;margin-bottom:48px;">
+    <div style="font-size:8pt;letter-spacing:0.15em;text-transform:uppercase;color:#9ca3af;margin-bottom:20px;font-weight:500;">Anatomy of a skill card</div>
+    <div style="display:flex;gap:40px;align-items:flex-start;">
+      <!-- mock card -->
+      <div style="flex:1;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#6366f1;border-radius:12px 12px 0 0;"></div>
+        <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;">
+          <div style="width:36px;height:36px;border-radius:8px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🧠</div>
+          <div>
+            <div style="font-size:11pt;font-weight:600;color:#111;">Skill Name</div>
+            <div style="font-size:7.5pt;color:#9ca3af;">Category</div>
+          </div>
+        </div>
+        <div style="display:inline-block;font-family:monospace;font-size:8pt;font-weight:600;padding:3px 10px;border-radius:5px;background:#0f0f0f;color:#a5b4fc;margin-bottom:10px;">/skill-name</div>
+        <div style="font-size:9pt;color:#4b5563;line-height:1.6;margin-bottom:12px;">Plain-language description of what this skill does and when to use it.</div>
+        <div style="background:#f9fafb;border-left:3px solid #e5e7eb;border-radius:0 6px 6px 0;padding:8px 12px;">
+          <div style="font-size:7pt;font-weight:600;color:#374151;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px;">Example prompt</div>
+          <div style="font-size:8pt;color:#6b7280;font-style:italic;">"How you'd naturally ask for this in chat"</div>
+        </div>
+      </div>
+      <!-- annotations -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:14px;padding-top:8px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#6366f1;margin-top:3px;flex-shrink:0;"></div>
+          <div><div style="font-size:9pt;font-weight:600;color:#111;">Colour accent</div><div style="font-size:8pt;color:#6b7280;">Groups skills by category at a glance.</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#0f0f0f;margin-top:3px;flex-shrink:0;"></div>
+          <div><div style="font-size:9pt;font-weight:600;color:#111;">Slash command</div><div style="font-size:8pt;color:#6b7280;">Type this exactly in Claude to invoke the skill.</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#e5e7eb;margin-top:3px;flex-shrink:0;border:1px solid #d1d5db;"></div>
+          <div><div style="font-size:9pt;font-weight:600;color:#111;">Example prompt</div><div style="font-size:8pt;color:#6b7280;">A natural sentence you can copy-paste into Claude to get started immediately.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Platform note -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+    <div style="border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;">
+      <div style="font-size:10pt;font-weight:600;color:#111;margin-bottom:6px;">🌐 claude.ai (browser)</div>
+      <div style="font-size:8.5pt;color:#6b7280;line-height:1.6;">Type <code style="background:#f3f4f6;padding:1px 5px;border-radius:3px;">/skill-name</code> in the message box. Skills appear as suggestions as you type. Select and hit Enter — Claude loads the skill and waits for your input.</div>
+    </div>
+    <div style="border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;">
+      <div style="font-size:10pt;font-weight:600;color:#111;margin-bottom:6px;">⌨️ Claude Code CLI</div>
+      <div style="font-size:8.5pt;color:#6b7280;line-height:1.6;">Same slash commands work in the terminal. Run <code style="background:#f3f4f6;padding:1px 5px;border-radius:3px;">claude</code> to open a session, then type <code style="background:#f3f4f6;padding:1px 5px;border-radius:3px;">/skill-name</code> at any prompt. Skills have full access to your local filesystem and tools.</div>
+    </div>
+  </div>
 </div>
 
 <!-- ════════════════════════════════════════════════════ TOC -->
@@ -497,12 +616,14 @@
         <div class="skill-icon purple">🧠</div>
         <div>
           <div class="skill-name">Brainstorming</div>
-          <div class="skill-trigger">say: "brainstorm", "generate ideas", "think through this"</div>
+          <div class="skill-trigger">Creative · Ideation</div>
         </div>
       </div>
+      <div class="skill-cmd">/brainstorming</div>
       <div class="skill-body">
         Sometimes you don't need code — you need to think. The Brainstorming skill turns Claude into a structured creative partner. It helps you explore a problem from multiple angles, generate a wide range of options without judgment, and distill the best ideas into something actionable. Great for early-stage product decisions, naming, architecture trade-offs, or whenever you feel stuck and need fresh perspectives.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"I want to brainstorm names for my new developer tool that helps with API testing"</div>
       <span class="skill-tag purple">Creative</span>
     </div>
 
@@ -511,12 +632,14 @@
         <div class="skill-icon purple">📋</div>
         <div>
           <div class="skill-name">Planning</div>
-          <div class="skill-trigger">say: "plan this", "create a roadmap", "break this down"</div>
+          <div class="skill-trigger">Strategy · Roadmap</div>
         </div>
       </div>
+      <div class="skill-cmd">/planning</div>
       <div class="skill-body">
         The Planning skill turns fuzzy goals into concrete, ordered steps. Given a project or feature, it produces a structured plan with clear milestones, dependencies, and priorities — without jumping straight to code. Use it before any significant piece of work to get alignment on what needs to happen and in what order. It keeps things high-level enough to be useful for stakeholders, yet specific enough to actually execute against.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Plan how to add Stripe payments to my SaaS app — I need subscriptions and one-time purchases"</div>
       <span class="skill-tag purple">Strategy</span>
     </div>
 
@@ -540,12 +663,14 @@
         <div class="skill-icon purple">🔍</div>
         <div>
           <div class="skill-name">Code Review</div>
-          <div class="skill-trigger">say: "review this", "check my PR", "give feedback"</div>
+          <div class="skill-trigger">Quality · Security · Performance</div>
         </div>
       </div>
+      <div class="skill-cmd">/code-review</div>
       <div class="skill-body">
         Gives your code the same treatment a senior engineer would. It checks correctness, flags security issues, spots performance bottlenecks, and calls out style inconsistencies — with clear, constructive feedback rather than nitpicks. Useful before merging any PR or after finishing a feature.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Review the changes I just made to the auth module — focus on security and edge cases"</div>
       <span class="skill-tag purple">Quality</span>
     </div>
 
@@ -554,12 +679,14 @@
         <div class="skill-icon red">🐛</div>
         <div>
           <div class="skill-name">Debugging</div>
-          <div class="skill-trigger">say: "this is broken", "error:", "why is this failing"</div>
+          <div class="skill-trigger">Bug fixing · Root cause analysis</div>
         </div>
       </div>
+      <div class="skill-cmd">/debugging</div>
       <div class="skill-body">
         Systematic bug hunting. Rather than guessing, this skill reads error messages, traces execution paths, and narrows down root causes methodically. It explains what's wrong, why it's wrong, and fixes it — without touching unrelated code.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Getting TypeError: cannot read property 'map' of undefined on line 42 — here's the stack trace…"</div>
       <span class="skill-tag red">Fixing</span>
     </div>
 
@@ -568,12 +695,14 @@
         <div class="skill-icon green">✅</div>
         <div>
           <div class="skill-name">TDD · Test-Driven Development</div>
-          <div class="skill-trigger">say: "write tests first", "TDD", "red-green-refactor"</div>
+          <div class="skill-trigger">Testing · Red-green-refactor</div>
         </div>
       </div>
+      <div class="skill-cmd">/tdd</div>
       <div class="skill-body">
         Guides you through the red-green-refactor cycle properly. Write a failing test, implement just enough code to make it pass, then clean up. This skill keeps you honest about requirements and produces naturally well-tested code from the start.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"I want to build a price calculator function using TDD — start with the tests"</div>
       <span class="skill-tag green">Testing</span>
     </div>
 
@@ -582,12 +711,14 @@
         <div class="skill-icon teal">✨</div>
         <div>
           <div class="skill-name">Simplify</div>
-          <div class="skill-trigger">say: "simplify this", "clean up my changes", "quality pass"</div>
+          <div class="skill-trigger">Refactor · Quality pass</div>
         </div>
       </div>
+      <div class="skill-cmd">/simplify</div>
       <div class="skill-body">
         Runs a quality pass over code you just wrote — looking for redundant logic, missed reuse opportunities, and unnecessary complexity. It doesn't refactor for fun; it fixes what actually needs fixing and leaves the rest alone.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"I just finished the checkout flow — simplify it, there's probably duplicated logic"</div>
       <span class="skill-tag teal">Refactor</span>
     </div>
 
@@ -596,12 +727,14 @@
         <div class="skill-icon slate">🌿</div>
         <div>
           <div class="skill-name">Git Worktrees</div>
-          <div class="skill-trigger">say: "work on multiple branches", "parallel development"</div>
+          <div class="skill-trigger">Parallel branches · Multi-tasking</div>
         </div>
       </div>
+      <div class="skill-cmd">/git-worktrees</div>
       <div class="skill-body">
         Lets you work on multiple branches at the same time without stashing or constantly switching context. Each worktree is an independent checkout — perfect for reviewing a colleague's PR while still building your own feature.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Set up a worktree so I can review Sarah's PR while I keep working on my feature branch"</div>
       <span class="skill-tag slate">Git</span>
     </div>
 
@@ -610,12 +743,14 @@
         <div class="skill-icon slate">⌨️</div>
         <div>
           <div class="skill-name">Keybindings</div>
-          <div class="skill-trigger">say: "rebind ctrl+s", "change submit key", "add shortcut"</div>
+          <div class="skill-trigger">Shortcuts · Claude Code config</div>
         </div>
       </div>
+      <div class="skill-cmd">/keybindings</div>
       <div class="skill-body">
         Customise your Claude Code keyboard shortcuts. Add chord bindings, change the submit key, or remap any action — all saved to <code>~/.claude/keybindings.json</code>. Makes Claude Code feel exactly how you want it.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Change the submit key from Enter to Ctrl+Enter, and add Ctrl+K to clear the chat"</div>
       <span class="skill-tag slate">Config</span>
     </div>
 
@@ -631,12 +766,14 @@
         <div class="skill-icon teal">🔁</div>
         <div>
           <div class="skill-name">Loop</div>
-          <div class="skill-trigger">say: "/loop 5m /foo", "check deploy every 5 minutes", "run this repeatedly"</div>
+          <div class="skill-trigger">Recurring tasks · Polling · Automation</div>
         </div>
       </div>
+      <div class="skill-cmd">/loop</div>
       <div class="skill-body">
         Run any prompt or slash command on a recurring schedule. Useful for polling a deployment status, running a health check every few minutes, or automating any repeated task without babysitting the terminal. Just specify the interval and the command — Loop handles the rest. Not for one-off tasks; only invoke when repetition is the actual goal.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"/loop 5m /gsd-progress" — checks and reports your GSD project status every 5 minutes</div>
       <span class="skill-tag teal">Automation</span>
     </div>
   </div>
@@ -659,12 +796,14 @@
         <div class="skill-icon green">🚀</div>
         <div>
           <div class="skill-name">GSD · New Project</div>
-          <div class="skill-trigger">say: "start a new project", "bootstrap", "scaffold"</div>
+          <div class="skill-trigger">Bootstrap · Scaffold · Setup</div>
         </div>
       </div>
+      <div class="skill-cmd">/gsd-new-project</div>
       <div class="skill-body">
         The starting point for any new software project. This skill scaffolds the folder structure, installs tooling, configures environments, and gets you to a clean first commit — so you can spend energy on the actual problem rather than boilerplate setup.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Start a new Next.js SaaS app with Tailwind, Prisma, and Stripe — TypeScript, monorepo structure"</div>
       <span class="skill-tag green">Bootstrap</span>
     </div>
 
@@ -673,12 +812,14 @@
         <div class="skill-icon green">🗺️</div>
         <div>
           <div class="skill-name">GSD · Plan Phase</div>
-          <div class="skill-trigger">say: "plan this feature", "how should I implement X"</div>
+          <div class="skill-trigger">Implementation plan · Before coding</div>
         </div>
       </div>
+      <div class="skill-cmd">/gsd-plan-phase</div>
       <div class="skill-body">
         Before writing a single line of code, this skill breaks a feature or task into a concrete, ordered implementation plan. It forces you to think through edge cases and dependencies upfront — reducing rewrites and surprises during execution.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Plan how to add real-time notifications to our app using WebSockets"</div>
       <span class="skill-tag green">Planning</span>
     </div>
 
@@ -687,12 +828,14 @@
         <div class="skill-icon green">⚙️</div>
         <div>
           <div class="skill-name">GSD · Execute Phase</div>
-          <div class="skill-trigger">say: "execute the plan", "implement this", "build it"</div>
+          <div class="skill-trigger">Build · Implement · Ship</div>
         </div>
       </div>
+      <div class="skill-cmd">/gsd-execute-phase</div>
       <div class="skill-body">
         The doing phase. Given a plan, this skill works through each step methodically — writing code, running tests, and keeping track of what's done. It avoids scope creep and stays focused on shipping what was planned.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Execute the WebSocket notifications plan we just made — start with the backend"</div>
       <span class="skill-tag green">Build</span>
     </div>
 
@@ -701,12 +844,14 @@
         <div class="skill-icon green">🔎</div>
         <div>
           <div class="skill-name">GSD · Debug</div>
-          <div class="skill-trigger">say: "GSD debug", "focused bug fix", used within a GSD workflow</div>
+          <div class="skill-trigger">Focused bug fix · Within GSD workflow</div>
         </div>
       </div>
+      <div class="skill-cmd">/gsd-debug</div>
       <div class="skill-body">
         A focused debugging session within a larger GSD workflow. When execution hits a bug, this skill isolates it, identifies the root cause, and resolves it — then hands control back to the execute phase without losing momentum.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"The WebSocket connection keeps dropping after 30 seconds — debug this before we continue"</div>
       <span class="skill-tag green">Debug</span>
     </div>
 
@@ -715,12 +860,14 @@
         <div class="skill-icon green">📊</div>
         <div>
           <div class="skill-name">GSD · Progress</div>
-          <div class="skill-trigger">say: "where are we", "status update", "what's done"</div>
+          <div class="skill-trigger">Status update · What's done · What's next</div>
         </div>
       </div>
+      <div class="skill-cmd">/gsd-progress</div>
       <div class="skill-body">
         A status report for your current GSD workflow. It shows what's been completed, what's in progress, and what's still to come — keeping you and your team aligned without digging through commit logs.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Where are we on the notifications feature? What's left to do?"</div>
       <span class="skill-tag green">Status</span>
     </div>
 
@@ -744,12 +891,14 @@
         <div class="skill-icon pink">🎨</div>
         <div>
           <div class="skill-name">Figma · Implement Design</div>
-          <div class="skill-trigger">say: share a Figma link or screenshot and ask to "implement this"</div>
+          <div class="skill-trigger">Design → Code · Figma URL or screenshot</div>
         </div>
       </div>
+      <div class="skill-cmd">/figma-implement-design</div>
       <div class="skill-body">
         Share a Figma link or design screenshot and this skill converts it into production-ready frontend code — whether that's HTML/CSS, React, or another framework. It respects spacing, typography, colours, and component structure, producing clean code rather than rough approximations.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Implement this Figma frame as a React component using Tailwind: figma.com/file/…"</div>
       <span class="skill-tag pink">Design → Code</span>
     </div>
 
@@ -758,12 +907,14 @@
         <div class="skill-icon pink">📐</div>
         <div>
           <div class="skill-name">Figma · Design System Rules</div>
-          <div class="skill-trigger">say: "extract design system", "document our design tokens", "enforce design rules"</div>
+          <div class="skill-trigger">Design tokens · Component guidelines</div>
         </div>
       </div>
+      <div class="skill-cmd">/figma-design-system-rules</div>
       <div class="skill-body">
         Takes your Figma design system and extracts formal rules — design tokens, component usage guidelines, spacing conventions, and colour semantics. The output keeps your codebase and designs in sync, and gives engineers a clear reference for how to use the system correctly.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Extract the design rules from our Figma system and create a rules file for the repo"</div>
       <span class="skill-tag pink">Design System</span>
     </div>
 
@@ -772,12 +923,14 @@
         <div class="skill-icon pink">🔗</div>
         <div>
           <div class="skill-name">Figma · Code Connect</div>
-          <div class="skill-trigger">say: "set up Code Connect", "link Figma components to code"</div>
+          <div class="skill-trigger">Dev Mode · Component linking</div>
         </div>
       </div>
+      <div class="skill-cmd">/figma-code-connect</div>
       <div class="skill-body">
         Sets up Figma Code Connect so that when designers inspect a component in Figma Dev Mode, they see the actual code snippet from your codebase — not a generated approximation. Closes the loop between your component library and your design file, making handoff effortless.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Set up Code Connect for our Button and Modal components in the Figma design file"</div>
       <span class="skill-tag pink">Dev Mode</span>
     </div>
 
@@ -800,12 +953,14 @@
         <div class="skill-icon amber">📝</div>
         <div>
           <div class="skill-name">Mintlify</div>
-          <div class="skill-trigger">say: "update our docs", "add a Mintlify page", "configure navigation"</div>
+          <div class="skill-trigger">Docs site · MDX · Navigation</div>
         </div>
       </div>
+      <div class="skill-cmd">/mintlify</div>
       <div class="skill-body">
         Build, update, and optimise documentation sites powered by Mintlify. This skill handles adding new pages, writing MDX content, configuring navigation, customising themes, and deploying. Whether you're documenting an API, a product, or an internal tool — it makes your docs look professional and stay current. No more stale docs because updating them was too much friction.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Add a 'Quickstart' page to our Mintlify docs and add it to the Getting Started nav group"</div>
       <span class="skill-tag amber">Docs</span>
     </div>
   </div>
@@ -828,12 +983,14 @@
         <div class="skill-icon blue">🔍</div>
         <div>
           <div class="skill-name">Notion · Find</div>
-          <div class="skill-trigger">say: "find my X page in Notion"</div>
+          <div class="skill-trigger">Locate page by title</div>
         </div>
       </div>
+      <div class="skill-cmd">/notion-find</div>
       <div class="skill-body">
         Locates a specific Notion page by title or partial title match and returns its ID and URL. The fast way to jump to a page when you know roughly what it's called but don't want to click around.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Find my 'Q1 Roadmap' page in Notion"</div>
       <span class="skill-tag blue">Notion</span>
     </div>
 
@@ -842,12 +999,14 @@
         <div class="skill-icon blue">🔎</div>
         <div>
           <div class="skill-name">Notion · Search</div>
-          <div class="skill-trigger">say: "search Notion for X", "what pages exist about Y"</div>
+          <div class="skill-trigger">Full workspace search</div>
         </div>
       </div>
+      <div class="skill-cmd">/notion-search</div>
       <div class="skill-body">
         Searches across your entire Notion workspace — pages and databases — by keyword. Great for discovery when you're not sure exactly where something lives, or to explore what exists on a given topic.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Search Notion for anything related to our pricing strategy"</div>
       <span class="skill-tag blue">Notion</span>
     </div>
 
@@ -856,12 +1015,14 @@
         <div class="skill-icon blue">📄</div>
         <div>
           <div class="skill-name">Notion · Create Page</div>
-          <div class="skill-trigger">say: "create a Notion page", "add a note in Notion"</div>
+          <div class="skill-trigger">New page · Notes · Wiki</div>
         </div>
       </div>
+      <div class="skill-cmd">/notion-create-page</div>
       <div class="skill-body">
         Creates a new Notion page with content you specify. Whether it's a meeting note, a wiki entry, or a design doc — just tell Claude what to write and where, and it's done without opening the browser.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Create a Notion page titled 'Sprint 12 Retro' under the Engineering section with today's notes"</div>
       <span class="skill-tag blue">Notion</span>
     </div>
 
@@ -870,12 +1031,14 @@
         <div class="skill-icon blue">✅</div>
         <div>
           <div class="skill-name">Notion · Create Task</div>
-          <div class="skill-trigger">say: "add a task to Notion", "create a to-do in my database"</div>
+          <div class="skill-trigger">Add database record · Task · To-do</div>
         </div>
       </div>
+      <div class="skill-cmd">/notion-create-task</div>
       <div class="skill-body">
         Adds a new record to any Notion database — a task, a project, a CRM entry, whatever your database represents. Supports setting properties like status, priority, date, and assignee without touching the Notion UI.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Add a task 'Fix login bug' to our Tasks database, priority High, due Friday"</div>
       <span class="skill-tag blue">Notion</span>
     </div>
 
@@ -884,12 +1047,14 @@
         <div class="skill-icon blue">🗄️</div>
         <div>
           <div class="skill-name">Notion · Database Query</div>
-          <div class="skill-trigger">say: "list all tasks in Notion", "filter my database by status", "show overdue items"</div>
+          <div class="skill-trigger">Filter · Sort · List database records</div>
         </div>
       </div>
+      <div class="skill-cmd">/notion-database-query</div>
       <div class="skill-body">
         Query any Notion database with filters, sorting, and pagination. Pull a list of all open tasks, items due this week, entries with a specific tag — whatever slice of data you need. The result comes back cleanly so you can act on it immediately, without building a Notion integration yourself.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"List all tasks in my Tasks database where status is 'In Progress', sorted by due date"</div>
       <span class="skill-tag blue">Notion</span>
     </div>
 
@@ -913,12 +1078,14 @@
         <div class="skill-icon red">📸</div>
         <div>
           <div class="skill-name">Instagram · Fetch</div>
-          <div class="skill-trigger">say: share an Instagram URL and ask to "fetch this" or "download this"</div>
+          <div class="skill-trigger">Download post · Reel · Extract metadata</div>
         </div>
       </div>
+      <div class="skill-cmd">/instagram-fetch</div>
       <div class="skill-body">
         Paste an Instagram post, reel, or story URL and this skill downloads the media, extracts captions, and pulls metadata — all using <code>yt-dlp</code> under the hood. Works for public content out of the box; private content requires Instagram credentials. Useful for archiving content, analysing competitors, or repurposing media.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Fetch this Instagram reel and give me the caption and all metadata: instagram.com/reel/…"</div>
       <span class="skill-tag red">Social Media</span>
     </div>
 
@@ -927,12 +1094,14 @@
         <div class="skill-icon red">💡</div>
         <div>
           <div class="skill-name">Instagram · Prompt Extractor</div>
-          <div class="skill-trigger">say: share an Instagram post and ask "what prompt was used for this"</div>
+          <div class="skill-trigger">Reverse-engineer AI images · Creative research</div>
         </div>
       </div>
+      <div class="skill-cmd">/instagram-prompt-extractor</div>
       <div class="skill-body">
         Reverse-engineers the creative prompt or concept behind an AI-generated Instagram image. Share a post and this skill analyses the visual style, composition, and caption to deduce the most likely prompt — so you can recreate or riff on it. Great for creative research and understanding trending AI aesthetics.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"What AI prompt was likely used to create this image? [paste Instagram post URL or image]"</div>
       <span class="skill-tag red">AI Creative</span>
     </div>
 
@@ -941,12 +1110,14 @@
         <div class="skill-icon amber">📣</div>
         <div>
           <div class="skill-name">Adspirer</div>
-          <div class="skill-trigger">say: "create a Google Ads campaign", "analyse my Meta ads", "optimise my budget"</div>
+          <div class="skill-trigger">Google Ads · Meta Ads · Campaign management</div>
         </div>
       </div>
+      <div class="skill-cmd">/adspirer</div>
       <div class="skill-body">
         Manage Google Ads and Meta (Facebook/Instagram) advertising campaigns directly from Claude. Create campaigns, analyse performance metrics, write ad copy, optimise budgets, and troubleshoot underperforming ads — without leaving the terminal. Built for marketers and founders who want to move fast without switching between ad dashboards all day.
       </div>
+      <div class="skill-example"><strong>Example prompt</strong>"Analyse my Meta ad campaigns for this week and tell me which ones to pause and which to scale"</div>
       <span class="skill-tag amber">Advertising</span>
     </div>
 
