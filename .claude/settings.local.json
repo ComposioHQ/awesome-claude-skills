@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(connect-apps:setup)",
+      "Bash(python3 -c \"\nfrom composio import Composio\ncomposio = Composio\\(api_key='ak_KuIQ5_IMvfiOlKpSQjLS'\\)\nsession = composio.create\\(user_id='claude_user'\\)\nprint\\(session.mcp.url\\)\n\" 2>&1)",
+      "Bash(pip3 install:*)",
+      "Bash(pip3 show:*)",
+      "Bash(where pip3:*)",
+      "Bash(C:/Python314/python.exe -c \"\nfrom composio import Composio\ncomposio = Composio\\(api_key='ak_KuIQ5_IMvfiOlKpSQjLS'\\)\nsession = composio.create\\(user_id='claude_user'\\)\nprint\\(session.mcp.url\\)\n\" 2>&1)",
+      "Bash(ls *.md 2>/dev/null || ls *.yaml 2>/dev/null | head -20)",
+      "Bash(cd \"C:\\\\Users\\\\Mahmoud\\\\awesome-claude-skills\" && python send_test_email.py)",
+      "mcp__claude_ai_Notion__notion-create-pages",
+      "mcp__claude_ai_Notion__notion-search",
+      "mcp__claude_ai_Notion__notion-get-users",
+      "mcp__mcp-registry__search_mcp_registry",
+      "mcp__scheduled-tasks__list_scheduled_tasks",
+      "Bash(python3 -c \"import PyPDF2; print\\(''PyPDF2 available''\\)\")",
+      "Bash(python3 -c \"import pdfplumber; print\\(''pdfplumber available''\\)\")",
+      "Bash(python3 -c \"import fitz; print\\(''fitz available''\\)\")",
+      "Bash(pip install:*)",
+      "Bash(python3:*)",
+      "mcp__141e5e9d-c7b3-42a5-8bbe-29c926554ce8__notion-create-pages",
+      "Bash(node -e \":*)",
+      "Read(//c/Users/Mahmoud/.claude/**)",
+      "Bash(find ~/.claude/plugins -name *.json)",
+      "Bash(xargs grep:*)",
+      "Bash(find /c/Users/Mahmoud/.claude/plugins -name *.json -path */Notion/*)",
+      "Bash(ls /c/Users/Mahmoud/.claude/*.json)",
+      "Bash(find /c/Users/Mahmoud/.claude -name credentials*)",
+      "Bash(env)",
+      "Bash(find /c/Users/Mahmoud/.claude -name *.env -o -name .env)",
+      "Bash(find /c/Users/Mahmoud/.claude -name *.json -exec grep -l notion {})",
+      "Bash(2)",
+      "Bash(find /c/Users/Mahmoud -maxdepth 3 -name *.env -o -name .env)",
+      "Bash(head -10 grep -r NOTION /c/Users/Mahmoud/.claude/ --include=*.json -l)",
+      "Bash(grep -r \"ntn_\\\\|secret_\\\\|NOTION_TOKEN\\\\|notion_key\" /c/Users/Mahmoud/awesome-claude-skills/ --include=*.py --include=*.env --include=*.json -l)",
+      "Bash(head -5 find /c/Users/Mahmoud/awesome-claude-skills -name .env*)",
+      "Bash(cat ~/.claude/plugins/*/settings.json)"
+    ]
+  }
+}
