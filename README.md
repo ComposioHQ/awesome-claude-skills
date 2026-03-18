@@ -127,6 +127,7 @@ Skills for working with complex file formats:
 | **[frontend-slides](https://github.com/zarazhangrui/frontend-slides)** | Create animation-rich HTML presentations — from scratch or by converting PowerPoint files |
 | **[Expo Skills](https://github.com/expo/skills)** | Official skills by the Expo team for developing Expo apps |
 | **[shadcn/ui](https://ui.shadcn.com/docs/skills)** | Give Claude Code context on shadcn components as well as pattern enforcement |
+| **[ai-trust-evaluation](https://github.com/wan-huiyan/ai-trust-evaluation)** | Evaluate and design trust/accuracy frameworks for AI systems that extract intelligence from uncontrolled sources (open web, multi-source RAG). Covers the 17-strategy taxonomy, 39-issue registry, inversion principle, and persona-based trust UX. |
 
 _More community skills coming soon! Submit a PR to add your skill._
 
