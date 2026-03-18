@@ -109,6 +109,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Development & Code Tools
 
+- [Agent Review Panel](https://github.com/wan-huiyan/agent-review-panel) - Multi-agent adversarial review panel where Claude Code subagents with different perspectives review work, debate, reach consensus, then a supreme judge renders the final verdict. Based on ChatEval (ICLR 2024), AutoGen, MachineSoM (ACL 2024), and DebateLLM research. *By [@wan-huiyan](https://github.com/wan-huiyan)*
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
