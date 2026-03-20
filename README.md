@@ -190,6 +190,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Security & Systems
 
+- [agent-identity-verification](https://github.com/aporthq) - Agent identity verification and policy enforcement using APort. Sub-100ms policy checks, multi-level assurance, and portable agent passports for AI agents.
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
