@@ -133,6 +133,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [widemem](https://github.com/remete618/widemem-skill) - Persistent AI memory with semantic search, confidence scoring, and quality gates. Remembers at scale, knows when it doesn't. *By [@remete618](https://github.com/remete618)*
 
 ### Data & Analysis
 
