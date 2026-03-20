@@ -212,6 +212,7 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 - [ClickUp Automation](./clickup-automation/) - Automate ClickUp: tasks, lists, spaces, goals, and time tracking.
 - [Jira Automation](./jira-automation/) - Automate Jira: issues, projects, boards, sprints, and JQL queries.
 - [Linear Automation](./linear-automation/) - Automate Linear: issues, projects, cycles, teams, and workflows.
+n- [claude-handoff](https://github.com/REMvisual/claude-handoff) - Cross-session handoff system for Claude Code enabling context continuity, chain tracking, and structured work summaries between sessions. *By [@REMvisual](https://github.com/REMvisual)*
 - [Monday Automation](./monday-automation/) - Automate Monday.com: boards, items, columns, groups, and workspaces.
 - [Notion Automation](./notion-automation/) - Automate Notion: pages, databases, blocks, comments, and search.
 - [Todoist Automation](./todoist-automation/) - Automate Todoist: tasks, projects, sections, labels, and filters.
