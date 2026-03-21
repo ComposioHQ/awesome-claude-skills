@@ -69,8 +69,9 @@ curl -o ~/.claude/skills/spawn-tasks/SKILL.md \
 ## Requirements
 
 - [Claude Code](https://claude.ai/code) CLI (`claude`)
-- tmux (recommended) or macOS Terminal.app
+- tmux (recommended) or macOS Terminal.app as fallback
 - A git repository (worktrees require git)
+- **Platform:** macOS and Linux only (requires tmux or a compatible terminal emulator; not supported on Windows)
 
 ## Tips
 
