@@ -39,6 +39,38 @@ Run:
 - Read my papers and tell me what ideas are worth trying.
 - What papers matter most for my current problem?
 
+## Example
+
+### Example Input
+
+User prompt:
+
+> I work on diffusion models and inverse problems. My papers are in `~/papers/`. Please read my papers and give me today's research digest.
+
+### Example Output
+
+Saved digest to:
+
+`~/.claude/research-junshi/digests/2026-03-19.md`
+
+Top ideas for today:
+
+1. **Weak-prior posterior calibration for inverse problems**  
+   - **Pitch**: Study when weak diffusion priors still give calibrated uncertainty in data-informative regimes.  
+   - **First experiment**: Compare posterior coverage under strong vs. weak priors on a small Gaussian deblurring benchmark.  
+   - **Main risk**: Coverage may look good only because the test setting is too simple.
+
+2. **Noise-space proposal learning for faster posterior sampling**  
+   - **Pitch**: Replace per-instance noise optimization with a learned conditional proposal over latent noise.  
+   - **First experiment**: Train a small conditional model to predict good initial noise on one inverse-problem task and compare runtime against optimization-based baselines.  
+   - **Main risk**: The learned proposal may collapse to a narrow set of modes.
+
+3. **Antithetic latent sampling for uncertainty quantification**  
+   - **Pitch**: Use negatively correlated latent-noise pairs to reduce Monte Carlo variance in posterior summaries.  
+   - **First experiment**: Measure variance reduction for posterior mean estimation using paired vs. independent latent samples.  
+   - **Main risk**: Negative correlation may weaken after passing through the generator.
+
+
 ## What This Skill Does
 
 Junshi works in three stages:
