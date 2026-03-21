@@ -110,6 +110,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Development & Code Tools
 
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
+- [AuraKit](https://github.com/smorky850612/Aurakit) - All-in-one full-stack development skill with 28 intelligent modes, 6-layer security, and 65% token savings. One `/aura` command for Build, Fix, Deploy, Review, TDD, and more. _By [@smorky850612](https://github.com/smorky850612)_
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
 - [Claude Code Terminal Title](https://github.com/bluzername/claude-code-terminal-title) - Gives each Claud-Code terminal window a dynamic title that describes the work being done so you don't lose track of what window is doing what.
