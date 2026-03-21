@@ -41,13 +41,10 @@ Run:
 
 ## Example
 
-### Example Input
+**User**: "I work on diffusion models and inverse problems. My papers are in `~/papers/`. Please read my papers and give me today's research digest."
 
-User prompt:
 
-> I work on diffusion models and inverse problems. My papers are in `~/papers/`. Please read my papers and give me today's research digest.
-
-### Example Output
+**Output**:
 
 Saved digest to:
 
