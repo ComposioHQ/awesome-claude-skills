@@ -168,6 +168,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Theme Factory](./theme-factory/) - Applies professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages with 10 pre-set themes.
 - [Video Downloader](./video-downloader/) - Downloads videos from YouTube and other platforms for offline viewing, editing, or archival with support for various formats and quality options.
 - [youtube-transcript](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript) - Fetch transcripts from YouTube videos and prepare summaries.
+- [AceDataCloud Agent Skills](https://github.com/AceDataCloud/Skills) - 18 production-ready skills for AI-powered content generation: music (Suno), images (Midjourney, Flux, Seedream), videos (Luma, Sora, Veo, Kling, Hailuo, Seedance), LLM chat (50+ models), and web search. Each skill pairs with MCP servers published to PyPI. *By [@AceDataCloud](https://github.com/AceDataCloud)*
 
 ### Productivity & Organization
 
