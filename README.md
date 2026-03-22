@@ -190,6 +190,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Security & Systems
 
+- [clawsearch](https://clawsearch.cc) - Safe skill discovery search engine with Trust Score, 10-language semantic search, and pre-install security guard (`npx clawsearch-guard`). *By [@anthropics](https://github.com/anthropics)*
+- [clawsec](https://clawsec.cc) - Security audit platform for AI agent skills with 5-tier analysis (static, pattern matching, LLM semantic, Firecracker sandbox, LLM review) and Trust Score system. Detects malicious patterns, data exfiltration, and prompt injection in Claude Code skills. *By [@anthropics](https://github.com/anthropics)*
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
