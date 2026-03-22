@@ -1,0 +1,8 @@
+{
+  "name": "connect-apps",
+  "description": "Manage auth and connect to 500+ apps using Composio. Perform real actions from Claude Code - send emails, create issues, post messages, and more.",
+  "author": {
+    "name": "Composio",
+    "email": "support@composio.dev"
+  }
+}
