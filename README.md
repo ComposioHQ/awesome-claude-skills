@@ -187,6 +187,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [outline](https://github.com/sanjay3290/ai-skills/tree/main/skills/outline) - Search, read, create, and manage documents in Outline wiki instances (cloud or self-hosted). *By [@sanjay3290](https://github.com/sanjay3290)*
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
 - [test-fixing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing) - Detect failing tests and propose patches or fixes.
+- [Viboscope](https://github.com/ivankoriako/viboscope) - Find compatible people (cofounders, project partners, mastermind groups, friends) through deep psychological compatibility matching across 9 dimensions and 7 search contexts. *By [@ivankoriako](https://github.com/ivankoriako)*
 
 ### Security & Systems
 
