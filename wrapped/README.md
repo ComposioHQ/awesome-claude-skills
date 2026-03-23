@@ -3,7 +3,7 @@
 <img src="banner.svg" alt="Claude Wrapped" width="100%"/>
 
 <br/>
-
+github.com/natedemoss/Claude-Code-Wrapped-Skill
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-blueviolet?style=flat-square&logo=anthropic&logoColor=white)](https://claude.ai/claude-code)
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey?style=flat-square)](#installation)
