@@ -11,5 +11,5 @@ Run the following command exactly, then respond with only this message — nothi
 **Claude Code Wrapped is opening in a new window** — use `SPACE` / `ENTER` to advance slides, `Q` to quit.
 
 ```bash
-python3 -c "import subprocess; subprocess.Popen(['python3', '${CLAUDE_SKILL_DIR}/wrapped.py'], creationflags=subprocess.CREATE_NEW_CONSOLE)"
+python "${CLAUDE_SKILL_DIR}/wrapped.py"
 ```
