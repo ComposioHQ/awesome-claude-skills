@@ -59,10 +59,10 @@ Each section is its own slide. Press `SPACE` to advance, `Q` to quit.
 git clone https://github.com/natedemoss/Claude-Code-Wrapped-Skill.git
 
 # macOS / Linux
-cp -r Claude-Code-Wrapped-Skill ~/.claude/skills/wrapped
+cp -r Claude-Code-Wrapped-Skill ~/.config/claude-code/skills/wrapped
 
 # Windows (PowerShell)
-Copy-Item -Recurse Claude-Code-Wrapped-Skill "$env:USERPROFILE\.claude\skills\wrapped"
+Copy-Item -Recurse Claude-Code-Wrapped-Skill "$env:USERPROFILE\.config\claude-code\skills\wrapped"
 ```
 
 **2. That's it.** No dependencies beyond Python 3.8+. No API keys. No setup.
