@@ -721,8 +721,9 @@ def main():
     else:
         tools, files = compute_session_stats()
         slashes      = slash_stats(history)
-        avg_len      = sum(prompt_lengths(history)) / max(len(history), 1)
-        _save_derived_cache(tools, files, slashes, avg_len)
+        # avg_len is not used anywhere when the cache is loaded; avoid
+        # computing it while keeping the cache-writing interface stable.
+        _save_derived_cache(tools, files, slashes, 0)
 
     archetypes = score_archetypes(tools, history, stats)
 
