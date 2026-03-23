@@ -137,6 +137,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Data & Analysis
 
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
+- [ML Feature Evaluator](https://github.com/wan-huiyan/ml-feature-evaluator) - Structured 10-step go/no-go diagnostic for adding features to production ML models. *By [@wan-huiyan](https://github.com/wan-huiyan)*
+- [ML Training Window Assessor](https://github.com/wan-huiyan/ml-training-window-assessor) - Evaluate ML training window extensions with per-output label validity, drift checks, and architecture recommendations. *By [@wan-huiyan](https://github.com/wan-huiyan)*
 - [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
