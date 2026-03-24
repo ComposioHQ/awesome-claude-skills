@@ -1,10 +1,6 @@
 ---
 name: xvary-stock-research
 description: Use when building thesis-driven equity analysis in Claude Code from public SEC EDGAR data and market snapshots — workflows /analyze, /score, /compare with bundled Python tools.
-allowed-tools: Read, Write, Glob, Grep, Bash
-model: inherit
-version: 1.0.0
-license: MIT
 ---
 
 # XVARY Stock Research Skill
