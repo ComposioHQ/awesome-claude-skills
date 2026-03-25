@@ -110,6 +110,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Development & Code Tools
 
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
+- [autoresearch](https://github.com/lendtrain/autoresearch-for-skills) - Autonomous skill optimizer using Karpathy's autoresearch methodology. Runs real experiments on any skill, scores outputs 0-100, mutates the prompt, keeps improvements. Plugin includes /autoresearch skill, auto-screenshot hook, and stop-gate hook. *By [@tonydavis](https://github.com/lendtrain)*
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
 - [Claude Code Terminal Title](https://github.com/bluzername/claude-code-terminal-title) - Gives each Claud-Code terminal window a dynamic title that describes the work being done so you don't lose track of what window is doing what.
