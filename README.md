@@ -194,6 +194,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+- [cc-safe-setup](https://github.com/yurukusa/cc-safe-setup) - One-command safety hooks for Claude Code: blocks destructive commands, prevents secret leaks, guards branch pushes. 300+ hooks, 46 CLI commands.
 
 ### App Automation via Composio
 
