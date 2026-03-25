@@ -110,6 +110,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Productivity & Organization
 
+- [Claude Code Power Stack](https://github.com/bluzername/claude-code-power-stack) - Curated toolkit bundling Ghost (persistent memory), cc-conversation-search (cross-project session search), session naming, and Manus-style file-based planning into one-command install with cheat sheet PDF. *By [@bluzername](https://github.com/bluzername)*
+
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [Raffle Winner Picker](./raffle-winner-picker/) - Randomly selects winners from lists, spreadsheets, or Google Sheets for giveaways and contests with cryptographically secure randomness.
