@@ -6,7 +6,6 @@ Using consistent, well-designed color palettes makes GIFs look professional
 and polished instead of random and amateurish.
 """
 
-from typing import Optional
 import colorsys
 
 

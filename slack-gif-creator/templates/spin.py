@@ -13,7 +13,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from PIL import Image
 from core.gif_builder import GIFBuilder
-from core.frame_composer import create_blank_frame, draw_emoji_enhanced, draw_circle
+from core.frame_composer import create_blank_frame, draw_emoji_enhanced
 from core.easing import interpolate
 
 
