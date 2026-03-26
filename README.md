@@ -110,6 +110,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Development & Code Tools
 
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
+- [Clarvia MCP](https://github.com/clarvia-project/scanner) - AEO (Agent Experience Optimization) scanner for MCP servers and AI tools. Gate-check APIs before using them, score your own MCP server, and find better alternatives from 15,400+ indexed tools. Install: `claude mcp add clarvia -- npx -y clarvia-mcp-server`. *By [@clarvia-project](https://github.com/clarvia-project)*
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
 - [Claude Code Terminal Title](https://github.com/bluzername/claude-code-terminal-title) - Gives each Claud-Code terminal window a dynamic title that describes the work being done so you don't lose track of what window is doing what.
