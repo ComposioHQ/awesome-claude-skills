@@ -179,8 +179,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
-- [memorykeeper](https://github.com/nardovibecoding/memorykeeper) - Automated memory lifecycle — mine sessions, detect stale entries, promote patterns to enforced rules, capacity monitoring.
-- [claudemd-trim](https://github.com/nardovibecoding/claudemd-trim) - Audit and optimize CLAUDE.md rules — classify as internalized/custom/historical/redundant, trim bloat, save context window tokens.
+- [memorykeeper](https://github.com/nardovibecoding/claude-skillbox/tree/main/memorykeeper) - Automated memory lifecycle — mine sessions, detect stale entries, promote patterns to enforced rules, capacity monitoring.
+- [claudemd-trim](https://github.com/nardovibecoding/claude-skillbox/tree/main/claudemd-trim) - Audit and optimize CLAUDE.md rules — classify as internalized/custom/historical/redundant, trim bloat, save context window tokens.
 
 ### Collaboration & Project Management
 
