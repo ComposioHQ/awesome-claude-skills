@@ -179,6 +179,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [memory-keeper](https://github.com/nardovibecoding/claude-curated/tree/main/memory-keeper) - Automated memory lifecycle — mine sessions, detect stale entries, promote patterns to enforced rules, capacity monitoring.
+- [claude-md-trim](https://github.com/nardovibecoding/claude-curated/tree/main/claude-md-trim) - Audit and optimize CLAUDE.md rules — classify as internalized/custom/historical/redundant, trim bloat, save context window tokens.
 
 ### Collaboration & Project Management
 
@@ -194,6 +196,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+- [skill-guard](https://github.com/nardovibecoding/claude-curated/tree/main/skill-guard) - Scan Claude Code skills for malicious code, prompt injection, and exfiltration before installation. 60 detection patterns, 14 threat categories, PASS/WARN/FAIL verdicts.
 
 ### App Automation via Composio
 
