@@ -13,7 +13,6 @@ import random
 sys.path.append(str(Path(__file__).parent.parent))
 
 from PIL import Image, ImageDraw
-import numpy as np
 from core.gif_builder import GIFBuilder
 from core.frame_composer import create_blank_frame, draw_emoji_enhanced
 from core.visual_effects import ParticleSystem
