@@ -36,7 +36,7 @@
 A curated list of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API.
 
 
-> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
+> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how ?](./connect/)
 
 ---
 
@@ -65,11 +65,11 @@ exit
 claude
 ```
 
-> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
+> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how ?](./connect/)
 
 If you receive the email, Claude is now connected to 500+ apps.
 
-**[See all supported apps →](https://composio.dev/toolkits)**
+**[See all supported apps ?](https://composio.dev/toolkits)**
 
 ---
 
@@ -129,6 +129,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Skill Seekers](https://github.com/yusufkaraaslan/Skill_Seekers) - Automatically converts any documentation website into a Claude AI skill in minutes. *By [@yusufkaraaslan](https://github.com/yusufkaraaslan)*
 - [software-architecture](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/ddd/skills/software-architecture) - Implements design patterns including Clean Architecture, SOLID principles, and comprehensive software design best practices.
 - [subagent-driven-development](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - Dispatches independent subagents for individual tasks with code review checkpoints between iterations for rapid, controlled development.
+- [SymCLI Math Skill](https://github.com/Wowo51/Sym) - Execute SymCLI to solve math equations, optimize tensor graphs, or analyze C# code for vulnerabilities. Use when you need a deterministic 'System 2' math engine to prevent hallucination.
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
@@ -197,7 +198,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### App Automation via Composio
 
-Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://composio.dev). Each skill includes tool sequences, parameter guidance, known pitfalls, and quick reference tables — all using real tool slugs discovered from Composio's API.
+Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://composio.dev). Each skill includes tool sequences, parameter guidance, known pitfalls, and quick reference tables � all using real tool slugs discovered from Composio's API.
 
 **CRM & Sales**
 - [Close Automation](./close-automation/) - Automate Close CRM: leads, contacts, opportunities, activities, and pipelines.
@@ -315,7 +316,7 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 
 ### Using Skills in Claude.ai
 
-1. Click the skill icon (🧩) in your chat interface.
+1. Click the skill icon (??) in your chat interface.
 2. Add skills from the marketplace or upload custom skills.
 3. Claude automatically activates relevant skills based on your task.
 
@@ -365,10 +366,10 @@ Each skill is a folder containing a `SKILL.md` file with YAML frontmatter:
 
 ```
 skill-name/
-├── SKILL.md          # Required: Skill instructions and metadata
-├── scripts/          # Optional: Helper scripts
-├── templates/        # Optional: Document templates
-└── resources/        # Optional: Reference files
++-- SKILL.md          # Required: Skill instructions and metadata
++-- scripts/          # Optional: Helper scripts
++-- templates/        # Optional: Document templates
++-- resources/        # Optional: Reference files
 ```
 
 ### Basic Skill Template
@@ -475,3 +476,4 @@ Individual skills may have different licenses - please check each skill's folder
 **Note**: Claude Skills work across Claude.ai, Claude Code, and the Claude API. Once you create a skill, it's portable across all platforms, making your workflows consistent everywhere you use Claude.
 
 - [AgentsKB](https://agentskb.com) - Upgrade your AI with researched answers. We did the research so your AI gets it right the first time.
+
