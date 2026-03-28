@@ -148,6 +148,12 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [Client Acquisition](https://github.com/koinod/koino-skills/tree/main/client-acquisition) - Full-funnel B2B client acquisition with ICP scoring, personalized outreach sequences, and pipeline management. *By [@koinod](https://github.com/koinod)*
+- [Cold Email Writer](https://github.com/koinod/koino-skills/tree/main/cold-email-writer) - Personalized cold email sequences using P.A.S. framework with A/B variants. *By [@koinod](https://github.com/koinod)*
+- [Lead Scorer](https://github.com/koinod/koino-skills/tree/main/lead-scorer) - Score prospects 0-100 on BANT/MEDDIC criteria — HOT / WARM / COLD / DISQUALIFIED. *By [@koinod](https://github.com/koinod)*
+- [Proposal Generator](https://github.com/koinod/koino-skills/tree/main/proposal-generator) - Generate service proposals in 60 seconds with ROI projections and pricing tiers. *By [@koinod](https://github.com/koinod)*
+- [Sales Objection Coach](https://github.com/koinod/koino-skills/tree/main/sales-objection-coach) - Practice handling objections with 7 frameworks including LAER, Feel-Felt-Found, and Boomerang. *By [@koinod](https://github.com/koinod)*
+- [Competitor Analyzer](https://github.com/koinod/koino-skills/tree/main/competitor-analyzer) - Deep competitive analysis with pricing intelligence, feature gaps, and positioning insights. *By [@koinod](https://github.com/koinod)*
 
 ### Communication & Writing
 
