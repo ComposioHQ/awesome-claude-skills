@@ -177,6 +177,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [n8n-skills](https://github.com/haunchen/n8n-skills) - Enables AI assistants to directly understand and operate n8n workflows.
 - [Raffle Winner Picker](./raffle-winner-picker/) - Randomly selects winners from lists, spreadsheets, or Google Sheets for giveaways and contests with cryptographically secure randomness.
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
+- [promptle-claude](https://github.com/jacobvip/promptle-claude) - Play Promptle, an AI image prompt guessing game, while waiting for Claude Code background tasks. Get notified when your agent finishes. *By [@jacobvip](https://github.com/jacobvip)*
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
 
