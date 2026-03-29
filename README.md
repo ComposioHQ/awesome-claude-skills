@@ -158,6 +158,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [WhatsApp Channel Plugin](https://github.com/Rich627/whatsapp-claude-plugin) - Connect Claude Code to WhatsApp as a channel plugin with two-way messaging, voice transcription, group chat with AI personalities, permission relay, and cron scheduling. Runs 24/7 on headless setups. *By [@Rich627](https://github.com/Rich627)*
 
 ### Creative & Media
 
