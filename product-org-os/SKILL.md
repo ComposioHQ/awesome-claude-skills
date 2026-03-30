@@ -5,7 +5,7 @@ description: An entire product organization as AI agents — 133 skills, 13 agen
 
 # Product Org OS
 
-A Claude Code plugin that gives you an AI-powered product organization. 13 specialized agents collaborate like a real product team — each with a distinct role, perspective, and expertise.
+An entire product organization that becomes your superpower. 13 specialized agents collaborate like a real product team — each with a distinct role, perspective, and expertise. Built on the Agent Skills open standard — works with Claude Code, Cursor, Copilot, Gemini CLI, and other compatible tools.
 
 ## When to Use This Skill
 
@@ -27,6 +27,9 @@ A Claude Code plugin that gives you an AI-powered product organization. 13 speci
 
 ### Install
 
+Point your agent at the [agent guide](https://github.com/yohayetsion/product-org-os/blob/main/product-org-plugin/agent-guide.md) — it handles the rest.
+
+Or install directly in Claude Code:
 ```bash
 claude plugins install github:yohayetsion/product-org-os
 ```
