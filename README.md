@@ -194,7 +194,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
-- [zclean](https://github.com/whynowlab/zclean) - CLI tool that cleans up orphan processes left behind by AI coding tools like Claude Code to reduce wasted memory after sessions end.
+- [zclean](https://github.com/TheStack-ai/zclean) - CLI tool that cleans up orphan processes left behind by AI coding tools like Claude Code to reduce wasted memory after sessions end.
 
 ### App Automation via Composio
 
