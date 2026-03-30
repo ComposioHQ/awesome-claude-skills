@@ -29,12 +29,12 @@ A persistent memory layer for AI coding assistants that remembers context across
 
 **macOS (Apple Silicon) / Linux:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/whynowlab/jarvis-orb/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/TheStack-ai/jarvis-orb/main/install.sh | bash
 ```
 
 **Windows (PowerShell):**
 ```powershell
-irm https://raw.githubusercontent.com/whynowlab/jarvis-orb/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/TheStack-ai/jarvis-orb/main/install.ps1 | iex
 ```
 
 The installer configures the MCP server and launches the desktop orb automatically.
