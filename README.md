@@ -100,7 +100,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ## Skills
 
 ### Document Processing
-
+- [ECC Skills Explorer](https://github.com/Hayder-IRAQ/claude-code-skills-explorer) - Browse 136+ Everything Claude Code skills with a modern bilingual UI (AR/EN). Static HTML + Live Python server.
 - [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
 - [pdf](https://github.com/anthropics/skills/tree/main/skills/pdf) - Extract text, tables, metadata, merge & annotate PDFs.
 - [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) - Read, generate, and adjust slides, layouts, templates.
