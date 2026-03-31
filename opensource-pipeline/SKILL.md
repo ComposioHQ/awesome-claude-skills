@@ -25,6 +25,15 @@ This skill guides a private project through a safe, automated 3-stage pipeline b
 
 ## How to Use
 
+### Step 1 Parameters
+
+When starting the pipeline, Claude will ask:
+
+- **Project path or name?** — path to the private project, or a name if it's on the current host
+- **GitHub org or username?** — the GitHub account where the public repo will be created (e.g. `my-org` or `my-username`)
+- **License?** — defaults to MIT; options: MIT, Apache-2.0, GPL-3.0, AGPL-3.0, unlicense
+- **Target staging directory?** — defaults to `~/opensource-staging/<project-name>`
+
 ### Basic Usage
 
 ```
@@ -88,7 +97,7 @@ Proceed with GitHub creation? (yes/no/review first)
 
 - Always run the full pipeline (`/opensource fork`) for new releases — never skip the sanitizer
 - The skill stages everything in `~/opensource-staging/` so you can review before any public push
-- If the sanitizer returns FAIL, the pipeline halts and shows exactly what needs to be fixed
+- If the sanitizer returns FAIL, the pipeline halts and shows exactly what needs to be fixed; after 3 consecutive FAIL results the pipeline stops and requires manual review before retrying
 - Use `/opensource verify` to re-audit after applying manual fixes
 - The packager infers project architecture from the codebase — review `CLAUDE.md` before pushing
 
