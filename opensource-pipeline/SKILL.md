@@ -100,6 +100,8 @@ Proceed with GitHub creation? (yes/no/review first)
 - If the sanitizer returns FAIL, the pipeline halts and shows exactly what needs to be fixed; after 3 consecutive FAIL results the pipeline stops and requires manual review before retrying
 - Use `/opensource verify` to re-audit after applying manual fixes
 - The packager infers project architecture from the codebase — review `CLAUDE.md` before pushing
+- Certificate/key files (`*.pem`, `*.key`) are handled with nuance: real private keys are blocked, test/self-signed certs are flagged for review
+- `.env.example` is validated to contain only placeholder values — never real secrets
 
 ## Common Use Cases
 
