@@ -131,6 +131,32 @@ Your PR should:
   - Attribution/inspiration source
   - Example of how it's used
 
+## Security Requirements
+
+All contributed skills are reviewed for security. Your skill **must not**:
+
+1. **Contain secrets** — No API keys, tokens, passwords, or private IPs. Use placeholders like `your-api-key-here`.
+2. **Modify system configuration** — Do not write to `~/.mcp.json`, `~/.bashrc`, `/etc/`, or other system files without explicit user confirmation.
+3. **Auto-install packages** — Do not run `pip install`, `npm install`, or similar without user consent. Never use `--break-system-packages`.
+4. **Fetch and execute remote code** — No `curl | bash`, `wget | sh`, or downloading scripts to execute at runtime.
+5. **Exfiltrate data** — Do not instruct Claude to send user data, environment variables, or file contents to external URLs.
+6. **Use unsafe code patterns** — No `shell=True` with user input, no `eval()`/`exec()` on untrusted data, no `pickle.loads()` on untrusted data.
+7. **Bypass safety guardrails** — No prompt injection patterns ("ignore previous instructions", "you are now", etc.).
+
+### Security Review Checklist (for reviewers)
+
+Before approving a PR, verify:
+
+- [ ] No hardcoded credentials, API keys, tokens, or private network addresses
+- [ ] No scripts that execute with `shell=True` or `eval()` on user-controlled input
+- [ ] No auto-installation of packages without user consent
+- [ ] No writing to system config files (`~/.mcp.json`, etc.) without explicit confirmation
+- [ ] No fetching and executing remote scripts
+- [ ] All external URLs use HTTPS and point to trusted domains
+- [ ] SKILL.md instructions do not contain prompt injection vectors
+- [ ] Scripts in `scripts/` directory are reviewed for command injection
+- [ ] Dependencies in requirements.txt/package.json are pinned to specific versions
+
 ## Code of Conduct
 
 - Be respectful and constructive
