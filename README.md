@@ -86,6 +86,7 @@ If you receive the email, Claude is now connected to 500+ apps.
   - [Productivity & Organization](#productivity--organization)
   - [Collaboration & Project Management](#collaboration--project-management)
   - [Security & Systems](#security--systems)
+  - [Insurance & Roofing](#insurance--roofing)
   - [App Automation via Composio](#app-automation-via-composio)
 - [Getting Started](#getting-started)
 - [Creating Skills](#creating-skills)
@@ -194,6 +195,15 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+
+### Insurance & Roofing
+
+| Skill | Description |
+|-------|-------------|
+| [storm-damage-analyzer](storm-damage-analyzer/) | Analyze storm damage data, generate severity reports using spatial queries |
+| [roof-estimate-generator](roof-estimate-generator/) | Generate detailed roofing estimates with materials, labor, and insurance line items |
+| [property-inspection-workflow](property-inspection-workflow/) | Manage property inspections with checklists, photo docs, and reports |
+| [client-delivery-pipeline](client-delivery-pipeline/) | Package and deliver professional reports and estimates to clients |
 
 ### App Automation via Composio
 
