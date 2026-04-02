@@ -74,5 +74,5 @@ The client delivery pipeline depends on RoofForge's desktop PDF generation:
 | Environment | Base URL | Notes |
 |-------------|----------|-------|
 | dev | `http://localhost:8000/api/v1` | Local development |
-| tailscale | `http://100.89.65.121:8000/api/v1` | Private tunnel |
+| tailscale | `http://<tailscale-ip>:8000/api/v1` | Private tunnel |
 | prod | `https://api.storm.estimap.com/api/v1` | Requires `API_KEY` env var |

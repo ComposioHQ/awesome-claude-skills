@@ -209,6 +209,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://composio.dev). Each skill includes tool sequences, parameter guidance, known pitfalls, and quick reference tables — all using real tool slugs discovered from Composio's API.
 
+> **Security Notice:** Composio skills route tool discovery and execution through `rube.app`, a third-party service. By using these skills, data from connected apps (email, Slack, CRM, etc.) may flow through this service. Review [Composio's security documentation](https://composio.dev) before connecting sensitive accounts. Always use `RUBE_MANAGE_CONNECTIONS` to verify active connections before executing tools.
+
 **CRM & Sales**
 - [Close Automation](./close-automation/) - Automate Close CRM: leads, contacts, opportunities, activities, and pipelines.
 - [HubSpot Automation](./hubspot-automation/) - Automate HubSpot CRM: contacts, deals, companies, tickets, and email engagement.
