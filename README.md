@@ -146,6 +146,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
+- [GitHub Optimization Skill](https://github.com/199-biotechnologies/github-optimization-skill) - Turn any GitHub repo into a star-magnet landing page. Claude Code skill for README optimization, SEO, and repo marketing. *By [@199-biotechnologies](https://github.com/199-biotechnologies)*
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
 
@@ -155,6 +156,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [brainstorming](https://github.com/obra/superpowers/tree/main/skills/brainstorming) - Transform rough ideas into fully-formed designs through structured questioning and alternative exploration.
 - [Content Research Writer](./content-research-writer/) - Assists in writing high-quality content by conducting research, adding citations, improving hooks, and providing section-by-section feedback.
 - [family-history-research](https://github.com/emaynard/claude-family-history-research-skill) - Provides assistance with planning family history and genealogy research projects.
+- [Humanise Text Skill](https://github.com/199-biotechnologies/humanise-text-skill) - Strip AI writing patterns from any text. Claude Code skill with 507-entry banned word list, structural pattern detection, and 12-check validation. *By [@199-biotechnologies](https://github.com/199-biotechnologies)*
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
