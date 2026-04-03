@@ -148,6 +148,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [Marketing AI Toolkit](https://ccromp.github.io/marketing-ai-toolkit/) by [MarketCore Labs](https://github.com/ccromp/marketing-ai-toolkit) - Quality-scored directory of 230+ Claude Code skills and MCP servers for marketing professionals. Covers SEO, content creation, email marketing, social media, analytics, and ad copy with MarketCore Scores for each tool.
 
 ### Communication & Writing
 
