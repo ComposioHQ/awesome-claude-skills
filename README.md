@@ -179,6 +179,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [vibe-spark](https://github.com/HengYu2022/vibe-spark) - Passive pattern detection + inspiration engine for vibe coders. Detects repetitive work patterns via hook, generates personalized project ideas from git history with zero input, and auto-generates weekly reports.
 
 ### Collaboration & Project Management
 
