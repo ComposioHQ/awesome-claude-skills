@@ -188,6 +188,10 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
 - [test-fixing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing) - Detect failing tests and propose patches or fixes.
 
+### Social Media & Community
+
+- [reddit-skills](https://github.com/1146345502/reddit-skills) - Reddit automation skills for AI agents — browse, search, comment, vote, and publish using your real browser via a Chrome extension bridge. *By [@1146345502](https://github.com/1146345502)*
+
 ### Security & Systems
 
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
