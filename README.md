@@ -158,6 +158,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [president-skill](https://github.com/realteamprinz/president-skill) - Activatable AI perspectives of US Presidents — thinking operating systems distilled from speeches, executive orders, debates, and biographies. Ships with Trump (45/47) and Lincoln (16); 43 more rolling out through Easter Week 2026. Mental models, decision patterns, expression DNA, 7-language READMEs, first-person role-play with honest boundaries. *By [@realteamprinz](https://github.com/realteamprinz)*
 
 ### Creative & Media
 
