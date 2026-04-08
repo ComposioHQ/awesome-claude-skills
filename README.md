@@ -148,6 +148,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- * [buyer-eval](https://github.com/salespeak-ai/buyer-eval-skill) - Structured B2B vendor evaluation skill that scores vendors across 7 weighted dimensions by interrogating vendor AI agents and cross-referencing claims against independent sources. Open-source methodology with 27 published evaluation results. *By [@salespeak-ai](https://github.com/salespeak-ai)*
 
 ### Communication & Writing
 
