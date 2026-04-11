@@ -148,6 +148,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [toprank](https://github.com/nowork-studio/toprank) - SEO + Google Ads skills for Claude Code. Audits Search Console data, finds wasted ad spend, rewrites meta tags, generates schema markup, and ships the fixes. *By [@nowork-studio](https://github.com/nowork-studio)*
 
 ### Communication & Writing
 
