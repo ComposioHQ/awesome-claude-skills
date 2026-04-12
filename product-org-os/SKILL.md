@@ -1,11 +1,11 @@
 ---
 name: product-org-os
-description: An entire product organization as AI agents — 133 skills, 13 agents, and 2 gateways for product management, strategy, GTM, competitive intelligence, and more.
+description: An entire product organization as AI agents — 150+ skills, 12 agents, and 2 gateways for product management, strategy, GTM, competitive intelligence, and more.
 ---
 
 # Product Org OS
 
-An entire product organization that becomes your superpower. 13 specialized agents collaborate like a real product team — each with a distinct role, perspective, and expertise. Built on the Agent Skills open standard — works with Claude Code, Cursor, Copilot, Gemini CLI, and other compatible tools.
+An entire product organization that becomes your superpower. 12 specialized agents collaborate like a real product team — each with a distinct role, perspective, and expertise. Built on the Agent Skills open standard — works with Claude Code, Cursor, Copilot, Gemini CLI, and other compatible tools.
 
 ## When to Use This Skill
 
@@ -17,10 +17,10 @@ An entire product organization that becomes your superpower. 13 specialized agen
 
 ## What This Skill Does
 
-1. **13 product agents** with distinct roles: Product Manager, CPO, VP Product, Director PM, Director PMM, PMM, Product Mentor, BizOps, BizDev, Competitive Intelligence, Product Operations, Value Realization, and UX Lead
-2. **133 skills** covering strategy, requirements, GTM, competitive analysis, business operations, and organizational learning
+1. **12 product agents** with distinct roles: Product Manager, CPO, VP Product, Director PM, Director PMM, PMM, Product Mentor, BizOps, BizDev, Competitive Intelligence, Product Operations, and Value Realization
+2. **150+ skills** covering strategy, requirements, GTM, competitive analysis, business operations, and organizational learning
 3. **2 gateways** that route requests to the right agent(s) — Product Gateway and Product Leadership Team (multi-stakeholder mode)
-4. **10 knowledge packs** providing domain expertise agents draw from
+4. **38 knowledge packs** providing domain expertise agents draw from
 5. **Context system** that tracks decisions, assumptions, and learnings across sessions
 
 ## How to Use
