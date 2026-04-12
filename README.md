@@ -179,6 +179,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [ChatGPT Plus Guide](https://github.com/xyzm6/chatgpt-plus-guide) - Practical guide for ChatGPT Plus/Pro subscribers — regional pricing, payment methods for blocked regions, account safety checklist. *By [@xyzm6](https://github.com/xyzm6)*
 
 ### Collaboration & Project Management
 
