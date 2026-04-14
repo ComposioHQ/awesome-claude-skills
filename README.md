@@ -436,6 +436,7 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 
 ### Community Resources
 
+- [Claude Code Skills 中文精选集](https://github.com/laolaoshiren/claude-code-skills-zh) - 80+ 精选中文 Claude Code Skills + 10个原创可安装技能
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official example skills
 - [Claude Community](https://community.anthropic.com) - Discuss skills with other users
 - [Skills Marketplace](https://claude.ai/marketplace) - Discover and share skills
