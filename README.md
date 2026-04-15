@@ -135,6 +135,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Raffle Winner Picker](./raffle-winner-picker/) - Randomly selects winners from lists, spreadsheets, or Google Sheets for giveaways and contests with cryptographically secure randomness.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [llm-wiki](https://github.com/praneybehl/llm-wiki-plugin) - Build and maintain an LLM-curated personal knowledge base in any project (Karpathy's LLM Wiki pattern). Ingest sources once into persistent, cross-referenced markdown pages; subsequent queries read the pre-synthesized wiki. Skill + 5 `/wiki:*` commands with sharded indexes, BM25 search, and a structural lint script — designed to scale to thousands of pages.
 
 ### Collaboration & Project Management
 
