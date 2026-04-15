@@ -171,6 +171,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Productivity & Organization
 
+- [claude-code-sessions](https://github.com/apappascs/claude-code-sessions) - Session intelligence plugin. 11 skills for full-text search, token analytics, task management, session comparison, timeline views, and context recovery across all sessions. Includes a web dashboard. Zero runtime dependencies, read-only.
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
