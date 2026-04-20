@@ -131,6 +131,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [subagent-driven-development](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - Dispatches independent subagents for individual tasks with code review checkpoints between iterations for rapid, controlled development.
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
+- [Agent Shadow Brain](https://github.com/theihtisham/agent-shadow-brain) - Self-evolving AI coding intelligence with infinite memory, genetic algorithm optimization, predictive bug detection, PageRank knowledge graphs, and swarm intelligence. *By [@theihtisham](https://github.com/theihtisham)*
+- [Omni Skills Forge](https://github.com/theihtisham/omni-skills-forge) - 50,000+ AI agent skills for Claude Code, Cursor, Copilot, Windsurf, and Cline. A comprehensive skills marketplace for AI coding agents. *By [@theihtisham](https://github.com/theihtisham)*
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
