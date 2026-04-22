@@ -131,6 +131,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [subagent-driven-development](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - Dispatches independent subagents for individual tasks with code review checkpoints between iterations for rapid, controlled development.
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
+- [EVR Framework](https://github.com/aptratcn/evr-framework) - Execute-Verify-Report pattern to stop fake completions. Every claimed result must include execution evidence. *By [@aptratcn](https://github.com/aptratcn)*
+- [Systematic Debugging](https://github.com/aptratcn/systematic-debugging) - 4-phase root cause analysis process: Reproduce → Isolate → Hypothesize → Verify. No guessing, no random fixes. *By [@aptratcn](https://github.com/aptratcn)*
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
@@ -140,6 +142,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
+- [Token Budget Guard](https://github.com/aptratcn/token-budget-guard) - Progressive disclosure and conversation compression for 99% token savings. Context window management for every agent workflow. *By [@aptratcn](https://github.com/aptratcn)*
 
 ### Business & Marketing
 
@@ -158,6 +161,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [Trend Harvester](https://github.com/aptratcn/trend-harvester) - Research any topic across Reddit, HN, X, YouTube in minutes. Generate actionable trend reports with signal extraction. *By [@aptratcn](https://github.com/aptratcn)*
 
 ### Creative & Media
 
@@ -194,6 +198,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+- [Prompt Injection Guard](https://github.com/aptratcn/prompt-guard) - Detect and resist prompt injection attacks. Security-first AI interactions with pattern matching and defense layers. *By [@aptratcn](https://github.com/aptratcn)*
 
 ### App Automation via Composio
 
