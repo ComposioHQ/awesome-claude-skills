@@ -444,6 +444,9 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 
 - [Lenny's Newsletter](https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code) - 50 ways people use Claude Code
 - [Notion Skills](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0) - Notion integration skills
+- [SKILL.md Generator](https://helloandy.net/skill-generator/) - AI-powered generator that builds SKILL.md files via a 3-step OpenRouter pipeline. Free, no account required.
+- [SKILL.md Linter](https://helloandy.net/skill-linter/) - Validates SKILL.md structure: trigger conditions, step-by-step instructions, examples, and iron law compliance.
+- [SKILL.md Design Guide](https://helloandy.net/skill-design-guide/) - Research data on token saturation by task type (200–800 tokens), failure modes, and routing strategies for production skills.
 
 
 ## Join the Community
