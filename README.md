@@ -136,6 +136,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Data & Analysis
 
+- [claude-ecom](https://github.com/takechanman1228/claude-ecom) - Ecommerce business review for D2C stores: turns order CSVs into structured monthly reviews with multi-horizon KPI decomposition (30d/90d/365d), ~30 health checks across revenue/customer/product, RFM cohorts, and a prioritized action plan with revenue impact estimates. *By [@takechanman1228](https://github.com/takechanman1228)*
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
 - [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
