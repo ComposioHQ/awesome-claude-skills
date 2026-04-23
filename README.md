@@ -193,6 +193,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
+- [sentinel-ai](https://github.com/MaxwellCalkin/sentinel-ai) - Real-time safety guardrails for LLM apps. Prompt injection detection (12 languages), PII scanning, harmful content filtering, and tool-use safety with ~0.05ms latency. *By [@MaxwellCalkin](https://github.com/MaxwellCalkin)*
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
 ### App Automation via Composio
