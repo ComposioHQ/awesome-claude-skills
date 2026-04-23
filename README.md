@@ -158,6 +158,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [imessage-with-no-mac](https://github.com/emotion-machine-org/imessage-with-no-mac) - Give any AI agent iMessage, RCS & SMS capabilities. No Mac required. Works with Claude Code, Codex, Cursor, Gemini CLI. Powered by Claw Messenger Install: `npx skills add emotion-machine-org/imessage-with-no-mac` *By [@emotion-machine-org](https://github.com/emotion-machine-org)*
 
 ### Creative & Media
 
