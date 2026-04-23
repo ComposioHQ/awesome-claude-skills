@@ -84,6 +84,7 @@ If you receive the email, Claude is now connected to 500+ apps.
   - [Communication & Writing](#communication--writing)
   - [Creative & Media](#creative--media)
   - [Productivity & Organization](#productivity--organization)
+  - [Operations & Supply Chain](#operations--supply-chain)
   - [Collaboration & Project Management](#collaboration--project-management)
   - [Security & Systems](#security--systems)
   - [App Automation via Composio](#app-automation-via-composio)
@@ -179,6 +180,17 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+
+### Operations & Supply Chain
+
+- [Logistics Exception Management](./logistics-exception-management/) - Handle freight exceptions, shipment delays, damages, and carrier disputes.
+- [Carrier Relationship Management](./carrier-relationship-management/) - Manage carrier scorecards, negotiations, and performance optimization.
+- [Customs & Trade Compliance](./customs-trade-compliance/) - Navigate import/export regulations, tariff classification, and trade compliance.
+- [Inventory & Demand Planning](./inventory-demand-planning/) - Forecast demand, optimize inventory, and manage replenishment cycles.
+- [Returns & Reverse Logistics](./returns-reverse-logistics/) - Process returns, manage disposition, and optimize reverse logistics.
+- [Production Scheduling](./production-scheduling/) - Schedule manufacturing operations, manage constraints, and optimize throughput.
+- [Quality Non-Conformance](./quality-nonconformance/) - Investigate quality failures, perform root cause analysis, and manage CAPAs.
+- [Energy Procurement](./energy-procurement/) - Procure energy, manage contracts, and optimize procurement strategy.
 
 ### Collaboration & Project Management
 
