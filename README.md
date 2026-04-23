@@ -143,6 +143,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Business & Marketing
 
+- [BlogBurst](https://github.com/shensi8312/blogburst-claude-skill) - Autonomous social media manager that writes, posts, and replies across Twitter, Bluesky, Telegram, and Discord. Replaces a $500-1,500/mo freelance SMM for $29-99/mo. Public endpoints let Claude demo before signup. *By [@shensi8312](https://github.com/shensi8312)*
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
