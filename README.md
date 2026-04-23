@@ -114,6 +114,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
 - [Claude Code Terminal Title](https://github.com/bluzername/claude-code-terminal-title) - Gives each Claud-Code terminal window a dynamic title that describes the work being done so you don't lose track of what window is doing what.
 - [D3.js Visualization](https://github.com/chrisvoncsefalvay/claude-d3js-skill) - Teaches Claude to produce D3 charts and interactive data visualizations. *By [@chrisvoncsefalvay](https://github.com/chrisvoncsefalvay)*
+- [Everflow Sync](https://github.com/iscale-llc/claude-code-everflow-sync) - Claude Code slash commands for syncing offers between Everflow affiliate network accounts, including URLs, creatives, geo targeting, payout rules, and postback pixels. *By [@jasonakatiff](https://github.com/jasonakatiff)*
 - [FFUF Web Fuzzing](https://github.com/jthack/ffuf_claude_skill) - Integrates the ffuf web fuzzer so Claude can run fuzzing tasks and analyze results for vulnerabilities. *By [@jthack](https://github.com/jthack)*
 - [finishing-a-development-branch](https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch) - Guides completion of development work by presenting clear options and handling chosen workflow.
 - [iOS Simulator](https://github.com/conorluddy/ios-simulator-skill) - Enables Claude to interact with iOS Simulator for testing and debugging iOS applications. *By [@conorluddy](https://github.com/conorluddy)*
@@ -145,7 +146,9 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
+- [Domain Finder](https://github.com/iscale-llc/domain-finder-claude-code) - Interactive domain brainstorming tool for Claude Code with instant .com availability checks via Namecheap API. Describe a business idea and get brandable suggestions. *By [@jasonakatiff](https://github.com/jasonakatiff)*
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
+- [Facebook Ad Builder](https://github.com/iscale-llc/iscale-facebook-ad-builder) - Open-source AI-powered Facebook ad platform covering competitor research, ad copy generation, image creation, and campaign management. FastAPI + React + Claude. *By [@jasonakatiff](https://github.com/jasonakatiff)*
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
 
