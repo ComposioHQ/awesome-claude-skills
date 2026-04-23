@@ -109,6 +109,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Development & Code Tools
 
+- [AgentStore](https://github.com/techgangboss/agentstore) - Open-source marketplace for Claude Code plugins and agents. Install plugins with `agentstore install`, or publish your own with a 3-field API call. Gasless USDC payments via x402. *By [@techgangboss](https://github.com/techgangboss)*
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
