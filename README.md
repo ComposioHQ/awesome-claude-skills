@@ -148,6 +148,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [Claude SEO](https://github.com/AgriciDaniel/claude-seo) - Universal SEO analysis with 19 sub-skills, 12 subagents, and extensions for DataForSEO, Firecrawl, and AI image generation. Covers technical SEO, E-E-A-T, schema markup, GEO/AEO, local SEO, maps intelligence, Google API integration (GSC, PageSpeed, CrUX, GA4), backlink analysis, and PDF/Excel reporting. *By [@AgriciDaniel](https://github.com/AgriciDaniel)*
 
 ### Communication & Writing
 
