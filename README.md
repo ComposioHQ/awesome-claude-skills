@@ -168,6 +168,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Theme Factory](./theme-factory/) - Applies professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages with 10 pre-set themes.
 - [Video Downloader](./video-downloader/) - Downloads videos from YouTube and other platforms for offline viewing, editing, or archival with support for various formats and quality options.
 - [youtube-transcript](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript) - Fetch transcripts from YouTube videos and prepare summaries.
+- [deapi-ai/claude-code-skills](https://github.com/deapi-ai/claude-code-skills) - AI media generation via natural language — image creation (Flux), text-to-speech, transcription, video generation, OCR, upscaling & background removal. Powered by [deAPI.ai](https://deapi.ai/) with $5 free credit, no credit card or subscription required. Also works with Cursor, Windsurf & Continue.dev.
 
 ### Productivity & Organization
 
