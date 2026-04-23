@@ -183,6 +183,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Collaboration & Project Management
 
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
+- [roadmap-pilot](https://github.com/antconsales/roadmap-pilot) - Roadmap-driven autopilot for incremental codebase cleanup. Two skills: /init-roadmap (scans project, generates phased roadmap in CLAUDE.md) and /roadmap (executes ONE task per session, commits, hands off). Includes autopilot mode, progress dashboard, rollback, 7 templates, and 30 tests. *By [@antconsales](https://github.com/antconsales)*
 - [google-workspace-skills](https://github.com/sanjay3290/ai-skills/tree/main/skills) - Suite of Google Workspace integrations: Gmail, Calendar, Chat, Docs, Sheets, Slides, and Drive with cross-platform OAuth. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [outline](https://github.com/sanjay3290/ai-skills/tree/main/skills/outline) - Search, read, create, and manage documents in Outline wiki instances (cloud or self-hosted). *By [@sanjay3290](https://github.com/sanjay3290)*
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
