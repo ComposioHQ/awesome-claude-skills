@@ -171,8 +171,10 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Productivity & Organization
 
+- [Agent Learnings](https://github.com/Bitplanet-L1/agent-skills/tree/main/agent-learnings) - Extracts self-improvement insights from agent session history, creating dated changelogs of mistakes and corrections for agent behavioral improvement. *By [@Bitplanet-L1](https://github.com/Bitplanet-L1)*
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
+- [Human-Agent Collaboration](https://github.com/Bitplanet-L1/agent-skills/tree/main/human-agent-collaboration) - Analyzes interaction patterns to produce guides for humans on working effectively with AI agents—what works, what doesn't, and how to set agents up for success. *By [@Bitplanet-L1](https://github.com/Bitplanet-L1)*
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
 - [n8n-skills](https://github.com/haunchen/n8n-skills) - Enables AI assistants to directly understand and operate n8n workflows.
 - [Raffle Winner Picker](./raffle-winner-picker/) - Randomly selects winners from lists, spreadsheets, or Google Sheets for giveaways and contests with cryptographically secure randomness.
