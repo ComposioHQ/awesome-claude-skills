@@ -99,6 +99,10 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ## Skills
 
+### Agent Intelligence Matrix (ClawForge)
+- [ClawForge Suite](https://github.com/jackjin1997/ClawForge) - A power-user collection of Claude Skills and MCP servers, featuring GitHub Trending analysis, LangChain 1.0 primitives, and automated career tools.
+
+
 ### Document Processing
 
 - [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
@@ -108,6 +112,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Markdown to EPUB Converter](https://github.com/smerchek/claude-epub-skill) - Converts markdown documents and chat summaries into professional EPUB ebook files. *By [@smerchek](https://github.com/smerchek)*
 
 ### Development & Code Tools
+
+- [GitHub Trending Analyzer](https://github.com/jackjin1997/ClawForge/tree/main/skills/github-trending-analyzer) - Automated fetching and categorization of daily/weekly/monthly GitHub Trending projects. Perfect for staying updated on the Agentic Revolution.
 
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
