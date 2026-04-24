@@ -190,6 +190,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Security & Systems
 
+- [EnigmAgent MCP](https://github.com/Agnuxo1/EnigmAgent/tree/main/platforms/mcp-server) - Encrypted local vault for AI agents. Resolve {{SECRET}} placeholders in prompts without exposing real values. AES-256-GCM + Argon2id. `enigmagent-mcp`
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
