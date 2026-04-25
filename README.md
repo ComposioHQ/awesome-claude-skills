@@ -150,6 +150,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
 
 ### Communication & Writing
+- [virtualsms-skill](https://github.com/virtualsms-io/claude-skill-sms-verification) - Lets Claude request real-SIM phone numbers for SMS verification across 145+ countries and 2000+ services. Hosted MCP at mcp.virtualsms.io (zero install) or local stdio via npm. *By [@virtualsms-io](https://github.com/virtualsms-io)*
 
 - [article-extractor](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/article-extractor) - Extract full article text and metadata from web pages.
 - [brainstorming](https://github.com/obra/superpowers/tree/main/skills/brainstorming) - Transform rough ideas into fully-formed designs through structured questioning and alternative exploration.
