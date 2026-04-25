@@ -191,6 +191,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Security & Systems
 
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
+- [EnigmAgent](https://github.com/Agnuxo1/enigmagent-mcp) - Local encrypted vault MCP server for Claude. AES-256-GCM + Argon2id, zero cloud, zero telemetry. Run with `npx enigmagent-mcp`. *By [@Agnuxo1](https://github.com/Agnuxo1)*
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
