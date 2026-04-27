@@ -139,6 +139,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
 - [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
+- [Not Human Search](https://github.com/unitedideas/nothumansearch) - Search 9,000+ AI tools and APIs ranked by agentic readiness via MCP. Install with `claude mcp add --transport http nothumansearch https://nothumansearch.ai/mcp`. Tools: search_agents, get_site_details, get_stats, submit_site, verify_mcp. *By [@unitedideas](https://github.com/unitedideas)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
 
 ### Business & Marketing
