@@ -133,6 +133,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [claude-skills](https://github.com/ckorhonen/claude-skills) - A broader collection of 45+ Claude Code skills spanning engineering strategy, code hygiene, design, and workflow automation. Hub at cdd.dev/skills with pack pages and example prompts. *By [@ckorhonen](https://github.com/ckorhonen)*
+- [swe-skills](https://github.com/ckorhonen/swe-skills) - 15 strategic engineering skills for Claude Code: PR risk review, test gap hunting, performance profiling, ownership mapping, architectural auditing. *By [@ckorhonen](https://github.com/ckorhonen)*
 
 ### Data & Analysis
 
