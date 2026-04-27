@@ -144,6 +144,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Business & Marketing
 
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
+- [brandvoice](https://github.com/jaimeschwarz/brandvoice) - A governed brand voice skill built on the Brand Therapy discipline. Eight stages (Purpose through Personification), governance framework, birth ritual, and child-skill generation. *By [@jaimeschwarz](https://github.com/jaimeschwarz)*
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
