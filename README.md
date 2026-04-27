@@ -168,6 +168,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Theme Factory](./theme-factory/) - Applies professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages with 10 pre-set themes.
 - [Video Downloader](./video-downloader/) - Downloads videos from YouTube and other platforms for offline viewing, editing, or archival with support for various formats and quality options.
 - [youtube-transcript](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript) - Fetch transcripts from YouTube videos and prepare summaries.
+- [voice-to-instrument-guide](https://github.com/stark-ydq/voice-to-instrument-skills) - Expert guidance for converting voice recordings into realistic instrument sounds using AI tools, with recording best practices and instrument-specific tips for piano, guitar, violin, drums, saxophone, flute, cello, trumpet, bass, and clarinet.
 
 ### Productivity & Organization
 
