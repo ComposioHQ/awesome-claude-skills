@@ -99,6 +99,10 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ## Skills
 
+### Agent Team Architecture
+
+- [Cabinet AI](https://github.com/changer-changer/cabinet-ai) — 4-Agent team for truth-seeking & autonomous goal setting. TruthSeeker digs reality, UserAvatar sets goals autonomously, EliteAdvisor supervises daily, ExternalConnector links any team. **Not making AI understand humans, but making humans understand themselves.**
+
 ### Document Processing
 
 - [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
