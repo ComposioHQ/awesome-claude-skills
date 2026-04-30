@@ -95,7 +95,7 @@ If you receive the email, Claude is now connected to 500+ apps.
 
 ## What Are Claude Skills?
 
-Claude Skills are customizable workflows that teach Claude how to perform specific tasks according to your unique requirements. Skills enable Claude to execute tasks in a repeatable, standardized manner across all Claude platforms.
+Claude Skills are customizable workflows that teach Claude how to perform specific tasks according to your unique requirements. Skills enable Claude to execute tasks in a repeatable, standardized manner across all Claude platforms. Hi
 
 ## Skills
 
