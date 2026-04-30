@@ -142,6 +142,10 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
+- [haruspex-stock-analyst](https://github.com/Haruspex-guru/haruspex-skills/tree/main/skills/haruspex-stock-analyst) - Single-ticker fundamental + signals analysis powered by Haruspex's multi-dimension stock scoring. Default for "what about [TICKER]?" questions. *By [@Haruspex-guru](https://github.com/Haruspex-guru)*
+- [haruspex-watchlist-review](https://github.com/Haruspex-guru/haruspex-skills/tree/main/skills/haruspex-watchlist-review) - Batched review of a multi-ticker watchlist. Ranked tables, biggest movers, dimensional flags. *By [@Haruspex-guru](https://github.com/Haruspex-guru)*
+- [haruspex-thesis-tracker](https://github.com/Haruspex-guru/haruspex-skills/tree/main/skills/haruspex-thesis-tracker) - Maps a stated investment thesis to relevant Haruspex dimensions and reports whether the data still aligns (Supported / Mixed / Challenged). *By [@Haruspex-guru](https://github.com/Haruspex-guru)*
+- [haruspex-stock-analyst-ja](https://github.com/Haruspex-guru/haruspex-skills/tree/main/skills/haruspex-stock-analyst-ja) - 日本語版 of the flagship analyst, for traders working in Japanese on US-listed equities (NYSE/NASDAQ). *By [@Haruspex-guru](https://github.com/Haruspex-guru)*
 
 ### Business & Marketing
 
