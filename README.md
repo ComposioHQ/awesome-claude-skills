@@ -157,6 +157,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [LinkedIn Skills](https://github.com/sergebulaev/linkedin-skills) - 10 skills for LinkedIn marketing: post writing with 10 viral hook formulas, comment drafting, pre-publish algorithm audit, AI-tell humanizer, hook extractor, profile optimizer, content planner, and thread engagement monitoring.
 
 ### Communication & Writing
 
