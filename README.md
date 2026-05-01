@@ -98,6 +98,7 @@ If you receive the email, Claude is now connected to 500+ apps.
 Claude Skills are customizable workflows that teach Claude how to perform specific tasks according to your unique requirements. Skills enable Claude to execute tasks in a repeatable, standardized manner across all Claude platforms.
 
 ## Skills
+- [skills-hub.ai](https://skills-hub.ai) - Open platform with 2,850+ AI coding skills. Browse, install (CLI or web), publish, compose, and review skills for Claude Code, Cursor, Windsurf, Codex CLI, and any MCP-compatible tool. Features quality scoring, security scanning, collections, and organizations.
 
 ### Document Processing
 
