@@ -194,6 +194,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 ### Collaboration & Project Management
 
+- [cup](https://github.com/krodak/clickup-cli) - ClickUp CLI for AI coding agents and humans. 40+ commands for tasks, comments, sprints, time tracking, and more. Ships as a Claude Code plugin with skill files. *By [@krodak](https://github.com/krodak)*
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
 - [google-workspace-skills](https://github.com/sanjay3290/ai-skills/tree/main/skills) - Suite of Google Workspace integrations: Gmail, Calendar, Chat, Docs, Sheets, Slides, and Drive with cross-platform OAuth. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [outline](https://github.com/sanjay3290/ai-skills/tree/main/skills/outline) - Search, read, create, and manage documents in Outline wiki instances (cloud or self-hosted). *By [@sanjay3290](https://github.com/sanjay3290)*
