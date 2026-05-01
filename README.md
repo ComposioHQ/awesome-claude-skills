@@ -203,6 +203,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Security & Systems
 
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
+- [CryptoGuard](https://github.com/momenbasel/CryptoGuard) - Pre-transaction safety hook that analyzes smart contracts for honeypots, blacklists, rug pulls, and scam patterns before any crypto transaction. Queries 5+ security oracles in parallel. *By [@momenbasel](https://github.com/momenbasel)*
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
