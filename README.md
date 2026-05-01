@@ -204,6 +204,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
+- [malware-check](https://github.com/momenbasel/malware-check) - Enterprise-grade static and dynamic analysis tool for detecting malicious code, suspicious binaries, and privacy violations with YARA rules, Docker sandboxing, and SARIF reporting. *By [@momenbasel](https://github.com/momenbasel)*
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
