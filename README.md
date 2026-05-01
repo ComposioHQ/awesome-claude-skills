@@ -140,6 +140,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [production-readiness](https://github.com/Meghshyams/production-readiness) - Comprehensive production readiness audit covering security, visual QA, code quality, testing, error handling, build config, and performance. Runs 40+ checks, auto-detects your stack, and produces an actionable report with severity levels. *By [@Meghshyams](https://github.com/Meghshyams)*
 
 ### Data & Analysis
 
