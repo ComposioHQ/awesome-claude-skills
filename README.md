@@ -136,6 +136,8 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 - [Connect](./connect/) - Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
+- [OpenClaw Monitor](https://github.com/flik2002/openclaw-monitor-frontend) - Real-time AI agent monitoring dashboard for AI agents and LLMs, built with Vue3 and Node.js.
+
 ### Data & Analysis
 
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
