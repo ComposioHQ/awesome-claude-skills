@@ -144,6 +144,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [BuyWhere MCP](https://github.com/BuyWhere/buywhere-mcp) - Cross-border product catalog for AI agents. Search and compare products from Singapore, SEA, and US markets via Model Context Protocol. Works with Claude Desktop, Cursor, VS Code Copilot, Cline, OpenCode, and Codex. *By [@BuyWhere](https://github.com/BuyWhere)*
 
 ### Data & Analysis
 
