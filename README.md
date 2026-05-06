@@ -144,7 +144,7 @@ Claude Skills are customizable workflows that teach Claude how to perform specif
 ### Business & Marketing
 
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
-- [buyer-eval-skill](https://github.com/salespeak-ai/buyer-eval-skill) - Structured, evidence-based B2B software vendor evaluation skill. Engages vendor AI agents, scores vendors across 7 dimensions with transparent evidence tracking, and produces comparative scorecards with demo prep questions. Useful for procurement, RFP evaluation, and build-vs-buy decisions. *By [@salespeak-ai](https://github.com/salespeak-ai)*
+- [buyer-eval-skill](https://github.com/salespeak-ai/buyer-eval-skill) - B2B vendor evaluation skill: 7-dimension scoring with evidence-tracked scorecards for procurement and build-vs-buy decisions. *By [@salespeak-ai](https://github.com/salespeak-ai)*
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
