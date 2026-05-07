@@ -157,10 +157,18 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 - [Brand Build Skills](https://github.com/rampstackco/claude-skills) - 59-skill library covering the full website lifecycle: brand, design, content, SEO, dev, ops, growth, and research. Stack-agnostic with an Ahrefs MCP-powered SEO audit suite. Includes a meta-skill for writing your own. *By [@rampstackco](https://github.com/rampstackco)*
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
+- [Campaign Analytics Reporter](./campaign-analytics-reporter/) - Pull Instantly campaign metrics, benchmark performance against targets, and produce weekly reports with prioritized next actions.
+- [Case Study Writer](./case-study-writer/) - Turn customer wins into polished case studies formatted for website pages, LinkedIn posts, and email sequence social proof inserts.
+- [Cold Email Sequence Builder](./cold-email-sequence-builder/) - Write multi-channel B2B outreach sequences using 2026 best practices: ultra-short copy, pattern interrupt subjects, HeyGen video touch, and LinkedIn warm-up.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
+- [ICP Builder](./icp-builder/) - Build detailed Ideal Customer Profile documents with buyer personas, trigger events, pain-point hierarchy, and Apollo.io search filter configurations.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [LinkedIn Outreach Playbook](./linkedin-outreach-playbook/) - Write LinkedIn Sales Navigator prospecting workflows and connection/DM templates for warming prospects before cold email campaigns.
+- [Outreach Campaign Builder](./outreach-campaign-builder/) - Orchestrate end-to-end B2B outreach campaigns — Apollo email export, HeyGen video generation, and Instantly campaign setup with context-window-safe architecture.
+- [Review Generation Campaign](./review-generation-campaign/) - Design G2 and Capterra review request email sequences to build third-party social proof from happy customers.
+- [Sales Call Prep](./sales-call-prep/) - Research a prospect company and generate a complete demo call brief with compliance risk profile, tailored demo flow, and objection responses.
 
 ### Communication & Writing
 
