@@ -171,11 +171,13 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [unslop](https://github.com/MohamedAbdallah-14/unslop) - Strips named AI writing tells from text: tricolons, em-dash pileups, hedging stacks, sycophancy openers, stock vocabulary. Lint-only mode audits without rewriting. Five intensity levels. MIT licensed.
 
 ### Creative & Media
 
 - [Canvas Design](./canvas-design/) - Creates beautiful visual art in PNG and PDF documents using design philosophy and aesthetic principles for posters, designs, and static pieces.
 - [imagen](https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen) - Generate images using Google Gemini's image generation API for UI mockups, icons, illustrations, and visual assets. *By [@sanjay3290](https://github.com/sanjay3290)*
+- [prompt-to-asset](https://github.com/MohamedAbdallah-14/prompt-to-asset) - MCP server and CLI that generates production-ready visual assets (app icons, favicons, OG images, logos) by routing each request across 30+ image generation models. Zero API key required for first run via free-tier providers.
 - [Image Enhancer](./image-enhancer/) - Improves image and screenshot quality by enhancing resolution, sharpness, and clarity for professional presentations and documentation.
 - [Slack GIF Creator](./slack-gif-creator/) - Creates animated GIFs optimized for Slack with validators for size constraints and composable animation primitives.
 - [Theme Factory](./theme-factory/) - Applies professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages with 10 pre-set themes.
