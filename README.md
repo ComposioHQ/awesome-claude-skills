@@ -459,6 +459,7 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official example skills
 - [Claude Community](https://community.anthropic.com) - Discuss skills with other users
 - [Skills Marketplace](https://claude.ai/marketplace) - Discover and share skills
+- [Skills宝 (skilery.com)](https://skilery.com) - Chinese AI Skills marketplace for one-stop search and install across Claude Code, OpenCode, and more platforms
 
 ### Inspiration & Use Cases
 
