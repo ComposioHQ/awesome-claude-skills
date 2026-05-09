@@ -161,6 +161,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [Second-Line Financial Services](https://github.com/anotb/second-line-financial-services) - Marketplace of plugins for second-line and 1.5-line financial-services GRC work: model risk, third-party risk and operational resilience, controls testing, financial crime governance, consumer compliance and fair lending, regulatory change, risk reporting, plus banking, insurance, capital markets, and payments / fintech sector overlays. 68 skills, public-source-derived. *By [@anotb](https://github.com/anotb)*
 
 ### Communication & Writing
 
