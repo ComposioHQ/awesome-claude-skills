@@ -206,8 +206,10 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Security & Systems
 
+- [claude-logger](https://github.com/ipunithgowda/claude-logger/tree/main/skills/claude-logger) - Query and verify tamper-proof audit logs for Claude Code sessions. SHA-256 hash chains over append-only JSONL, with helpers for cost rollups, error grep, and integrity checks. *By [@ipunithgowda](https://github.com/ipunithgowda)*
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
+- [firewall-review](https://github.com/transilienceai/communitytools/tree/main/skills/firewall-review) - Static firewall ruleset audit playbook. 17 vendor-agnostic detectors across FortiGate, PAN-OS, Cisco ASA/IOS, Azure NSG, AWS SG, iptables. Findings carry source file, byte offset, quoted rule, and version-pinned framework citations (NIST CSF 2.0, PCI DSS v4.0.1, ISO/IEC 27001:2022, CIS Controls v8.1, HIPAA). *By [@ipunithgowda](https://github.com/ipunithgowda)*
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
