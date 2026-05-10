@@ -210,7 +210,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
-- [trustboost-pii-sanitizer](https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/SKILL.md) - Blockchain-verified PII sanitization for autonomous AI agent pipelines. Redacts names, emails, national IDs, private keys before text reaches LLMs. Supports EN, ES (LATAM), PT (BR/PT), DE, JA. No wallet needed: `POST https://api.trustboost.dev/sanitize/preview`
+- [trustboost-pii-sanitizer](https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/SKILL.md) - PII sanitization layer for autonomous AI agent pipelines. Detects and redacts names, emails, national IDs, and sensitive data before text reaches LLMs. Supports EN, ES (LATAM), PT (BR/PT), DE, JA. Free preview available.
 
 ### Assistive Technology
 
