@@ -171,6 +171,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [ADHX](https://github.com/itsmemeworks/adhx) — Fetch any X/Twitter post as clean LLM-friendly JSON (including full X Articles) via a public API — no browser, no scraping. Install: `/plugin marketplace add itsmemeworks/adhx` or manually via curl. By [@itsmemeworks](https://github.com/itsmemeworks)
 
 ### Creative & Media
 
