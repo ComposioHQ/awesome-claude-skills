@@ -114,6 +114,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Development & Code Tools
 
+- [agentify-cli](https://github.com/koriyoshi2041/agentify) - Agent Interface Compiler that transforms OpenAPI specs into 9 agent interface formats (Skills, CLAUDE.md, MCP servers, AGENTS.md, .cursorrules, llms.txt, GEMINI.md, A2A Card, CLI) with a single command. *By [@koriyoshi2041](https://github.com/koriyoshi2041)*
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
