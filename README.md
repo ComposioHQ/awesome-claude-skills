@@ -210,6 +210,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+- [skill-audit-mcp](https://github.com/eltociear/skill-audit-mcp) - Static security scanner for AI agent skills, MCP servers, and plugins. Detects 68 attack patterns across 4 severity levels (CRITICAL/HIGH/MEDIUM/LOW) — credential exfiltration, prompt injection, code execution, seed-phrase harvesting, auth bypass, path traversal. Zero dependencies, SARIF output for GitHub Code Scanning, also published as a GitHub Action (`uses: eltociear/skill-audit-mcp@v1`). *By [@eltociear](https://github.com/eltociear)*
 
 ### Assistive Technology
 
