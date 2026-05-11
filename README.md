@@ -161,6 +161,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [hormozi-offer-audit](https://github.com/johnericforte/claude-skill-hormozi-offer-audit) - Audit sales offers (landing pages, pricing tiers, lead magnets) using Alex Hormozi's frameworks from $100M Offers and $100M Leads. Scores Value Equation (4 levers, 0-25 each) + Grand Slam checklist. Returns Top 3 Fixes with before/after. *By [@johnericforte](https://github.com/johnericforte)*
+- [cialdini-influence-audit](https://github.com/johnericforte/claude-skill-cialdini-influence-audit) - Audit persuasive copy (landing pages, emails, sales sequences) for missing influence principles using Robert Cialdini's seven principles + Pre-Suasion. Scores each principle PRESENT/WEAK/MISSING with anti-overstacking check. *By [@johnericforte](https://github.com/johnericforte)*
 
 ### Communication & Writing
 
@@ -171,6 +173,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [claude-blog-assistant](https://github.com/johnericforte/claude-skill-blog-assistant) - Dual-mode blog publishing assistant. Ship new posts via 8-step lifecycle (brief → write → humanize → SEO → schema → analyze → repurpose) OR retroactively audit existing posts and return prioritized retrofit list. Wraps AgriciDaniel/claude-blog. *By [@johnericforte](https://github.com/johnericforte)*
 
 ### Creative & Media
 
