@@ -1,0 +1,11 @@
+# Claude Code local files
+.claude/settings.local.json
+.claude/worktrees/
+.claude/todos/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
