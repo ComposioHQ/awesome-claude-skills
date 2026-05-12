@@ -196,6 +196,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
 
+- [thinking-skills](https://github.com/wanikua/thinking-skills) - 20 structured thinking framework commands (Critical Thinking, First Principles, Red Team, Bayesian, Six Thinking Hats, Premortem, etc.) that guide Claude through rigorous analytical processes for decision-making and problem-solving.
+
 ### Collaboration & Project Management
 
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
