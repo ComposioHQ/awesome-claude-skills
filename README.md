@@ -195,6 +195,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [topic-pause-recall](https://github.com/carterusedulm2-maker/topic-skill-topic-pause-recall) - Pause any long-running agent task and seamlessly resume it later by keyword. Supports pause, recall, list, and forget with optional workspace/memory cleanup. *By [@carterusedulm2-maker](https://github.com/carterusedulm2-maker)*
 
 ### Collaboration & Project Management
 
