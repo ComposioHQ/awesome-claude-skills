@@ -166,6 +166,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 - [article-extractor](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/article-extractor) - Extract full article text and metadata from web pages.
 - [brainstorming](https://github.com/obra/superpowers/tree/main/skills/brainstorming) - Transform rough ideas into fully-formed designs through structured questioning and alternative exploration.
+- [Content Multiplier](https://github.com/nawazxz/Content-Multiplier-Skill) - Transforms a single piece of content into six platform-optimized formats — X/Twitter threads, LinkedIn posts, email newsletters, Instagram/TikTok captions, YouTube descriptions, and blog SEO summaries. *By [@nawazxz](https://github.com/nawazxz)*
 - [Content Research Writer](./content-research-writer/) - Assists in writing high-quality content by conducting research, adding citations, improving hooks, and providing section-by-section feedback.
 - [family-history-research](https://github.com/emaynard/claude-family-history-research-skill) - Provides assistance with planning family history and genealogy research projects.
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
@@ -186,6 +187,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Productivity & Organization
 
+- [Claude Skill Mesh](https://github.com/nawazxz/Claude-Skill-Mesh) - Self-authoring agent mesh that detects your connected MCPs, spawns intelligent agents that observe patterns, and evolves through natural selection. Zero config, works with any MCP stack. *By [@nawazxz](https://github.com/nawazxz)*
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
