@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/composiohq-awesome-claude-skills-badge.png)](https://mseep.ai/app/composiohq-awesome-claude-skills)
+
 <h1 align="center">Awesome Claude Skills</h1>
 
 <p align="center">
