@@ -167,7 +167,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [article-extractor](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/article-extractor) - Extract full article text and metadata from web pages.
 - [brainstorming](https://github.com/obra/superpowers/tree/main/skills/brainstorming) - Transform rough ideas into fully-formed designs through structured questioning and alternative exploration.
 - [Content Research Writer](./content-research-writer/) - Assists in writing high-quality content by conducting research, adding citations, improving hooks, and providing section-by-section feedback.
-- [Edu Role-Play](./edu-role-play/) - Generate self-contained HTML role-play training simulations with rubric-graded transcripts. Inspired by Mini Course Generator.
+- [Edu Role-Play](https://github.com/minicoursegenerator/edu-role-play) - Generate self-contained HTML role-play training simulations with rubric-graded transcripts. Inspired by Mini Course Generator.
 - [family-history-research](https://github.com/emaynard/claude-family-history-research-skill) - Provides assistance with planning family history and genealogy research projects.
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
