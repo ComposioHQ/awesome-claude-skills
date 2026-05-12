@@ -144,6 +144,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [EUrouter Integration](https://github.com/EUrouter/eurouter-skill) - Integrate EUrouter, an OpenAI-compatible AI gateway for EU/GDPR compliance with drop-in migration from OpenAI/OpenRouter, EU data residency controls, streaming, tool calling, and multi-model fallback. *By [@EUrouter](https://github.com/EUrouter)*
 
 ### Data & Analysis
 
