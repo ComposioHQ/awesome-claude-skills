@@ -187,6 +187,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 ### Productivity & Organization
 
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
+- [SkillHub / 技能宝](https://github.com/kevinaimonster/skill-hub) - Chinese AI skill marketplace with 50+ curated skills. Covers Xiaohongshu, Douyin, WeChat, code review, security audit, and more. 5000+ skill index, 12-layer security check, supports 42 agent platforms. *By [@kevinaimonster](https://github.com/kevinaimonster)*
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
 - [n8n-skills](https://github.com/haunchen/n8n-skills) - Enables AI assistants to directly understand and operate n8n workflows.
