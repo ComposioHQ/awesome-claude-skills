@@ -147,7 +147,9 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Data & Analysis
 
+- [CoinPaprika API](https://github.com/coinpaprika/skills/tree/main/coinpaprika-api) - Query crypto market data for 12,000+ coins and 350+ exchanges. Tickers, OHLCV, historical prices, contract lookups. Free tier, no API key needed. *By [@coinpaprika](https://github.com/coinpaprika)*
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
+- [DexPaprika API](https://github.com/coinpaprika/skills/tree/main/dexpaprika-api) - Free DEX data across 34 blockchains. 30M+ pools, 27M+ tokens, real-time streaming, OHLCV, search. No API key, no rate limits. *By [@coinpaprika](https://github.com/coinpaprika)*
 - [deep-research](https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research) - Execute autonomous multi-step research using Gemini Deep Research Agent for market analysis, competitive landscaping, and literature reviews. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [recursive-research](https://github.com/Anjos2/recursive-research) - Recursive research up to PhD level across any domain (science, tech, business, arts, humanities) with source tiering, WDM + Munger inversion for autonomous decisions, and disk checkpointing to survive context compaction. *By [@Anjos2](https://github.com/Anjos2)*
