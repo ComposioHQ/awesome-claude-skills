@@ -13,7 +13,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from core.gif_builder import GIFBuilder
 from core.frame_composer import create_blank_frame, draw_circle, draw_emoji
-from core.easing import ease_out_bounce, interpolate
+from core.easing import ease_out_bounce
 
 
 def create_bounce_animation(
