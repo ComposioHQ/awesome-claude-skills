@@ -116,7 +116,7 @@ def draw_text(frame: Image.Image, text: str, position: tuple[int, int],
     # Try to use default font, fall back to basic if not available
     try:
         font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", font_size)
-    except:
+    except Exception:
         font = ImageFont.load_default()
 
     if centered:
@@ -149,7 +149,7 @@ def draw_emoji(frame: Image.Image, emoji: str, position: tuple[int, int], size: 
     # Use Apple Color Emoji font on macOS
     try:
         font = ImageFont.truetype("/System/Library/Fonts/Apple Color Emoji.ttc", size)
-    except:
+    except Exception:
         # Fallback to text-based emoji
         font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", size)
 
@@ -292,11 +292,11 @@ def draw_emoji_enhanced(frame: Image.Image, emoji: str, position: tuple[int, int
     # Use Apple Color Emoji font on macOS
     try:
         font = ImageFont.truetype("/System/Library/Fonts/Apple Color Emoji.ttc", size)
-    except:
+    except Exception:
         # Fallback to text-based emoji
         try:
             font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", size)
-        except:
+        except Exception:
             font = ImageFont.load_default()
 
     # Draw shadow first if enabled
@@ -307,13 +307,13 @@ def draw_emoji_enhanced(frame: Image.Image, emoji: str, position: tuple[int, int
             try:
                 draw.text((shadow_pos[0] + offset, shadow_pos[1] + offset),
                          emoji, font=font, embedded_color=True, fill=(0, 0, 0, 100))
-            except:
+            except Exception:
                 pass  # Skip shadow if it fails
 
     # Draw main emoji
     try:
         draw.text(position, emoji, font=font, embedded_color=True)
-    except:
+    except Exception:
         # Fallback to basic drawing if embedded color fails
         draw.text(position, emoji, font=font, fill=(0, 0, 0))
 

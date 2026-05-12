@@ -33,9 +33,6 @@ def apply_kaleidoscope(frame: Image.Image, segments: int = 8,
     if center is None:
         center = (width // 2, height // 2)
 
-    # Create output frame
-    output = Image.new('RGB', (width, height))
-
     # Calculate angle per segment
     angle_per_segment = 360 / segments
 

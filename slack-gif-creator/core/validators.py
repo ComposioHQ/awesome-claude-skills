@@ -51,7 +51,7 @@ def check_slack_size(gif_path: str | Path, is_emoji: bool = True) -> tuple[bool,
         overage_kb = size_kb - limit_kb
         overage_percent = (overage_kb / limit_kb) * 100
         print(f"  Over by: {overage_kb:.1f} KB ({overage_percent:.1f}%)")
-        print(f"  Try: fewer frames, fewer colors, or simpler design")
+        print("  Try: fewer frames, fewer colors, or simpler design")
 
     return passes, info
 
@@ -163,7 +163,7 @@ def validate_gif(gif_path: str | Path, is_emoji: bool = True) -> tuple[bool, dic
                 duration_ms = img.info.get('duration', 100)
                 total_duration = (duration_ms * frame_count) / 1000
                 fps = frame_count / total_duration if total_duration > 0 else 0
-            except:
+            except Exception:
                 duration_ms = None
                 total_duration = None
                 fps = None
