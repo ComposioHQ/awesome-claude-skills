@@ -194,6 +194,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [solo-skills](https://github.com/rockscy/solo-skills) - 7 bilingual (EN+中文) skills for solo founders and indie devs: launch tweets, customer emails, decision frameworks, postmortems. Each skill includes an explicit "When NOT to use" section.
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
+- [Strategic Partner](https://github.com/JimmySadek/strategic-partner) - Advisory skill that separates thinking from building. Challenges premises, compares approaches, routes tasks to the right tool, and packages work into self-contained prompts for fresh sessions. *By [@JimmySadek](https://github.com/JimmySadek)*
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
 
 ### Collaboration & Project Management
