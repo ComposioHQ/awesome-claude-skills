@@ -1,6 +1,10 @@
 ---
 name: baserow-automation
-description: "Automate Baserow tasks via Rube MCP (Composio). Always search tools first for current schemas."
+description: >
+  Create, read, update, and delete rows in Baserow tables, manage fields,
+  and query records via Rube MCP (Composio). Use when the user mentions
+  "Baserow", "no-code database", or needs to interact with Baserow tables,
+  rows, or fields.
 requires:
   mcp: [rube]
 ---
@@ -26,29 +30,17 @@ Automate Baserow operations through Composio's Baserow toolkit via Rube MCP.
 3. If connection is not ACTIVE, follow the returned auth link to complete setup
 4. Confirm connection status shows ACTIVE before running any workflows
 
-## Tool Discovery
+## Core Workflow
 
-Always discover available tools before executing workflows:
+### Step 1: Discover tools
 
 ```
 RUBE_SEARCH_TOOLS
-queries: [{use_case: "Baserow operations", known_fields: ""}]
+queries: [{use_case: "list rows in a Baserow table", known_fields: ""}]
 session: {generate_id: true}
 ```
 
-This returns available tool slugs, input schemas, recommended execution plans, and known pitfalls.
-
-## Core Workflow Pattern
-
-### Step 1: Discover Available Tools
-
-```
-RUBE_SEARCH_TOOLS
-queries: [{use_case: "your specific Baserow task"}]
-session: {id: "existing_session_id"}
-```
-
-### Step 2: Check Connection
+### Step 2: Check connection
 
 ```
 RUBE_MANAGE_CONNECTIONS
@@ -56,13 +48,15 @@ toolkits: ["baserow"]
 session_id: "your_session_id"
 ```
 
-### Step 3: Execute Tools
+Verify status is ACTIVE before continuing.
+
+### Step 3: Execute
 
 ```
 RUBE_MULTI_EXECUTE_TOOL
 tools: [{
-  tool_slug: "TOOL_SLUG_FROM_SEARCH",
-  arguments: {/* schema-compliant args from search results */}
+  tool_slug: "BASEROW_LIST_ROWS",
+  arguments: {"table_id": 42, "page": 1, "size": 50}
 }]
 memory: {}
 session_id: "your_session_id"
