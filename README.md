@@ -144,6 +144,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [claude-skills](https://github.com/jeffallan/claude-skills) - 65 full-stack development skills with progressive disclosure architecture covering React, NestJS, Python, DevOps, and 30+ frameworks. *By [@jeffallan](https://github.com/jeffallan)*
 
 ### Data & Analysis
 
@@ -203,6 +204,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [outline](https://github.com/sanjay3290/ai-skills/tree/main/skills/outline) - Search, read, create, and manage documents in Outline wiki instances (cloud or self-hosted). *By [@sanjay3290](https://github.com/sanjay3290)*
 - [review-implementing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing) - Evaluate code implementation plans and align with specs.
 - [test-fixing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing) - Detect failing tests and propose patches or fixes.
+- [claude-skills](https://github.com/jeffallan/claude-skills) - 9 project workflow commands (discovery, planning, execution, retrospectives) with Jira/Confluence integration. *By [@jeffallan](https://github.com/jeffallan)*
 
 ### Security & Systems
 
