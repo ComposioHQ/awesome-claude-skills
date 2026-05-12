@@ -1,0 +1,1341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="https://github.com/hongjinqiu/nanhu-print-java"
+        xmlns:tns="https://github.com/hongjinqiu/nanhu-print-java"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        jaxb:version="2.1"
+        elementFormDefault="qualified">
+	<annotation>
+		<appinfo>
+			<!-- 生成 java 映射文件命令: xjc nanhuprint.xsd -d D:\git\malay_idea_print_test\malay-service\src\main\java -->
+			<jaxb:schemaBindings>
+				<!--<jaxb:package name="com.hongjinqiu.framework.nanhuprint.model"/>-->
+				<jaxb:package name="com.hongjinqiu.nanhuprint.model"/>
+			</jaxb:schemaBindings>
+		</appinfo>
+		<documentation>nanhuprint框架约束规范</documentation>
+	</annotation>
+
+    <element name="html">
+        <annotation>
+            <documentation>入口根元素,与网页中的 html 相类似</documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+				<element ref="tns:style" minOccurs="0" maxOccurs="1"></element>
+				<element ref="tns:macros" minOccurs="0" maxOccurs="1"></element>
+                <element ref="tns:body" minOccurs="0" maxOccurs="1"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="style">
+        <annotation>
+            <documentation>用于包含 css 用的,一般紧跟着 html</documentation>
+        </annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+                <element ref="tns:css" minOccurs="0" maxOccurs="unbounded"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="css">
+		<annotation>
+			<documentation>与 html 中的 css 概念相近,拥有 width, height 等各种样式子元素</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+                <group ref="tns:css-element2" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+            <attribute name="name"></attribute>
+        </complexType>
+    </element>
+
+	<element name="macros">
+		<annotation>
+			<documentation>用于包含 macro</documentation>
+		</annotation>
+		<complexType>
+			<sequence maxOccurs="unbounded">
+				<group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+				<element ref="tns:macro" minOccurs="0" maxOccurs="unbounded"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="macro">
+		<annotation>
+			<documentation>宏,宏通常用来包含重复的代码,有些时候也可以当函数来使用</documentation>
+		</annotation>
+		<complexType>
+			<sequence maxOccurs="unbounded">
+				<group ref="tns:all-body-element" minOccurs="0" maxOccurs="unbounded" />
+				<group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+			<attribute name="name"></attribute>
+			<attribute name="paramJs"></attribute>
+		</complexType>
+	</element>
+
+	<element name="body">
+		<annotation>
+			<documentation>与网页 html 中的 body 概念相近,页面元素的展示容器</documentation>
+		</annotation>
+		<complexType>
+			<sequence maxOccurs="unbounded">
+				<group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+				<element ref="tns:css" minOccurs="0" maxOccurs="1" />
+				<group ref="tns:nest-element" minOccurs="0" maxOccurs="unbounded" />
+				<element ref="tns:params" minOccurs="0" maxOccurs="1" />
+				<element ref="tns:span" minOccurs="0" maxOccurs="unbounded" />
+				<!--<element ref="tns:img" minOccurs="0" maxOccurs="unbounded" />-->
+			</sequence>
+			<attribute name="id"></attribute>
+			<attribute name="pageSizePdf">
+				<simpleType>
+					<union>
+						<simpleType>
+							<restriction base="string">
+								<enumeration value="A0" />
+								<enumeration value="A1" />
+								<enumeration value="A2" />
+								<enumeration value="A3" />
+								<enumeration value="A4" />
+								<enumeration value="A5" />
+								<enumeration value="A6" />
+								<enumeration value="A7" />
+								<enumeration value="A8" />
+								<enumeration value="A9" />
+								<enumeration value="A10" />
+							</restriction>
+						</simpleType>
+						<simpleType>
+							<restriction base="string">
+								<pattern value="js:.+" />
+							</restriction>
+						</simpleType>
+					</union>
+				</simpleType>
+			</attribute>
+			<attribute name="explain" type="tns:trueOrFalse"></attribute>
+			<attribute name="rotate" type="tns:trueOrFalse"></attribute>
+			<attributeGroup ref="tns:css-attribute" />
+		</complexType>
+	</element>
+
+	<element name="table">
+		<annotation>
+			<documentation>与网页 html 中的 table 概念相近,不同的地方在于添加了 tloop, tbottom 元素, tloop 用于页面空白行填充, tbottom 用于表尾显示</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+                <element ref="tns:css" minOccurs="0" maxOccurs="1" />
+                <element ref="tns:params" minOccurs="0" maxOccurs="1" />
+                <element ref="tns:thead" minOccurs="0" />
+                <element ref="tns:tbody" minOccurs="0" />
+                <element ref="tns:tloop" minOccurs="0" />
+                <element ref="tns:tbottom" minOccurs="0" />
+            </sequence>
+            <attribute name="id"></attribute>
+			<attribute name="explain" type="tns:trueOrFalse"></attribute>
+            <attributeGroup ref="tns:css-attribute" />
+        </complexType>
+    </element>
+
+    <element name="thead">
+		<annotation>
+			<documentation>与网页 html 中的 table 中的 thead 概念相近,thead 的第一行通常放空,写清楚列数和列宽,以方便程序读取</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+                <!--<group ref="tns:css-element2"/>-->
+                <element ref="tns:params" minOccurs="0" maxOccurs="1" />
+                <element ref="tns:tr" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+            <attribute name="id"></attribute>
+            <!--<attributeGroup ref="tns:css-attribute" />-->
+			<attribute name="showPosition" default="firstPage">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="firstPage" />
+						<enumeration value="everyPage" />
+					</restriction>
+				</simpleType>
+			</attribute>
+        </complexType>
+    </element>
+
+    <element name="tbody">
+		<annotation>
+			<documentation>与网页 html 中的 table 中的 tbody 概念相近</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+                <!--<group ref="tns:css-element2"/>-->
+                <element ref="tns:params" minOccurs="0" maxOccurs="1" />
+                <element ref="tns:tr" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+            <attribute name="id"></attribute>
+            <!--<attributeGroup ref="tns:css-attribute" />-->
+        </complexType>
+    </element>
+
+    <element name="tloop">
+		<annotation>
+			<documentation>用于表身空白行的填充,mode="two",需要设置两个 tr,以便交替行填充</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+                <!--<group ref="tns:css-element2"/>-->
+                <element ref="tns:params" minOccurs="0" maxOccurs="1" />
+                <element ref="tns:tr" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+            <attribute name="id"></attribute>
+			<attribute name="countJs" type="int" default="1"></attribute>
+			<attribute name="mode">
+				<simpleType>
+					<union>
+						<simpleType>
+							<restriction base="string">
+								<enumeration value="one" />
+								<enumeration value="two" />
+							</restriction>
+						</simpleType>
+						<simpleType>
+							<restriction base="string">
+								<pattern value="js:.+" />
+							</restriction>
+						</simpleType>
+					</union>
+				</simpleType>
+			</attribute>
+            <!--<attributeGroup ref="tns:css-attribute" />-->
+        </complexType>
+    </element>
+
+    <element name="tbottom">
+		<annotation>
+			<documentation>通常用于表尾固定</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+                <!--<group ref="tns:css-element2"/>-->
+                <element ref="tns:params" minOccurs="0" maxOccurs="1" />
+                <element ref="tns:tr" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+            <attribute name="id"></attribute>
+            <!--<attributeGroup ref="tns:css-attribute" />-->
+			<attribute name="showPosition" default="lastPage">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="everyPage" />
+						<enumeration value="lastPage" />
+					</restriction>
+				</simpleType>
+			</attribute>
+        </complexType>
+    </element>
+
+    <element name="tr">
+		<annotation>
+			<documentation>与网页 html 中的 tr 相类似</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+                <element ref="tns:css" minOccurs="0" maxOccurs="1" />
+                <element ref="tns:params" minOccurs="0" maxOccurs="1" />
+				<element ref="tns:td" minOccurs="0" maxOccurs="unbounded" />
+				<element ref="tns:th" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+            <attribute name="id"></attribute>
+            <attributeGroup ref="tns:css-attribute" />
+        </complexType>
+    </element>
+
+	<element name="td">
+		<annotation>
+			<documentation>与网页 html 中的 td 相类似</documentation>
+		</annotation>
+		<complexType>
+			<sequence maxOccurs="unbounded">
+				<group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+				<element ref="tns:css" minOccurs="0" maxOccurs="1" />
+				<group ref="tns:nest-element" minOccurs="0" maxOccurs="unbounded" />
+				<!--<element ref="tns:expression" minOccurs="0" maxOccurs="unbounded" />-->
+				<element ref="tns:params" minOccurs="0" maxOccurs="1" />
+				<element ref="tns:span" minOccurs="0" maxOccurs="unbounded" />
+				<!--<element ref="tns:img" minOccurs="0" maxOccurs="unbounded" />-->
+				<!--<element ref="tns:table" minOccurs="0" maxOccurs="unbounded" />-->
+			</sequence>
+			<attribute name="id"></attribute>
+			<attribute name="scaleToFitContentByPdf" type="tns:trueOrFalse"></attribute>
+			<attribute name="explain" type="tns:trueOrFalse"></attribute>
+			<attributeGroup ref="tns:css-attribute" />
+		</complexType>
+	</element>
+
+	<element name="th">
+		<annotation>
+			<documentation>与网页 html 中的 th 相类似</documentation>
+		</annotation>
+		<complexType>
+			<sequence maxOccurs="unbounded">
+				<group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+				<element ref="tns:css" minOccurs="0" maxOccurs="1" />
+				<group ref="tns:nest-element" minOccurs="0" maxOccurs="unbounded" />
+				<!--<element ref="tns:expression" minOccurs="0" maxOccurs="unbounded" />-->
+				<element ref="tns:params" minOccurs="0" maxOccurs="1" />
+				<element ref="tns:span" minOccurs="0" maxOccurs="unbounded" />
+				<!--<element ref="tns:img" minOccurs="0" maxOccurs="unbounded" />-->
+				<!--<element ref="tns:table" minOccurs="0" maxOccurs="unbounded" />-->
+			</sequence>
+			<attribute name="id"></attribute>
+			<attribute name="scaleToFitContentByPdf" type="tns:trueOrFalse"></attribute>
+			<attribute name="explain" type="tns:trueOrFalse"></attribute>
+			<attributeGroup ref="tns:css-attribute" />
+		</complexType>
+	</element>
+
+    <element name="div">
+		<annotation>
+			<documentation>与网页 html 中的 div 相类似, 后端 pdf 在解析 div 时,是解析成只有一个表格的 PdfPTable</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+                <element ref="tns:css" minOccurs="0" maxOccurs="1" />
+                <group ref="tns:nest-element" minOccurs="0" maxOccurs="unbounded" />
+                <!--<element ref="tns:expression" minOccurs="0" maxOccurs="unbounded" />-->
+                <element ref="tns:params" minOccurs="0" maxOccurs="1" />
+                <element ref="tns:span" minOccurs="0" maxOccurs="unbounded" />
+                <!--<element ref="tns:img" minOccurs="0" maxOccurs="unbounded" />-->
+            </sequence>
+            <attribute name="id"></attribute>
+			<attribute name="scaleToFitContentByPdf" type="tns:trueOrFalse"></attribute>
+			<attribute name="explain" type="tns:trueOrFalse"></attribute>
+            <attributeGroup ref="tns:css-attribute" />
+        </complexType>
+    </element>
+
+    <element name="span">
+		<annotation>
+			<documentation><![CDATA[与网页 html 中的 span 相类似, 使用方法有点区别, 网页中是用 <span>{xxxxx}</span>,配置中是用 <span value="{xxxxx}"></span>]]></documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <element ref="tns:css" minOccurs="0" maxOccurs="1" />
+                <!--<element ref="tns:expression" minOccurs="0" maxOccurs="unbounded" />-->
+                <element ref="tns:params" minOccurs="0" maxOccurs="1" />
+            </sequence>
+            <attribute name="id"></attribute>
+            <attribute name="value"></attribute>
+			<attribute name="explain" type="tns:trueOrFalse"></attribute>
+			<attribute name="format">
+				<simpleType>
+					<union>
+						<simpleType>
+							<restriction base="string">
+								<enumeration value="num" />
+								<enumeration value="unitPrice" />
+								<enumeration value="amt" />
+							</restriction>
+						</simpleType>
+						<simpleType>
+							<restriction base="string">
+								<pattern value="js:.+" />
+							</restriction>
+						</simpleType>
+					</union>
+				</simpleType>
+			</attribute>
+            <attributeGroup ref="tns:css-attribute" />
+        </complexType>
+    </element>
+
+    <element name="params">
+		<annotation>
+			<documentation>参数标签,用于一些自定义处理的参数</documentation>
+		</annotation>
+        <complexType>
+            <sequence>
+                <element ref="tns:param" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+			<attribute name="id"></attribute>
+        </complexType>
+    </element>
+
+    <element name="param">
+		<annotation>
+			<documentation>参数标签,用于一些自定义处理的参数</documentation>
+		</annotation>
+        <complexType>
+            <attribute name="name">
+				<simpleType>
+					<union>
+						<simpleType>
+							<restriction base="string">
+								<enumeration value="extendToFillBody" />
+								<enumeration value="waterMark" />
+								<enumeration value="waterMarkText" />
+								<enumeration value="waterMarkOpacity" />
+								<enumeration value="waterMarkTextFontSize" />
+								<enumeration value="waterMarkOffsetX" />
+								<enumeration value="waterMarkOffsetY" />
+								<enumeration value="waterMarkImage" />
+								<enumeration value="waterMarkImageWidth" />
+								<enumeration value="waterMarkImageHeight" />
+								<enumeration value="waterMarkRotation" />
+								<enumeration value="waterMarkLayer" /><!-- default, under -->
+								<enumeration value="customContent" />
+								<enumeration value="customContentFormat" />
+								<enumeration value="calcWidth" />
+								<enumeration value="calcWidthTagId" />
+								<enumeration value="firstLineOfTbodyCss" />
+								<enumeration value="lastLineofTbodyCss" />
+								<enumeration value="firstLineOfPageCss" />
+								<enumeration value="lastLineOfPageCss" />
+							</restriction>
+						</simpleType>
+						<simpleType>
+							<restriction base="string">
+								<pattern value="js:.+" />
+							</restriction>
+						</simpleType>
+					</union>
+				</simpleType>
+			</attribute>
+            <attribute name="value"></attribute>
+        </complexType>
+    </element>
+
+    <!--
+    <element name="img">
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <element ref="tns:css" minOccurs="0" maxOccurs="1" />
+                <element ref="tns:params" minOccurs="0" maxOccurs="1" />
+            </sequence>
+            <attribute name="id"></attribute>
+            <attribute name="src"></attribute>
+            <attributeGroup ref="tns:css-attribute" />
+        </complexType>
+    </element>
+    -->
+
+    <!-- ================================动态标签 begin================================ -->
+    <element name="if">
+		<annotation>
+			<documentation>选择标签</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-body-element" minOccurs="0" maxOccurs="unbounded" />
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+            <attribute name="testJs"></attribute>
+            <!--<attribute name="var"></attribute>-->
+            <!--<attribute name="scope"></attribute>-->
+        </complexType>
+    </element>
+
+    <element name="forEach">
+		<annotation>
+			<documentation>循环标签</documentation>
+		</annotation>
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <group ref="tns:all-body-element" minOccurs="0" maxOccurs="unbounded" />
+                <group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+            <attribute name="itemsJs"></attribute>
+            <!--<attribute name="begin"></attribute>-->
+            <!--<attribute name="end"></attribute>-->
+            <!--<attribute name="step"></attribute>-->
+            <attribute name="var"></attribute>
+            <attribute name="varStatus"></attribute>
+        </complexType>
+    </element>
+
+    <element name="set">
+		<annotation>
+			<documentation>赋值标签</documentation>
+		</annotation>
+        <complexType>
+            <attribute name="var"></attribute>
+            <attribute name="valueJs"></attribute>
+            <!--<attribute name="target"></attribute>-->
+            <!--<attribute name="property"></attribute>-->
+            <!--<attribute name="scope"></attribute>-->
+        </complexType>
+    </element>
+
+	<element name="macroRef">
+		<annotation>
+			<documentation>宏引用</documentation>
+		</annotation>
+		<complexType>
+			<sequence maxOccurs="unbounded">
+				<group ref="tns:all-body-element" minOccurs="0" maxOccurs="unbounded" />
+				<group ref="tns:all-dynamic-element" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+			<attribute name="name"></attribute>
+			<attribute name="paramJs"></attribute>
+		</complexType>
+	</element>
+
+    <group name="all-dynamic-element">
+		<annotation>
+			<documentation>动态标签集合</documentation>
+		</annotation>
+        <sequence>
+            <element ref="tns:if" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:forEach" minOccurs="0" maxOccurs="unbounded" />
+			<element ref="tns:set" minOccurs="0" maxOccurs="unbounded" />
+			<element ref="tns:macroRef" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </group>
+    <!-- ================================动态标签 end================================ -->
+
+    <group name="all-body-element">
+		<annotation>
+			<documentation>body 中所有元素集合</documentation>
+		</annotation>
+        <sequence>
+            <group ref="tns:css-element2" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:table" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:thead" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:tr" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:tbody" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:tloop" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:tbottom" minOccurs="0" maxOccurs="unbounded" />
+			<element ref="tns:th" minOccurs="0" maxOccurs="unbounded" />
+			<element ref="tns:td" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:div" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:span" minOccurs="0" maxOccurs="unbounded" />
+            <!--<element ref="tns:img" minOccurs="0" maxOccurs="unbounded" />-->
+            <element ref="tns:css" minOccurs="0" maxOccurs="unbounded" />
+            <!--<element ref="tns:expression" minOccurs="0" maxOccurs="unbounded" />-->
+        </sequence>
+    </group>
+
+    <!-- 可互相嵌套的 element,例如 div 包 table, table 中的 td 也可以包 div -->
+    <group name="nest-element">
+        <sequence>
+            <element ref="tns:table" minOccurs="0" maxOccurs="unbounded" />
+            <element ref="tns:div" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </group>
+
+    <attributeGroup name="css-attribute2">
+        <attribute name="js" />
+        <attribute name="pdf" />
+    </attributeGroup>
+
+    <!-- 用于各个页面元素样式自定义 -->
+    <group name="css-element2">
+        <sequence>
+            <!-- 生成的子元素数组名类似于:widthAndHeightAndMarginLeft,因此,不要在这个地方的前面插入元素,否则程序要修改,add by hongjinqiu 2018.07.27 -->
+            <element name="width" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="height" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="paddingLeft" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="paddingTop" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="paddingRight" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="paddingBottom" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="marginLeftByJs" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="marginTopByJs" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="marginRightByJs" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="marginBottomByJs" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="fontFamily" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:fontFamilyType" />
+					<attribute name="pdf" type="tns:fontFamilyType" />
+                </complexType>
+            </element>
+            <element name="fontStyle" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:fontStyleType" />
+					<attribute name="pdf" type="tns:fontStyleType" />
+                </complexType>
+            </element>
+			<element name="fontWeight" minOccurs="0" maxOccurs="1" >
+				<complexType>
+					<!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:fontWeightType" />
+					<attribute name="pdf" type="tns:fontWeightType" />
+				</complexType>
+			</element>
+			<element name="textDecoration" minOccurs="0" maxOccurs="1" >
+				<complexType>
+					<!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:textDecorationType" />
+					<attribute name="pdf" type="tns:textDecorationType" />
+				</complexType>
+			</element>
+            <element name="borderCollapse" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="borderSpacing" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="tableLayout" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:tableLayoutType" />
+					<attribute name="pdf" type="tns:tableLayoutType" />
+                </complexType>
+            </element>
+            <element name="textAlign" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:textAlignType" />
+					<attribute name="pdf" type="tns:textAlignType" />
+                </complexType>
+            </element>
+            <element name="whiteSpace" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:whiteSpaceType" />
+					<attribute name="pdf" type="tns:whiteSpaceType" />
+                </complexType>
+            </element>
+            <element name="wordWrap" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="display" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:displayType" />
+					<attribute name="pdf" type="tns:displayType" />
+                </complexType>
+            </element>
+            <element name="visibility" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:visibilityType" />
+					<attribute name="pdf" type="tns:visibilityType" />
+                </complexType>
+            </element>
+            <element name="clear" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="zoom" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="floatAlign" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:floatAlignType" />
+					<attribute name="pdf" type="tns:floatAlignType" />
+                </complexType>
+            </element>
+            <element name="fontSize" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="webkitBoxSizing" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="mozBoxSizing" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="boxSizing" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="minHeight" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="position" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="lineHeight" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="color" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:colorType" />
+					<attribute name="pdf" type="tns:colorType" />
+                </complexType>
+            </element>
+            <element name="borderTopWidth" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+			<!--
+			<element name="borderStyle" minOccurs="0" maxOccurs="1" >
+				<complexType>
+					<attributeGroup ref="tns:css-attribute2" />
+				</complexType>
+			</element>
+			-->
+            <element name="borderTopStyle" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:borderStyleType" />
+					<attribute name="pdf" type="tns:borderStyleType" />
+                </complexType>
+            </element>
+            <element name="borderTopColor" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:colorType" />
+					<attribute name="pdf" type="tns:colorType" />
+                </complexType>
+            </element>
+            <element name="borderLeftWidth" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="borderLeftStyle" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:borderStyleType" />
+					<attribute name="pdf" type="tns:borderStyleType" />
+                </complexType>
+            </element>
+            <element name="borderLeftColor" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:colorType" />
+					<attribute name="pdf" type="tns:colorType" />
+                </complexType>
+            </element>
+            <element name="borderRightWidth" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="borderRightStyle" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:borderStyleType" />
+					<attribute name="pdf" type="tns:borderStyleType" />
+                </complexType>
+            </element>
+            <element name="borderRightColor" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:colorType" />
+					<attribute name="pdf" type="tns:colorType" />
+                </complexType>
+            </element>
+            <element name="borderBottomWidth" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="borderBottomStyle" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:borderStyleType" />
+					<attribute name="pdf" type="tns:borderStyleType" />
+                </complexType>
+            </element>
+            <element name="borderBottomColor" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:colorType" />
+					<attribute name="pdf" type="tns:colorType" />
+                </complexType>
+            </element>
+            <element name="maxWidth" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="left" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="top" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="right" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="bottom" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="verticalAlign" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:verticalAlignType" />
+					<attribute name="pdf" type="tns:verticalAlignType" />
+                </complexType>
+            </element>
+            <element name="overflowX" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="overflowY" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="maxHeight" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="backgroundColor" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:colorType" />
+					<attribute name="pdf" type="tns:colorType" />
+                </complexType>
+            </element>
+			<element name="backgroundImage" minOccurs="0" maxOccurs="1" >
+				<complexType>
+					<attributeGroup ref="tns:css-attribute2" />
+				</complexType>
+			</element>
+			<element name="backgroundImageOpacityByPdf" minOccurs="0" maxOccurs="1" >
+				<complexType>
+					<attributeGroup ref="tns:css-attribute2" />
+				</complexType>
+			</element>
+            <element name="backgroundSize" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:backgroundSizeType" />
+					<attribute name="pdf" type="tns:backgroundSizeType" />
+                </complexType>
+            </element>
+            <element name="backgroundPositionX" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:backgroundPositionXType" />
+					<attribute name="pdf" type="tns:backgroundPositionXType" />
+                </complexType>
+            </element>
+            <element name="backgroundPositionY" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <!--<attributeGroup ref="tns:css-attribute2" />-->
+					<attribute name="js" type="tns:backgroundPositionYType" />
+					<attribute name="pdf" type="tns:backgroundPositionYType" />
+                </complexType>
+            </element>
+			<element name="transformByJs" minOccurs="0" maxOccurs="1" >
+				<complexType>
+					<attributeGroup ref="tns:css-attribute2" />
+				</complexType>
+			</element>
+			<element name="opacityByJs" minOccurs="0" maxOccurs="1" >
+				<complexType>
+					<attributeGroup ref="tns:css-attribute2" />
+				</complexType>
+			</element>
+			<element name="zIndexByJs" minOccurs="0" maxOccurs="1" >
+				<complexType>
+					<attributeGroup ref="tns:css-attribute2" />
+				</complexType>
+			</element>
+			<element name="backgroundRepeatByJs" minOccurs="0" maxOccurs="1" >
+				<complexType>
+					<attributeGroup ref="tns:css-attribute2" />
+				</complexType>
+			</element>
+            <!--
+            <element name="cls" minOccurs="0" maxOccurs="1">
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            -->
+            <!--
+            <element name="cellspacing" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="cellpadding" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="colspan" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            <element name="rowspan" minOccurs="0" maxOccurs="1" >
+                <complexType>
+                    <attributeGroup ref="tns:css-attribute2" />
+                </complexType>
+            </element>
+            -->
+        </sequence>
+    </group>
+
+    <attributeGroup name="css-attribute">
+        <annotation>
+            <documentation>css属性</documentation>
+        </annotation>
+        <attribute name="cls"></attribute>
+        <attribute name="width"></attribute>
+        <attribute name="height"></attribute>
+        <attribute name="paddingLeft"></attribute>
+        <attribute name="paddingTop"></attribute>
+        <attribute name="paddingRight"></attribute>
+        <attribute name="paddingBottom"></attribute>
+        <attribute name="marginLeftByJs"></attribute>
+        <attribute name="marginTopByJs"></attribute>
+        <attribute name="marginRightByJs"></attribute>
+        <attribute name="marginBottomByJs"></attribute>
+        <attribute name="fontFamily" type="tns:fontFamilyType"></attribute>
+        <attribute name="fontStyle" type="tns:fontStyleType"></attribute>
+        <attribute name="fontWeight" type="tns:fontWeightType"></attribute>
+		<attribute name="textDecoration" type="tns:textDecorationType"></attribute>
+        <attribute name="borderCollapse"></attribute>
+        <attribute name="borderSpacing"></attribute>
+        <attribute name="tableLayout" type="tns:tableLayoutType"></attribute>
+        <attribute name="textAlign" type="tns:textAlignType"></attribute>
+        <attribute name="whiteSpace" type="tns:whiteSpaceType"></attribute>
+        <attribute name="wordWrap"></attribute>
+        <attribute name="display" type="tns:displayType"></attribute>
+        <attribute name="visibility" type="tns:visibilityType"></attribute>
+        <attribute name="clear"></attribute>
+        <attribute name="zoom"></attribute>
+        <attribute name="floatAlign"></attribute>
+        <attribute name="fontSize"></attribute>
+        <attribute name="webkitBoxSizing"></attribute>
+        <attribute name="mozBoxSizing"></attribute>
+        <attribute name="boxSizing"></attribute>
+        <attribute name="minHeight"></attribute>
+        <attribute name="position"></attribute>
+        <attribute name="lineHeight"></attribute>
+        <attribute name="color" type="tns:colorType"></attribute>
+		<attribute name="borderTopWidth"></attribute>
+		<!--<attribute name="borderStyle"></attribute>-->
+        <attribute name="borderTopStyle" type="tns:borderStyleType"></attribute>
+        <attribute name="borderTopColor" type="tns:colorType"></attribute>
+        <attribute name="borderLeftWidth"></attribute>
+        <attribute name="borderLeftStyle" type="tns:borderStyleType"></attribute>
+        <attribute name="borderLeftColor" type="tns:colorType"></attribute>
+        <attribute name="borderRightWidth"></attribute>
+        <attribute name="borderRightStyle" type="tns:borderStyleType"></attribute>
+        <attribute name="borderRightColor" type="tns:colorType"></attribute>
+        <attribute name="borderBottomWidth"></attribute>
+        <attribute name="borderBottomStyle" type="tns:borderStyleType"></attribute>
+        <attribute name="borderBottomColor" type="tns:colorType"></attribute>
+        <attribute name="maxWidth"></attribute>
+        <attribute name="left"></attribute>
+        <attribute name="top"></attribute>
+        <attribute name="right"></attribute>
+        <attribute name="bottom"></attribute>
+        <attribute name="verticalAlign" type="tns:verticalAlignType"></attribute>
+        <attribute name="overflowX"></attribute>
+        <attribute name="overflowY"></attribute>
+        <attribute name="maxHeight"></attribute>
+        <attribute name="backgroundColor" type="tns:colorType"></attribute>
+        <attribute name="backgroundImage"></attribute>
+		<attribute name="backgroundImageOpacityByPdf"></attribute>
+        <attribute name="backgroundSize" type="tns:backgroundSizeType"></attribute>
+        <attribute name="backgroundPositionX" type="tns:backgroundPositionXType"></attribute>
+        <attribute name="backgroundPositionY" type="tns:backgroundPositionYType"></attribute>
+		<attribute name="transformByJs"></attribute>
+		<attribute name="opacityByJs"></attribute>
+		<attribute name="zIndexByJs"></attribute>
+		<attribute name="backgroundRepeatByJs"></attribute>
+        <attribute name="cellspacing"></attribute>
+        <attribute name="cellpadding"></attribute>
+        <attribute name="colspan" ></attribute>
+        <attribute name="rowspan" ></attribute>
+    </attributeGroup>
+
+	<simpleType name="trueOrFalse">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="true" />
+					<enumeration value="false" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="fontFamilyType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="Arial" />
+					<enumeration value="Times New Roman" />
+					<enumeration value="Calibri" />
+					<enumeration value="Century" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value=".+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="fontStyleType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="normal" />
+					<enumeration value="italic" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="fontWeightType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="normal" />
+					<enumeration value="bold" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="textDecorationType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="none" />
+					<enumeration value="underline" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="tableLayoutType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="auto" />
+					<enumeration value="fixed" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="textAlignType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="left" />
+					<enumeration value="center" />
+					<enumeration value="right" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="whiteSpaceType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="nowrap" />
+					<enumeration value="pre-wrap" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="displayType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="block" />
+					<enumeration value="none" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="visibilityType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="hidden" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="floatAlignType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="left" />
+					<enumeration value="right" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="colorType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="white" />
+					<enumeration value="light_gray" />
+					<enumeration value="gray" />
+					<enumeration value="dark_gray" />
+					<enumeration value="black" />
+					<enumeration value="red" />
+					<enumeration value="pink" />
+					<enumeration value="orange" />
+					<enumeration value="yellow" />
+					<enumeration value="green" />
+					<enumeration value="magenta" />
+					<enumeration value="cyan" />
+					<enumeration value="blue" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="#[a-zA-Z\d]{6}" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="borderStyleType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="solid" />
+					<enumeration value="dashed" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="verticalAlignType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="top" />
+					<enumeration value="middle" />
+					<enumeration value="bottom" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="backgroundSizeType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="contain" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value=".*%" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="backgroundPositionXType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="left" />
+					<enumeration value="center" />
+					<enumeration value="right" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value=".*%" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="backgroundPositionYType">
+		<union>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="top" />
+					<enumeration value="center" />
+					<enumeration value="bottom" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value=".*%" />
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="js:.+" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+</schema>
