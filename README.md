@@ -114,6 +114,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Development & Code Tools
 
+- [ai-native-cli](https://github.com/ChaosRealmsAI/agent-cli-spec) - Design spec with 98 rules for building CLI tools that AI agents can safely use. Covers JSON output, error handling, safety guardrails, exit codes, and agent self-description. Includes audit protocol. *By [@ChaosRealmsAI](https://github.com/ChaosRealmsAI)*
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [Changelog Generator](./changelog-generator/) - Automatically creates user-facing changelogs from git commits by analyzing history and transforming technical commits into customer-friendly release notes.
