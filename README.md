@@ -174,6 +174,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Creative & Media
 
+- [BibiGPT](https://github.com/JimmyLv/bibigpt-skill) - Summarize any video, audio file, or podcast with AI-powered extraction. Works as a Claude Code skill (`npx skills add JimmyLv/bibigpt-skill`) and remote MCP server. *By [@JimmyLv](https://github.com/JimmyLv)*
 - [Canvas Design](./canvas-design/) - Creates beautiful visual art in PNG and PDF documents using design philosophy and aesthetic principles for posters, designs, and static pieces.
 - [imagen](https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen) - Generate images using Google Gemini's image generation API for UI mockups, icons, illustrations, and visual assets. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [Image Enhancer](./image-enhancer/) - Improves image and screenshot quality by enhancing resolution, sharpness, and clarity for professional presentations and documentation.
