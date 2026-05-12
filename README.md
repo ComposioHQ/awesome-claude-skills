@@ -175,6 +175,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 ### Creative & Media
 
 - [Canvas Design](./canvas-design/) - Creates beautiful visual art in PNG and PDF documents using design philosophy and aesthetic principles for posters, designs, and static pieces.
+- [bauhaus-design-skill](https://github.com/capsrock/bauhaus-design-skill) - Enforces Bauhaus / Swiss International Typographic Style design principles: mathematical grids, flush-left sans-serif typography, max 3 colors, no gradients/shadows/rounded corners, asymmetric balance.
 - [imagen](https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen) - Generate images using Google Gemini's image generation API for UI mockups, icons, illustrations, and visual assets. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [Image Enhancer](./image-enhancer/) - Improves image and screenshot quality by enhancing resolution, sharpness, and clarity for professional presentations and documentation.
 - [Slack GIF Creator](./slack-gif-creator/) - Creates animated GIFs optimized for Slack with validators for size constraints and composable animation primitives.
