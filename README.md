@@ -145,6 +145,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
+- [claude-pipe](https://github.com/bluzir/claude-pipe) - Conventions for multi-step Claude Code pipelines. Flat orchestration, YAML state tracking, data layer contracts, and resume-from-failure. Includes research pipeline and batch classifier examples. *By [@bluzir](https://github.com/bluzir)*
+
 ### Data & Analysis
 
 - [CSV Data Summarizer](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. *By [@coffeefuelbump](https://github.com/coffeefuelbump)*
