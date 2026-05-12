@@ -102,6 +102,7 @@ Skills load progressively. At session start, the agent sees only each skill's na
 Skills are not MCP servers and not tools. MCP defines how an agent connects to external systems — auth, transport, tool discovery. Tools are the individual functions an agent invokes. Skills define the workflow — what to do, in what order, with what guardrails — once the agent has the connections and tools it needs. In production, all three layers run together: MCP for access, tools for actions, skills for behavior.
 
 ## Skills
+- [skills-hub.ai](https://skills-hub.ai) - Open platform with 2,850+ AI coding skills. Browse, install (CLI or web), publish, compose, and review skills for Claude Code, Cursor, Windsurf, Codex CLI, and any MCP-compatible tool. Features quality scoring, security scanning, collections, and organizations.
 
 ### Document Processing
 
