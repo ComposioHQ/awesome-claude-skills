@@ -103,6 +103,10 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ## Skills
 
+### Agent Intelligence Matrix (ClawForge)
+- [ClawForge Suite](https://github.com/jackjin1997/ClawForge) - A power-user collection of Claude Skills and MCP servers, featuring GitHub Trending analysis, LangChain 1.0 primitives, and automated career tools.
+
+
 ### Document Processing
 
 - [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
@@ -113,6 +117,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Master Claude for Legal](https://github.com/sboghossian/master-claude-for-legal) - Skill pack for legal teams. NDA triage, multi-party version diff, citation verifier, meeting brief, and the Friday-newsletter status synthesis pattern. Includes 10 reference docs (privilege, verification, long documents, practice areas) and 3 firm templates. Built from the public Anthropic Claude for Legal Teams webinar dataset. *By [@sboghossian](https://github.com/sboghossian)*
 
 ### Development & Code Tools
+
+- [GitHub Trending Analyzer](https://github.com/jackjin1997/ClawForge/tree/main/skills/github-trending-analyzer) - Automated fetching and categorization of daily/weekly/monthly GitHub Trending projects. Perfect for staying updated on the Agentic Revolution.
 
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
