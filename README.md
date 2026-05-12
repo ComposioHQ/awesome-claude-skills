@@ -164,6 +164,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Communication & Writing
 
+- [AI Slop Detection](./ai-slop-detection/) - Analyze text for AI-generated writing patterns using a research-backed corpus of 300+ linguistic markers. Returns a scored breakdown with specific evidence. Inspired by [Sujay Choubey](https://slop-detector-six.vercel.app).
 - [article-extractor](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/article-extractor) - Extract full article text and metadata from web pages.
 - [brainstorming](https://github.com/obra/superpowers/tree/main/skills/brainstorming) - Transform rough ideas into fully-formed designs through structured questioning and alternative exploration.
 - [Content Research Writer](./content-research-writer/) - Assists in writing high-quality content by conducting research, adding citations, improving hooks, and providing section-by-section feedback.
