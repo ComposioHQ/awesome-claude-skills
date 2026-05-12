@@ -144,6 +144,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [claude-skills](https://github.com/ckorhonen/claude-skills) - A broader collection of 45+ Claude Code skills spanning engineering strategy, code hygiene, design, and workflow automation. Hub at cdd.dev/skills with pack pages and example prompts. *By [@ckorhonen](https://github.com/ckorhonen)*
+- [swe-skills](https://github.com/ckorhonen/swe-skills) - 15 strategic engineering skills for Claude Code: PR risk review, test gap hunting, performance profiling, ownership mapping, architectural auditing. *By [@ckorhonen](https://github.com/ckorhonen)*
 
 ### Data & Analysis
 
