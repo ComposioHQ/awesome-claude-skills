@@ -187,6 +187,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Productivity & Organization
 
+- [Claude Skill Mesh](https://github.com/nawazxz/Claude-Skill-Mesh) - Self-authoring agent mesh that detects your connected MCPs, spawns intelligent agents that observe patterns, and evolves through natural selection. Zero config, works with any MCP stack. *By [@nawazxz](https://github.com/nawazxz)*
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
