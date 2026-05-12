@@ -443,6 +443,7 @@ def create_speed_lines(frame: Image.Image, position: tuple[int, int],
         end_y = start_y + math.sin(trail_angle) * line_length
 
         # Draw line with varying opacity
+        alpha = random.randint(100, 200)
         width = random.randint(1, 3)
 
         # Simple line (full opacity simulation)

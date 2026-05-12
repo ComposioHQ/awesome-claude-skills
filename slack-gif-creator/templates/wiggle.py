@@ -14,6 +14,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 from PIL import Image
 from core.gif_builder import GIFBuilder
 from core.frame_composer import create_blank_frame, draw_emoji_enhanced
+from core.easing import interpolate
 
 
 def create_wiggle_animation(
@@ -125,6 +126,9 @@ def create_wiggle_animation(
         # Apply transformations
         if object_type == 'emoji':
             size = object_data['size']
+            size_x = int(size * scale_x)
+            size_y = int(size * scale_y)
+
             # For non-uniform scaling or rotation, we need to use PIL transforms
             if abs(scale_x - scale_y) > 0.01 or abs(rotation) > 0.1:
                 # Create emoji on transparent canvas

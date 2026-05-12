@@ -4,6 +4,7 @@ Quick validation script for skills - minimal version
 """
 
 import sys
+import os
 import re
 from pathlib import Path
 

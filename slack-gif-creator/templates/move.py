@@ -209,7 +209,7 @@ def apply_trail_effect(frames: list, trail_length: int = 5,
     Returns:
         List of frames with trail effect
     """
-    from PIL import Image
+    from PIL import Image, ImageChops
     import numpy as np
 
     trailed_frames = []
