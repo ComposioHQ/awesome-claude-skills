@@ -159,6 +159,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
+- [hormozi-offer-audit](https://github.com/johnericforte/claude-skill-hormozi-offer-audit) - Audits sales offers (landing pages, pricing tiers, lead magnets) against Alex Hormozi's Value Equation. Returns a 100-point score across four levers (Dream Outcome, Perceived Likelihood, Time Delay, Effort & Sacrifice) plus a Top 3 Fixes block ranked by impact-to-effort. Also runs Grand Slam Offer + M.A.G.I.C. naming checks. *By [@johnericforte](https://github.com/johnericforte)*
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
 
