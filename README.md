@@ -171,6 +171,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [Writer's Voice](https://github.com/travsteward/writers-voice) - Constructed voice for AI writing. Anchors the agent to a training-data author blend (matched at openwriter.io/writers-voice), then layers NEVER rules and presentation fingerprints from a growing local corpus. Pure markdown — agent-agnostic. Gets better as you add samples. *By [@travsteward](https://github.com/travsteward)*
 
 ### Creative & Media
 
