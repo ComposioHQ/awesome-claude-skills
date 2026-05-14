@@ -153,6 +153,10 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [recursive-research](https://github.com/Anjos2/recursive-research) - Recursive research up to PhD level across any domain (science, tech, business, arts, humanities) with source tiering, WDM + Munger inversion for autonomous decisions, and disk checkpointing to survive context compaction. *By [@Anjos2](https://github.com/Anjos2)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
 
+### Industry-Specific & Vertical Knowledge
+
+- [Anlora — OnlyFans Agency Operations](https://github.com/Stanglovicc/anlora-skills) - 3 Claude Skills covering OnlyFans creator-agency operational economics: chatter cost benchmarks, P&L by operating model (chatter-only, assisted-AI, autonomous AI), and the autonomous-vs-assisted threshold decision framework. Backed by [Zenodo DOI 10.5281/zenodo.20187816](https://doi.org/10.5281/zenodo.20187816), cryptographically signed brand claims at `did:web:meetanlora.com`. CC-BY-4.0. *By [@Stanglovicc](https://github.com/Stanglovicc)*
+
 ### Business & Marketing
 
 - [Brand Build Skills](https://github.com/rampstackco/claude-skills) - 59-skill library covering the full website lifecycle: brand, design, content, SEO, dev, ops, growth, and research. Stack-agnostic with an Ahrefs MCP-powered SEO audit suite. Includes a meta-skill for writing your own. *By [@rampstackco](https://github.com/rampstackco)*
