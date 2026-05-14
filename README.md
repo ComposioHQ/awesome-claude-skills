@@ -164,6 +164,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Communication & Writing
 
+- [AAVE Respect](https://github.com/MinistaJazz/aave-respect) - Respect-layer skill for recognizing African American Vernacular English accurately, preserving meaning, avoiding correction, and preventing mimicry. *By [@MinistaJazz](https://github.com/MinistaJazz)*
 - [article-extractor](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/article-extractor) - Extract full article text and metadata from web pages.
 - [brainstorming](https://github.com/obra/superpowers/tree/main/skills/brainstorming) - Transform rough ideas into fully-formed designs through structured questioning and alternative exploration.
 - [Content Research Writer](./content-research-writer/) - Assists in writing high-quality content by conducting research, adding citations, improving hooks, and providing section-by-section feedback.
