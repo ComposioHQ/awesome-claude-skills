@@ -144,6 +144,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [Septim Agents Pack Sample (open-source)](https://github.com/septimlabs-code/septim-agents-pack-sample) - MIT-licensed sample of one Claude Code sub-agent from Septim Agents Pack. Drop `pip-intern.md` into `~/.claude/agents/` and Claude Code picks it up. Demonstrates the named-agent + scope + refusal-conditions format. Full 10-agent pack at septimlabs.com/agents ($49 lifetime).
+- [Septim Agents Pack Sample (open-source)](https://github.com/septimlabs-code/septim-agents-pack-sample) - MIT-licensed sample of one Claude Code sub-agent from Septim Agents Pack. Drop `pip-intern.md` into `~/.claude/agents/` and Claude Code picks it up. Demonstrates the named-agent + scope-+-refusal-conditions format. Full 10-agent pack at septimlabs.com/agents ($49 lifetime).
 
 ### Data & Analysis
 
