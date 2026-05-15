@@ -339,6 +339,7 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 2. Add skills from the marketplace or upload custom skills.
 3. Claude automatically activates relevant skills based on your task.
 
+- [marcomnit/truenex-memory](https://github.com/marcomnit/truenex-memory) - Local-first, persistent memory store for AI agents with global search and project context.
 ### Using Skills in Claude Code
 
 1. Place the skill in `~/.config/claude-code/skills/`:
