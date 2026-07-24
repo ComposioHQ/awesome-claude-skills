@@ -35,12 +35,15 @@
 
 A comprehensive and curated list of 1000+ production ready and practical Claude Skills and Plugins for enhancing productivity across usecases on not just Claude.ai, Claude Code, but also across coding agents like Codex, Cursor, Gemini CLI, Antigravity and more.
 
+## Give your skills real-world actions
 
-> **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
+Skills tell your agent **how** to work. An MCP Gateway gives it secure access to the tools it needs.
+
+Composio [MCP Gateway](https://composio.dev/mcp-gateway) provides a single MCP endpoint for 1,000+ integrations with built-in authentication, team-based access controls, audit logs, and production-ready reliability.
 
 ---
 
-## Quickstart: Connect Claude to 500+ Apps
+## Quickstart: Connect Claude to 1000+ Apps
 
 The **connect-apps** plugin lets Claude perform real actions - send emails, create issues, post to Slack. It handles auth and connects to 500+ apps using Composio under the hood.
 
@@ -498,5 +501,3 @@ Individual skills may have different licenses - please check each skill's folder
 ---
 
 **Note**: Claude Skills work across Claude.ai, Claude Code, and the Claude API. Once you create a skill, it's portable across all platforms, making your workflows consistent everywhere you use Claude.
-
-- [AgentsKB](https://agentskb.com) - Upgrade your AI with researched answers. We did the research so your AI gets it right the first time.
