@@ -45,7 +45,7 @@ Composio [MCP Gateway](https://composio.dev/mcp-gateway) provides a single MCP e
 
 ## Quickstart: Connect Claude to 1000+ Apps
 
-The **connect-apps** plugin lets Claude perform real actions - send emails, create issues, post to Slack. It handles auth and connects to 500+ apps using Composio under the hood.
+The **connect-apps** plugin lets Claude perform real actions - send emails, create issues, post to Slack. It handles auth and connects to 1000+ apps using Composio under the hood.
 
 ### 1. Install the Plugin
 
@@ -70,7 +70,7 @@ claude
 
 > **Want skills that do more than generate text?** Claude can send emails, create issues, post to Slack, and take actions across 1000+ apps. [See how →](./connect/)
 
-If you receive the email, Claude is now connected to 500+ apps.
+If you receive the email, Claude is now connected to 1000+ apps.
 
 **[See all supported apps →](https://composio.dev/toolkits)**
 
