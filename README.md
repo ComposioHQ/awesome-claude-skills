@@ -163,9 +163,11 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Brand Build Skills](https://github.com/rampstackco/claude-skills) - 59-skill library covering the full website lifecycle: brand, design, content, SEO, dev, ops, growth, and research. Stack-agnostic with an Ahrefs MCP-powered SEO audit suite. Includes a meta-skill for writing your own. *By [@rampstackco](https://github.com/rampstackco)*
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
+- [Customer Acquisition Automation](https://github.com/fsn021920-prog/customer-acquisition-automation) - Collects public pain-point leads, drafts channel-native copy, and hard-stops on human approval before any publish. *By [@fsn021920-prog](https://github.com/fsn021920-prog)*
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [Weekly Topic Library Generator](https://github.com/fsn021920-prog/weekly-topic-library-generator) - Builds a weekly AI-video topic library from public trend signals with compliant teardowns and generator-ready prompt packs. *By [@fsn021920-prog](https://github.com/fsn021920-prog)*
 
 ### Communication & Writing
 
@@ -186,6 +188,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Slack GIF Creator](./slack-gif-creator/) - Creates animated GIFs optimized for Slack with validators for size constraints and composable animation primitives.
 - [Theme Factory](./theme-factory/) - Applies professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages with 10 pre-set themes.
 - [Video Downloader](./video-downloader/) - Downloads videos from YouTube and other platforms for offline viewing, editing, or archival with support for various formats and quality options.
+- [Virtual Try-On](https://github.com/fsn021920-prog/virtual-try-on) - Prompt workflow for realistic AI outfit try-on from a person photo and clothing photo (tops, pants, dresses) with face-lock and AIGC/likeness rules. *By [@fsn021920-prog](https://github.com/fsn021920-prog)*
 - [youtube-transcript](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript) - Fetch transcripts from YouTube videos and prepare summaries.
 - [swiftui-design-skill](https://github.com/wholiver/swiftui-design-skill) - SwiftUI 前端设计 skill — 反 AI Slop 六条铁律、设计方向顾问、品牌资产协议、五维评审。支持 Claude Code / Cursor / Codex / OpenCode 等全部 AI agent 平台。 *By [@wholiver](https://github.com/wholiver)*
 - [Pixelbin-Media-Generation](https://github.com/anandpareek-hub/pixelbin-claude-skill) - Generate and edit images & videos with 85+ API portfolio and build visually appealing website pages
