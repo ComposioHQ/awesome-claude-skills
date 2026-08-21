@@ -202,6 +202,10 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
 
+### Configuration & Environment
+
+- [extension-lifecycle](https://github.com/kksfkf/claude-extension-lifecycle) - 8-step cleanup flow for MCP Server, Skill, Hook, and Plugin extensions across all AI programming tools (Claude Code, Cursor, Windsurf). Extends to cc-switch, hermes and other cross-tool scenarios. Deterministic, no-confirmation required.
+
 ### Collaboration & Project Management
 
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
