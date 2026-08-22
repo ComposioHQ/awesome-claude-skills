@@ -192,6 +192,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Productivity & Organization
 
+- [find-my-goal](https://github.com/Kaiji-Z/find-my-goal) - Zero-barrier goal drafter for agents with a native /goal loop (ZCode, Codex, opencode+omo): turns vague wishes into strong goals with executable acceptance criteria, scope, budget and stop conditions via multiple-choice Q&A. Bilingual (中文/EN).
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
