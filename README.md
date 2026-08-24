@@ -175,6 +175,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [family-history-research](https://github.com/emaynard/claude-family-history-research-skill) - Provides assistance with planning family history and genealogy research projects.
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
+- [Simple Explanation Skill (SES)](https://github.com/Ryuketsukami/simple-explanation-skill) - Makes an AI explain anything simply: the answer first, depth in layers the reader can skip, plain words, and every fact kept. Works in Claude Code, Claude.ai, Codex, Cursor, and any SKILL.md agent. *By [@Ryuketsukami](https://github.com/Ryuketsukami)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
 
 ### Creative & Media
