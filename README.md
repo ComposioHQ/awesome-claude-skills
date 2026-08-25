@@ -167,7 +167,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
 
-- [PM Skills](https://github.com/mohitagw15856/pm-claude-skills) - 771-skill MIT library of professional Agent Skills across 35 professions — PRDs, postmortems, lease and medical-bill decoders, negotiation simulators, deterministic calculators — every skill SkillSpec-gated and security-scanned in CI, with a browser playground and one-command install. *By [@mohitagw15856](https://github.com/mohitagw15856)*
+- [PM Skills](https://github.com/mohitagw15856/pm-claude-skills) - 1,153-skill MIT library of professional Agent Skills across 35 professions — PRDs, postmortems, lease and medical-bill decoders, negotiation simulators, deterministic calculators — every skill SkillSpec-gated and security-scanned in CI, with a browser playground and one-command install. *By [@mohitagw15856](https://github.com/mohitagw15856)*
 ### Communication & Writing
 
 - [article-extractor](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/article-extractor) - Extract full article text and metadata from web pages.
