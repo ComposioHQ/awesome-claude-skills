@@ -37,6 +37,7 @@ A comprehensive and curated list of 1000+ production ready and practical Claude 
 
 ## Give your skills real-world actions
 
+- [Persona](https://github.com/jayamitkatariya/personacli) - Local-first personal workspace: notes, tasks, and AI chat over plain Markdown files. Connects to Ollama for free private AI.
 Skills tell your agent **how** to work. An MCP Gateway gives it secure access to the tools it needs.
 
 Composio [MCP Gateway](https://composio.dev/mcp-gateway) provides a single MCP endpoint for 1,000+ integrations with built-in authentication, team-based access controls, audit logs, and production-ready reliability.
