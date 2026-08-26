@@ -190,6 +190,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [swiftui-design-skill](https://github.com/wholiver/swiftui-design-skill) - SwiftUI 前端设计 skill — 反 AI Slop 六条铁律、设计方向顾问、品牌资产协议、五维评审。支持 Claude Code / Cursor / Codex / OpenCode 等全部 AI agent 平台。 *By [@wholiver](https://github.com/wholiver)*
 - [Pixelbin-Media-Generation](https://github.com/anandpareek-hub/pixelbin-claude-skill) - Generate and edit images & videos with 85+ API portfolio and build visually appealing website pages
 
+- [computer-use](https://github.com/ridelink0/claude-computer-use) - Codex-style computer use for Windows and macOS. Drives desktop apps through the accessibility tree instead of screenshots, so targeting is exact and about 20x cheaper in tokens, and it can work on the same desktop while you keep working.
+
 ### Productivity & Organization
 
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
