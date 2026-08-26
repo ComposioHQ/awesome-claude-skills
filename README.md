@@ -148,6 +148,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [subagent-driven-development](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - Dispatches independent subagents for individual tasks with code review checkpoints between iterations for rapid, controlled development.
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
+- [falsify](https://github.com/263311487-ux/falsify) - 5-stage scientific thinking protocol for AI agents (Axiomatize → Hypothesize → Adversarialize → Verify → Converge). Stops agents from giving confident answers they cannot falsify; ships 28 eval cases + external dogfood validation (4/4 real-community questions passed, 3/3 ground-truth matches). Install via `npx skills add 263311487-ux/falsify`. *By [@263311487-ux](https://github.com/263311487-ux)*
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
 ### Data & Analysis
