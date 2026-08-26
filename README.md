@@ -213,6 +213,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Security & Systems
 
+- [Aegis Skills](https://github.com/sadigaxund/aegis-skills) - 40 defensive-security audit playbooks that AI coding agents execute against source code and Linux servers: injection, authz/IDOR, BaaS misconfiguration (Supabase RLS, Firebase rules), memory safety, detection engineering and incident response. Install with `npx skills add sadigaxund/aegis-skills`. *By [@sadigaxund](https://github.com/sadigaxund)*
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
