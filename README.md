@@ -176,6 +176,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [孙割.skill / sunge-skill](https://github.com/swaylq/sunge-skill) - Write in Justin Sun's essay voice (the viral《我的女友景甜》/ "My Girlfriend Jing Tian" style) and pull the key decisions out of a story. Distills his mind, writing style, and decision-making into one skill. *By [@swaylq](https://github.com/swaylq)*
 
 ### Creative & Media
 
