@@ -149,6 +149,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [Alibaba Java Coding Guidelines (EN)](https://github.com/Castlebin/alibaba-java-coding-guidelines-en) - Enforces the official English Alibaba Java Coding Guidelines (181 rules) for Java code-time self-checks and standards-aligned reviews, with the full English manual and a tickable review checklist. *By [@Castlebin](https://github.com/Castlebin)*
+- [Alibaba Java Coding Guidelines (EN)](https://github.com/Castlebin/alibaba-java-coding-guidelines-en) - Enforces the official English Alibaba Java Coding Guidelines (181 rules) for Java code-time self-checks and standards-aligned reviews, with the full English manual and a tickable review checklist. *By [@Castlebin](https://github.com/Castlebin)*
 
 ### Data & Analysis
 
