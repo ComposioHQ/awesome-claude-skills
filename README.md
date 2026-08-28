@@ -213,11 +213,11 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Security & Systems
 
+- [BountyHarness](https://github.com/Mr-Neutr0n/bounty-harness) - Agentic bug bounty harness: 46 skill packages (recon, web/API testing, CI/CD, GraphQL, identity infra) behind a thin CLI with safety tiers, scope guardrails, and impact-verification gates before reporting. *By [@Mr-Neutr0n](https://github.com/Mr-Neutr0n)*
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
-- [BountyHarness](https://github.com/Mr-Neutr0n/bounty-harness) - Agentic bug bounty harness: 46 skill packages (recon, web/API testing, CI/CD, GraphQL, identity infra) behind a thin CLI with safety tiers, scope guardrails, and impact-verification gates before reporting. *By [@Mr-Neutr0n](https://github.com/Mr-Neutr0n)*
 
 ### Assistive Technology
 
