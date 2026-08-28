@@ -202,6 +202,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
 
+- [digital-employee-pack](https://github.com/Hahaknight/digital-employee-pack) - 6 Chinese-language (中文) office-workflow skills for non-programmers: weekly reports, meeting minutes, resume rewriting, spreadsheet cleaning, PPT outlines, and high-stakes emails, plus a personal CLAUDE.md template and safety hooks (secret-leak blocking, auto-backup).
+
 ### Collaboration & Project Management
 
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
