@@ -166,6 +166,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [Store-in-a-Box](https://github.com/comil27/store-in-a-box) - Deploys a live, paid digital-product store from the terminal: Stripe Checkout plus a Cloudflare Worker that verifies the payment server-side and auto-delivers the download. No storefront platform and no per-sale platform fee.
 
 ### Communication & Writing
 
