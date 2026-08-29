@@ -147,6 +147,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [software-architecture](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/ddd/skills/software-architecture) - Implements design patterns including Clean Architecture, SOLID principles, and comprehensive software design best practices.
 - [subagent-driven-development](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - Dispatches independent subagents for individual tasks with code review checkpoints between iterations for rapid, controlled development.
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
+- [stop-that-shit](https://github.com/lennney/stop-that-shit) - Multi-platform Hook + Skill Guard for AI coding agents (Claude Code, Codex, OpenCode, Hermes): intercepts unrequested hashes/checksums, task-scope creep, out-of-bounds file writes, and over-budget subagent spawns. Local-first, zero external model calls. \\*By [@lennney](https://github.com/lennney)\\*
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
 
