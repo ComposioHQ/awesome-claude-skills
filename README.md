@@ -216,8 +216,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
-- [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 - [skill-vet](https://github.com/ruslanlap/skill-vet) - Scan SKILL.md skill bundles for prompt injection, data exfiltration, credential harvesting, and destructive commands before your agent executes them. Zero-dependency Python static analyzer with a false-positive allowlist, GitHub Action, and SARIF output.
+- [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
 ### Assistive Technology
 
