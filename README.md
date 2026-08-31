@@ -166,6 +166,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [SEO Skills by Gaznil](https://github.com/gaznilmuzammil12-prog/seo-skills-by-gaznil) - 81-skill SEO library with no overlapping coverage: technical SEO, on-page, AI search (GEO/AEO/LLMO), ecommerce, international, backlinks, local, measurement, and a full blog content pipeline. Every skill has a single purpose, names are collision-checked, and all cross-references resolve. *By [@gaznilmuzammil12-prog](https://github.com/gaznilmuzammil12-prog)*
 
 ### Communication & Writing
 
