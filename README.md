@@ -113,6 +113,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) - Read, generate, and adjust slides, layouts, templates.
 - [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
 - [Markdown to EPUB Converter](https://github.com/smerchek/claude-epub-skill) - Converts markdown documents and chat summaries into professional EPUB ebook files. *By [@smerchek](https://github.com/smerchek)*
+- [Verify Citations](./document-skills/verify-citations/) - Verify citations and references in a document resolve and support claims; flag unsupported claims; recompute arithmetic. Uses Stipple (free tier).
+- [Verify Document Authenticity](./document-skills/verify-document-authenticity/) - Forensic document verification: risk band + per-signal evidence for tampering on payslips, invoices, statements, IDs. Uses Stipple (free tier).
 - [Master Claude for Legal](https://github.com/sboghossian/master-claude-for-legal) - Skill pack for legal teams. NDA triage, multi-party version diff, citation verifier, meeting brief, and the Friday-newsletter status synthesis pattern. Includes 10 reference docs (privilege, verification, long documents, practice areas) and 3 firm templates. Built from the public Anthropic Claude for Legal Teams webinar dataset. *By [@sboghossian](https://github.com/sboghossian)*
 
 ### Development & Code Tools
