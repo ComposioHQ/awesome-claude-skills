@@ -1,0 +1,24 @@
+{
+  "direction": "llm-pretraining-data",
+  "keywords": ["pretraining data", "data curation", "data selection"],
+  "orgs": [
+    "QwenLM",
+    "deepseek-ai",
+    "zai-org",
+    "THUDM",
+    "MoonshotAI",
+    "ModelScope",
+    "Alibaba-NLP",
+    "TencentARC",
+    "Tencent-Hunyuan",
+    "ByteDance-Seed",
+    "PaddlePaddle",
+    "huawei-noah",
+    "mindspore-ai",
+    "meituan",
+    "jd-opensource",
+    "xiaohongshu-pub"
+  ],
+  "paperMax": 30,
+  "dataDir": "talent-research/_radar"
+}
