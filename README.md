@@ -114,6 +114,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
 - [Markdown to EPUB Converter](https://github.com/smerchek/claude-epub-skill) - Converts markdown documents and chat summaries into professional EPUB ebook files. *By [@smerchek](https://github.com/smerchek)*
 - [Master Claude for Legal](https://github.com/sboghossian/master-claude-for-legal) - Skill pack for legal teams. NDA triage, multi-party version diff, citation verifier, meeting brief, and the Friday-newsletter status synthesis pattern. Includes 10 reference docs (privilege, verification, long documents, practice areas) and 3 firm templates. Built from the public Anthropic Claude for Legal Teams webinar dataset. *By [@sboghossian](https://github.com/sboghossian)*
+- [doc-reader](https://github.com/hanzhangzzz/agent-skills-zh/tree/main/doc-reader) - Translates an English technical article or PDF into Chinese section by section with consistent terminology, keeps 100% of the images, and builds a three-column preview (original · translation · AI slides). *By [@hanzhangzzz](https://github.com/hanzhangzzz)*
 
 ### Development & Code Tools
 
@@ -176,6 +177,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [hkr-render](https://github.com/hanzhangzzz/agent-skills-zh/tree/main/hkr-render) - WeChat Official Account publishing pipeline: Markdown to WeChat-compatible styled HTML (7 themes), cover image generation, and push to the draft box with multi-article support. *By [@hanzhangzzz](https://github.com/hanzhangzzz)*
 
 ### Creative & Media
 
@@ -189,6 +191,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [youtube-transcript](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript) - Fetch transcripts from YouTube videos and prepare summaries.
 - [swiftui-design-skill](https://github.com/wholiver/swiftui-design-skill) - SwiftUI 前端设计 skill — 反 AI Slop 六条铁律、设计方向顾问、品牌资产协议、五维评审。支持 Claude Code / Cursor / Codex / OpenCode 等全部 AI agent 平台。 *By [@wholiver](https://github.com/wholiver)*
 - [Pixelbin-Media-Generation](https://github.com/anandpareek-hub/pixelbin-claude-skill) - Generate and edit images & videos with 85+ API portfolio and build visually appealing website pages
+- [xiaohongshu-downloader](https://github.com/hanzhangzzz/agent-skills-zh/tree/main/xiaohongshu-downloader) - Downloads a Xiaohongshu (RedNote) video and transcribes the voice-over with Whisper into a Markdown transcript for analysis, summary or translation. *By [@hanzhangzzz](https://github.com/hanzhangzzz)*
 
 ### Productivity & Organization
 
