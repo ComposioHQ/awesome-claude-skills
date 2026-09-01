@@ -141,6 +141,7 @@
 - [llm-wiki](https://github.com/praneybehl/llm-wiki-plugin) - Build and maintain an LLM-curated personal knowledge base with sharded indexes and search.
 - [swarmvault](https://github.com/swarmclawai/swarmvault) - Compile docs, research, and code into a local markdown wiki, knowledge graph, and hybrid search index.
 - [wiki](https://github.com/plasma-ai/wiki/tree/main/wiki/skills/wiki) - Manage indexed Markdown knowledge bases for agents with scoped retrieval and deterministic indexes.
+- [personal-understanding](https://github.com/caix84476-netizen/personal-understanding) - Evidence-chain personal memory for AI agents — verbatim-first, auditable, anti-fabrication. Saves your exact words immutably (SHA-256, session-tagged) first, then derives events, entities, context cards, and causal hypotheses; every fact traces back to its verbatim source. Local-first, stdlib-only.
 
 
 ## 🎬 Media & Content
