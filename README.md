@@ -160,6 +160,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Business & Marketing
 
+- [AffiliateRail](https://github.com/jimibarkway/affiliaterail-skill) - Run a SaaS affiliate program end to end: commission rates worked from your own margin, program terms, recruiting the first partners, fraud, and the payout and tax side most guides skip (W-9 and W-8BEN, the 1099 threshold, VAT, clawbacks). Works standalone, or connects to your live program over MCP. *By [@jimibarkway](https://github.com/jimibarkway)*
 - [Brand Build Skills](https://github.com/rampstackco/claude-skills) - 59-skill library covering the full website lifecycle: brand, design, content, SEO, dev, ops, growth, and research. Stack-agnostic with an Ahrefs MCP-powered SEO audit suite. Includes a meta-skill for writing your own. *By [@rampstackco](https://github.com/rampstackco)*
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
