@@ -193,6 +193,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 ### Productivity & Organization
 
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
+- [Immich Photo Manager](https://github.com/drolosoft/immich-photo-manager) - 13 skills over an MCP server for self-hosted Immich photo libraries: natural language and OCR search, geographic album curation, duplicate detection, people and faces, metadata repair, library health, PDF album reports; 94 tools, tested live on Immich 2.x and 3.x. *By [@drolosoft](https://github.com/drolosoft)*
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
 - [n8n-skills](https://github.com/haunchen/n8n-skills) - Enables AI assistants to directly understand and operate n8n workflows.
