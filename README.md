@@ -222,6 +222,9 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 - [ASD-AuDHD-PAI-Skills](https://github.com/emory/ASD-AuDHD-PAI-Skills) - New collection, first skill [pda-reframing](https://github.com/emory/ASD-AuDHD-PAI-Skills/blob/main/Skills/pda-reframing/SKILL.md) can reframe requests or decisions to defeat Persistent Demand Avoidance flavors of autism spectrum disorders, or people with ADHD that struggle to Start tasks and need help aligning with a task.
 
+### Health & Fitness
+
+- [fitness-diet-planner-free](https://github.com/Kyo-zmol/fitness-diet-planner-free) - Personalized weekly training plans and daily meal plans from body data, goals, diet preferences and available equipment; deterministic calorie/macro engine, photo meal logging via agent vision (no API keys), injury-safe swaps and bi-weekly progress adjustments. Works with Claude Code, Codex and Cursor.
 ### App Automation via Composio
 
 Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://composio.dev). Each skill includes tool sequences, parameter guidance, known pitfalls, and quick reference tables — all using real tool slugs discovered from Composio's API.
