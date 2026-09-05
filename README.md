@@ -181,6 +181,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 - [anydesign](https://github.com/uxKero/anydesign) - Analyzes any image, URL, or Figma file and generates a structured `design.md` with the full design system, component inventory, and reconstruction notes — portable to v0, Lovable, Cursor or any AI builder. *By [@uxKero](https://github.com/uxKero)*
 - [Canvas Design](./canvas-design/) - Creates beautiful visual art in PNG and PDF documents using design philosophy and aesthetic principles for posters, designs, and static pieces.
+- [Frontend Design Review](https://github.com/JasonColapietro/suede-creator-skills/tree/main/vendorable/frontend-design-review) - Designs, reviews, and visually QAs web and app interfaces against numeric design laws and a banned-defaults list so shipped screens look intentional instead of generated. *By [@JasonColapietro](https://github.com/JasonColapietro)*
 - [imagen](https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen) - Generate images using Google Gemini's image generation API for UI mockups, icons, illustrations, and visual assets. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [Image Enhancer](./image-enhancer/) - Improves image and screenshot quality by enhancing resolution, sharpness, and clarity for professional presentations and documentation.
 - [Slack GIF Creator](./slack-gif-creator/) - Creates animated GIFs optimized for Slack with validators for size constraints and composable animation primitives.
