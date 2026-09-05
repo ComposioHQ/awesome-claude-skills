@@ -117,6 +117,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Development & Code Tools
 
+- [Algo-Trading-Skills](https://github.com/HimanshuJ16/Algo-Trading-Skills) - 501-skill library for building and auditing trading systems: broker API integration, real-time market data, backtesting without look-ahead bias, risk controls and kill switches, execution algorithms, financial ML, and regulatory compliance (SEC Rule 15c3-5, MiFID II, FCA, SEBI). Each skill ships a standalone Python reference implementation and its own unittest suite. *By [@HimanshuJ16](https://github.com/HimanshuJ16)*
 - [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui).
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.
 - [building-blog](https://github.com/BuildShipGrowRepeat/nextjs-sanity-blog-skill) - Adds an SEO-first, i18n-ready blog to a Next.js + Sanity site via a 40-question intake, a one-page plan, and a 20-section spec. Includes a generator for AI hero images via Gemini 3 Pro Image (Nano Banana Pro). *By [@BuildShipGrowRepeat](https://github.com/BuildShipGrowRepeat)*
