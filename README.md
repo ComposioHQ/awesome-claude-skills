@@ -217,6 +217,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+- [skill-injection-scanner](https://github.com/vnbochkarev-netizen/skill-injection-scanner) - Scan agent/Claude skills for hidden instructions and prompt-injection patterns (EN/RU, 19 rules) before installing a poisoned skill.
+- [context-compactor](https://github.com/vnbochkarev-netizen/context-compactor) - Condense long agent sessions into handoff memos (decisions/tasks/risks/facts); credential values auto-redacted.
 
 ### Assistive Technology
 
