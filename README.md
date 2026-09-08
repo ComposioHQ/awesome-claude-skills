@@ -164,6 +164,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
+- [Hiberius Skills](https://github.com/Hiberius/hiberius-skills) - 10-skill set for performance marketing and affiliate media buying: profit and ROI from real payouts, click id and postback debugging, lead reconciliation, competitor ad scoring without spend data, and incrementality testing. Zero dependencies, offline, tested. *By [@Hiberius](https://github.com/Hiberius)*
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
 
@@ -215,6 +216,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
+- [invisible-text-forensics](https://github.com/Hiberius/invisible-text-forensics) - Detect and remove invisible Unicode: zero-width characters, watermarks, bidirectional overrides, tag-character prompt injection and homoglyphs. Preserves legitimate joiners in emoji and Arabic. *By [@Hiberius](https://github.com/Hiberius)*
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
