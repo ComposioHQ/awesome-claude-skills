@@ -157,6 +157,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [recursive-research](https://github.com/Anjos2/recursive-research) - Recursive research up to PhD level across any domain (science, tech, business, arts, humanities) with source tiering, WDM + Munger inversion for autonomous decisions, and disk checkpointing to survive context compaction. *By [@Anjos2](https://github.com/Anjos2)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
+- [SaaS Platform Teardown Kit](https://github.com/ahmedyehya92/saas-platform-teardown-kit) - A Claude Code skill that turns one SaaS landing-page URL into a 9-file, due-diligence-grade platform teardown — per-platform features and user journeys across web/mobile/desktop, tech stack, integration business logic, revenue signals with methods, and explicit hardware/FCC answers. Every claim is sourced and confidence-tagged (Confirmed/Reported/Inferred); ships with two full example teardowns (Linear, Oura). *By [@ahmedyehya92](https://github.com/ahmedyehya92)*
 
 ### Business & Marketing
 
