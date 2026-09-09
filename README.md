@@ -204,6 +204,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Collaboration & Project Management
 
+- [Decision Document](https://github.com/tushaarmehtaa/tushar-skills/tree/main/decision-doc) - Creates decision records with options, evidence, tradeoffs, owners, and review triggers. Inspired by [Slashskills](https://github.com/tushaarmehtaa/tushar-skills/tree/main/decision-doc).
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
 - [google-workspace-skills](https://github.com/sanjay3290/ai-skills/tree/main/skills) - Suite of Google Workspace integrations: Gmail, Calendar, Chat, Docs, Sheets, Slides, and Drive with cross-platform OAuth. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [mercury-mcp](https://www.teamoffsite.ai/proton/docs/skill) - Cheatsheet for the Mercury (Proton) MCP tools. Message agent teammates, manage threads, create tasks, and schedule automations across coordinated agent teams. *By [Mercury](https://mercury.build)*
