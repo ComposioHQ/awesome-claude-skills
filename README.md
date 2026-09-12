@@ -106,6 +106,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ## Skills
 
+- [claude-curl-to-skill](https://github.com/Om-Talaviya/claude-curl-to-skill-) - One-shot synthesizer that turns any API curl command into a runnable Claude Agent Skill with schema inference and auth guards.
 ### Document Processing
 
 - [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
