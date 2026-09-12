@@ -217,6 +217,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
+- [verify-watermark-removal](https://github.com/Yurakonoplya/unmark-checker) - Measures whether a "watermark remover" or "humanizer" really removed a statistical text watermark. Plants a SynthID-class mark under a key you hold, scores what the tool returned against thresholds fixed in advance, and reports the cost in meaning, facts, verbatim runs and length. Measures only, removes nothing. *By [@Yurakonoplya](https://github.com/Yurakonoplya)*
 
 ### Assistive Technology
 
