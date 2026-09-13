@@ -166,6 +166,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [RouterGrowth GTM Skills](https://github.com/RouterGrowth/skills) - Ten open-source GTM workflows an agent runs end to end on the RouterGrowth API: lead lists from hiring signals, a cold email pipeline with human approval gates, a daily SDR loop, LinkedIn outbound, AI search visibility audits, Reddit surface maps, brand mention sweeps, community reply drafts and ad creative batches. Every call is quoted before it runs. *By [@RouterGrowth](https://github.com/RouterGrowth)*
 
 ### Communication & Writing
 
