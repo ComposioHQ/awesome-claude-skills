@@ -158,6 +158,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [recursive-research](https://github.com/Anjos2/recursive-research) - Recursive research up to PhD level across any domain (science, tech, business, arts, humanities) with source tiering, WDM + Munger inversion for autonomous decisions, and disk checkpointing to survive context compaction. *By [@Anjos2](https://github.com/Anjos2)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
 
+- [Data Transform](https://github.com/seastarmoon/data-transform) - Infer data transformations from a source file plus a desired sample, then apply them to the whole dataset. Handles Excel/CSV/JSON/TXT inter-conversion, field add/rename/replace/delete, value mapping, template output, streaming reads for large files, model-driven batching, and output integrity checks. *By [@seastarmoon](https://github.com/seastarmoon)*
 ### Business & Marketing
 
 - [Brand Build Skills](https://github.com/rampstackco/claude-skills) - 59-skill library covering the full website lifecycle: brand, design, content, SEO, dev, ops, growth, and research. Stack-agnostic with an Ahrefs MCP-powered SEO audit suite. Includes a meta-skill for writing your own. *By [@rampstackco](https://github.com/rampstackco)*
