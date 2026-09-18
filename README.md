@@ -201,6 +201,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [Universal Exam Cram Coach](https://github.com/ZeKaiNie/universal-examprep-skill) - Turn course lecture slides (PDF/PPTX), notes, and past exams into an active-learning tutor with vector figure cropping, homework quiz bank, and cross-session progress tracking. *By [@ZeKaiNie](https://github.com/ZeKaiNie)*
 
 ### Collaboration & Project Management
 
