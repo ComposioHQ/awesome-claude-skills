@@ -1,4 +1,4 @@
-<h1 align="center">Awesome Claude Skills</h1>
+﻿<h1 align="center">Awesome Claude Skills</h1>
 
 <p align="center">
 <a href="https://dashboard.composio.dev/login?utm_source=Github&utm_medium=Youtube&utm_campaign=2025-11&utm_content=AwesomeSkills">
