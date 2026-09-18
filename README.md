@@ -204,6 +204,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Collaboration & Project Management
 
+- [chirp](https://github.com/CryogenicPlanet/chirp/tree/master/skills/chirp) - Coordinate a human and multiple agents through a self-hosted message board with durable topics, mentions, cursors, waits, and live HTTP onboarding. *By [@CryogenicPlanet](https://github.com/CryogenicPlanet)*
 - [git-pushing](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing) - Automate git operations and repository interactions.
 - [google-workspace-skills](https://github.com/sanjay3290/ai-skills/tree/main/skills) - Suite of Google Workspace integrations: Gmail, Calendar, Chat, Docs, Sheets, Slides, and Drive with cross-platform OAuth. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [mercury-mcp](https://www.teamoffsite.ai/proton/docs/skill) - Cheatsheet for the Mercury (Proton) MCP tools. Message agent teammates, manage threads, create tasks, and schedule automations across coordinated agent teams. *By [Mercury](https://mercury.build)*
