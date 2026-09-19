@@ -213,6 +213,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Security & Systems
 
+- [claude-security-skills](https://github.com/NovaCode37/claude-security-skills) - Eight dependency-free security skills: secret scanning, Python SAST, prompt-injection testing, plus HTTP header, JWT, Dockerfile, CORS and dependency auditing.
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
