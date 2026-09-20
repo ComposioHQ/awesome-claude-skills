@@ -166,7 +166,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
-- [TrendCite](./trendcite/) - Turns public Hacker News, GitHub, RSS and Reddit signals into scored content briefs with linked evidence and counterpoints. Requires the MIT-licensed TrendCite CLI locally; includes an offline demo mode.
+- [TrendCite](https://github.com/Abaco3300/trendcite/tree/main/skills/trendcite) - Turns public Hacker News, GitHub, RSS and Reddit signals into scored content briefs with linked evidence and counterpoints. Includes a deterministic offline demo and an MIT-licensed local CLI.
 
 ### Communication & Writing
 
