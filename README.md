@@ -114,6 +114,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
 - [Markdown to EPUB Converter](https://github.com/smerchek/claude-epub-skill) - Converts markdown documents and chat summaries into professional EPUB ebook files. *By [@smerchek](https://github.com/smerchek)*
 - [Master Claude for Legal](https://github.com/sboghossian/master-claude-for-legal) - Skill pack for legal teams. NDA triage, multi-party version diff, citation verifier, meeting brief, and the Friday-newsletter status synthesis pattern. Includes 10 reference docs (privilege, verification, long documents, practice areas) and 3 firm templates. Built from the public Anthropic Claude for Legal Teams webinar dataset. *By [@sboghossian](https://github.com/sboghossian)*
+- [docx-formatter](https://github.com/CP-here/docx-formatter-skill) - Typesets Markdown into professional Chinese Word (.docx) with natively editable OMML equations, flow diagrams, TOC, and GB/T 7714 citations. *By [@CP-here](https://github.com/CP-here)*
 
 ### Development & Code Tools
 
@@ -284,9 +285,9 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 
 **Calendar & Scheduling**
 - [Cal.com Automation](./cal-com-automation/) - Automate Cal.com: event types, bookings, availability, and scheduling.
-- [Calendly Automation](./calendly-automation/) - Automate Calendly: events, invitees, event types, scheduling links, and availability.
-- [Google Calendar Automation](./google-calendar-automation/) - Automate Google Calendar: events, attendees, free/busy, and recurring schedules.
-- [Outlook Calendar Automation](./outlook-calendar-automation/) - Automate Outlook Calendar: events, attendees, reminders, and recurring schedules.
+- [Calendly Automation](./calendly-automation/) - Automate Calendly: event types, invitees, event types, scheduling links, and availability.
+- [Google Calendar Automation](./google-calendar-automation/) - Automate Google Calendar: event types, attendees, free/busy, and recurring schedules.
+- [Outlook Calendar Automation](./outlook-calendar-automation/) - Automate Outlook Calendar: event types, attendees, reminders, and recurring schedules.
 
 **Social Media**
 - [Instagram Automation](./instagram-automation/) - Automate Instagram: posts, stories, comments, media, and business insights.
