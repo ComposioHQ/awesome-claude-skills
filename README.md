@@ -149,6 +149,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [ux-skill](https://github.com/Laith0003/ux-skill) - Design intelligence for Claude Code: a deterministic anti-AI-slop linter (150+ rules) that also renders pages to catch off-center and overflowing layout in LTR and RTL, 160 brand specs, Arabic-first RTL rules, and an MCP server. Offline, MIT. *By [@Laith0003](https://github.com/Laith0003)*
 
 ### Data & Analysis
 
