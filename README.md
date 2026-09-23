@@ -129,6 +129,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [jules](https://github.com/sanjay3290/ai-skills/tree/main/skills/jules) - Delegate coding tasks to Google Jules AI agent for async bug fixes, documentation, tests, and feature implementation on GitHub repos. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [LangSmith Fetch](./langsmith-fetch/) - Debug LangChain and LangGraph agents by automatically fetching and analyzing execution traces from LangSmith Studio. First AI observability skill for Claude Code. *By [@OthmanAdi](https://github.com/OthmanAdi)*
 - [lean-ctx](https://github.com/yvgude/lean-ctx) - MCP server and context runtime for AI coding agents: session caching, AST-aware compression, and 90+ shell patterns to reduce token usage. Supports Claude Code, Cursor, Copilot, and other integrations. Install the Claude Code skill with `lean-ctx init --agent claude-code`; docs at [leanctx.com](https://leanctx.com). *By [@yvgude](https://github.com/yvgude)*
+- [marcomnit/truenex-memory](https://github.com/marcomnit/truenex-memory) - Local-first, persistent memory store for AI agents with global search and project context.
 - [MCP Builder](./mcp-builder/) - Guides creation of high-quality MCP (Model Context Protocol) servers for integrating external APIs and services with LLMs using Python or TypeScript.
 - [move-code-quality-skill](https://github.com/1NickPappas/move-code-quality-skill) - Analyzes Move language packages against the official Move Book Code Quality Checklist for Move 2024 Edition compliance and best practices.
 - [OpenWeb](https://github.com/openweb-org/openweb) - Agent-native way to access any website. Calls the same APIs the website calls (JSON in, JSON out) with auth (cookies, JWT, CSRF, signing) auto-resolved per request. 90+ sites built in. *By [@openweb-org](https://github.com/openweb-org)*
@@ -339,7 +340,6 @@ Pre-built workflow skills for 78 SaaS apps via [Rube MCP (Composio)](https://com
 2. Add skills from the marketplace or upload custom skills.
 3. Claude automatically activates relevant skills based on your task.
 
-- [marcomnit/truenex-memory](https://github.com/marcomnit/truenex-memory) - Local-first, persistent memory store for AI agents with global search and project context.
 ### Using Skills in Claude Code
 
 1. Place the skill in `~/.config/claude-code/skills/`:
