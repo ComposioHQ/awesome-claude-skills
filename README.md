@@ -194,6 +194,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
+- [kafeined](https://github.com/deanyouknow/kafeined) - Keep-awake guard for AI agent sessions: mention /kafeined and the agent holds the machine awake (caffeinate / SetThreadExecutionState / systemd-inhibit - nothing to install) until the task is done, then releases. *By [@deanyouknow](https://github.com/deanyouknow)*
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
 - [n8n-skills](https://github.com/haunchen/n8n-skills) - Enables AI assistants to directly understand and operate n8n workflows.
 - [Raffle Winner Picker](./raffle-winner-picker/) - Randomly selects winners from lists, spreadsheets, or Google Sheets for giveaways and contests with cryptographically secure randomness.
