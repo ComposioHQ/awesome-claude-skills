@@ -109,6 +109,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 ### Document Processing
 
 - [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
+- [Equalang Translation](https://github.com/equalang/equalang-skill) - Translate documents, slides, spreadsheets and e-books with layout preservation where supported; transcribe recordings. Requires an Equalang API key and credits. *By [Equalang](https://github.com/equalang)*
 - [pdf](https://github.com/anthropics/skills/tree/main/skills/pdf) - Extract text, tables, metadata, merge & annotate PDFs.
 - [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) - Read, generate, and adjust slides, layouts, templates.
 - [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
