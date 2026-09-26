@@ -180,6 +180,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 ### Creative & Media
 
 - [anydesign](https://github.com/uxKero/anydesign) - Analyzes any image, URL, or Figma file and generates a structured `design.md` with the full design system, component inventory, and reconstruction notes — portable to v0, Lovable, Cursor or any AI builder. *By [@uxKero](https://github.com/uxKero)*
+- [bilingual-video](https://github.com/Atituiset/skills) - Produce bilingual (zh+en) videos with HyperFrames: dual independent timelines, edge-tts/Kokoro narration with native word-boundary captions, a single-line re-record iteration loop, and 40 production-tested rules. Ships a general layer plus a tech-explainer specialization (wall→fix narrative spine, continuity kit). *By [@Atituiset](https://github.com/Atituiset)*
 - [Canvas Design](./canvas-design/) - Creates beautiful visual art in PNG and PDF documents using design philosophy and aesthetic principles for posters, designs, and static pieces.
 - [imagen](https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen) - Generate images using Google Gemini's image generation API for UI mockups, icons, illustrations, and visual assets. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [Image Enhancer](./image-enhancer/) - Improves image and screenshot quality by enhancing resolution, sharpness, and clarity for professional presentations and documentation.
