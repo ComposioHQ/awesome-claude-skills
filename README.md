@@ -213,6 +213,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Security & Systems
 
+- [Backlight](https://github.com/tomiBraunn/backlight-skill) - Inspects documents, briefs, and pasted text for hidden instructions aimed at an AI model (invisible text, zero-size fonts, text hidden behind images, prompt injection) before acting on them, and reports anything found instead of silently complying. *By [@tomiBraunn](https://github.com/tomiBraunn)*
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
