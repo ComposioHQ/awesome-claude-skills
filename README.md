@@ -176,6 +176,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [Reflective Article Writer](https://github.com/zhemuAAA/reflective-article-writer) - 反思型文章写作助手：引导用户写深度反思类文章（周记/读后感/研究型文章），写作前先确认优先目的（反思第一、吸引用户第二），通过引导式对话成稿而非代写。Reflective writing assistant for weekly journals, book reflections and research articles. *By [@zhemuAAA](https://github.com/zhemuAAA)*
 
 ### Creative & Media
 
