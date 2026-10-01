@@ -146,9 +146,11 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Skill Seekers](https://github.com/yusufkaraaslan/Skill_Seekers) - Automatically converts any documentation website into a Claude AI skill in minutes. *By [@yusufkaraaslan](https://github.com/yusufkaraaslan)*
 - [software-architecture](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/ddd/skills/software-architecture) - Implements design patterns including Clean Architecture, SOLID principles, and comprehensive software design best practices.
 - [subagent-driven-development](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - Dispatches independent subagents for individual tasks with code review checkpoints between iterations for rapid, controlled development.
+- [tastegate](https://github.com/stas4000/tastegate) - Picks a design direction, builds to a craft floor, then renders the page at phone and desktop width and fails on overlapping text, sideways scroll, low contrast, tiny tap targets and AI-gradient tells. *By [@stas4000](https://github.com/stas4000)*
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [what-could-break](https://github.com/stas4000/what-could-break) - Finds what a change breaks outside its own diff and proves the one fact that makes it safe by running real code. Same repo and model, 3 runs each: the broken file was named 1 of 3 times plain, 3 of 3 with the skill. *By [@stas4000](https://github.com/stas4000)*
 
 ### Data & Analysis
 
