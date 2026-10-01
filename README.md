@@ -192,6 +192,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Productivity & Organization
 
+- [agent-nervous-system](https://github.com/thdelmas/agent-nervous-system) - Ten self-maintenance skills for a long-running Claude Code agent, framed as organs: session-start world diff, memory consolidation, self-grading, retiring dead projects, and a wake loop that sets its own cadence with a dead man's switch.
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
@@ -215,6 +216,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
+- [immune-check](https://github.com/thdelmas/immune-check) - Scans any outbound artifact (commit, release, message, published repo) for secrets, keys, personal data, private paths and oversized vendored deps before it leaves the machine; wraps gitleaks, trufflehog or detect-secrets and falls back to a built-in pattern pass.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
 
