@@ -160,6 +160,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Business & Marketing
 
+- [Ad Copy Agency](https://github.com/5hyuns/ad-copy-agency-skill) - Writes Korean ad headlines by running an ad agency workflow as separate agents: planner's creative brief, creative director review, three creative teams, two review rounds with rework and defense, and a client fact and ad-law check. *By [@5hyuns](https://github.com/5hyuns)*
 - [Brand Build Skills](https://github.com/rampstackco/claude-skills) - 59-skill library covering the full website lifecycle: brand, design, content, SEO, dev, ops, growth, and research. Stack-agnostic with an Ahrefs MCP-powered SEO audit suite. Includes a meta-skill for writing your own. *By [@rampstackco](https://github.com/rampstackco)*
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
