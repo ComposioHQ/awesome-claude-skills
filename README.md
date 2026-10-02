@@ -189,6 +189,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [youtube-transcript](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript) - Fetch transcripts from YouTube videos and prepare summaries.
 - [swiftui-design-skill](https://github.com/wholiver/swiftui-design-skill) - SwiftUI 前端设计 skill — 反 AI Slop 六条铁律、设计方向顾问、品牌资产协议、五维评审。支持 Claude Code / Cursor / Codex / OpenCode 等全部 AI agent 平台。 *By [@wholiver](https://github.com/wholiver)*
 - [Pixelbin-Media-Generation](https://github.com/anandpareek-hub/pixelbin-claude-skill) - Generate and edit images & videos with 85+ API portfolio and build visually appealing website pages
+- [home-design](https://github.com/TJLDC/roomvana-skills/tree/main/skills/home-design) - Plan a new look for a house, yard, or room: create a short design brief with matching paint colors and a Roomvana studio link for applying it to a user-uploaded photo. *By [@TJLDC](https://github.com/TJLDC)*
 
 ### Productivity & Organization
 
