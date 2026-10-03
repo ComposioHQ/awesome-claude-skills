@@ -33,7 +33,7 @@
   </p>
 </div>
 
-A comprehensive and curated list of 1000+ production ready and practical Claude Skills and Plugins for enhancing productivity across usecases on not just Claude.ai, Claude Code, but also across coding agents like Codex, Cursor, Gemini CLI, Antigravity and more.
+A comprehensive and curated list of 1000+ production ready and practical Claude Skills and Plugins for enhancing productivity across use cases on not just Claude.ai, Claude Code, but also across coding agents like Codex, Cursor, Gemini CLI, Antigravity and more.
 
 ## Give your skills real-world actions
 
