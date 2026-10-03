@@ -128,6 +128,7 @@ Skills for working with complex file formats:
 | **[Expo Skills](https://github.com/expo/skills)** | Official skills by the Expo team for developing Expo apps |
 | **[shadcn/ui](https://ui.shadcn.com/docs/skills)** | Give Claude Code context on shadcn components as well as pattern enforcement |
 | **[get-shit-done](https://github.com/gsd-build/get-shit-done)** | Lightweight meta-prompting, context engineering, and spec-driven development system for Claude Code by TÂCHES |
+| **[pr-proof](https://github.com/TanayK07/pr-proof)** | Validates AI code review comments (from humans, CodeRabbit, Copilot or agents) against the actual code and gives each a verdict with file:line evidence. On Code Review Bench it removed 34% of CodeRabbit's noise while keeping 93.5% of real bugs. |
 
 _More community skills coming soon! Submit a PR to add your skill._
 
