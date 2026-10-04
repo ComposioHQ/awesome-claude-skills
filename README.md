@@ -193,6 +193,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 ### Productivity & Organization
 
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
+- [house-ops](https://github.com/ohwald/house-ops) - Terminal-first house-hunting workspace your coding agent drives: scans listings, tags every figure with its source (live-captured / official / user-provided / unverified), cross-checks asking price against deal-price anchors, and writes six-dimension reports plus a TUI console. Deterministic work (price normalization, cross-validation, verification tables) runs in zero-dependency Node scripts so tokens go to judgment, not arithmetic — and a listing whose community cannot be verified voids the report instead of downgrading it. Install: `npx skills add ohwald/house-ops`. *By [@ohwald](https://github.com/ohwald)*
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
 - [n8n-skills](https://github.com/haunchen/n8n-skills) - Enables AI assistants to directly understand and operate n8n workflows.
