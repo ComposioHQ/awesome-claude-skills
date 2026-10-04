@@ -193,6 +193,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 ### Productivity & Organization
 
 - [File Organizer](./file-organizer/) - Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures.
+- [Folder Organizer](https://github.com/Minerva67/folder-organizer) - Organizes messy folders by reading file contents first: content-based dedupe, version-residue grouping, classification and renaming, with a staging trash instead of hard deletes. *By [@Minerva67](https://github.com/Minerva67)*
+- [Grill My Work](https://github.com/Minerva67/grill-my-work) - Interviews you about your own work to surface decision logic, rejected alternatives and honest attributions, then writes retrospective notes and reusable assets. *By [@Minerva67](https://github.com/Minerva67)*
 - [Invoice Organizer](./invoice-organizer/) - Automatically organizes invoices and receipts for tax preparation by reading files, extracting information, and renaming consistently.
 - [kaizen](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen) - Applies continuous improvement methodology with multiple analytical approaches, based on Japanese Kaizen philosophy and Lean methodology.
 - [n8n-skills](https://github.com/haunchen/n8n-skills) - Enables AI assistants to directly understand and operate n8n workflows.
