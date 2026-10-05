@@ -201,6 +201,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [tung-shing-almanac](https://github.com/yonlandwu/tung-shing-almanac-skill) - Daily Chinese almanac (Tung Shing 通勝): auspicious dates for weddings, moving and business openings, hour-by-hour lucky times, and zodiac clash checks, powered by the 12Zodiacs engine with JPL DE440s solar terms. Bilingual EN+中文. *By [@yonlandwu](https://github.com/yonlandwu)*
 
 ### Collaboration & Project Management
 
