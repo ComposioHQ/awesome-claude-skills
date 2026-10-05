@@ -114,6 +114,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
 - [Markdown to EPUB Converter](https://github.com/smerchek/claude-epub-skill) - Converts markdown documents and chat summaries into professional EPUB ebook files. *By [@smerchek](https://github.com/smerchek)*
 - [Master Claude for Legal](https://github.com/sboghossian/master-claude-for-legal) - Skill pack for legal teams. NDA triage, multi-party version diff, citation verifier, meeting brief, and the Friday-newsletter status synthesis pattern. Includes 10 reference docs (privilege, verification, long documents, practice areas) and 3 firm templates. Built from the public Anthropic Claude for Legal Teams webinar dataset. *By [@sboghossian](https://github.com/sboghossian)*
+- [Document Content Search](https://github.com/ninggui/document-content-search) - 按内容片段找回用户文档：ima 检索 + 飞书全文检索 + 下载提取正文。 *By [@ninggui](https://github.com/ninggui)*
+- [ima Knowledge Base](https://github.com/ninggui/ima-knowledge-base) - 腾讯 ima 知识库 API 操作：搜索、读取、检索品牌研报与订阅库内容。 *By [@ninggui](https://github.com/ninggui)*
 
 ### Development & Code Tools
 
@@ -149,6 +151,12 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [Bilibili API Patterns](https://github.com/ninggui/bilibili-api-patterns) - B站 API 抓取模式：feed 聚合、cookie 坑、anti-412 处理。 *By [@ninggui](https://github.com/ninggui)*
+- [Cron Timezone Pitfall](https://github.com/ninggui/cron-timezone-pitfall) - Cron 时区陷阱排查：调度器用 UTC 导致北京时间错位 8 小时的根因与修复。 *By [@ninggui](https://github.com/ninggui)*
+- [Docker Container Ops](https://github.com/ninggui/docker-container-ops) - Docker 容器运维速查：exec/cp/restart、只读挂载修改、config 热更新。 *By [@ninggui](https://github.com/ninggui)*
+- [External Skill Adoption](https://github.com/ninggui/external-skill-adoption) - 评估外部插件/技能并决定是否采纳：学习 X 插件、比选 GitHub skill。 *By [@ninggui](https://github.com/ninggui)*
+- [Hermes Config Workflow](https://github.com/ninggui/hermes-config-workflow) - 查看/设置/更新 Hermes config.yaml：web 后端、provider keys、平台工具集、agent 选项。 *By [@ninggui](https://github.com/ninggui)*
+- [n8n Dify DeepSeek Workflow](https://github.com/ninggui/n8n-dify-deepseek-workflow) - n8n + Dify + DeepSeek 最小闭环工作流：节点选择、MCP 集成、记忆系统、实战链路。 *By [@ninggui](https://github.com/ninggui)*
 
 ### Data & Analysis
 
@@ -157,6 +165,10 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [recursive-research](https://github.com/Anjos2/recursive-research) - Recursive research up to PhD level across any domain (science, tech, business, arts, humanities) with source tiering, WDM + Munger inversion for autonomous decisions, and disk checkpointing to survive context compaction. *By [@Anjos2](https://github.com/Anjos2)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
+- [Call Recording Analysis](https://github.com/ninggui/call-recording-analysis-system) - 批量转写与分析通话录音：飞书妙记转写、按联系人归档、人物画像/意图风险/复盘、知识库沉淀。 *By [@ninggui](https://github.com/ninggui)*
+- [EV News Briefing](https://github.com/ninggui/ev-news-briefing) - 新能源行业早报自动化：定时推送、行业新闻摘要。 *By [@ninggui](https://github.com/ninggui)*
+- [Travel Deal Research](https://github.com/ninggui/travel-deal-research) - 机票/酒店/火车比价与盯价，含往返组合计算与特殊线路处理。 *By [@ninggui](https://github.com/ninggui)*
+- [Web Intelligence Reports](https://github.com/ninggui/web-intelligence-reports) - web 检索情报→验证→生成结构化报告→发布飞书文档：舆情监控、品牌分析、竞品调研。 *By [@ninggui](https://github.com/ninggui)*
 
 ### Business & Marketing
 
@@ -166,6 +178,13 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [Automotive Job Hunting Framework](https://github.com/ninggui/automotive-job-hunting-framework) - 新能源汽车求职定位与面试框架：主机厂JD拆解、STAR应答、简历分品牌优化、求职行动清单。 *By [@ninggui](https://github.com/ninggui)*
+- [Brand Style Research](https://github.com/ninggui/brand-style-research) - 研究品牌风格/文化/体系/KOL表达时使用，以品牌为主体产出全景文档。 *By [@ninggui](https://github.com/ninggui)*
+- [Douyin Real Estate Research](https://github.com/ninggui/douyin-realestate-research) - 抖音平台自动化与房产推广：能力地图、平台风控、推广路径。 *By [@ninggui](https://github.com/ninggui)*
+- [KOL Content Research](https://github.com/ninggui/kol-content-research) - 深度学习/研究某博主帖子：定位账号→全量拉取→内涵提炼（观点/方法论）。 *By [@ninggui](https://github.com/ninggui)*
+- [XHS Style Imitation](https://github.com/ninggui/xhs-style-imitation) - 小红书风格模仿写作：分析原笔记风格指纹，按指纹写新文章。 *By [@ninggui](https://github.com/ninggui)*
+- [Xiaohongshu Account Operations](https://github.com/ninggui/xiaohongshu-account-operations) - 小红书账号评论运营框架：LLM 评论生成（去AI味前置）、频率安全、自动停轮降频、质量闭环。 *By [@ninggui](https://github.com/ninggui)*
+- [Xiaohongshu Comment Leads](https://github.com/ninggui/xiaohongshu-comment-leads) - 小红书评论区引流策略：关键词搜索、评论话术去AI味、频率风控、被 ban 处置。 *By [@ninggui](https://github.com/ninggui)*
 
 ### Communication & Writing
 
@@ -176,6 +195,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [Humanizer-zh](https://github.com/ninggui/humanizer-zh) - 去除中文文本中的 AI 生成痕迹，使其自然如真人书写，保留事实与作者声音。 *By [@ninggui](https://github.com/ninggui)*
 
 ### Creative & Media
 
@@ -189,6 +209,8 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [youtube-transcript](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript) - Fetch transcripts from YouTube videos and prepare summaries.
 - [swiftui-design-skill](https://github.com/wholiver/swiftui-design-skill) - SwiftUI 前端设计 skill — 反 AI Slop 六条铁律、设计方向顾问、品牌资产协议、五维评审。支持 Claude Code / Cursor / Codex / OpenCode 等全部 AI agent 平台。 *By [@wholiver](https://github.com/wholiver)*
 - [Pixelbin-Media-Generation](https://github.com/anandpareek-hub/pixelbin-claude-skill) - Generate and edit images & videos with 85+ API portfolio and build visually appealing website pages
+- [Media Resource Automation](https://github.com/ninggui/media-resource-automation) - 影视资源自动化：资源站搜片/提取磁力→网盘离线缓存→在线观看。 *By [@ninggui](https://github.com/ninggui)*
+- [Movie Resource Automation](https://github.com/ninggui/movie-resource-automation) - 电影资源站自动搜索筛选磁力链接：登录→筛选→API 提取磁力→115/qBittorrent 缓存。 *By [@ninggui](https://github.com/ninggui)*
 
 ### Productivity & Organization
 
@@ -201,6 +223,16 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [Autonomous Problem Solving](https://github.com/ninggui/autonomous-problem-solving) - 遭遇问题先搜索再执行，失败后分析原因，只在确实需要用户介入时才回传。 *By [@ninggui](https://github.com/ninggui)*
+- [EV After-sales Knowledge Management](https://github.com/ninggui/ev-after-sales-knowledge-management) - 新能源售后知识管理方法论：三电维修市场数据、培训体系搭建、知识库运营 SOP、AI 落地路径。 *By [@ninggui](https://github.com/ninggui)*
+- [Rules Audit](https://github.com/ninggui/guining-rules-audit) - 规则审计：检查近期约定的规则是否已固化到 memory/skill，缺失自动补。 *By [@ninggui](https://github.com/ninggui)*
+- [Task Queue Protocol](https://github.com/ninggui/guining-task-queue-protocol) - 用户待办队列协议：高峰时段任务先入队闲时再跑。 *By [@ninggui](https://github.com/ninggui)*
+- [Mijia Cloud Control](https://github.com/ninggui/mijia-cloud-control) - 米家智能家居云 API 控制：查设备状态、开关灯、调空调窗帘。 *By [@ninggui](https://github.com/ninggui)*
+- [Psycho Career Coach Model](https://github.com/ninggui/psycho-career-coach-model) - 用心理咨询师+职业规划师双角色对语音/聊天记录做全量评估，产出结构化报告链。 *By [@ninggui](https://github.com/ninggui)*
+- [Research First Protocol](https://github.com/ninggui/research-first-protocol) - 遇到新领域要求先通盘联网研究再给方法论，避免凭空臆断。 *By [@ninggui](https://github.com/ninggui)*
+- [User Rules Audit](https://github.com/ninggui/rules-audit) - 规则审计：检查近期约定的规则是否已固化，缺失自动补。 *By [@ninggui](https://github.com/ninggui)*
+- [Session Task Audit](https://github.com/ninggui/session-task-audit) - 盘点最近 N 天对话确认未完成任务。 *By [@ninggui](https://github.com/ninggui)*
+- [User Task Queue Protocol](https://github.com/ninggui/task-queue-protocol) - 待办队列协议：高峰时段任务先入队闲时再跑。 *By [@ninggui](https://github.com/ninggui)*
 
 ### Collaboration & Project Management
 
