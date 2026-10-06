@@ -213,6 +213,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Security & Systems
 
+- [cisco-switch-config](https://github.com/hansstudy/cisco-switch-config) - Audits Cisco IOS and IOS-XE switch running-configs offline, masks credentials, and cites each finding to DISA STIG, NSA, CISA, or Cisco guidance with a paste-ready fix. Also generates hardened baselines. *By [@hansstudy](https://github.com/hansstudy)*
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
