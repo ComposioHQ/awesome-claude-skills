@@ -109,6 +109,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 ### Document Processing
 
 - [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - Create, edit, analyze Word docs with tracked changes, comments, formatting.
+- [lecture-ppt-workflow](https://github.com/hhhmike240-maker/lecture-ppt-workflow) - Turns lecture notes into an editable teaching PowerPoint with computed layouts, speaker notes and click-to-reveal quiz answers, optionally reusing a reference deck's template. English and Chinese. *By [@hhhmike240-maker](https://github.com/hhhmike240-maker)*
 - [pdf](https://github.com/anthropics/skills/tree/main/skills/pdf) - Extract text, tables, metadata, merge & annotate PDFs.
 - [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) - Read, generate, and adjust slides, layouts, templates.
 - [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
