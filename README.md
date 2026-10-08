@@ -501,3 +501,7 @@ Individual skills may have different licenses - please check each skill's folder
 ---
 
 **Note**: Claude Skills work across Claude.ai, Claude Code, and the Claude API. Once you create a skill, it's portable across all platforms, making your workflows consistent everywhere you use Claude.
+
+## MIDDLE
+
+**MIDDLE** — AI message reader that helps you understand and respond to messages more effectively. [Website](https://middle-production.up.railway.app)
