@@ -166,6 +166,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [The Co-Founder Team](https://github.com/betahope/cofounder-team) - Five AI co-founders (sales and growth, product, creative and social, fundraising, technology) that hand work to each other and can answer as a team, plus pitch deck and accelerator application coaches. Works in Claude Code, Claude.ai and ChatGPT. *By [@betahope](https://github.com/betahope)*
 
 ### Communication & Writing
 
