@@ -9,14 +9,27 @@ import sys
 import subprocess
 import json
 
+# Timeouts (seconds). Short ones are for quick local/metadata calls; the
+# download itself has a generous default (configurable with --timeout).
+VERSION_CHECK_TIMEOUT = 30
+INSTALL_TIMEOUT = 300
+INFO_TIMEOUT = 120
+DOWNLOAD_TIMEOUT = 3600
+
 
 def check_yt_dlp():
     """Check if yt-dlp is installed, install if not."""
     try:
-        subprocess.run(["yt-dlp", "--version"], capture_output=True, check=True)
-    except (subprocess.CalledProcessError, FileNotFoundError):
+        subprocess.run(["yt-dlp", "--version"], capture_output=True, check=True,
+                       timeout=VERSION_CHECK_TIMEOUT)
+    except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
         print("yt-dlp not found. Installing...")
-        subprocess.run([sys.executable, "-m", "pip", "install", "--break-system-packages", "yt-dlp"], check=True)
+        try:
+            subprocess.run([sys.executable, "-m", "pip", "install", "--break-system-packages", "yt-dlp"],
+                           check=True, timeout=INSTALL_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            print(f"Error: installing yt-dlp timed out after {INSTALL_TIMEOUT}s")
+            sys.exit(1)
 
 
 def get_video_info(url):
@@ -25,12 +38,14 @@ def get_video_info(url):
         ["yt-dlp", "--dump-json", "--no-playlist", url],
         capture_output=True,
         text=True,
-        check=True
+        check=True,
+        timeout=INFO_TIMEOUT
     )
     return json.loads(result.stdout)
 
 
-def download_video(url, output_path="/mnt/user-data/outputs", quality="best", format_type="mp4", audio_only=False):
+def download_video(url, output_path="/mnt/user-data/outputs", quality="best", format_type="mp4", audio_only=False,
+                   timeout=DOWNLOAD_TIMEOUT):
     """
     Download a YouTube video.
     
@@ -40,6 +55,7 @@ def download_video(url, output_path="/mnt/user-data/outputs", quality="best", fo
         quality: Quality setting (best, 1080p, 720p, 480p, 360p, worst)
         format_type: Output format (mp4, webm, mkv, etc.)
         audio_only: Download only audio (mp3)
+        timeout: Maximum seconds for the download itself (None or 0 = no limit)
     """
     check_yt_dlp()
     
@@ -89,9 +105,12 @@ def download_video(url, output_path="/mnt/user-data/outputs", quality="best", fo
         print(f"Uploader: {info.get('uploader', 'Unknown')}\n")
         
         # Download the video
-        subprocess.run(cmd, check=True)
+        subprocess.run(cmd, check=True, timeout=timeout or None)
         print(f"\n✅ Download complete!")
         return True
+    except subprocess.TimeoutExpired as e:
+        print(f"\n❌ Timed out after {round(e.timeout)}s (use --timeout to change the limit, 0 for none)")
+        return False
     except subprocess.CalledProcessError as e:
         print(f"\n❌ Error downloading video: {e}")
         return False
@@ -128,6 +147,13 @@ def main():
         help="Download only audio as MP3"
     )
     
+    parser.add_argument(
+        "-t", "--timeout",
+        type=int,
+        default=DOWNLOAD_TIMEOUT,
+        help=f"Maximum seconds for the download, 0 for no limit (default: {DOWNLOAD_TIMEOUT})"
+    )
+
     args = parser.parse_args()
     
     success = download_video(
@@ -135,7 +161,8 @@ def main():
         output_path=args.output,
         quality=args.quality,
         format_type=args.format,
-        audio_only=args.audio_only
+        audio_only=args.audio_only,
+        timeout=args.timeout
     )
     
     sys.exit(0 if success else 1)
