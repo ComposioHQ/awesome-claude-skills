@@ -466,6 +466,7 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official example skills
 - [Claude Community](https://community.anthropic.com) - Discuss skills with other users
 - [Skills Marketplace](https://claude.ai/marketplace) - Discover and share skills
+- [WorkflowStacks](https://workflowstacks.com) - Free marketplace of 1,500+ open-source Claude skills, MCP servers and agents, searchable from inside Claude through its MCP server
 
 ### Inspiration & Use Cases
 
