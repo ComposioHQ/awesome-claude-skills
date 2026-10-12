@@ -157,6 +157,11 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [recursive-research](https://github.com/Anjos2/recursive-research) - Recursive research up to PhD level across any domain (science, tech, business, arts, humanities) with source tiering, WDM + Munger inversion for autonomous decisions, and disk checkpointing to survive context compaction. *By [@Anjos2](https://github.com/Anjos2)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
+- [coinbase](https://github.com/oidsdev/honeypot/tree/main/skills/coinbase) - Trade spot crypto on Coinbase Advanced Trade via the official REST API: accounts, prices, limit/market orders, fills. *By [@oidsdev](https://github.com/oidsdev)*
+- [kalshi](https://github.com/oidsdev/honeypot/tree/main/skills/kalshi) - Trade Kalshi prediction markets via the official REST API: events, orderbooks, balances, orders. *By [@oidsdev](https://github.com/oidsdev)*
+- [polymarket](https://github.com/oidsdev/honeypot/tree/main/skills/polymarket) - Trade Polymarket US (polymarket.us, CFTC-regulated) via the official retail REST API. *By [@oidsdev](https://github.com/oidsdev)*
+- [robinhood-mcp](https://github.com/oidsdev/honeypot/tree/main/skills/robinhood-mcp) - Trade Robinhood via the official Agentic Trading MCP server (OAuth DCR + PKCE). *By [@oidsdev](https://github.com/oidsdev)*
+- [the-odds-api](https://github.com/oidsdev/honeypot/tree/main/skills/the-odds-api) - Fetch sharp sportsbook odds from The Odds API and strip the vig for fair prices. *By [@oidsdev](https://github.com/oidsdev)*
 
 ### Business & Marketing
 
