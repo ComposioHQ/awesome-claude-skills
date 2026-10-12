@@ -114,6 +114,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - Spreadsheet manipulation: formulas, charts, data transformations.
 - [Markdown to EPUB Converter](https://github.com/smerchek/claude-epub-skill) - Converts markdown documents and chat summaries into professional EPUB ebook files. *By [@smerchek](https://github.com/smerchek)*
 - [Master Claude for Legal](https://github.com/sboghossian/master-claude-for-legal) - Skill pack for legal teams. NDA triage, multi-party version diff, citation verifier, meeting brief, and the Friday-newsletter status synthesis pattern. Includes 10 reference docs (privilege, verification, long documents, practice areas) and 3 firm templates. Built from the public Anthropic Claude for Legal Teams webinar dataset. *By [@sboghossian](https://github.com/sboghossian)*
+- [pdf-text](https://github.com/oidsdev/honeypot/tree/main/skills/pdf-text) - Extract selectable text from a PDF with pdftotext. *By [@oidsdev](https://github.com/oidsdev)*
 
 ### Development & Code Tools
 
@@ -149,6 +150,12 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [context7](https://github.com/oidsdev/honeypot/tree/main/skills/context7) - Look up current library documentation through Upstash Context7, so agents code against the live API instead of stale memory. *By [@oidsdev](https://github.com/oidsdev)*
+- [cron](https://github.com/oidsdev/honeypot/tree/main/skills/cron) - Read and install a user crontab without deleting the jobs already there. *By [@oidsdev](https://github.com/oidsdev)*
+- [cursor](https://github.com/oidsdev/honeypot/tree/main/skills/cursor) - Launch Cursor Cloud Agents on GitHub repos, check run status, and collect PRs through the Cursor API. *By [@oidsdev](https://github.com/oidsdev)*
+- [playwright-mcp](https://github.com/oidsdev/honeypot/tree/main/skills/playwright-mcp) - Drive a local browser through Microsoft's Playwright MCP server. *By [@oidsdev](https://github.com/oidsdev)*
+- [skill-creator](https://github.com/oidsdev/honeypot/tree/main/skills/skill-creator) - Create or update a workspace skill: structure, instructions, and supporting files. *By [@oidsdev](https://github.com/oidsdev)*
+- [webhooks](https://github.com/oidsdev/honeypot/tree/main/skills/webhooks) - Accept webhook POSTs on localhost, answer quickly, and ignore duplicate retries. *By [@oidsdev](https://github.com/oidsdev)*
 
 ### Data & Analysis
 
@@ -157,6 +164,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres) - Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth security. *By [@sanjay3290](https://github.com/sanjay3290)*
 - [recursive-research](https://github.com/Anjos2/recursive-research) - Recursive research up to PhD level across any domain (science, tech, business, arts, humanities) with source tiering, WDM + Munger inversion for autonomous decisions, and disk checkpointing to survive context compaction. *By [@Anjos2](https://github.com/Anjos2)*
 - [root-cause-tracing](https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing) - Use when errors occur deep in execution and you need to trace back to find the original trigger.
+- [sqlite](https://github.com/oidsdev/honeypot/tree/main/skills/sqlite) - Query, change, and back up a local SQLite database with the sqlite3 CLI. *By [@oidsdev](https://github.com/oidsdev)*
 
 ### Business & Marketing
 
@@ -166,6 +174,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [agent-checkout](https://github.com/oidsdev/honeypot/tree/main/skills/agent-checkout) - Stripe payment links for merchants with AI agents: the agent generates the link, the customer clicks and pays, the agent never touches card data. *By [@oidsdev](https://github.com/oidsdev)*
 
 ### Communication & Writing
 
@@ -176,6 +185,9 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
+- [discord](https://github.com/oidsdev/honeypot/tree/main/skills/discord) - Use the Discord Bot API from an agent: read and post messages, list servers and channels, add reactions, build invite links. *By [@oidsdev](https://github.com/oidsdev)*
+- [oids](https://github.com/oidsdev/honeypot/tree/main/skills/oids) - Join Oids, the communications layer for AI agents: verified identity, DMs, and rooms for agents. *By [@oidsdev](https://github.com/oidsdev)*
+- [oids-python-sdk](https://github.com/oidsdev/honeypot/tree/main/skills/oids-python-sdk) - Talk to Oids from Python: one stdlib-only file, no dependencies, no install step. *By [@oidsdev](https://github.com/oidsdev)*
 
 ### Creative & Media
 
@@ -189,6 +201,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [youtube-transcript](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript) - Fetch transcripts from YouTube videos and prepare summaries.
 - [swiftui-design-skill](https://github.com/wholiver/swiftui-design-skill) - SwiftUI 前端设计 skill — 反 AI Slop 六条铁律、设计方向顾问、品牌资产协议、五维评审。支持 Claude Code / Cursor / Codex / OpenCode 等全部 AI agent 平台。 *By [@wholiver](https://github.com/wholiver)*
 - [Pixelbin-Media-Generation](https://github.com/anandpareek-hub/pixelbin-claude-skill) - Generate and edit images & videos with 85+ API portfolio and build visually appealing website pages
+- [image-optimize](https://github.com/oidsdev/honeypot/tree/main/skills/image-optimize) - Shrink images with ImageMagick into a new file, leaving the original in place. *By [@oidsdev](https://github.com/oidsdev)*
 
 ### Productivity & Organization
 
