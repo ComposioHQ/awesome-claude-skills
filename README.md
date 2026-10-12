@@ -201,6 +201,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Tailored Resume Generator](./tailored-resume-generator/) - Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances.
 - [ship-learn-next](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next) - Skill to help iterate on what to build or learn next, based on feedback loops.
 - [tapestry](https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry) - Interlink and summarize related documents into knowledge networks.
+- [pan-transfer-bot](https://github.com/hen9xin/pan-transfer-bot) - Agent skill to save and organize your own Quark/Baidu Pan shares into date folders, create share links, and draft post copy locally without LLM APIs.
 
 ### Collaboration & Project Management
 
