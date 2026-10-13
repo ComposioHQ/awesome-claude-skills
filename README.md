@@ -214,6 +214,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 ### Security & Systems
 
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
+- [credagent](https://github.com/Benson-9527/credagent-skill) - Locks credential files (SSH keys, cloud CLI configs, API tokens, .env secrets) behind a zero-trust FUSE enclave so only authorized, SHA256-measured programs can open them. *By [@Benson-9527](https://github.com/Benson-9527)*
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
 - [threat-hunting-with-sigma-rules](https://github.com/jthack/threat-hunting-with-sigma-rules-skill) - Use Sigma detection rules to hunt for threats and analyze security events.
