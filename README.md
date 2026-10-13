@@ -166,6 +166,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [SEOmatic SEO Skills](https://github.com/Minh42/seomatic-mcp) - 20 SEO skills (audit, striking-distance keywords, traffic drops, indexing, AI visibility, client reports) that work from your real Google Search Console data through SEOmatic's MCP server and stage fixes you approve before they go live. *By [@Minh42](https://github.com/Minh42)*
 
 ### Communication & Writing
 
