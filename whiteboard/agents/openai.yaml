@@ -1,4 +1,0 @@
-interface:
-  display_name: "Whiteboard"
-  short_description: "Open and refine local Excalidraw sessions"
-  default_prompt: "Use $whiteboard to start a local design whiteboard for this project."
