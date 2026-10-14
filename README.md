@@ -466,6 +466,7 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official example skills
 - [Claude Community](https://community.anthropic.com) - Discuss skills with other users
 - [Skills Marketplace](https://claude.ai/marketplace) - Discover and share skills
+- [Top Claude Code Skills](https://selan.ai/top/claude-code-skills) - Claude Code skills ranked by GitHub stars, plus this week's and this month's most active, updated daily
 
 ### Inspiration & Use Cases
 
