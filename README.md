@@ -166,6 +166,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [Domain Name Brainstormer](./domain-name-brainstormer/) - Generates creative domain name ideas and checks availability across multiple TLDs including .com, .io, .dev, and .ai extensions.
 - [Internal Comms](./internal-comms/) - Helps write internal communications including 3P updates, company newsletters, FAQs, status reports, and project updates using company-specific formats.
 - [Lead Research Assistant](./lead-research-assistant/) - Identifies and qualifies high-quality leads by analyzing your product, searching for target companies, and providing actionable outreach strategies.
+- [peppol](https://github.com/e-invoice-be/peppol-cli/tree/main/skills/peppol) - Create, validate, send, and receive e-invoices on the Peppol network through the open-source `peppol` CLI (MIT, Go) and the e-invoice.be Access Point API. Also looks up Peppol participants and manages inbox, outbox, attachments, and local backups. Requires an e-invoice.be account. *By [@e-invoice-be](https://github.com/e-invoice-be)*
 
 ### Communication & Writing
 
