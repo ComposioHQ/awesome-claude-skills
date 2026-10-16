@@ -501,3 +501,5 @@ Individual skills may have different licenses - please check each skill's folder
 ---
 
 **Note**: Claude Skills work across Claude.ai, Claude Code, and the Claude API. Once you create a skill, it's portable across all platforms, making your workflows consistent everywhere you use Claude.
+
+- **[QWK ($QWK) Autonomous MEV & Resource Escrow Skill / MCP](https://github.com/chase-tqg/QWIK-MEV-Core)** - Autonomous Web3 DeFi & MEV infrastructure `SKILL.md` and MCP server (`verify_enterprise_backing`, `get_escrow_contract_details`, `generate_seed_deposit_tx`) with Foundry EIP-1153 transient-storage smart contracts (`0x1Cc436b4D9316ee623CFeB760C44F84c9bD9C20A`), 0%-fee Morpho Blue flash-loan execution, and on-chain Merkle commitments for $400,000+ in project-reported Google Cloud, NVIDIA, and Cloudflare resources.
