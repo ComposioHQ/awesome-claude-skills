@@ -464,6 +464,7 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 ### Community Resources
 
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official example skills
+- [AgentsUses](https://agentsuses.com) - Free directory of AI agent skills and real use cases for Claude Code, Codex, Cursor and more, each linked to its source repo with setup steps.
 - [Claude Community](https://community.anthropic.com) - Discuss skills with other users
 - [Skills Marketplace](https://claude.ai/marketplace) - Discover and share skills
 
