@@ -175,6 +175,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [family-history-research](https://github.com/emaynard/claude-family-history-research-skill) - Provides assistance with planning family history and genealogy research projects.
 - [Meeting Insights Analyzer](./meeting-insights-analyzer/) - Analyzes meeting transcripts to uncover behavioral patterns including conflict avoidance, speaking ratios, filler words, and leadership style.
 - [NotebookLM Integration](https://github.com/PleasePrompto/notebooklm-skill) - Lets Claude Code chat directly with NotebookLM for source-grounded answers based exclusively on uploaded documents. *By [@PleasePrompto](https://github.com/PleasePrompto)*
+- [research-paper-humanizer](https://github.com/noobarafat/research-paper-humanizer) - Humanizes AI-assisted research papers for IEEE and journal submission, lowering AI-detection scores while keeping numbers, citations, technical terms and meaning unchanged. *By [@noobarafat](https://github.com/noobarafat)*
 - [Twitter Algorithm Optimizer](./twitter-algorithm-optimizer/) - Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit tweets to improve engagement and visibility.
 
 ### Creative & Media
