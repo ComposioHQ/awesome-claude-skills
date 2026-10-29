@@ -149,6 +149,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 - [test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) - Use when implementing any feature or bugfix, before writing implementation code.
 - [using-git-worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - Creates isolated git worktrees with smart directory selection and safety verification.
 - [Webapp Testing](./webapp-testing/) - Tests local web applications using Playwright for verifying frontend functionality, debugging UI behavior, and capturing screenshots.
+- [zambo](https://github.com/zambodotdev/zambo-mcp) - The verifiable work layer for AI: 153 tools (code audit, lead generation, price tracking, payments, prompt defense, cross-AI handover) behind one MCP endpoint at https://zambo.dev/mcp, with a verifiable receipt for every job. Free: 20 calls + 1 wrap-up free every day; picking up in another AI is always free; MIT licensed. *By [@zambodotdev](https://github.com/zambodotdev)*
 
 ### Data & Analysis
 
