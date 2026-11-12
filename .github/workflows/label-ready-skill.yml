@@ -1,0 +1,159 @@
+name: Label ready-to-merge skill listings
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch base README
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_REPO: ${{ github.event.pull_request.base.repo.full_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          gh api "repos/$BASE_REPO/contents/README.md?ref=$BASE_SHA" \
+            -H "Accept: application/vnd.github.raw" > base.md
+
+      - name: Fetch head README
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          gh api "repos/$HEAD_REPO/contents/README.md?ref=$HEAD_SHA" \
+            -H "Accept: application/vnd.github.raw" > head.md
+
+      - name: List changed files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          gh api "repos/$REPO/pulls/$PR/files" --paginate -q '.[].filename' > changed.txt
+          cat changed.txt
+
+      - name: Validate PR
+        id: validate
+        run: |
+          node <<'EOF'
+          const fs = require('fs');
+          const base = fs.readFileSync('base.md', 'utf8');
+          const head = fs.readFileSync('head.md', 'utf8');
+          const changed = fs.readFileSync('changed.txt', 'utf8')
+            .split('\n').map(s => s.trim()).filter(Boolean);
+
+          const fail = (msg) => { console.error('FAIL:', msg); process.exit(1); };
+
+          // 1. Only README.md changed
+          if (changed.length === 0) fail('no changed files reported');
+          for (const f of changed) {
+            if (f !== 'README.md') fail(`disallowed file changed: ${f}`);
+          }
+
+          // 2. Locate Skills <-> Getting Started bounds in both base and head
+          const bounds = (text) => {
+            const lines = text.split('\n');
+            let start = -1, end = -1;
+            for (let i = 0; i < lines.length; i++) {
+              if (start === -1 && /^##\s+Skills\s*$/.test(lines[i])) start = i;
+              else if (start !== -1 && /^##\s+Getting Started\s*$/.test(lines[i])) { end = i; break; }
+            }
+            if (start === -1 || end === -1) fail('could not locate Skills / Getting Started markers');
+            return { lines, start, end };
+          };
+          const b = bounds(base);
+          const h = bounds(head);
+
+          // 3. All edits must be within the Skills..Getting Started window.
+          //    Compare lines outside the window — they must be identical.
+          const outside = (o) => [
+            o.lines.slice(0, o.start).join('\n'),
+            o.lines.slice(o.end).join('\n'),
+          ];
+          const [bPre, bPost] = outside(b);
+          const [hPre, hPost] = outside(h);
+          if (bPre !== hPre) fail('changes detected before the Skills section');
+          if (bPost !== hPost) fail('changes detected after the Getting Started section');
+
+          // 4. Diff inside the window — find added bullet lines.
+          const bInside = b.lines.slice(b.start, b.end);
+          const hInside = h.lines.slice(h.start, h.end);
+          const bSet = new Set(bInside);
+          const addedLines = hInside.filter(l => !bSet.has(l));
+
+          const bulletRe = /^\s*-\s+\[([^\]]+)\]\(([^)]+)\)/;
+          const addedBullets = addedLines
+            .map(l => ({ line: l, m: l.match(bulletRe) }))
+            .filter(x => x.m)
+            .map(x => ({ line: x.line, name: x.m[1], url: x.m[2] }));
+
+          if (addedBullets.length === 0) fail('no new skill bullet detected in PR');
+
+          // 5. Every added bullet must link to an external repo (https, not our own host).
+          for (const b of addedBullets) {
+            if (!/^https?:\/\//i.test(b.url)) {
+              fail(`bullet "${b.name}" does not link to an external URL: ${b.url}`);
+            }
+            try {
+              const u = new URL(b.url);
+              const host = u.hostname.toLowerCase();
+              if (host.endsWith('composio.dev') || host.endsWith('anthropic.com')) {
+                fail(`bullet "${b.name}" links to internal host ${host}`);
+              }
+            } catch { fail(`bullet "${b.name}" has invalid URL`); }
+          }
+
+          // 6. No crypto/web3/blockchain/nft keywords anywhere in added lines.
+          const blocked = /\b(crypto|cryptocurrency|web3|blockchain|nft|defi|token(?:omics)?|wallet\b|solana|ethereum|bitcoin)\b/i;
+          for (const line of addedLines) {
+            if (blocked.test(line)) fail(`blocked keyword in added line: ${line.trim()}`);
+          }
+
+          // 7. Each added bullet must sit alphabetically between its immediate
+          //    neighbors in its category (case-insensitive). Existing disorder
+          //    elsewhere in the category is grandfathered.
+          const addedSet = new Set(addedBullets.map(b => b.line));
+          let category = null;
+          const groups = new Map(); // category -> [{name, added}]
+          for (const line of hInside) {
+            const hMatch = line.match(/^###\s+(.+?)\s*$/);
+            if (hMatch) { category = hMatch[1]; continue; }
+            const m = line.match(bulletRe);
+            if (m && category) {
+              if (!groups.has(category)) groups.set(category, []);
+              groups.get(category).push({ name: m[1], added: addedSet.has(line) });
+            }
+          }
+          const ci = (s) => s.toLowerCase();
+          for (const [cat, items] of groups) {
+            for (let i = 0; i < items.length; i++) {
+              if (!items[i].added) continue;
+              const prev = items[i - 1];
+              const next = items[i + 1];
+              if (prev && ci(prev.name).localeCompare(ci(items[i].name)) > 0) {
+                fail(`"${items[i].name}" placed after "${prev.name}" in category "${cat}" (out of alphabetical order)`);
+              }
+              if (next && ci(items[i].name).localeCompare(ci(next.name)) > 0) {
+                fail(`"${items[i].name}" placed before "${next.name}" in category "${cat}" (out of alphabetical order)`);
+              }
+            }
+          }
+
+          console.log('OK: PR meets all criteria');
+          EOF
+
+      - name: Add ready-to-merge label
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr edit "$PR" --repo "$REPO" --add-label "ready-to-merge"
