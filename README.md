@@ -160,7 +160,7 @@ Skills are not MCP servers and not tools. MCP defines how an agent connects to e
 
 ### Business & Marketing
 
-- [A/B Test Playbook](https://github.com/ali-demirbas/ab-test-playbook) - Picks A/B test scenarios from an archive of 179, designs single-variable experiments for a page you share, checks existing test plans for confounds and missing guardrails, and runs the z-test on results you paste in. Each scenario comes out as a one-file HTML card. *By [@ali-demirbas](https://github.com/ali-demirbas)*
+- [A/B Test Playbook](https://github.com/ali-demirbas/ab-test-playbook) - Proposes single-variable A/B tests from a screenshot or page description, checks each with two adversarial reviewers, and renders the variants as side-by-side mockup cards. Ships a 221-scenario archive and audits test plans; it does not analyze results. *By [@ali-demirbas](https://github.com/ali-demirbas)*
 - [Brand Build Skills](https://github.com/rampstackco/claude-skills) - 59-skill library covering the full website lifecycle: brand, design, content, SEO, dev, ops, growth, and research. Stack-agnostic with an Ahrefs MCP-powered SEO audit suite. Includes a meta-skill for writing your own. *By [@rampstackco](https://github.com/rampstackco)*
 - [Brand Guidelines](./brand-guidelines/) - Applies Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards.
 - [Competitive Ads Extractor](./competitive-ads-extractor/) - Extracts and analyzes competitors' ads from ad libraries to understand messaging and creative approaches that resonate.
